@@ -493,7 +493,7 @@ nav.dark .right-nav p {
 	height: 1600px;
 	width: 1600px;
 	opacity: 0;
-	transition: all 3s ease, height 0s ease, transform 0s ease;
+	transition: all 3s ease, height 0s ease, transform 3s ease;
 	border-radius: 50%;
 	overflow-x: hidden;
 }
@@ -522,7 +522,7 @@ nav.dark .right-nav p {
 }
 .highdef-bg .circle-orange {
 	position: absolute;
-	right: 850px;
+	right: 900px;
 	bottom: -50px;
 	height: 240px;
 	width: 240px;
@@ -530,7 +530,7 @@ nav.dark .right-nav p {
 }
 .highdef-bg .circle-white {
 	position: absolute;
-	right: 950px;
+	right: 1000px;
 	bottom: 250px;
 	height: 100px;
 	width: 100px;
@@ -548,11 +548,11 @@ nav.dark .right-nav p {
 	opacity: 1;
 }
 .highdef.active .circle-orange {
-	right: 950px;
+	right: 1000px;
 	opacity: 1;
 }
 .highdef.active .circle-white {
-	right: 1050px;
+	right: 1100px;
 	opacity: 1;
 }
 
