@@ -309,6 +309,7 @@ section.hero {
 	position: relative;
 	color: #fff;
 	margin-top: 20px;
+	display: inline-block;
 }
 .section-showcase.about header span.link-white:before {
 	content: "";
