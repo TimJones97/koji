@@ -251,21 +251,22 @@ section.hero {
 	color: #EEA62B;
 }
 .section-showcase header span.link-white {
+	position: relative;
 	color: #fff;
-	display: block;
+	display: inline-block;
 }
 .section-showcase header span.link-white:before {
 	content: "";
 	position: absolute;
 	bottom: -2px;
-	width: calc(100% - 80px);
+	width: calc(100% + 80px);
 	height: 1px;
 	background: #fff;
 }
 .section-showcase header .circle-btn {
 	position: absolute;
 	bottom: -2px;
-	right: 40px;
+	right: 100px;
 	height: 84px;
 	width: 84px;
 	border: 1px solid #fff;
