@@ -340,11 +340,17 @@ section.hero {
 .section-showcase.high-def, .high-def-img {
 	margin-bottom: 30px;
 }
+.section-showcase.high-def header h1 span,
+.section-showcase.high-def header span.link-white {
+	font-size: 48px;
+}
 .section-showcase.high-def header span.link-white {
 	margin-top: 20px;
 }
 .section-showcase.high-def header .circle-btn {
-	right: -120px;
+	right: -110px;
+	height: 64px;
+	width: 64px;
 }
 .container__episodes {
 	margin-top: 50px;
@@ -364,6 +370,7 @@ section.hero {
 	border: 1px solid #601B0C;
 	border-radius: 6px;
 	overflow: hidden;
+	transition: background 0.5s ease;
 }	
 .episode * {
 	transition: opacity 0.5s ease;
@@ -380,9 +387,11 @@ section.hero {
 	left: 0;
 	width: 100%;
 	height: 270px;
-	background: rgba(255, 255, 255, 0.5);
-	filter: blur(11px);
+	background: rgba(255, 255, 255, 0.1);
 	opacity: 0;
+	z-index: 1;
+	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
 }
 .episode .episode-thumbnail img {
 	position: absolute;
@@ -417,16 +426,18 @@ section.hero {
 }
 
 /*HOVER EFFECTS - BLUR*/
-.episode:hover .episode-thumbnail .thumbnail {
+/*.episode:hover .episode-thumbnail .thumbnail {
 	opacity: 0;
-}
+}*/
 .episode:hover .episode-thumbnail .thumbnail-blur {
 	opacity: 1;
 }
 .episode:hover .episode-thumbnail .blur {
-	opacity: 1;
+	opacity: 1.0;
 }
-
+.episode:hover {
+	background: #601B0C;
+}
 
 /*@media screen and (aspect-ratio: 16/9) {
 	.section-showcase video {
