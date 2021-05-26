@@ -273,7 +273,7 @@ nav.dark .right-nav p {
 .section-showcase header .circle-btn {
 	position: absolute;
 	bottom: -2px;
-	right: 100px;
+	right: 120px;
 	height: 84px;
 	width: 84px;
 	border: 1px solid #fff;
@@ -341,20 +341,23 @@ nav.dark .right-nav p {
 
 /*-----THIRD PAGE - HIGH DEF-----*/
 
-.section-showcase.high-def {
+.section-showcase.highdef {
 	background: #280000;
 }
-.section-showcase.high-def, .high-def-img {
+.section-showcase.highdef .container {
+	z-index: 1;
+}
+.section-showcase.highdef, .highdef-logo {
 	margin-bottom: 30px;
 }
-.section-showcase.high-def header h1 span,
-.section-showcase.high-def header span.link-white {
+.section-showcase.highdef header h1 span,
+.section-showcase.highdef header span.link-white {
 	font-size: 48px;
 }
-.section-showcase.high-def header span.link-white {
+.section-showcase.highdef header span.link-white {
 	margin-top: 20px;
 }
-.section-showcase.high-def header .circle-btn {
+.section-showcase.highdef header .circle-btn {
 	right: -110px;
 	height: 64px;
 	width: 64px;
@@ -446,6 +449,73 @@ nav.dark .right-nav p {
 	background: #601B0C;
 }
 
+/*FULL BG ANIMATION*/
+.highdef-bg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
+}
+.highdef-bg .bg-full {
+	position: absolute;
+	top: 0;
+	right: -100px;
+	transform: scale3d(1.0, 1.0, 1.0);
+	height: 100%;
+	width: auto;
+	opacity: 0;
+	transition: all 2s ease;
+}
+.highdef-bg .circle-red,
+.highdef-bg .circle-orange,
+.highdef-bg .circle-white {
+	transition: all 3s ease;
+}
+.highdef-bg .circle-red {
+	position: absolute;
+	right: 900px;
+	top: -100px;
+	height: 300px;
+	width: 300px;
+	opacity: 0.3;
+}
+.highdef-bg .circle-orange {
+	position: absolute;
+	right: 950px;
+	bottom: -50px;
+	height: 240px;
+	width: 240px;
+	opacity: 0.3;
+}
+.highdef-bg .circle-white {
+	position: absolute;
+	right: 1050px;
+	bottom: 250px;
+	height: 100px;
+	width: 100px;
+	z-index: -1;
+	opacity: 0.3;
+}
+/*When the slide is active, activate the animations*/
+.highdef.active .bg-full {
+	right: 0px;
+	opacity: 1;
+	transform: scale3d(1.02, 1.02, 1.0);
+}
+.highdef.active .circle-red {
+	right: 1000px;
+	opacity: 1;
+}
+.highdef.active .circle-orange {
+	right: 1050px;
+	opacity: 1;
+}
+.highdef.active .circle-white {
+	right: 1150px;
+	opacity: 1;
+}
 /*@media screen and (aspect-ratio: 16/9) {
 	.section-showcase video {
 	    top: 50%;
