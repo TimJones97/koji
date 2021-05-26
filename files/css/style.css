@@ -504,7 +504,7 @@ nav.dark .right-nav p {
 	right: 150px;
 	height: 1200px;
 	width: auto;
-	transition: all 0.5s ease;
+	transition: all 1s ease;
 	/*min-height: 1080px;*/
 }
 .highdef-bg .circle-red,
@@ -663,6 +663,10 @@ section.contact .container .right {
 	background: unset;
 	display: block;
 	margin: 30px auto;
+	transition: background 0.5s ease;
+}
+.contact-form button:hover {
+	background: #EEA62B;
 }
 
 /*--------------FOOTER--------------*/
