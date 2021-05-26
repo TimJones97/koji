@@ -91,8 +91,8 @@ section:nth-child(2) {
 /*Arrow down to next page*/
 .arrow-down {
 	position: absolute;
-	bottom: 30px;
-	left: 80px;
+	bottom: -60px;
+	left: 40px;
 }
 .arrow-down img {
 	width: 25px;
@@ -101,10 +101,16 @@ section:nth-child(2) {
 
 /*HELPER DIVS*/
 .container {
-	max-width: 1080px;
+	position: relative;
+	max-width: 1800px;
 	width: 100%;
-	padding: 0px 80px;
+	padding: 0px 40px;
+	height: 100vh;
 	max-height: calc(100% - 200px);
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 /*--------------NAV--------------*/
@@ -118,8 +124,8 @@ nav {
 nav .container {
 	display: flex;
 	justify-content: space-between;
+	flex-direction: unset;
 	padding-top: 45px;
-	max-width: 100%;
 }
 .logo {
 	position: relative;
@@ -286,7 +292,7 @@ nav.dark .right-nav p {
 .section-showcase header .circle-btn {
 	position: absolute;
 	bottom: -2px;
-	right: 120px;
+	right: -120px;
 	height: 84px;
 	width: 84px;
 	border: 1px solid #fff;
@@ -470,6 +476,7 @@ nav.dark .right-nav p {
 	height: 100%;
 	width: 100%;
 	z-index: 0;
+	pointer-events: none;
 }
 .highdef-bg .bg-full {
 	position: absolute;
@@ -590,7 +597,6 @@ footer .container {
 	padding-top: 50px;
 	flex-wrap: wrap;
 	align-items: flex-start;
-	max-width: 100%;
 }
 footer .footer-logo {
 	width: 75px;
