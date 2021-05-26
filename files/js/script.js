@@ -23,9 +23,11 @@ function restartVideo(){
 		// make the nav elements white
 		if($(this).hasClass('active')){
 			var video = $(this).children().find('video').get(0);
-			video.pause();
-			video.currentTime = 0;
-			video.play();
+			if(video != null){
+				video.pause();
+				video.currentTime = 0;
+				video.play();
+			}
 		}
 	});
 }
