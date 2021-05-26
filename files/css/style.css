@@ -466,12 +466,12 @@ nav.dark .right-nav p {
 	height: 100%;
 	width: auto;
 	opacity: 0;
-	transition: all 2s ease;
+	transition: all 3s ease;
 }
 .highdef-bg .circle-red,
 .highdef-bg .circle-orange,
 .highdef-bg .circle-white {
-	transition: all 3s ease;
+	transition: all 3.5s ease;
 }
 .highdef-bg .circle-red {
 	position: absolute;
