@@ -22,7 +22,10 @@ function restartVideo(){
 		// If the active section slide has light-nav class,
 		// make the nav elements white
 		if($(this).hasClass('active')){
-			$(this).find('video').currentTime = 0;
+			var video = $(this).children().find('video').get(0);
+			video.pause();
+			video.currentTime = 0;
+			video.play();
 		}
 	});
 }
