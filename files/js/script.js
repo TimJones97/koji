@@ -1,4 +1,5 @@
-var rotation = 0;
+var rotation = 0,
+	scale = 1.0;
 
 function changeNav(){
 	$('section').each(function(){
@@ -36,7 +37,7 @@ function rotateCircleNav(direction){
 		rotation = rotation - 30;
 		$('.circle-nav .active').removeClass('active').prev().addClass('active');
 	}
-	$('.circle-nav').css('transform', 'rotate(' + rotation + 'deg)');
+	$('.circle-nav').css('transform', 'scale3d(' + scale + ',' + scale + ', 1.0) rotate(' + rotation + 'deg)');
 }
 // Fade in the video after the window is fully loaded
 function fadeVideoLoad(){
@@ -44,8 +45,23 @@ function fadeVideoLoad(){
 	    $('video').addClass('loaded');
 	});
 }
+function scaleCircleNav(){
+	var maxVHeight = 1080,
+		height = $(window).height(),
+		width = $(window).width();
+
+	if(height > maxVHeight && (width / height) >  1.5){
+		scale = height / maxVHeight;
+		// Add the new scale and rotation
+		$('.circle-nav').css('transform', 'scale3d(' + scale + ',' + scale + ', 1.0) rotate(' + rotation + 'deg)');
+	}
+}
+$(window).resize(function(){
+	scaleCircleNav();
+});
 $(document).ready(function() {
 	fadeVideoLoad();
+	scaleCircleNav();
   	$('#fullpage-anim').pagepiling({
 	  	menu: '.circles',
 		anchors: ['page1', 'page2', 'page3'],
