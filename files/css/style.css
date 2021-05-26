@@ -343,6 +343,9 @@ section.hero {
 .section-showcase.high-def header span.link-white {
 	margin-top: 20px;
 }
+.section-showcase.high-def header .circle-btn {
+	right: -120px;
+}
 .container__episodes {
 	margin-top: 50px;
 }
