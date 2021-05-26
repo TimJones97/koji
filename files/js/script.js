@@ -26,10 +26,19 @@ function restartVideo(){
 		}
 	});
 }
-function rotateCircleNav(direction){
-	if(direction == 'down'){
+function rotateCircleNav(index, nextIndex, direction){
+	var currentIndex = nextIndex - index;
+	if(direction == 'down' && currentIndex == 1){
 		// Increment the rotation by 30 degrees each time
 		rotation += 30;
+		$('.circle-nav .active').removeClass('active').next().addClass('active');
+	}
+	else if(direction == 'down' && currentIndex == 2){
+		rotation += 60;
+		$('.circle-nav .active').removeClass('active').next().addClass('active');
+	}
+	else if(direction == 'up' && currentIndex == -2){
+		rotation = rotation - 60;
 		$('.circle-nav .active').removeClass('active').next().addClass('active');
 	}
 	else {
@@ -64,6 +73,9 @@ function scaleCircleNav(){
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + scale + ',' + scale + ', 1.0) rotate(' + rotation + 'deg)');
 }
+$('.circle-nav a').click(function(){
+	// rotateCircleNav();
+});
 $(window).resize(function(){
 	scaleCircleNav();
 });
@@ -74,7 +86,7 @@ $(document).ready(function() {
 	  	menu: '.circles',
 		anchors: ['page1', 'page2', 'page3'],
 	  	onLeave: function(index, nextIndex, direction){
-			rotateCircleNav(direction);
+			rotateCircleNav(index, nextIndex, direction);
 			restartVideo();
 			changeNav();
 	  	},
