@@ -50,11 +50,15 @@ function scaleCircleNav(){
 		height = $(window).height(),
 		width = $(window).width();
 
-	if(height > maxVHeight && (width / height) >  1.5){
+	if (height > maxVHeight && (width / height) >  1.5){
 		scale = height / maxVHeight;
 		// Add the new scale and rotation
-		$('.circle-nav').css('transform', 'scale3d(' + scale + ',' + scale + ', 1.0) rotate(' + rotation + 'deg)');
 	}
+	else if (height < maxVHeight){
+		scale = 1.0;
+	}
+	
+	$('.circle-nav').css('transform', 'scale3d(' + scale + ',' + scale + ', 1.0) rotate(' + rotation + 'deg)');
 }
 $(window).resize(function(){
 	scaleCircleNav();
