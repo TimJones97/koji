@@ -25,12 +25,23 @@
           <img class="dark" src="./files/img/general/logo-dark.svg">
         </div>
         <div class="right-nav">
-          <p>About</p>
-          <p>Investment</p>
-          <p>Read</p>
-          <p>Listen</p>
-          <p>Contact</p>
-        </div>
+          <ul>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Investment</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Read</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Listen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
       </div>
     </nav>
     <div class="circle-nav">
@@ -143,7 +154,9 @@
           </a>
         </div>
         <div class="highdef-bg">
-          <img class="bg-full" src="./files/img/home-page/hd-elements/high-definition-bg.svg">
+          <picture class="bg-full">
+            <img src="./files/img/home-page/hd-elements/high-definition-bg.jpg">
+          </picture>
           <img class="circle-red" src="./files/img/home-page/hd-elements/circle-red.svg">
           <img class="circle-orange" src="./files/img/home-page/hd-elements/circle-orange.svg">
           <img class="circle-white" src="./files/img/home-page/hd-elements/circle-white.svg">
@@ -167,7 +180,33 @@
             </div>
           </div>
           <div class="right">
-
+            <form class="contact-form" action="https://formspree.io/f/mrgrprod" method="POST">
+              <div class="form-item half">
+                <label>FIRST NAME</label>
+                <input placeholder="First name" name="first_name" type="text" required/>
+              </div>
+              <div class="form-item half">
+                <label>LAST NAME</label>
+                <input placeholder="Last name" name="last_name" type="text" required/>
+              </div>
+              <div class="form-item">
+                <label>COMPANY</label>
+                <input placeholder="Company name" name="company" type="text" required/>
+              </div>
+              <div class="form-item">
+                <label>EMAIL</label>
+                <input placeholder="Email address" name="email" type="email" required/>
+              </div>
+              <div class="form-item">
+                <label>SUBJECT</label>
+                <input placeholder="Write your subject line here..." name="subject" type="text" required/>
+              </div>
+              <div class="form-item">
+                <label>SUBJECT</label>
+                <textarea placeholder="Write your message here..." name="subject" type="text" required/></textarea>
+              </div>
+              <button type="submit">SEND</button>
+            </form>
           </div>
         </div>
         <footer>

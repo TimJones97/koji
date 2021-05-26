@@ -1,4 +1,4 @@
---------------GENERAL STYLES--------------*/
+/*--------------GENERAL STYLES--------------*/
 
 @font-face {
     font-family: 'Helvetica Light';
@@ -45,24 +45,24 @@ body.no-anim * {
 *:hover {
 	outline: none !important;
 }
-/*h1, h2, h3, h4 {
-	font-family: 'Oswald', sans-serif;
-	transition: font-size 0.5s ease;
-}*/
 p, a, label, li {
-	font-family: 'Helvetica', sans-serif;
+	font-family: 'Helvetica Bold', sans-serif;
 	font-weight: 500;
 	font-size: 16px;
 	transition: all 0.5s ease;
+	color: #EEA62B;
 }
 a {
+	font-family: 'Helvetica Neue Light';
 	text-decoration: none;
 	color: #fff;
+}
+input, textarea, button {
+	font-family: 'Helvetica';
 }
 a:hover {
 	text-decoration: none;
 }
-
 main {
 	height: 100vh
 }
@@ -140,11 +140,14 @@ nav .container {
 }
 nav .right-nav {
 }
-nav .right-nav p {
+.nav-item {
 	margin: unset;
 	display: inline-block;
 	margin-right: 20px;
 	color: #fff;
+}
+.nav-link {
+
 }
 
 /*LIGHT NAV*/
@@ -286,8 +289,7 @@ nav.dark .right-nav p {
 	position: absolute;
 	bottom: -2px;
 	width: calc(100% + 80px);
-	height: 1px;
-	background: #fff;
+	border-bottom: 1px solid #fff;
 }
 .section-showcase header .circle-btn {
 	position: absolute;
@@ -369,6 +371,9 @@ nav.dark .right-nav p {
 .section-showcase.highdef, .highdef-logo {
 	margin-bottom: 30px;
 }
+.section-showcase.highdef header span.link-white:before {
+	width: calc(100% + 40px);
+}
 .section-showcase.highdef header h1 span,
 .section-showcase.highdef header span.link-white {
 	font-size: 48px;
@@ -377,7 +382,7 @@ nav.dark .right-nav p {
 	margin-top: 20px;
 }
 .section-showcase.highdef header .circle-btn {
-	right: -110px;
+	right: -80px;
 	height: 64px;
 	width: 64px;
 }
@@ -385,6 +390,8 @@ nav.dark .right-nav p {
 	margin-top: 50px;
 }
 .container__episodes .subheading {
+	display: block;
+	margin-bottom: 20px;
 	font-family: 'Helvetica Bold', sans-serif;
 	font-size: 16px;
 	color: #EEA62B;
@@ -480,14 +487,25 @@ nav.dark .right-nav p {
 }
 .highdef-bg .bg-full {
 	position: absolute;
-	top: 0;
-	right: -100px;
-	transform: scale3d(1.0, 1.0, 1.0);
-	min-height: 1080px;
-	height: 100%;
-	width: auto;
+	top: 50%;
+	right: -550px;
+	transform: scale3d(1.0, 1.0, 1.0) translate(0%, -50%);
+	height: 1600px;
+	width: 1600px;
 	opacity: 0;
-	transition: all 3s ease, height 0s ease;
+	transition: all 3s ease, height 0s ease, transform 0s ease;
+	border-radius: 50%;
+	overflow-x: hidden;
+}
+.highdef-bg .bg-full img {
+	position: absolute;
+	top: 50%;
+	transform: translate(0%, -50%);
+	right: 150px;
+	height: 1200px;
+	width: auto;
+	transition: all 0.5s ease;
+	/*min-height: 1080px;*/
 }
 .highdef-bg .circle-red,
 .highdef-bg .circle-orange,
@@ -496,7 +514,7 @@ nav.dark .right-nav p {
 }
 .highdef-bg .circle-red {
 	position: absolute;
-	right: 900px;
+	right: 800px;
 	top: -100px;
 	height: 300px;
 	width: 300px;
@@ -504,7 +522,7 @@ nav.dark .right-nav p {
 }
 .highdef-bg .circle-orange {
 	position: absolute;
-	right: 950px;
+	right: 850px;
 	bottom: -50px;
 	height: 240px;
 	width: 240px;
@@ -512,7 +530,7 @@ nav.dark .right-nav p {
 }
 .highdef-bg .circle-white {
 	position: absolute;
-	right: 1050px;
+	right: 950px;
 	bottom: 250px;
 	height: 100px;
 	width: 100px;
@@ -521,20 +539,20 @@ nav.dark .right-nav p {
 }
 /*When the slide is active, activate the animations*/
 .highdef.active .bg-full {
-	right: 0px;
+	right: -450px;
 	opacity: 1;
-	transform: scale3d(1.02, 1.02, 1.0);
+	transform: scale3d(1.02, 1.02, 1.0) translate(0%, -50%);
 }
 .highdef.active .circle-red {
-	right: 1000px;
+	right: 900px;
 	opacity: 1;
 }
 .highdef.active .circle-orange {
-	right: 1050px;
+	right: 950px;
 	opacity: 1;
 }
 .highdef.active .circle-white {
-	right: 1150px;
+	right: 1050px;
 	opacity: 1;
 }
 
@@ -554,6 +572,7 @@ section.contact header h1 {
 section.contact .container {
 	display: flex;
 	justify-content: space-between;
+	flex-direction: unset;
 }
 section.contact .container .left {
 	position: relative;
@@ -582,6 +601,61 @@ section.contact .container .socials a:last-of-type {
 }
 section.contact .container .right {
 	width: 100%;
+	max-width: 850px;
+	min-width: 450px;
+	padding-right: 230px;
+}
+
+/*-----CONTACT FORM-----*/
+
+.contact-form {
+	width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 50px;
+}
+.form-item {
+	width: 100%;
+	margin-top: 20px;
+    clear: both;
+}
+.form-item.half {
+	width: 48%;
+	flex-basis: 48%;
+}
+.form-item label {
+	display: block;
+	margin-bottom: 10px;
+}
+.form-item input,
+.form-item textarea {
+	border: 2px solid #601B0C;
+	background: unset;
+	padding: 10px;
+	height: 40px;
+	color: #fff;
+	width: 100%;
+	border-radius: 6px;
+	font-size: 16px;
+}
+.form-item textarea {
+	height: 120px;
+}
+.form-item input::placeholder,
+.form-item textarea::placeholder {
+	color: #601B0C;
+}
+.contact-form button {
+	width: 150px;
+	height: 50px;
+	border: 2px solid #EEA62B;
+	color: #fff;
+	border-radius: 6px;
+	background: unset;
+	display: block;
+	margin: 30px auto;
 }
 
 /*--------------FOOTER--------------*/
@@ -592,6 +666,7 @@ footer {
 	bottom: 0;
 	width: 100%;
 	height: 200px;
+	background: #000;
 }
 footer .container {
 	padding-top: 50px;
@@ -607,7 +682,6 @@ footer .collaborate-links {
 	width: 350px;
 }
 footer .collaborate-links p {
-	font-family: 'Helvetica Bold', sans-serif;
 	margin-top: 0;
 }
 footer .collaborate-links p,
@@ -623,7 +697,6 @@ footer .contact-links {
 }
 footer .contact-links a {
 	position: relative;
-	font-family: 'Helvetica Neue Light';
 	font-size: 22px;
 	text-decoration: underline;
 }
@@ -663,5 +736,12 @@ footer .site-links .link-box a {
 	margin-top: 0px;
 }
 footer .site-links .link-box .title {
-	font-family: 'Helvetica Bold', sans-serif;
+	/*font-family: 'Helvetica Bold', sans-serif;*/
+}
+
+@media only screen and (max-width: 1919px){
+	.highdef-bg .bg-full img {
+		height: 100%;
+		right: 50px;
+	}
 }
