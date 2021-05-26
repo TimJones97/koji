@@ -38,14 +38,21 @@ function rotateCircleNav(direction){
 	}
 	$('.circle-nav').css('transform', 'rotate(' + rotation + 'deg)');
 }
+// Fade in the video after the window is fully loaded
+function fadeVideoLoad(){
+	$(window).on('load', function(){
+	    $('video').addClass('loaded');
+	});
+}
 $(document).ready(function() {
-  $('#fullpage-anim').pagepiling({
-  	menu: '.circles',
-	anchors: ['page1', 'page2', 'page3'],
-  	onLeave: function(index, nextIndex, direction){
-		rotateCircleNav(direction);
-		restartVideo();
-		changeNav();
-  	},
-  });
+	fadeVideoLoad();
+  	$('#fullpage-anim').pagepiling({
+	  	menu: '.circles',
+		anchors: ['page1', 'page2', 'page3'],
+	  	onLeave: function(index, nextIndex, direction){
+			rotateCircleNav(direction);
+			restartVideo();
+			changeNav();
+	  	},
+  	});
 });

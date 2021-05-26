@@ -286,12 +286,16 @@ section.hero {
     position: absolute;
     top: 50%;
     right: 0;
-    transform: translate(0%, -50%);
+    transform: translate(0%, -50%) scale3d(1.1, 1.0, 1.0);
     min-width: 100%;
     min-height: 100%;
     z-index: -1;
-    opacity: 1;
+    opacity: 0;
     transition: all 0.5s ease;
+}
+.section-showcase video.loaded {
+    opacity: 1;
+    transform: translate(0%, -50%) scale3d(1.0, 1.0, 1.0);
 }
 
 /*-----SECOND PAGE - ABOUT-----*/
@@ -420,9 +424,9 @@ section.hero {
 }
 
 
-@media screen and (aspect-ratio: 16/9) {
+/*@media screen and (aspect-ratio: 16/9) {
 	.section-showcase video {
 	    top: 50%;
 	    transform: translate(0%, -50%);
 	}
-}
+}*/
