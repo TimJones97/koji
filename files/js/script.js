@@ -56,6 +56,7 @@ function rotateCircleNav(index, nextIndex, direction){
 // Fade in the video after the window is fully loaded
 function fadeVideoLoad(){
 	$(window).on('load', function(){
+		console.log('loaded');
 	    $('video').addClass('loaded');
 	});
 }
@@ -78,9 +79,6 @@ function scaleCircleNav(){
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + scale + ',' + scale + ', 1.0) rotate(' + rotation + 'deg)');
 }
-// $('.nav-link').click(function(){
-// 	// rotateCircleNav();
-// });
 $(window).resize(function(){
 	scaleCircleNav();
 });
