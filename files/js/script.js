@@ -78,9 +78,9 @@ function scaleCircleNav(){
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + scale + ',' + scale + ', 1.0) rotate(' + rotation + 'deg)');
 }
-$('.circle-nav a').click(function(){
-	// rotateCircleNav();
-});
+// $('.nav-link').click(function(){
+// 	// rotateCircleNav();
+// });
 $(window).resize(function(){
 	scaleCircleNav();
 });

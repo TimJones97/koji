@@ -1,4 +1,4 @@
-/*--------------GENERAL STYLES--------------*/
+--------------GENERAL STYLES--------------*/
 
 @font-face {
     font-family: 'Helvetica Light';
@@ -56,6 +56,7 @@ main {
 }
 /*Page Piling styles*/
 section {
+	position: relative;
 	height: 100vh;
 	transform: unset !important;
 	opacity: 0;
@@ -75,9 +76,18 @@ section:nth-child(2) {
 #pp-nav {
 	display: none;
 }
+/*Arrow down to next page*/
+.arrow-down {
+	position: absolute;
+	bottom: 30px;
+	left: 80px;
+}
+.arrow-down img {
+	width: 25px;
+	height: 25px;
+}
 
 /*HELPER DIVS*/
-
 .container {
 	max-width: 1080px;
 	width: 100%;
@@ -218,9 +228,6 @@ nav.dark .right-nav p {
 
 /*--------------FULL PAGE SECTIONS--------------*/
 
-section.hero {
-	
-}
 .section-showcase .pp-tableCell {
 	position: relative;
 	display: flex;
@@ -444,4 +451,4 @@ section.hero {
 	    top: 50%;
 	    transform: translate(0%, -50%);
 	}
-}*/
+}
