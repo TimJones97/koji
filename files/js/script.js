@@ -108,13 +108,23 @@ $(document).ready(function() {
 	fadeVideoLoad();
 	scaleCircleNav();
 	scaleHighdefBackground();
-  	$('#fullpage-anim').pagepiling({
+  	$('#homepage-anim').pagepiling({
 	  	menu: '.circles',
-		anchors: ['page1', 'page2', 'page3'],
+		anchors: ['page1', 'page2', 'page3', 'page4'],
 	  	onLeave: function(index, nextIndex, direction){
 			rotateCircleNav(index, nextIndex, direction);
 			restartVideo();
 			changeNav();
 	  	},
+  	});
+  	$('#thesis-anim').pagepiling({
+	  	menu: '.circles-left',
+		anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4']
+		// anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4'],
+	 //  	onLeave: function(index, nextIndex, direction){
+		// 	rotateCircleNav(index, nextIndex, direction);
+		// 	restartVideo();
+		// 	changeNav();
+	 //  	},
   	});
 });

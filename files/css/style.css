@@ -258,7 +258,44 @@ nav.dark .right-nav p {
 .section-showcase header {
 	position: relative;
 	margin-top: 50px;
+	animation: unset;
+	animation: slideUpTop 0.8s ease forwards;
 }
+
+/*-----HEADER SCROLL ANIMATION-----*/
+
+section.active header {
+	animation: slideInBottom 0.8s ease forwards;
+	animation-delay: 0.3s;
+	opacity: 0;
+}
+@keyframes slideInBottom {
+	0% {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+	80% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+}
+@keyframes slideUpTop {
+	0% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+	80% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(-50px);
+		opacity: 0;
+	}
+}
+
 .section-showcase header span.subheading {
 	font-family: 'Helvetica Bold', sans-serif;
 	font-size: 16px;
@@ -667,6 +704,12 @@ section.contact .container .right {
 }
 .contact-form button:hover {
 	background: #EEA62B;
+}
+
+/*HIDE LASTPASS ICON*/
+
+div[id^=__lpform_] {
+    display: none;
 }
 
 /*--------------FOOTER--------------*/
