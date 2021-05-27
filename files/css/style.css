@@ -175,7 +175,8 @@ nav.dark .right-nav p {
 
 /*-----CIRCLE NAV-----*/
 
-.circle-nav {
+.circle-nav,
+.circle-nav.thesis {
 	position: fixed;
 	right: 0px;
 	top: 0;
@@ -185,10 +186,22 @@ nav.dark .right-nav p {
 	align-items: center;
     transition: transform 0.5s ease;
 }
-.circle-nav .circles {
+.circle-nav {
+	/*display: none;*/
+}
+.circle-nav.thesis {
+	right: unset;
+	left: -110px;
+}
+.circle-nav .circles,
+.circle-nav-thesis .circles {
 	padding-top: 60px;
 	transform: rotate(255deg);
 	margin-top: 400px;
+}
+.circle-nav.thesis .circles {
+	transform: rotate(255deg) scaleX(-1);
+	margin-top: -400px;
 }
 .circle-nav .circles a {
 	display: block;
@@ -204,6 +217,51 @@ nav.dark .right-nav p {
     box-sizing: border-box;
     transition: background 0.3s ease 0.1s;
 }
+
+/*HOMEPAGE - RIGHT ALIGNED*/
+
+/*Left side*/
+.circle-nav .circles a.one span {
+	transform: rotate(195deg);
+}
+.circle-nav .circles a.two span {
+	transform: rotate(165deg);
+}
+.circle-nav .circles a.three span {
+	transform: rotate(135deg);
+}
+.circle-nav .circles a.four span {
+	transform: rotate(105deg);
+}
+.circle-nav .circles a.five span {
+	transform: rotate(75deg);
+}
+.circle-nav .circles a.six span {
+	transform: rotate(45deg);
+}
+.circle-nav .circles a.seven span {
+	transform: rotate(15deg);
+}
+
+/*Right side*/
+.circle-nav .circles a.eight span {
+	transform: rotate(-15deg);
+}
+.circle-nav .circles a.nine span {
+	transform: rotate(-45deg);
+}
+.circle-nav .circles a.ten span {
+	transform: rotate(-75deg);
+}
+.circle-nav .circles a.eleven span {
+	transform: rotate(-105deg);
+}
+.circle-nav .circles a.twelve span {
+	transform: rotate(-135deg);
+}
+
+/*HOMEPAGE - RIGHT ALIGNED*/
+
 /*Left side*/
 .circle-nav .circles a.one span {
 	transform: rotate(195deg);

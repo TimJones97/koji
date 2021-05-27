@@ -117,14 +117,14 @@ $(document).ready(function() {
 			changeNav();
 	  	},
   	});
-  	$('#thesis-anim').pagepiling({
-	  	menu: '.circles-left',
-		anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4']
-		// anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4'],
-	 //  	onLeave: function(index, nextIndex, direction){
-		// 	rotateCircleNav(index, nextIndex, direction);
-		// 	restartVideo();
-		// 	changeNav();
-	 //  	},
-  	});
+  // 	$('#thesis-anim').pagepiling({
+	 //  	menu: '.circles-left',
+		// anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4']
+		// // anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4'],
+	 // //  	onLeave: function(index, nextIndex, direction){
+		// // 	rotateCircleNav(index, nextIndex, direction);
+		// // 	restartVideo();
+		// // 	changeNav();
+	 // //  	},
+  // 	});
 });
