@@ -56,13 +56,6 @@ function rotateCircleNav(index, nextIndex, direction){
 	}
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 }
-// Fade in the video after the window is fully loaded
-function fadeVideoLoad(){
-	$(window).on('load', function(){
-		console.log('loaded');
-	    $('video').addClass('loaded');
-	});
-}
 function scaleCircleNav(){
 	var maxVHeight = 1080,
 		height = $(window).height(),
@@ -84,11 +77,22 @@ function scaleCircleNav(){
 function scaleHighdefBackground(){
 	var minVWidth = 1920,
 		width = $(window).width();
+
 	if(width < minVWidth){
 		highdefBackgroundScale = width / minVWidth;
 		highdefTop = (1.0 - (width / minVWidth)) / 2 * 100;
 		highdefRight = (1.0 - (width / minVWidth)) / 2 * 100;
-		
+		// Make the values negative
+		highdefTop = '-' + highdefTop;
+		highdefRight = '-' + highdefRight;
+	}
+	if(width > minVWidth){
+		highdefBackgroundScale = width / minVWidth;
+		highdefTop = 0;
+		highdefRight = (1.0 - (width / minVWidth)) / 2 * 100;
+
+		// Make the negative values positive
+		highdefRight = Math.abs(highdefRight)
 	}
 	else {
 		highdefBackgroundScale = 1.0;
@@ -97,15 +101,14 @@ function scaleHighdefBackground(){
 	}
 	// Add the styles to the dynamic background in the high definition section
 	$('.highdef-bg').css('transform', 'scale3d(' + highdefBackgroundScale + ',' + highdefBackgroundScale + ', 1.0)');
-	$('.highdef-bg').css('top',  '-' + highdefTop + '%');
-	$('.highdef-bg').css('right','-' + highdefRight + '%');
+	$('.highdef-bg').css('top',  highdefTop + '%');
+	$('.highdef-bg').css('right', highdefRight + '%');
 }
 $(window).resize(function(){
 	scaleCircleNav();
 	scaleHighdefBackground();
 });
 $(document).ready(function() {
-	fadeVideoLoad();
 	scaleCircleNav();
 	scaleHighdefBackground();
   	$('#homepage-anim').pagepiling({
@@ -117,6 +120,9 @@ $(document).ready(function() {
 			changeNav();
 	  	},
   	});
+  	setTimeout(function(){
+	    $('video').addClass('loaded');
+  	}, 500);
   // 	$('#thesis-anim').pagepiling({
 	 //  	menu: '.circles-left',
 		// anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4']

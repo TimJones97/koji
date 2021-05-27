@@ -349,7 +349,7 @@ section.active header {
 		opacity: 0;
 	}
 	100% {
-		transform: translateY(-50px);
+		transform: translateY(-100px);
 		opacity: 0;
 	}
 }
@@ -585,8 +585,8 @@ section.active header {
 	top: 50%;
 	right: -550px;
 	transform: scale3d(1.0, 1.0, 1.0) translate(0%, -50%);
-	height: 1600px;
-	width: 1600px;
+	min-height: 1600px;
+	min-width: 1600px;
 	opacity: 0;
 	transition: all 3s ease, height 0s ease, transform 3s ease;
 	border-radius: 50%;
