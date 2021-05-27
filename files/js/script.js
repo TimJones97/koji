@@ -69,13 +69,13 @@ function scaleCircleNav(){
 		width = $(window).width();
 
 	if (height > maxVHeight || (width / height) >  1.5){
-		scale = height / maxVHeight;
+		navScale = height / maxVHeight;
 	}
 	if ((width / height) >  2.0){
-		scale = (width / maxVHeight) * 0.6;
+		navScale = (width / maxVHeight) * 0.6;
 	}
 	else if (height < maxVHeight){
-		scale = 1.0;
+		navScale = 1.0;
 	}
 
 	// Add the new scale and rotation
