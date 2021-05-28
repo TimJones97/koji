@@ -176,7 +176,7 @@ nav.dark .logo .dark {
 nav.dark .logo .light {
 	opacity: 0;
 }
-nav.dark .right-nav p {
+nav.dark .right-nav a {
 	color: var(--brown);
 }
 
