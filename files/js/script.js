@@ -34,25 +34,53 @@ function restartVideo(){
 		}
 	});
 }
-function rotateCircleNav(index, nextIndex, direction){
+function rotateCircleNav(index, nextIndex, direction, isThesis=false){
 	var currentIndex = nextIndex - index;
-	if(direction == 'down' && currentIndex == 1){
-		// Increment the rotation by 30 degrees each time
-		navRotation += 30;
-		$('.circle-nav .active').removeClass('active').next().addClass('active');
+	// If pagepiling is active for home page
+	if(!isThesis){
+		if(direction == 'down' && currentIndex == 1){
+			// Increment the rotation by 30 degrees each time
+			navRotation += 30;
+			$('.circle-nav .active').removeClass('active').next().addClass('active');
+		}
+		// Jumping by 2 slides forwards
+		else if(direction == 'down' && currentIndex == 2){
+			navRotation += 60;
+			$('.circle-nav .active').removeClass('active').next().addClass('active');
+		}
+		// Jumping by 2 slides backwards
+		else if(direction == 'up' && currentIndex == -2){
+			navRotation = navRotation - 60;
+			$('.circle-nav .active').removeClass('active').next().addClass('active');
+		}
+		else {
+			// Reverse rotation by 30 degrees to animate backward
+			navRotation = navRotation - 30;
+			$('.circle-nav .active').removeClass('active').prev().addClass('active');
+		}
 	}
-	else if(direction == 'down' && currentIndex == 2){
-		navRotation += 60;
-		$('.circle-nav .active').removeClass('active').next().addClass('active');
-	}
-	else if(direction == 'up' && currentIndex == -2){
-		navRotation = navRotation - 60;
-		$('.circle-nav .active').removeClass('active').next().addClass('active');
-	}
+	// If pagepiling is active for thesis page
 	else {
-		// Reverse rotation by 30 degrees to animate backward
-		navRotation = navRotation - 30;
-		$('.circle-nav .active').removeClass('active').prev().addClass('active');
+		console.log(currentIndex);
+		if(direction == 'down' && currentIndex == 1){
+			// Increment the rotation by 30 degrees each time
+			navRotation = navRotation - 30;
+			$('.circle-nav .active').removeClass('active').next().addClass('active');
+		}
+		// Jumping by 2 slides forwards
+		else if(direction == 'down' && currentIndex == 2){
+			navRotation = navRotation - 60;
+			$('.circle-nav .active').removeClass('active').next().addClass('active');
+		}
+		// Jumping by 2 slides backwards
+		else if(direction == 'up' && currentIndex == -2){
+			navRotation = navRotation + 60;
+			$('.circle-nav .active').removeClass('active').next().addClass('active');
+		}
+		else {
+			navRotation = navRotation + 30;
+			$('.circle-nav .active').removeClass('active').prev().addClass('active');
+		}
 	}
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 }
@@ -104,6 +132,29 @@ function scaleHighdefBackground(){
 	$('.highdef-bg').css('top',  highdefTop + '%');
 	$('.highdef-bg').css('right', highdefRight + '%');
 }
+function goThesis(){
+	$('.go-thesis').click(function(){
+		$('body').addClass('show-thesis');
+		initThesisPagepiling();
+	})
+}
+function initThesisPagepiling(){
+	var animationDelay = 1500;
+	// Wait 3 seconds before removing the homepage element
+	setTimeout(function(){
+		$('#homepage-anim').remove();
+	  	$('#thesis-anim').pagepiling({
+		  	menu: '.thesis .circles',
+			anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4'],
+		  	onLeave: function(index, nextIndex, direction){
+		  		var isThesis = true;
+				rotateCircleNav(index, nextIndex, direction, isThesis);
+				restartVideo();
+				changeNav();
+		  	},
+	  	});
+	}, animationDelay);
+}
 $(window).resize(function(){
 	scaleCircleNav();
 	scaleHighdefBackground();
@@ -111,8 +162,11 @@ $(window).resize(function(){
 $(document).ready(function() {
 	scaleCircleNav();
 	scaleHighdefBackground();
+	goThesis();
+	// Clear the anchor hash from the URL before initialising pagepiling
+	location.hash = '';
   	$('#homepage-anim').pagepiling({
-	  	menu: '.circles',
+	  	menu: '.circle-nav .circles',
 		anchors: ['page1', 'page2', 'page3', 'page4'],
 	  	onLeave: function(index, nextIndex, direction){
 			rotateCircleNav(index, nextIndex, direction);
@@ -120,17 +174,9 @@ $(document).ready(function() {
 			changeNav();
 	  	},
   	});
+
+  	// Change this at the end
   	setTimeout(function(){
 	    $('video').addClass('loaded');
   	}, 500);
-  // 	$('#thesis-anim').pagepiling({
-	 //  	menu: '.circles-left',
-		// anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4']
-		// // anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4'],
-	 // //  	onLeave: function(index, nextIndex, direction){
-		// // 	rotateCircleNav(index, nextIndex, direction);
-		// // 	restartVideo();
-		// // 	changeNav();
-	 // //  	},
-  // 	});
 });

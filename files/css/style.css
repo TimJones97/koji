@@ -1,5 +1,11 @@
 /*--------------GENERAL STYLES--------------*/
-
+:root {
+  --black: #000000;
+  --orange: #EEA62B;
+  --dark-red: #601B0C;
+  --brown: #280000;
+  --grey: #4D4D4D;
+}
 @font-face {
     font-family: 'Helvetica Light';
     src: url('../fonts/Helvetica-Light.woff2') format('woff2'),
@@ -25,7 +31,7 @@
     font-display: swap;
 }
 body {
-	background: #1c1c1d;
+	background: var(--brown);
 	overflow-x: hidden;
 	height: 100%; 
 	width: 100%;
@@ -50,7 +56,7 @@ p, a, label, li {
 	font-weight: 500;
 	font-size: 16px;
 	transition: all 0.5s ease;
-	color: #EEA62B;
+	color: var(--orange);
 }
 a {
 	font-family: 'Helvetica Neue Light';
@@ -64,7 +70,8 @@ a:hover {
 	text-decoration: none;
 }
 main {
-	height: 100vh
+	position: relative;
+	height: 100vh;
 }
 /*Page Piling styles*/
 section {
@@ -170,7 +177,7 @@ nav.dark .logo .light {
 	opacity: 0;
 }
 nav.dark .right-nav p {
-	color: #280000;
+	color: var(--brown);
 }
 
 /*-----CIRCLE NAV-----*/
@@ -186,22 +193,11 @@ nav.dark .right-nav p {
 	align-items: center;
     transition: transform 0.5s ease;
 }
-.circle-nav {
-	/*display: none;*/
-}
-.circle-nav.thesis {
-	right: unset;
-	left: -110px;
-}
 .circle-nav .circles,
 .circle-nav-thesis .circles {
 	padding-top: 60px;
 	transform: rotate(255deg);
 	margin-top: 400px;
-}
-.circle-nav.thesis .circles {
-	transform: rotate(255deg) scaleX(-1);
-	margin-top: -400px;
 }
 .circle-nav .circles a {
 	display: block;
@@ -216,48 +212,6 @@ nav.dark .right-nav p {
     transform-origin: calc(100% + 130px) 50%;
     box-sizing: border-box;
     transition: background 0.3s ease 0.1s;
-}
-
-/*HOMEPAGE - RIGHT ALIGNED*/
-
-/*Left side*/
-.circle-nav .circles a.one span {
-	transform: rotate(195deg);
-}
-.circle-nav .circles a.two span {
-	transform: rotate(165deg);
-}
-.circle-nav .circles a.three span {
-	transform: rotate(135deg);
-}
-.circle-nav .circles a.four span {
-	transform: rotate(105deg);
-}
-.circle-nav .circles a.five span {
-	transform: rotate(75deg);
-}
-.circle-nav .circles a.six span {
-	transform: rotate(45deg);
-}
-.circle-nav .circles a.seven span {
-	transform: rotate(15deg);
-}
-
-/*Right side*/
-.circle-nav .circles a.eight span {
-	transform: rotate(-15deg);
-}
-.circle-nav .circles a.nine span {
-	transform: rotate(-45deg);
-}
-.circle-nav .circles a.ten span {
-	transform: rotate(-75deg);
-}
-.circle-nav .circles a.eleven span {
-	transform: rotate(-105deg);
-}
-.circle-nav .circles a.twelve span {
-	transform: rotate(-135deg);
 }
 
 /*HOMEPAGE - RIGHT ALIGNED*/
@@ -357,12 +311,12 @@ section.active header {
 .section-showcase header span.subheading {
 	font-family: 'Helvetica Bold', sans-serif;
 	font-size: 16px;
-	color: #EEA62B;
+	color: var(--orange);
 	display: block;
 	margin-bottom: 20px;
 }
 .section-showcase header h1,
-.section-showcase header span {
+.section-showcase header a {
 	color: #fff;
 	font-family: 'Helvetica Light', sans-serif;
 	font-weight: 300;
@@ -372,14 +326,14 @@ section.active header {
 .section-showcase header h1 span {
 	position: relative;
 	display: block;
-	color: #EEA62B;
+	color: var(--orange);
 }
-.section-showcase header span.link-white {
+.section-showcase header a.link-white {
 	position: relative;
 	color: #fff;
 	display: inline-block;
 }
-.section-showcase header span.link-white:before {
+.section-showcase header a.link-white:before {
 	content: "";
 	position: absolute;
 	bottom: -2px;
@@ -425,20 +379,20 @@ section.active header {
 /*-----SECOND PAGE - ABOUT-----*/
 
 .section-showcase.about header .subheading {
-	color: #280000;
+	color: var(--brown);
 }
 .section-showcase.about header h1 span,
-.section-showcase.about header span.link-white {
+.section-showcase.about header a.link-white {
 	font-size: 48px;
-	color: #280000;
+	color: var(--brown);
 }
-.section-showcase.about header span.link-white {
+.section-showcase.about header a.link-white {
 	position: relative;
 	color: #fff;
 	margin-top: 20px;
 	display: inline-block;
 }
-.section-showcase.about header span.link-white:before {
+.section-showcase.about header a.link-white:before {
 	content: "";
 	position: absolute;
 	bottom: -2px;
@@ -458,7 +412,7 @@ section.active header {
 /*-----THIRD PAGE - HIGH DEF-----*/
 
 .section-showcase.highdef {
-	background: #280000;
+	background: var(--brown);
 }
 .section-showcase.highdef .container {
 	z-index: 1;
@@ -466,14 +420,14 @@ section.active header {
 .section-showcase.highdef, .highdef-logo {
 	margin-bottom: 30px;
 }
-.section-showcase.highdef header span.link-white:before {
+.section-showcase.highdef header a.link-white:before {
 	width: calc(100% + 40px);
 }
 .section-showcase.highdef header h1 span,
-.section-showcase.highdef header span.link-white {
+.section-showcase.highdef header a.link-white {
 	font-size: 48px;
 }
-.section-showcase.highdef header span.link-white {
+.section-showcase.highdef header a.link-white {
 	margin-top: 20px;
 }
 .section-showcase.highdef header .circle-btn {
@@ -489,7 +443,7 @@ section.active header {
 	margin-bottom: 20px;
 	font-family: 'Helvetica Bold', sans-serif;
 	font-size: 16px;
-	color: #EEA62B;
+	color: var(--orange);
 	display: block;
 	margin-bottom: 20px;
 }
@@ -683,7 +637,7 @@ section.contact .container .socials {
 section.contact .container .socials .title {
 	font-family: 'Helvetica Bold', sans-serif;
 	margin-bottom: 15px;
-	color: #EEA62B;
+	color: var(--orange);
 }
 section.contact .container .socials a {
 	margin-bottom: 15px;
@@ -741,7 +695,7 @@ section.contact .container .right {
 }
 .form-item input::placeholder,
 .form-item textarea::placeholder {
-	color: #601B0C;
+	color: var(--dark-red);
 	transition: color 0.3s ease;
 }
 /*HOVER EFFECTS*/
@@ -784,6 +738,7 @@ footer .container {
 	padding-top: 50px;
 	flex-wrap: wrap;
 	align-items: flex-start;
+	display: inline-flex;
 }
 footer .footer-logo {
 	width: 75px;
@@ -798,7 +753,7 @@ footer .collaborate-links p {
 }
 footer .collaborate-links p,
 footer .collaborate-links a {
-	color: #EEA62B;
+	color: var(--orange);
 }
 
 /*CONTACT AND SUBSCRIBE LINKS*/
@@ -843,13 +798,210 @@ footer .site-links .link-box a {
 }
 footer .site-links .link-box p,
 footer .site-links .link-box a {
-	color: #EEA62B;
+	color: var(--orange);
 	margin-bottom: 5px;
 	margin-top: 0px;
 }
 footer .site-links .link-box .title {
 	/*font-family: 'Helvetica Bold', sans-serif;*/
 }
+
+/*--------------THESIS STYLES--------------*/
+
+#thesis-anim {
+	opacity: 0;
+	pointer-events: none;
+	left: 100vw;
+}
+.circle-nav.thesis {
+	opacity: 0;
+	pointer-events: none;
+	right: unset;
+	left: 100px;
+}
+
+/*-----HIDE HOMEPAGE-----*/
+
+body.show-thesis #homepage-anim {
+	pointer-events: none;
+	animation: slideOutLeft 4s ease forwards;
+	transition: height 0s 4s;
+}
+
+/*Only affect first section*/
+body.show-thesis #homepage-anim > section:first-of-type header {
+	animation: slideOutLeft 3s ease forwards;
+}
+body.show-thesis .circle-nav:not(.thesis) {
+	animation: slideOutLeft 4s ease forwards;
+}
+@keyframes slideOutLeft {
+	0% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	20% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(-100vw);
+		opacity: 0;
+	}
+}
+body.show-thesis .circle-nav:not(.thesis) {
+	pointer-events: none;
+	opacity: 0;
+}
+
+/*SHOW THESIS PAGE*/
+body.show-thesis .circle-nav.thesis {
+	pointer-events: all;
+	animation: slideInFromRight 1s ease forwards;
+	animation-delay: 1s;
+}
+body.show-thesis #thesis-anim {
+	opacity: 1;
+	pointer-events: all;
+	left: 0;
+}
+@keyframes slideInFromRight {
+	0% {
+		left: 100px;
+		opacity: 0;
+	}
+	80% {
+		opacity: 1;
+	}
+	100% {
+		left: 0px;
+		opacity: 1;
+	}
+}
+
+/*-----THESIS NAV - LEFT ALIGNED-----*/
+
+/*Left side*/
+.circle-nav.thesis .circles a.one span {
+	transform: rotate(-135deg);
+}
+.circle-nav.thesis .circles a.two span {
+	transform: rotate(-105deg);
+}
+.circle-nav.thesis .circles a.three span {
+	transform: rotate(-75deg);
+}
+.circle-nav.thesis .circles a.four span {
+	transform: rotate(-45deg);
+}
+.circle-nav.thesis .circles a.five span {
+	transform: rotate(-15deg);
+}
+.circle-nav.thesis .circles a.six span {
+	transform: rotate(15deg);
+}
+.circle-nav.thesis .circles a.seven span {
+	transform: rotate(45deg);
+}
+
+/*Right side*/
+.circle-nav.thesis .circles a.eight span {
+	transform: rotate(75deg);
+}
+.circle-nav.thesis .circles a.nine span {
+	transform: rotate(105deg);
+}
+.circle-nav.thesis .circles a.ten span {
+	transform: rotate(135deg);
+}
+.circle-nav.thesis .circles a.eleven span {
+	transform: rotate(165deg);
+}
+.circle-nav.thesis .circles a.twelve span {
+	transform: rotate(195deg);
+}
+
+/*-----THESIS PAGE STYLES-----*/
+
+body.show-thesis section .container {
+	width: calc(100% - 480px);
+}
+
+.thesis-page header {
+	width: 700px;
+	margin-top: 0;
+}
+.thesis-page header h1 {
+	font-size: 48px;
+}
+.thesis-page header h1 span {
+	color: #fff;
+}
+.thesis-page header p {
+	font-family: 'Helvetica', sans-serif;
+	font-size: 20px;
+	color: #fff;
+	margin-top: 40px;
+	line-height: 30px;
+}
+
+/*PULL VIDEO RIGHT*/
+
+.thesis-page video {
+	left: 20%;
+}
+
+/*-----PAGE ONE-----*/
+
+.thesis-page.one {
+	background: var(--brown);
+}
+.thesis-page.one header h1 span.orange {
+	display: inline-block;
+	color: var(--orange);
+}
+
+/*-----PAGE TWO-----*/
+
+.thesis-page.two {
+	background: var(--orange);
+}
+.thesis-page.two header {
+	display: flex;
+	flex-direction: column-reverse;
+}
+.thesis-page.two header h1,
+.thesis-page.two header p {
+	color: var(--black);
+}
+.thesis-page.two header p {
+	margin-top: 0px;
+}
+.thesis-page.two header h1 {
+	margin-top: 40px;
+}
+
+/*-----PAGE THREE-----*/
+
+.thesis-page.three {
+	background: var(--black);
+}
+
+/*-----PAGE FOUR-----*/
+
+.thesis-page.four {
+	background: var(--brown);
+}
+
+/*-----PAGE FIVE + FOOTER-----*/
+
+.thesis-page.five {
+	background: var(--orange);
+}
+.thesis-page.two header {
+
+}
+
+/*--------------MEDIA QUERIES--------------*/
 
 @media only screen and (max-width: 1919px){
 	.highdef-bg .bg-full img {
