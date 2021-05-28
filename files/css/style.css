@@ -736,9 +736,11 @@ footer {
 }
 footer .container {
 	padding-top: 50px;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	display: inline-flex;
+	justify-content: space-between;
+    flex-direction: unset;
+    /* flex-wrap: wrap; */
+    align-items: flex-start;
+    width: 100% !important;
 }
 footer .footer-logo {
 	width: 75px;
@@ -761,6 +763,7 @@ footer .contact-links {
 	width: 500px;
 	display: flex;
 	justify-content: space-between;
+	margin-right: 100px;
 }
 footer .contact-links a {
 	position: relative;
@@ -997,8 +1000,9 @@ body.show-thesis section .container {
 .thesis-page.five {
 	background: var(--orange);
 }
-.thesis-page.two header {
-
+.thesis-page.five header h1,
+.thesis-page.five header p {
+	color: #000;
 }
 
 /*--------------MEDIA QUERIES--------------*/

@@ -2,7 +2,8 @@ var navRotation = 0,
 	navScale = 1.0,
 	highdefBackgroundScale = 1.0;
 	highdefTop = 0;
-	highdefRight = 0;
+	highdefRight = 0
+	isThesis = false;
 
 function changeNav(){
 	$('section').each(function(){
@@ -34,7 +35,7 @@ function restartVideo(){
 		}
 	});
 }
-function rotateCircleNav(index, nextIndex, direction, isThesis=false){
+function rotateCircleNav(index, nextIndex, direction){
 	var currentIndex = nextIndex - index;
 	// If pagepiling is active for home page
 	if(!isThesis){
@@ -61,7 +62,7 @@ function rotateCircleNav(index, nextIndex, direction, isThesis=false){
 	}
 	// If pagepiling is active for thesis page
 	else {
-		console.log(currentIndex);
+		
 		if(direction == 'down' && currentIndex == 1){
 			// Increment the rotation by 30 degrees each time
 			navRotation = navRotation - 30;
@@ -142,12 +143,12 @@ function initThesisPagepiling(){
 	var animationDelay = 1500;
 	// Wait 3 seconds before removing the homepage element
 	setTimeout(function(){
+  		isThesis = true;
 		$('#homepage-anim').remove();
 	  	$('#thesis-anim').pagepiling({
 		  	menu: '.thesis .circles',
-			anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4'],
+			anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4', 'thesis-page5'],
 		  	onLeave: function(index, nextIndex, direction){
-		  		var isThesis = true;
 				rotateCircleNav(index, nextIndex, direction, isThesis);
 				restartVideo();
 				changeNav();
