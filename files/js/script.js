@@ -131,14 +131,6 @@ function scaleHighdefBackground(){
 	var minVWidth = 1920,
 		width = $(window).width();
 
-	if(width < minVWidth){
-		highdefBackgroundScale = width / minVWidth;
-		highdefTop = (1.0 - (width / minVWidth)) / 2 * 100;
-		highdefRight = (1.0 - (width / minVWidth)) / 2 * 100;
-		// Make the values negative
-		highdefTop = '-' + highdefTop;
-		highdefRight = '-' + highdefRight;
-	}
 	if(width > minVWidth){
 		highdefBackgroundScale = width / minVWidth;
 		highdefTop = 0;
@@ -147,11 +139,19 @@ function scaleHighdefBackground(){
 		// Make the negative values positive
 		highdefRight = Math.abs(highdefRight)
 	}
-	// else {
-	// 	highdefBackgroundScale = 1.0;
-	// 	highdefTop = 0;
-	// 	highdefRight = 0;
-	// }
+	if(width < minVWidth){
+		highdefBackgroundScale = width / minVWidth;
+		highdefTop = (1.0 - (width / minVWidth)) / 2 * 100;
+		highdefRight = (1.0 - (width / minVWidth)) / 2 * 100;
+		// Make the values negative
+		highdefTop = '-' + highdefTop;
+		highdefRight = '-' + highdefRight;
+	}
+	else {
+		highdefBackgroundScale = 1.0;
+		highdefTop = 0;
+		highdefRight = 0;
+	}
 	// Add the styles to the dynamic background in the high definition section
 	$('.highdef-bg').css('transform', 'scale3d(' + highdefBackgroundScale + ',' + highdefBackgroundScale + ', 1.0)');
 	$('.highdef-bg').css('top',  highdefTop + '%');
