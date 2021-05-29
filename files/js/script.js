@@ -3,9 +3,10 @@ var navRotation = 0,
 	highdefBackgroundScale = 1.0;
 	highdefTop = 0;
 	highdefRight = 0
-	isThesis = false;
+	isThesis = false
+	detachedElem = null;
 
-function changeNav(){
+function changeNavColor(){
 	$('section').each(function(){
 		// If the active section slide has light-nav class,
 		// make the nav elements white
@@ -36,54 +37,73 @@ function restartVideo(){
 	});
 }
 function rotateCircleNav(index, nextIndex, direction){
-	var currentIndex = nextIndex - index;
+	var currentIndex = nextIndex - index,
+		pageHash = location.hash,
+		href = '';
+
+	// Loop through each nav-link, if href
+	// matches URL hash add active (fill white) class
+	$('.nav-link').each(function(){
+		href = $(this).attr('href');
+		if(href == pageHash){
+			$(this).addClass('active');
+		}
+	});
 	// If pagepiling is active for home page
 	if(!isThesis){
 		if(direction == 'down' && currentIndex == 1){
 			// Increment the rotation by 30 degrees each time
 			navRotation += 30;
-			$('.circle-nav .active').removeClass('active').next().addClass('active');
 		}
 		// Jumping by 2 slides forwards
 		else if(direction == 'down' && currentIndex == 2){
 			navRotation += 60;
-			$('.circle-nav .active').removeClass('active').next().addClass('active');
 		}
 		// Jumping by 2 slides backwards
 		else if(direction == 'up' && currentIndex == -2){
 			navRotation = navRotation - 60;
-			$('.circle-nav .active').removeClass('active').next().addClass('active');
+		}
+		// Jumping by 3 slides forwards
+		else if(direction == 'down' && currentIndex == 3){
+			navRotation += 90;
+		}
+		// Jumping by 3 slides backwards
+		else if(direction == 'up' && currentIndex == -3){
+			navRotation = navRotation - 90;
 		}
 		else {
 			// Reverse rotation by 30 degrees to animate backward
 			navRotation = navRotation - 30;
-			$('.circle-nav .active').removeClass('active').prev().addClass('active');
 		}
+		$('.home').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 	}
 	// If pagepiling is active for thesis page
 	else {
-		
 		if(direction == 'down' && currentIndex == 1){
 			// Increment the rotation by 30 degrees each time
 			navRotation = navRotation - 30;
-			$('.circle-nav .active').removeClass('active').next().addClass('active');
 		}
 		// Jumping by 2 slides forwards
 		else if(direction == 'down' && currentIndex == 2){
 			navRotation = navRotation - 60;
-			$('.circle-nav .active').removeClass('active').next().addClass('active');
 		}
 		// Jumping by 2 slides backwards
 		else if(direction == 'up' && currentIndex == -2){
 			navRotation = navRotation + 60;
-			$('.circle-nav .active').removeClass('active').next().addClass('active');
+		}
+		// Jumping by 3 slides forwards
+		else if(direction == 'down' && currentIndex == 3){
+			navRotation = navRotation - 90;
+		}
+		// Jumping by 3 slides backwards
+		else if(direction == 'up' && currentIndex == -3){
+			navRotation = navRotation + 90;
 		}
 		else {
 			navRotation = navRotation + 30;
-			$('.circle-nav .active').removeClass('active').prev().addClass('active');
 		}
+		$('.thesis').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 	}
-	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 }
 function scaleCircleNav(){
 	var maxVHeight = 1080,
@@ -136,25 +156,63 @@ function scaleHighdefBackground(){
 function goThesis(){
 	$('.go-thesis').click(function(){
 		$('body').addClass('show-thesis');
+		// Add 30 degrees to nav for thesis circles
+		navRotation = 30;
+
+		$('.thesis .three.nav-link').addClass('active');
 		initThesisPagepiling();
 	})
 }
+function initHomepagePagepiling(){
+	// $('body').removeClass('show-thesis');
+	// detachedElem = $('#thesis-anim').detach();
+	$('#homepage-anim').pagepiling({
+	  	menu: '.circle-nav .circles',
+		anchors: ['page1', 'page2', 'page3', 'page4'],
+	  	onLeave: function(index, nextIndex, direction){
+			rotateCircleNav(index, nextIndex, direction);
+			restartVideo();
+			changeNavColor();
+			animateHeadersOnScroll(direction);
+	  	},
+  	});
+}
 function initThesisPagepiling(){
-	var animationDelay = 1500;
+	var animationDelay = 2000;
 	// Wait 3 seconds before removing the homepage element
 	setTimeout(function(){
   		isThesis = true;
-		$('#homepage-anim').remove();
+		// detachedElem = $('#homepage-anim').detach();
+		$('#homepage-anim').detach();
 	  	$('#thesis-anim').pagepiling({
 		  	menu: '.thesis .circles',
 			anchors: ['thesis-page1', 'thesis-page2', 'thesis-page3', 'thesis-page4', 'thesis-page5'],
 		  	onLeave: function(index, nextIndex, direction){
-				rotateCircleNav(index, nextIndex, direction, isThesis);
+				rotateCircleNav(index, nextIndex, direction);
 				restartVideo();
-				changeNav();
+				changeNavColor();
+				animateHeadersOnScroll(direction);
 		  	},
 	  	});
 	}, animationDelay);
+}
+function animateHeadersOnScroll(direction){
+	$('section').each(function(){
+		// Add a slide down animation to the header text
+		// if going from down to up for a more natural
+		// interaction
+		if($(this).hasClass('active')){
+			if(direction == 'up'){
+				$(this).addClass('anim-down');
+				$(this).next().addClass('anim-down');
+			}
+			else {
+				// Remove any left over class additions
+				$(this).removeClass('anim-down');
+				$(this).prev().removeClass('anim-down');
+			}
+		}
+	});
 }
 $(window).resize(function(){
 	scaleCircleNav();
@@ -166,17 +224,8 @@ $(document).ready(function() {
 	goThesis();
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
-  	$('#homepage-anim').pagepiling({
-	  	menu: '.circle-nav .circles',
-		anchors: ['page1', 'page2', 'page3', 'page4'],
-	  	onLeave: function(index, nextIndex, direction){
-			rotateCircleNav(index, nextIndex, direction);
-			restartVideo();
-			changeNav();
-	  	},
-  	});
-
-  	// Change this at the end
+	initHomepagePagepiling();
+  	// Remove this at the end
   	setTimeout(function(){
 	    $('video').addClass('loaded');
   	}, 500);

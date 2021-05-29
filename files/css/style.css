@@ -38,7 +38,7 @@ body {
 }
 *::selection {
 	background: #EEA62B;
-	color: #fff;
+	color: var(--brown);
 }
 * {
 	-webkit-font-smoothing: antialiased;
@@ -263,7 +263,6 @@ nav.dark .right-nav a {
 /*--------------FULL PAGE SECTIONS--------------*/
 
 .section-showcase .pp-tableCell {
-	position: relative;
 	display: flex;
 	align-items: center;
 }
@@ -271,30 +270,9 @@ nav.dark .right-nav a {
 	position: relative;
 	margin-top: 50px;
 	animation: unset;
-	animation: slideUpTop 0.8s ease forwards;
+	animation: headerSlideToTop 0.8s ease forwards;
 }
-
-/*-----HEADER SCROLL ANIMATION-----*/
-
-section.active header {
-	animation: slideInBottom 0.8s ease forwards;
-	animation-delay: 0.3s;
-	opacity: 0;
-}
-@keyframes slideInBottom {
-	0% {
-		transform: translateY(50px);
-		opacity: 0;
-	}
-	80% {
-		opacity: 1;
-	}
-	100% {
-		transform: translateY(0px);
-		opacity: 1;
-	}
-}
-@keyframes slideUpTop {
+@keyframes headerSlideToTop {
 	0% {
 		transform: translateY(0px);
 		opacity: 1;
@@ -307,6 +285,66 @@ section.active header {
 		opacity: 0;
 	}
 }
+
+/*-----HEADER SCROLL ANIMATION-----*/
+
+section.active header {
+	animation: headerSlideFromBottom 0.8s ease forwards;
+	animation-delay: 0.3s;
+	opacity: 0;
+}
+/*For current slide that came from scrolling up*/
+section.active.anim-down header {
+	animation: unset;
+	animation: headerSlideToBottomNoFade 0.8s ease forwards !important;
+	animation-delay: 0.3s !important;
+}
+/*For slides that are disappearing from down to up*/
+section.anim-down header {
+	animation: unset;
+	animation: headerSlideToBottom 0.8s ease forwards;
+	animation-delay: 0s;
+}
+@keyframes headerSlideFromBottom {
+	0% {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+	80% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+}
+@keyframes headerSlideToBottom {
+	0% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+	80% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+}
+@keyframes headerSlideToBottomNoFade {
+	0% {
+		transform: translateY(-50px);
+		opacity: 0;
+	}
+	80% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+}
+
 
 .section-showcase header span.subheading {
 	font-family: 'Helvetica Bold', sans-serif;
@@ -421,7 +459,7 @@ section.active header {
 	margin-bottom: 30px;
 }
 .section-showcase.highdef header a.link-white:before {
-	width: calc(100% + 40px);
+	width: calc(100% + 50px);
 }
 .section-showcase.highdef header h1 span,
 .section-showcase.highdef header a.link-white {
@@ -815,6 +853,7 @@ footer .site-links .link-box .title {
 	opacity: 0;
 	pointer-events: none;
 	left: 100vw;
+	transition: opacity 0.5s ease;
 }
 .circle-nav.thesis {
 	opacity: 0;
@@ -827,16 +866,16 @@ footer .site-links .link-box .title {
 
 body.show-thesis #homepage-anim {
 	pointer-events: none;
-	animation: slideOutLeft 4s ease forwards;
-	transition: height 0s 4s;
+	animation: slideOutLeft 5s ease forwards;
+	transition: height 0s 5s;
 }
 
 /*Only affect first section*/
 body.show-thesis #homepage-anim > section:first-of-type header {
-	animation: slideOutLeft 3s ease forwards;
+	animation: slideOutLeft 4s ease forwards;
 }
 body.show-thesis .circle-nav:not(.thesis) {
-	animation: slideOutLeft 4s ease forwards;
+	animation: slideOutLeft 5s ease forwards;
 }
 @keyframes slideOutLeft {
 	0% {
@@ -860,7 +899,7 @@ body.show-thesis .circle-nav:not(.thesis) {
 body.show-thesis .circle-nav.thesis {
 	pointer-events: all;
 	animation: slideInFromRight 1s ease forwards;
-	animation-delay: 1s;
+	animation-delay: 1.5s;
 }
 body.show-thesis #thesis-anim {
 	opacity: 1;
@@ -876,7 +915,7 @@ body.show-thesis #thesis-anim {
 		opacity: 1;
 	}
 	100% {
-		left: 0px;
+		left: -10px;
 		opacity: 1;
 	}
 }
@@ -925,7 +964,7 @@ body.show-thesis #thesis-anim {
 
 /*-----THESIS PAGE STYLES-----*/
 
-body.show-thesis section .container {
+body.show-thesis #thesis-anim section .container {
 	width: calc(100% - 480px);
 }
 
@@ -1000,9 +1039,16 @@ body.show-thesis section .container {
 .thesis-page.five {
 	background: var(--orange);
 }
+.thesis-page.five header {
+	margin-bottom: 50px;
+}
 .thesis-page.five header h1,
 .thesis-page.five header p {
 	color: #000;
+}
+.thesis-page.five video {
+	height: 70vh;
+	min-height: 70vh;
 }
 
 /*--------------MEDIA QUERIES--------------*/
