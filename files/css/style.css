@@ -211,7 +211,7 @@ nav.dark .right-nav a {
 	border: 2px solid #fff;
     transform-origin: calc(100% + 130px) 50%;
     box-sizing: border-box;
-    transition: background 0.3s ease 0.1s;
+    transition: background 0.3s ease 0.15s;
 }
 
 /*HOMEPAGE - RIGHT ALIGNED*/
@@ -455,8 +455,12 @@ section.anim-down header {
 .section-showcase.highdef .container {
 	z-index: 1;
 }
-.section-showcase.highdef, .highdef-logo {
+.section-showcase.highdef .highdef-logo {
 	margin-bottom: 30px;
+	width: 325px;
+}
+.section-showcase.highdef header {
+	width: 550px;
 }
 .section-showcase.highdef header a.link-white:before {
 	width: calc(100% + 50px);
@@ -1057,5 +1061,26 @@ body.show-thesis #thesis-anim section .container {
 	.highdef-bg .bg-full img {
 		height: 100%;
 		right: 50px;
+	}
+}
+/*Begin downsizing elements by 12.5% when screen height below 1000px*/
+@media only screen and (max-height: 1000px){
+
+	/*HIGHDEF*/
+	.section-showcase.highdef .highdef-logo {
+		width: 284px;
+	}
+	.section-showcase.highdef header h1 span, 
+	.section-showcase.highdef header a.link-white {
+		font-size: 42px;
+	}
+	.episode {
+		width: 236px;
+		height: 276px;
+	}	
+	.episode .episode-thumbnail,
+	.episode .episode-thumbnail .blur,
+	.episode .episode-thumbnail img {
+		height: 236px;
 	}
 }

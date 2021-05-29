@@ -110,12 +110,16 @@ function scaleCircleNav(){
 		height = $(window).height(),
 		width = $(window).width();
 
+	// If the screen height is larger than full hd 1080px
 	if (height > maxVHeight || (width / height) >  1.5){
 		navScale = height / maxVHeight;
 	}
-	if ((width / height) >  2.0){
+	// If the screen width is double the height,
+	// the screen is ultrawide
+	if ((width / height) >  2.0 && width > 2000){
 		navScale = (width / maxVHeight) * 0.6;
 	}
+	// Anything smaller than this is fine at 1.0 scale
 	else if (height < maxVHeight){
 		navScale = 1.0;
 	}
@@ -143,11 +147,11 @@ function scaleHighdefBackground(){
 		// Make the negative values positive
 		highdefRight = Math.abs(highdefRight)
 	}
-	else {
-		highdefBackgroundScale = 1.0;
-		highdefTop = 0;
-		highdefRight = 0;
-	}
+	// else {
+	// 	highdefBackgroundScale = 1.0;
+	// 	highdefTop = 0;
+	// 	highdefRight = 0;
+	// }
 	// Add the styles to the dynamic background in the high definition section
 	$('.highdef-bg').css('transform', 'scale3d(' + highdefBackgroundScale + ',' + highdefBackgroundScale + ', 1.0)');
 	$('.highdef-bg').css('top',  highdefTop + '%');
