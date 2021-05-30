@@ -297,7 +297,7 @@ section.active header {
 section.active.anim-down header {
 	animation: unset;
 	animation: headerSlideToBottomNoFade 0.8s ease forwards !important;
-	animation-delay: 0.3s !important;
+	animation-delay: 0.2s !important;
 }
 /*For slides that are disappearing from down to up*/
 section.anim-down header {
@@ -871,7 +871,6 @@ footer .site-links .link-box .title {
 body.show-thesis #homepage-anim {
 	pointer-events: none;
 	animation: slideOutLeft 5s ease forwards;
-	transition: height 0s 5s;
 }
 
 /*Only affect first section*/
