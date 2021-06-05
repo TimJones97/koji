@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: '/koji',
   siteMetadata: {
     title: `Koji`,
     description: `Koji is an early-stage investment firm focused on decentralised finance.`,
@@ -7,7 +8,6 @@ module.exports = {
   plugins: [
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    "gatsby-plugin-styled-components",
     {
       resolve: 'gatsby-plugin-htaccess',
       options: {
@@ -35,7 +35,7 @@ module.exports = {
         name: "gatsby-starter-default",
         short_name: "starter",
         start_url: "/",
-        icon: `static/img/general/favicon.png`
+        icon: './static/img/general/favicon.png'
       },
     },
     "gatsby-plugin-remove-serviceworker"

@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import "/static/css/style.css";
+import Favicon from "/static/img/general/favicon.png";
+import Logo_OG from "/static/img/general/og-image.jpg";
+import Logo_dark from "/static/img/general/logo-dark.svg";
+import Logo_light from "/static/img/general/logo-light.svg";
 
 const Header = ({ seo }) => {
   // Merge default and page-specific SEO values
@@ -31,20 +35,20 @@ const Header = ({ seo }) => {
       link={[
         {
           rel: "icon",
-          href: '/img/general/favicon.png',
+          href: {Favicon},
         }, {
           rel: "image",
-          href: "/img/general/og-image.png"
+          href: {Logo_OG}
         }, {
           rel: "image",
-          href: "/img/general/logo-black.png"
+          href: {Logo_dark}
         }, {
           rel: "image",
-          href: "/img/general/logo-white.png"
+          href: {Logo_light}
         },
         {
           rel: "image",
-          href: '/img/general/logo-light.png',
+          href: {Logo_light}
         }
       ]}
       meta={getMetaTags()}

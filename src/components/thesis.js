@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import Footer from '../components/footer'
+import Arrow from '../../static/img/general/arrow-down.svg';
+import Thesis_01 from '../../static/img/thesis/Thesis_01.mp4';
+import Thesis_02 from '../../static/img/thesis/Thesis_02.mp4';
+import Thesis_03 from '../../static/img/thesis/Thesis_03.mp4';
+import Thesis_04 from '../../static/img/thesis/Thesis_04.mp4';
+import Thesis_05 from '../../static/img/thesis/Thesis_05.mp4';
 
 class Thesis extends Component {
   render() {
@@ -17,11 +23,11 @@ class Thesis extends Component {
                 </p>
               </header>
               <a className="arrow-down nav-link" data-menuanchor="thesis-page2" href="#thesis-page2">
-                <img src="/img/general/arrow-down.svg" />
+                <img src={Arrow} />
               </a>
             </div>
             <video muted loop="loop" autoPlay playsInline>
-              <source src="/img/thesis/Thesis_01.mp4" type="video/mp4" />
+              <source src={Thesis_01} type="video/mp4" />
             </video>
           </section>
           <section className="pp-section section-showcase thesis-page two" data-anchor="thesis-page2">
@@ -35,11 +41,11 @@ class Thesis extends Component {
                 </p>
               </header>
               <a className="arrow-down nav-link" data-menuanchor="thesis-page3" href="#thesis-page3">
-                <img src="/img/general/arrow-down.svg" />
+                <img src={Arrow} />
               </a>
             </div>
             <video muted loop="loop" autoPlay playsInline>
-              <source src="/img/thesis/Thesis_02.mp4" type="video/mp4" />
+              <source src={Thesis_02} type="video/mp4" />
             </video>
           </section>
           <section className="pp-section section-showcase thesis-page three light-nav" data-anchor="thesis-page3">
@@ -56,11 +62,11 @@ class Thesis extends Component {
                 </p>
               </header>
               <a className="arrow-down nav-link" data-menuanchor="thesis-page4" href="#thesis-page4">
-                <img src="/img/general/arrow-down.svg" />
+                <img src={Arrow} />
               </a>
             </div>
             <video muted loop="loop" autoPlay playsInline>
-              <source src="/img/thesis/Thesis_03.mp4" type="video/mp4" />
+              <source src={Thesis_03} type="video/mp4" />
             </video>
           </section>
           <section className="pp-section section-showcase thesis-page four light-nav" data-anchor="thesis-page4">
@@ -77,11 +83,11 @@ class Thesis extends Component {
                 </p>
               </header>
               <a className="arrow-down nav-link" data-menuanchor="thesis-page5" href="#thesis-page5">
-                <img src="/img/general/arrow-down.svg" />
+                <img src={Arrow} />
               </a>
             </div>
             <video muted loop="loop" autoPlay playsInline>
-              <source src="/img/thesis/Thesis_04.mp4" type="video/mp4" />
+              <source src={Thesis_04} type="video/mp4" />
             </video>
           </section>
           <section className="pp-section pp-scrollable section-showcase thesis-page five" data-anchor="thesis-page5">
@@ -99,7 +105,7 @@ class Thesis extends Component {
               </header>
             </div>
             <video muted loop="loop" autoPlay playsInline>
-              <source src="/img/thesis/Thesis_05.mp4" type="video/mp4" />
+              <source src={Thesis_05} type="video/mp4" />
             </video>
             <Footer />
           </section>

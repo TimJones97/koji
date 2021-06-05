@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import Footer from '../components/footer'
+import Footer from '../components/footer';
+import Arrow from '../../static/img/general/arrow-down.svg';
+import Homepage_01 from '../../static/img/home-page/Homepage_01.mp4';
+import Homepage_02 from '../../static/img/home-page/Homepage_02.mp4';
+import HD_logo from '../../static/img/home-page/hd-elements/high-definition-logo.svg';
+import HD_background from '../../static/img/home-page/hd-elements/high-definition-bg.jpg';
+import HD_thumbnail from '../../static/img/home-page/hd-thumbnails/thumbnail01.svg';
+import Circle_red from '../../static/img/home-page/hd-elements/circle-red.svg';
+import Circle_orange from '../../static/img/home-page/hd-elements/circle-orange.svg';
+import Circle_white from '../../static/img/home-page/hd-elements/circle-white.svg';
 
 class Homepage extends Component {
   render() {
@@ -17,11 +26,11 @@ class Homepage extends Component {
                 <a className="link-white go-thesis" data-menuanchor="thesis-page1" href="#thesis-page1">decentralised finance<button role="button" className="circle-btn" /></a>
               </header>
               <a className="arrow-down nav-link" data-menuanchor="page2" href="#page2">
-                <img src="/img/general/arrow-down.svg" />
+                <img src={Arrow} />
               </a>
             </div>
             <video muted loop="loop" autoPlay playsInline>
-              <source src="/img/home-page/Homepage_01.mp4" type="video/mp4" />
+              <source src={Homepage_01} type="video/mp4" />
             </video>
           </section>
           <section className="pp-section section-showcase about" data-anchor="page2">
@@ -34,17 +43,17 @@ class Homepage extends Component {
                 <a className="link-white" href="#">View all investments<button role="button" className="circle-btn" /></a>
               </header>
               <a className="arrow-down nav-link" data-menuanchor="page3" href="#page3">
-                <img src="/img/general/arrow-down.svg" />
+                <img src={Arrow} />
               </a>
             </div>
             <video muted loop="loop" autoPlay playsInline>
-              <source src="/img/home-page/Homepage_02.mp4" type="video/mp4" />
+              <source src={Homepage_02} type="video/mp4" />
             </video>
           </section>
           <section className="pp-section section-showcase highdef light-nav" data-anchor="page3">
             <div className="container">
               <header>
-                <img className="highdef-logo" src="/img/home-page/hd-elements/high-definition-logo.svg" />
+                <img className="highdef-logo" src={HD_logo} />
                 <span className="subheading">ABOUT</span>
                 <h1>
                   <span>Illuminating the motives&nbsp;</span><span>behind the person.</span>
@@ -56,31 +65,29 @@ class Homepage extends Component {
                 <article className="episode">
                   <figure className="episode-thumbnail">
                     <div className="blur" />
-                    <img className="thumbnail" src="/img/home-page/hd-thumbnails/thumbnail01.svg" />
-                    {/* <img class="thumbnail-blur" src="/img/home-page/hd-thumbnails/thumbnail01-blurred.svg"> */}
+                    <img className="thumbnail" src={HD_thumbnail} />
                   </figure>
                   <span className="listen">Listen Now</span>
                 </article>
                 <article className="episode">
                   <figure className="episode-thumbnail">
                     <div className="blur" />
-                    <img className="thumbnail" src="/img/home-page/hd-thumbnails/thumbnail01.svg" />
-                    {/* <img class="thumbnail-blur" src="/img/home-page/hd-thumbnails/thumbnail01-blurred.svg"> */}
+                    <img className="thumbnail" src={HD_thumbnail} />
                   </figure>
                   <span className="listen">Listen Now</span>
                 </article>
               </div>
               <a className="arrow-down nav-link" data-menuanchor="page4" href="#page4">
-                <img src="/img/general/arrow-down.svg" />
+                <img src={Arrow} />
               </a>
             </div>
             <div className="highdef-bg">
               <picture className="bg-full">
-                <img src="/img/home-page/hd-elements/high-definition-bg.jpg" />
+                <img src={HD_background} />
               </picture>
-              <img className="circle-red" src="/img/home-page/hd-elements/circle-red.svg" />
-              <img className="circle-orange" src="/img/home-page/hd-elements/circle-orange.svg" />
-              <img className="circle-white" src="/img/home-page/hd-elements/circle-white.svg" />
+              <img className="circle-red" src={Circle_red} />
+              <img className="circle-orange" src={Circle_orange} />
+              <img className="circle-white" src={Circle_white} />
             </div>
           </section>
           <section className="pp-section pp-scrollable section-showcase contact light-nav contrast-nav" data-anchor="page4">

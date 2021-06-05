@@ -1,5 +1,5 @@
 {
-  "homepage": "http://timjones97.github.io/koji",
+  "homepage": "https://timj.design/koji",
   "name": "Koji",
   "private": true,
   "description": "Koji Website",
@@ -38,9 +38,16 @@
     "react-script-tag": "^1.1.2"
   },
   "scripts": {
+    "build": "gatsby build --prefix-paths",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  }
+    "deploy": "gh-pages -d public"
+  },
   "devDependencies": {
     "gh-pages": "^3.2.0",
     "prettier": "2.1.2"
@@ -49,21 +56,12 @@
     "gatsby"
   ],
   "license": "0BSD",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
   "main": "gatsby-browser.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TimJones97/koji.git"
   },
-  "author": "timjones97",
+  "author": "TimJones97",
   "bugs": {
     "url": "https://github.com/TimJones97/koji/issues"
   }
