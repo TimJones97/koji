@@ -284,7 +284,7 @@ nav.dark .right-nav a {
 /*--------------FULL PAGE SECTIONS--------------*/
 
 .section-showcase {
-	overflow-x: hidden;
+	overflow: hidden;
 }
 .section-showcase .pp-tableCell {
 	display: flex;
@@ -1090,6 +1090,11 @@ body.show-thesis #thesis-anim section .container {
 
 section.investment {
 	opacity: 1;
+	background: #000;
+	overflow: scroll;
+}
+section.investment .container {
+	display: flex;
 }
 /*--------------MEDIA QUERIES--------------*/
 
