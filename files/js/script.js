@@ -4,13 +4,20 @@ var navRotation = 0,
 	highdefTop = 0;
 	highdefRight = 0
 	isThesis = false
-	detachedElem = null;
+	detachedElem = null,
+	prevContactScrollTop = 0;
 
 function changeNavColor(){
 	$('section').each(function(){
 		// If the active section slide has light-nav class,
 		// make the nav elements white
 		if($(this).hasClass('active')){
+			if ($(this).hasClass('contrast-nav')){
+				$('nav').addClass('dark-bg');
+			}
+			else {
+				$('nav').removeClass('dark-bg');
+			}
 			if($(this).hasClass('light-nav')){
 				$('nav').addClass('light');
 				$('nav').removeClass('dark');
@@ -128,21 +135,21 @@ function scaleCircleNav(){
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 }
 function scaleHighdefBackground(){
-	var minVWidth = 1920,
+	var minWidth = 1920,
 		width = $(window).width();
 
-	if(width > minVWidth){
-		highdefBackgroundScale = width / minVWidth;
+	if(width > minWidth){
+		highdefBackgroundScale = width / minWidth;
 		highdefTop = 0;
-		highdefRight = (1.0 - (width / minVWidth)) / 2 * 100;
+		highdefRight = (1.0 - (width / minWidth)) / 2 * 100;
 
 		// Make the negative values positive
 		highdefRight = Math.abs(highdefRight)
 	}
-	if(width < minVWidth){
-		highdefBackgroundScale = width / minVWidth;
-		highdefTop = (1.0 - (width / minVWidth)) / 2 * 100;
-		highdefRight = (1.0 - (width / minVWidth)) / 2 * 100;
+	if(width < minWidth){
+		highdefBackgroundScale = width / minWidth;
+		highdefTop = (1.0 - (width / minWidth)) / 2 * 100;
+		highdefRight = (1.0 - (width / minWidth)) / 2 * 100;
 		// Make the values negative
 		highdefTop = '-' + highdefTop;
 		highdefRight = '-' + highdefRight;
@@ -153,8 +160,8 @@ function scaleHighdefBackground(){
 		highdefRight = 0;
 	}
 	// Add the styles to the dynamic background in the high definition section
-	$('.highdef-bg').css('transform', 'scale3d(' + highdefBackgroundScale + ',' + highdefBackgroundScale + ', 1.0)');
-	$('.highdef-bg').css('top',  highdefTop + '%');
+	$('.highdef-bg').css('transform', 'scale3d(' + highdefBackgroundScale + ',' + highdefBackgroundScale + ', 1.0) translate(0%, -50%)');
+	// $('.highdef-bg').css('top',  highdefTop + '%');
 	$('.highdef-bg').css('right', highdefRight + '%');
 }
 function goThesis(){
@@ -173,6 +180,7 @@ function initHomepagePagepiling(){
 	$('#homepage-anim').pagepiling({
 	  	menu: '.circle-nav .circles',
 		anchors: ['page1', 'page2', 'page3', 'page4'],
+		normalScrollElements: '.contact',
 	  	onLeave: function(index, nextIndex, direction){
 			rotateCircleNav(index, nextIndex, direction);
 			restartVideo();
@@ -218,6 +226,22 @@ function animateHeadersOnScroll(direction){
 		}
 	});
 }
+function scrollContactSection(){
+	var currentContactScrollTop = $('.contact').scrollTop();
+	// If the current scrollTop position is 0, then the user is
+	// at the top of the contact div
+	if(currentContactScrollTop == 0 && prevContactScrollTop > currentContactScrollTop){
+		// Go to the High Definition page when user scrolls to top of contact div
+		location.hash = "page3"
+	}
+	else {
+		prevContactScrollTop = currentContactScrollTop;
+	}
+}
+
+$('.contact').scroll(function(){
+	scrollContactSection();
+});
 $(window).resize(function(){
 	scaleCircleNav();
 	scaleHighdefBackground();
