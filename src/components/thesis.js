@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from "react";
 import Footer from '../components/footer'
 import Arrow from '../../static/img/general/arrow-down.svg';

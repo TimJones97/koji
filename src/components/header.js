@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
@@ -7,12 +8,12 @@ import Logo_OG from "/static/img/general/og-image.jpg";
 import Logo_dark from "/static/img/general/logo-dark.svg";
 import Logo_light from "/static/img/general/logo-light.svg";
 
-const Header = ({ seo }) => {
+const Header = ({ seo, overflow }) => {
   // Merge default and page-specific SEO values
   const fullSeo = { ...seo };
-   const imageUrl =
-      (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
-      fullSeo.shareImage?.childImageSharp.original.src;
+  const imageUrl =
+    (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
+     fullSeo.shareImage?.childImageSharp.original.src;
 
   const getMetaTags = () => {
     const tags = [];
@@ -63,18 +64,27 @@ const Header = ({ seo }) => {
       <meta name="og:description" content={fullSeo.metaDescription} />
       <meta name="og:image" content={imageUrl} />
       <link rel="preload" as="stylesheet" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css" integrity="sha512-W9OWS8dgpQBw5Hb+tbMto1BMsHvYOXT/AFBGvASCPUJleaEdpOAN5lzgj9RrTbo3YrlR+m9xdOBccp8F+SFyQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      {/*If the page is not the homepage or thesis*/}
+      {overflow &&
+        <style type="text/css">{`
+          body {
+            overflow: overlay;
+          }
+        `}</style>
+      }
     </Helmet>
   );
 };
 
 
 Header.defaultProps = {
-  seo : {
+  seo: {
     metaTitle: "Koji",
     metaDescription: "Koji is an early-stage investment firm focused on decentralised finance.",
     shareImage: {childImageSharp: {original: { src: '/img/general/og-image.png'}}},
     article: true,
-  }
+  },
+  overflow: false
 }
 
 export default Header;

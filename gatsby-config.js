@@ -6,14 +6,14 @@ module.exports = {
     siteUrl: `http://localhost:8000`
   },
   plugins: [
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: 'gatsby-plugin-htaccess',
-      options: {
-        https: true,
-      }
-    },
+    // "gatsby-plugin-sharp",
+    // "gatsby-transformer-sharp",
+    // {
+    //   resolve: 'gatsby-plugin-htaccess',
+    //   options: {
+    //     https: true,
+    //   }
+    // },
     // {
     //   resolve: `gatsby-plugin-mdx`,
     //   options: {

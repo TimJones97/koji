@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from "react";
 
 class CircleNav extends Component {
@@ -15,7 +16,7 @@ class CircleNav extends Component {
             <span />
           </a>
 
-          {(this.props.location == 'home') &&
+          {(this.props.location === 'home') &&
             <>
               <a className="four active nav-link" data-menuanchor="page1" href="#page1">
                 <span />
@@ -32,7 +33,7 @@ class CircleNav extends Component {
             </>
           }
 
-          {(this.props.location == 'thesis') &&
+          {(this.props.location === 'thesis') &&
             <>
               <a className="three active nav-link" data-menuanchor="thesis-page1" href="#thesis-page1">
                 <span />

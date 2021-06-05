@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import Header from '../components/header';
 import Navbar from '../components/navbar'
@@ -9,13 +10,13 @@ import Scripts from '../components/scripts'
 const Index = () => {
   return (
     <>
-        <Header/>
-        <Navbar/>
-        <CircleNav location="home"/>
-        <Homepage/>
-        <CircleNav location="thesis"/>
-        <Thesis/>
-        <Scripts/>
+      <Header/>
+      <Navbar background="light"/>
+      <CircleNav location="home"/>
+      <Homepage/>
+      <CircleNav location="thesis"/>
+      <Thesis/>
+      <Scripts/>
     </>
   )
 }
