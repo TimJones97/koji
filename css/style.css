@@ -1,0 +1,1187 @@
+/*--------------GENERAL STYLES--------------*/
+:root {
+  --black: #000000;
+  --orange: #EEA62B;
+  --dark-red: #601B0C;
+  --brown: #280000;
+  --grey: #4D4D4D;
+}
+@font-face {
+    font-family: 'Helvetica Light';
+    src: url('../fonts/Helvetica-Light.woff2') format('woff2'),
+        url('../fonts/Helvetica-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Helvetica Neue Light';
+    src: url('../fonts/HelveticaNeueLight.woff2') format('woff2'),
+        url('../fonts/HelveticaNeueLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Helvetica Bold';
+    src: url('../fonts/Helvetica-Bold.woff2') format('woff2'),
+        url('../fonts/Helvetica-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+body {
+	background: var(--brown);
+	overflow-x: hidden;
+	height: 100%; 
+	width: 100%;
+}
+*::selection {
+	background: #EEA62B;
+	color: var(--brown);
+}
+* {
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
+}
+body.no-anim * {
+  transition: none !important;
+}
+*:focus,
+*:hover {
+	outline: none !important;
+}
+
+/*----CUSTOM SCROLLBAR----*/
+
+::-webkit-scrollbar {
+    height: 7px;
+    width: 7px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.0);
+    opacity: 0;
+}
+::-webkit-scrollbar-thumb {
+    background: #eea62b;
+    border-radius: 10px;
+}
+p, a, label, li {
+	font-family: 'Helvetica Bold', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+	transition: all 0.5s ease;
+	color: var(--orange);
+}
+a {
+	font-family: 'Helvetica Neue Light';
+	text-decoration: none;
+	color: #fff;
+}
+input, textarea, button {
+	font-family: 'Helvetica';
+}
+a:hover {
+	text-decoration: none;
+}
+main {
+	position: relative;
+	height: 100vh;
+}
+/*Page Piling styles*/
+section {
+	position: relative;
+	height: 100vh;
+	transform: unset !important;
+	opacity: 0;
+	transition: opacity 0.7s ease !important;
+	pointer-events: none;
+}
+section.active {
+	opacity: 1;
+	pointer-events: all;
+}
+#pp-nav {
+	display: none;
+}
+.pp-scrollable {
+    display: block !important;
+    min-height: 100vh;
+    height: 100%;
+}
+/*Arrow down to next page*/
+.arrow-down {
+	position: absolute;
+	bottom: -60px;
+	left: 40px;
+}
+.arrow-down img {
+	width: 25px;
+	height: 25px;
+}
+
+/*HELPER DIVS*/
+.container {
+	position: relative;
+	max-width: 1800px;
+	width: 100%;
+	padding: 0px 40px;
+	height: 100vh;
+	max-height: calc(100% - 200px);
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.container.scale * {
+	transform: scale3d(1.0, 1.0, 1.0);
+}
+
+/*--------------NAV--------------*/
+
+nav {
+	position: fixed;
+	width: 100%;
+	height: 110px;
+	z-index: 999;
+	transition: background 0.2s;
+}
+nav .container {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: unset;
+	padding-top: 45px;
+}
+.logo {
+	position: relative;
+	width: 100px;
+	height: 36px;
+}
+.logo img {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	opacity: 0;
+}
+.nav-item {
+	margin: unset;
+	display: inline-block;
+	margin-right: 20px;
+	color: #fff;
+}
+.nav-link {
+
+}
+
+/*LIGHT NAV*/
+nav.light .logo .dark {
+	opacity: 0;
+}
+nav.light .logo .light {
+	opacity: 1;
+}
+nav.light .right-nav p {
+	color: #fff;
+}
+/*LIGHT NAV WITH BLACK BACKGROUND*/
+nav.dark-bg {
+	background: #000;
+	transition: background 0.2s ease 0.4s;
+}
+/*DARK NAV*/
+nav.dark .logo .dark {
+	opacity: 1;
+}
+nav.dark .logo .light {
+	opacity: 0;
+}
+nav.dark .right-nav a {
+	color: var(--brown);
+}
+
+
+
+/*-----CIRCLE NAV-----*/
+
+.circle-nav,
+.circle-nav.thesis {
+	position: fixed;
+	right: 0px;
+	top: 0;
+	height: 100%;
+	z-index: 999;
+	display: flex;
+	align-items: center;
+    transition: transform 0.5s ease;
+}
+.circle-nav .circles,
+.circle-nav-thesis .circles {
+	padding-top: 60px;
+	transform: rotate(255deg);
+	margin-top: 400px;
+}
+.circle-nav .circles a {
+	display: block;
+}
+.circle-nav .circles a span {
+	position: absolute;
+    display: inline-block;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+    transform-origin: calc(100% + 130px) 50%;
+    box-sizing: border-box;
+    transition: background 0.3s ease 0.15s;
+}
+
+/*HOMEPAGE - RIGHT ALIGNED*/
+
+/*Left side*/
+.circle-nav .circles a.one span {
+	transform: rotate(195deg);
+}
+.circle-nav .circles a.two span {
+	transform: rotate(165deg);
+}
+.circle-nav .circles a.three span {
+	transform: rotate(135deg);
+}
+.circle-nav .circles a.four span {
+	transform: rotate(105deg);
+}
+.circle-nav .circles a.five span {
+	transform: rotate(75deg);
+}
+.circle-nav .circles a.six span {
+	transform: rotate(45deg);
+}
+.circle-nav .circles a.seven span {
+	transform: rotate(15deg);
+}
+
+/*Right side*/
+.circle-nav .circles a.eight span {
+	transform: rotate(-15deg);
+}
+.circle-nav .circles a.nine span {
+	transform: rotate(-45deg);
+}
+.circle-nav .circles a.ten span {
+	transform: rotate(-75deg);
+}
+.circle-nav .circles a.eleven span {
+	transform: rotate(-105deg);
+}
+.circle-nav .circles a.twelve span {
+	transform: rotate(-135deg);
+}
+
+.circle-nav .circles a.active span {
+	background: #fff;
+}
+
+/*--------------FULL PAGE SECTIONS--------------*/
+
+.section-showcase {
+	overflow-x: hidden;
+}
+.section-showcase .pp-tableCell {
+	display: flex;
+	align-items: center;
+}
+.section-showcase header {
+	position: relative;
+	margin-top: 50px;
+	animation: unset;
+	animation: headerSlideToTop 0.8s ease forwards;
+}
+@keyframes headerSlideToTop {
+	0% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+	80% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(-100px);
+		opacity: 0;
+	}
+}
+
+/*-----HEADER SCROLL ANIMATION-----*/
+
+section.active header {
+	animation: headerSlideFromBottom 0.8s ease forwards;
+	animation-delay: 0.3s;
+	opacity: 0;
+}
+/*For current slide that came from scrolling up*/
+section.active.anim-down header {
+	animation: unset;
+	animation: headerSlideToBottomNoFade 0.8s ease forwards !important;
+	animation-delay: 0.2s !important;
+}
+/*For slides that are disappearing from down to up*/
+section.anim-down header {
+	animation: unset;
+	animation: headerSlideToBottom 0.8s ease forwards;
+	animation-delay: 0s;
+}
+@keyframes headerSlideFromBottom {
+	0% {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+	80% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+}
+@keyframes headerSlideToBottom {
+	0% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+	80% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+}
+@keyframes headerSlideToBottomNoFade {
+	0% {
+		transform: translateY(-50px);
+		opacity: 0;
+	}
+	80% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+}
+
+
+span.subheading {
+	font-family: 'Helvetica Bold', sans-serif;
+	font-size: 16px;
+	color: var(--orange);
+	display: block;
+	margin-bottom: 20px;
+}
+.section-showcase header h1,
+.section-showcase header a {
+	color: #fff;
+	font-family: 'Helvetica Light', sans-serif;
+	font-weight: 300;
+	font-size: 72px;
+	margin: unset;
+}
+.section-showcase header h1 span {
+	position: relative;
+	display: block;
+	color: var(--orange);
+}
+a.link-white {
+	position: relative;
+	color: #fff;
+	display: inline-block;
+}
+.circle-btn {
+	position: absolute;
+	bottom: -2px;
+	right: -120px;
+	height: 84px;
+	width: 84px;
+	border: 1px solid #fff;
+	background: transparent;
+	border-radius: 50%;
+}
+.circle-btn:before {
+	content: "\01F862";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+	font-size: 40px;
+	padding-bottom: 5px;
+}
+video {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0%, -50%) scale3d(1.1, 1.0, 1.0);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+video.loaded {
+    opacity: 1;
+    transform: translate(0%, -50%) scale3d(1.0, 1.0, 1.0);
+}
+
+/*-----SECOND PAGE - ABOUT-----*/
+
+.section-showcase.about header .subheading {
+	color: var(--brown);
+}
+.section-showcase.about header h1 span,
+.section-showcase.about header a.link-white {
+	font-size: 48px;
+	color: var(--brown);
+}
+.section-showcase.about header a.link-white {
+	position: relative;
+	color: #fff;
+	margin-top: 20px;
+	display: inline-block;
+}
+.section-showcase.about header .circle-btn {
+	width: 60px;
+	height: 60px;
+	right: -80px;
+}
+.section-showcase.about header .circle-btn:before {
+	font-size: 30px;
+}
+
+/*-----THIRD PAGE - HIGH DEF-----*/
+
+.section-showcase.highdef {
+	background: var(--brown);
+}
+.section-showcase.highdef .container {
+	z-index: 1;
+}
+.section-showcase.highdef .highdef-logo {
+	margin-bottom: 30px;
+	width: 325px;
+}
+.section-showcase.highdef header {
+	width: 550px;
+}
+.section-showcase.highdef header a.link-white:before {
+	width: calc(100% + 50px);
+}
+.section-showcase.highdef header h1 span,
+.section-showcase.highdef header a.link-white {
+	font-size: 48px;
+}
+.section-showcase.highdef header a.link-white {
+	margin-top: 20px;
+}
+.section-showcase.highdef header .circle-btn {
+	right: -80px;
+	height: 64px;
+	width: 64px;
+}
+.container__episodes {
+	margin-top: 50px;
+}
+.container__episodes .subheading {
+	display: block;
+	margin-bottom: 20px;
+	font-family: 'Helvetica Bold', sans-serif;
+	font-size: 16px;
+	color: var(--orange);
+	display: block;
+	margin-bottom: 20px;
+}
+.episode {
+	position: relative;
+	display: inline-block;
+	width: 270px;
+	height: 310px;
+	border: 1px solid #601B0C;
+	border-radius: 6px;
+	overflow: hidden;
+	transition: background 0.5s ease;
+}	
+.episode * {
+	transition: opacity 0.5s ease;
+}
+.episode .episode-thumbnail {
+	width: 100%;
+	height: 270px;
+	margin: 0;
+}
+/*Blur div*/
+.episode .episode-thumbnail .blur {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 270px;
+	background: rgba(255, 255, 255, 0.1);
+	opacity: 0;
+	z-index: 1;
+	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
+}
+.episode .episode-thumbnail img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 270px;
+}
+.episode .episode-thumbnail .thumbnail {
+	opacity: 1;
+}
+.episode .episode-thumbnail .thumbnail-blur {
+	opacity: 0;
+}
+.episode span.listen {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	font-family: 'Helvetica Bold', sans-serif;
+	font-size: 16px;
+	color: #fff;
+	padding: 10px 15px;
+}
+.episode span.listen:after {
+	content: "\01F862";
+	position: absolute;
+	right: 15px;
+	color: #fff;
+	font-size: 30px;
+	padding-bottom: 5px;
+}
+
+/*HOVER EFFECTS - BLUR*/
+/*.episode:hover .episode-thumbnail .thumbnail {
+	opacity: 0;
+}*/
+.episode:hover .episode-thumbnail .thumbnail-blur {
+	opacity: 1;
+}
+.episode:hover .episode-thumbnail .blur {
+	opacity: 1.0;
+}
+.episode:hover {
+	background: #601B0C;
+}
+
+/*FULL BG ANIMATION*/
+.highdef-bg {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translate(0%, -50%);
+	height: 100%;
+	width: 100%;
+	z-index: 0;
+	pointer-events: none;
+}
+.highdef-bg .bg-full {
+	position: absolute;
+	top: 50%;
+	right: -550px;
+	transform: scale3d(1.0, 1.0, 1.0) translate(0%, -50%);
+	min-height: 1600px;
+	min-width: 1600px;
+	opacity: 0;
+	transition: all 3s ease, height 0s ease, transform 3s ease;
+	border-radius: 50%;
+	overflow-x: hidden;
+}
+.highdef-bg .bg-full img {
+	position: absolute;
+	top: 50%;
+	transform: translate(0%, -50%);
+	right: 150px;
+	height: 1200px;
+	width: auto;
+	transition: all 1s ease;
+	/*min-height: 1080px;*/
+}
+.highdef-bg .circle-red,
+.highdef-bg .circle-orange,
+.highdef-bg .circle-white {
+	transition: all 3.5s ease;
+}
+.highdef-bg .circle-red {
+	position: absolute;
+	right: 800px;
+	top: -100px;
+	height: 300px;
+	width: 300px;
+	opacity: 0.3;
+}
+.highdef-bg .circle-orange {
+	position: absolute;
+	right: 900px;
+	bottom: -50px;
+	height: 240px;
+	width: 240px;
+	opacity: 0.3;
+}
+.highdef-bg .circle-white {
+	position: absolute;
+	right: 1000px;
+	bottom: 250px;
+	height: 100px;
+	width: 100px;
+	z-index: -1;
+	opacity: 0.3;
+}
+/*When the slide is active, activate the animations*/
+.highdef.active .bg-full {
+	right: -450px;
+	opacity: 1;
+	transform: scale3d(1.02, 1.02, 1.0) translate(0%, -50%);
+}
+.highdef.active .circle-red {
+	right: 900px;
+	opacity: 1;
+}
+.highdef.active .circle-orange {
+	right: 1000px;
+	opacity: 1;
+}
+.highdef.active .circle-white {
+	right: 1100px;
+	opacity: 1;
+}
+
+/*-----FOURTH PAGE - CONTACT-----*/
+
+section.contact {
+	background: #000;
+    display: block !important;
+    padding-top: 100px;
+}
+section.contact header {
+	position: absolute;
+	top: 0;
+}
+section.contact header h1 {
+	font-size: 48px;
+	font-family: 'Helvetica Bold', sans-serif;
+}
+section.contact .container {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: unset;
+	flex-wrap: wrap;
+}
+section.contact .container .left {
+	position: relative;
+	height: calc(100vh - 200px);
+	width: 600px;
+}
+section.contact .container .socials {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translate(0%, -50%);
+}
+section.contact .container .socials .title {
+	font-family: 'Helvetica Bold', sans-serif;
+	margin-bottom: 15px;
+	color: var(--orange);
+}
+section.contact .container .socials a {
+	margin-bottom: 15px;
+	display: block;
+	font-family: 'Helvetica Light', sans-serif;
+	font-size: 20px;
+}
+section.contact .container .socials a:last-of-type {
+	margin-bottom: 0px;
+}
+section.contact .container .right {
+	width: 100%;
+	max-width: 850px;
+	min-width: 450px;
+	padding-right: 230px;
+}
+
+/*-----CONTACT FORM-----*/
+
+.contact-form {
+	width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 50px;
+}
+.form-item {
+	width: 100%;
+	margin-top: 20px;
+    clear: both;
+}
+.form-item.half {
+	width: 48%;
+	flex-basis: 48%;
+}
+.form-item label {
+	display: block;
+	margin-bottom: 10px;
+}
+.form-item input,
+.form-item textarea {
+	border: 2px solid #601B0C;
+	background: unset;
+	padding: 10px;
+	height: 40px;
+	color: #fff;
+	width: 100%;
+	border-radius: 6px;
+	font-size: 16px;
+	transition: all 0.3s ease;
+}
+.form-item textarea {
+	height: 120px;
+}
+.form-item input::placeholder,
+.form-item textarea::placeholder {
+	color: var(--dark-red);
+	transition: color 0.3s ease;
+}
+/*HOVER EFFECTS*/
+.form-item input:hover::placeholder,
+.form-item textarea:hover::placeholder {
+	color: #6b6b6b;
+}
+.contact-form button {
+	width: 150px;
+	height: 50px;
+	border: 2px solid #EEA62B;
+	color: #fff;
+	border-radius: 6px;
+	background: unset;
+	display: block;
+	margin: 30px auto;
+	transition: background 0.5s ease;
+}
+.contact-form button:hover {
+	background: #EEA62B;
+}
+
+/*HIDE LASTPASS ICON*/
+
+div[id^=__lpform_] {
+    display: none;
+}
+
+/*--------------FOOTER--------------*/
+
+footer {
+	position: relative;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 200px;
+	background: #000;
+	flex-basis: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	overflow: hidden;
+}
+footer .footer-logo {
+	width: 75px;
+	height: auto;
+	padding-bottom: 40px;
+}
+/*FOOTER GROUP*/
+footer .footer-group {
+	display: flex;
+	align-items: flex-start;
+}
+/*COLLABORATE WITH US*/
+footer .collaborate-links {
+	width: 320px;
+	margin-right: 80px
+}
+footer .collaborate-links p {
+	margin-top: 0;
+}
+footer .collaborate-links p,
+footer .collaborate-links a {
+	color: var(--orange);
+}
+
+/*CONTACT AND SUBSCRIBE LINKS*/
+footer .contact-links {
+	width: 500px;
+	display: flex;
+	justify-content: space-between;
+	margin-right: 100px;
+}
+footer .contact-links a {
+	position: relative;
+	font-size: 22px;
+	text-decoration: underline;
+}
+footer .contact-links a:after {
+	content: "\01F862";
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	top: 50%;
+	right: -50px;
+	transform: translate(0%, -50%);
+	color: #fff;
+	font-size: 20px;
+	border: 1px solid #fff;
+	padding-bottom: 2px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/*SITEMAP AND SOCIAL LINKS*/
+footer .site-links {
+	width: 350px;
+	display: flex;
+}
+footer .site-links .link-box {
+	width: 50%;
+}
+footer .site-links .link-box a {
+	display: block;
+}
+footer .site-links .link-box p,
+footer .site-links .link-box a {
+	color: var(--orange);
+	margin-bottom: 5px;
+	margin-top: 0px;
+}
+footer .site-links .link-box .title {
+	/*font-family: 'Helvetica Bold', sans-serif;*/
+}
+
+/*--------------THESIS STYLES--------------*/
+
+#thesis-anim {
+	opacity: 0;
+	pointer-events: none;
+	left: 100vw;
+	transition: opacity 0.5s ease;
+}
+.circle-nav.thesis {
+	opacity: 0;
+	pointer-events: none;
+	right: unset;
+	left: 100px;
+}
+
+/*-----HIDE HOMEPAGE-----*/
+
+body.show-thesis #homepage-anim {
+	pointer-events: none;
+	animation: slideOutLeft 5s ease forwards;
+}
+
+/*Only affect first section*/
+body.show-thesis #homepage-anim > section:first-of-type header {
+	animation: slideOutLeft 4s ease forwards;
+}
+body.show-thesis .circle-nav:not(.thesis) {
+	animation: slideOutLeft 5s ease forwards;
+}
+@keyframes slideOutLeft {
+	0% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	20% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(-100vw);
+		opacity: 0;
+	}
+}
+body.show-thesis .circle-nav:not(.thesis) {
+	pointer-events: none;
+	opacity: 0;
+}
+
+/*SHOW THESIS PAGE*/
+body.show-thesis .circle-nav.thesis {
+	pointer-events: all;
+	animation: slideInFromRight 1s ease forwards;
+	animation-delay: 1.5s;
+}
+body.show-thesis #thesis-anim {
+	opacity: 1;
+	pointer-events: all;
+	left: 0;
+}
+@keyframes slideInFromRight {
+	0% {
+		left: 100px;
+		opacity: 0;
+	}
+	80% {
+		opacity: 1;
+	}
+	100% {
+		left: -10px;
+		opacity: 1;
+	}
+}
+
+/*-----THESIS NAV - LEFT ALIGNED-----*/
+
+/*Left side*/
+.circle-nav.thesis .circles a.one span {
+	transform: rotate(-135deg);
+}
+.circle-nav.thesis .circles a.two span {
+	transform: rotate(-105deg);
+}
+.circle-nav.thesis .circles a.three span {
+	transform: rotate(-75deg);
+}
+.circle-nav.thesis .circles a.four span {
+	transform: rotate(-45deg);
+}
+.circle-nav.thesis .circles a.five span {
+	transform: rotate(-15deg);
+}
+.circle-nav.thesis .circles a.six span {
+	transform: rotate(15deg);
+}
+.circle-nav.thesis .circles a.seven span {
+	transform: rotate(45deg);
+}
+
+/*Right side*/
+.circle-nav.thesis .circles a.eight span {
+	transform: rotate(75deg);
+}
+.circle-nav.thesis .circles a.nine span {
+	transform: rotate(105deg);
+}
+.circle-nav.thesis .circles a.ten span {
+	transform: rotate(135deg);
+}
+.circle-nav.thesis .circles a.eleven span {
+	transform: rotate(165deg);
+}
+.circle-nav.thesis .circles a.twelve span {
+	transform: rotate(195deg);
+}
+
+/*-----THESIS PAGE STYLES-----*/
+
+body.show-thesis #thesis-anim section .container {
+	width: calc(100% - 480px);
+}
+
+.thesis-page header {
+	width: 700px;
+	margin-top: 0;
+}
+.thesis-page header h1 {
+	font-size: 48px;
+}
+.thesis-page header h1 span {
+	color: #fff;
+}
+.thesis-page header p {
+	font-family: 'Helvetica', sans-serif;
+	font-size: 20px;
+	color: #fff;
+	margin-top: 40px;
+	line-height: 30px;
+}
+
+/*PULL VIDEO RIGHT*/
+
+.thesis-page video {
+	left: 30%;
+	min-height: 70vh;
+	height: 70vh;
+}
+
+/*-----PAGE ONE-----*/
+
+.thesis-page.one {
+	background: var(--brown);
+}
+.thesis-page.one header h1 span.orange {
+	display: inline-block;
+	color: var(--orange);
+}
+
+/*-----PAGE TWO-----*/
+
+.thesis-page.two {
+	background: var(--orange);
+}
+.thesis-page.two header {
+	display: flex;
+	flex-direction: column-reverse;
+}
+.thesis-page.two header h1,
+.thesis-page.two header p {
+	color: var(--black);
+}
+.thesis-page.two header p {
+	margin-top: 0px;
+}
+.thesis-page.two header h1 {
+	margin-top: 40px;
+}
+
+/*-----PAGE THREE-----*/
+
+.thesis-page.three {
+	background: var(--black);
+}
+
+/*-----PAGE FOUR-----*/
+
+.thesis-page.four {
+	background: var(--brown);
+}
+
+/*-----PAGE FIVE + FOOTER-----*/
+
+.thesis-page.five {
+	background: var(--orange);
+}
+.thesis-page.five .container {
+	max-height: 100%;
+}
+.thesis-page.five header {
+	margin-bottom: 50px;
+}
+.thesis-page.five header h1,
+.thesis-page.five header p {
+	color: #000;
+}
+.thesis-page.five video {
+	height: 70vh;
+	min-height: 70vh;
+}
+.thesis-page.five footer .container {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100% !important;
+	padding: 40px 0px 40px 240px;
+	max-height: 100%;
+}
+.thesis-page.five footer .footer-logo {
+	margin-right: 50px;
+}
+
+/*--------------INVESTMENT PAGE--------------*/
+
+section.investment {
+	opacity: 1;
+}
+/*--------------MEDIA QUERIES--------------*/
+
+@media only screen and (max-width: 1919px){
+	.highdef-bg .bg-full img {
+		height: 100%;
+		right: 50px;
+	}
+}
+/*Begin downsizing elements by 12.5% when screen height below 1000px*/
+@media only screen and (max-height: 1000px){
+
+	/*HIGHDEF*/
+	.section-showcase.highdef .highdef-logo {
+		width: 284px;
+	}
+	.section-showcase.highdef header h1 span, 
+	.section-showcase.highdef header a.link-white {
+		font-size: 42px;
+	}
+	.episode {
+		width: 236px;
+		height: 276px;
+	}	
+	.episode .episode-thumbnail,
+	.episode .episode-thumbnail .blur,
+	.episode .episode-thumbnail img {
+		height: 236px;
+	}
+}
+@media only screen and (max-height: 900px){
+	/*HIGHDEF*/
+	.section-showcase.highdef .highdef-logo {
+		width: 248px;
+	}
+	.section-showcase.highdef header h1 span, 
+	.section-showcase.highdef header a.link-white {
+		font-size: 42px;
+	}
+	.episode {
+		width: 206px;
+		height: 241px;
+	}	
+	.episode .episode-thumbnail,
+	.episode .episode-thumbnail .blur,
+	.episode .episode-thumbnail img {
+		height: 206px;
+	}
+
+	/*THESIS PAGE*/
+	.thesis-page header h1 {
+		font-size: 42px;
+	}
+	.thesis-page.two header h1 {
+		margin-top: 20px;
+	}
+	.thesis-page header p {
+		font-size: 19px;
+	}
+}
+@media only screen and (max-height: 800px){
+	/*HIGHDEF*/
+	.container__episodes {
+		display: none;
+	}
+	/*CONTACT*/
+	section.contact header {
+		position: relative;
+	}
+	section.contact .container .socials {
+		position: unset;
+		transform: none;
+		padding-top: 100px;
+	}
+	.contact-form {
+		padding-top: 0;
+		padding-bottom: 50px;
+	}
+
+	/*THESIS PAGE*/
+	.thesis-page header h1 {
+		font-size: 36px;
+	}
+	.thesis-page header p {
+		font-size: 17px;
+	}
+
+	/*FOOTER*/
+	footer .footer-group {
+		flex-direction: column;
+	}
+	footer .contact-links {
+		padding-top: 20px;
+	}
+}
