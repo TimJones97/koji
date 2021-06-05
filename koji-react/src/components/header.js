@@ -1,10 +1,9 @@
-// TODO change the defaults
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import "/static/css/style.css";
 
-const SEO = ({ seo }) => {
+const Header = ({ seo }) => {
   // Merge default and page-specific SEO values
   const fullSeo = { ...seo };
    const imageUrl =
@@ -26,31 +25,31 @@ const SEO = ({ seo }) => {
 
   return (
     <Helmet
-      title={'Tracer: Peer-to-Peer Finance'}
+      title={'Koji'}
       titleTemplate={`%s`}
-      description="The backbone of a secure, global financial network that provides strong foundations for future financial innovation."
+      description="Koji is an early-stage investment firm focused on decentralised finance."
       link={[
         {
           rel: "icon",
-          href: '/favicon.png',
+          href: '/img/general/favicon.png',
         }, {
           rel: "image",
-          href: "/background.png"
+          href: "/img/general/og-image.png"
         }, {
           rel: "image",
-          href: "/logo-black.png"
+          href: "/img/general/logo-black.png"
         }, {
           rel: "image",
-          href: "/logo-white.png"
+          href: "/img/general/logo-white.png"
         },
         {
           rel: "image",
-          href: '/tracer-logo.png',
+          href: '/img/general/logo-light.png',
         }
       ]}
       meta={getMetaTags()}
     > 
-      <meta http-equiv='cache-control' content='public, max-age=0, no-store, must-revalidate' />
+      <meta httpEquiv='cache-control' content='public, max-age=0, no-store, must-revalidate' />
       <meta name="image" content={imageUrl} />
       <meta name="twitter:title" content={fullSeo.metaTitle} />
       <meta name="twitter:image" content={imageUrl} />
@@ -59,27 +58,24 @@ const SEO = ({ seo }) => {
       <meta name="og:title" content={fullSeo.metaTitle} />
       <meta name="og:description" content={fullSeo.metaDescription} />
       <meta name="og:image" content={imageUrl} />
-      <link rel="preload" as="font" href="/fonts/Akkurat.ttf" type="font/ttf" crossorigin/>
-      <link rel="preload" as="stylesheet" href="/css/main.css" />
-      <link rel="preload" as="stylesheet" href="/css/careers.css" />
-      <link rel="preload" as="stylesheet" href="/css/blog.css" />
+      <link rel="preload" as="stylesheet" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css" integrity="sha512-W9OWS8dgpQBw5Hb+tbMto1BMsHvYOXT/AFBGvASCPUJleaEdpOAN5lzgj9RrTbo3YrlR+m9xdOBccp8F+SFyQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </Helmet>
   );
 };
 
 
-SEO.defaultProps = {
+Header.defaultProps = {
   seo : {
-    metaTitle: "Tracer: Peer-to-Peer Finance",
-    metaDescription: "The backbone of a secure, global financial network that provides strong foundations for future financial innovation.",
-    shareImage: {childImageSharp: {original: { src: '/tcr_banner.png'}}},
+    metaTitle: "Koji",
+    metaDescription: "Koji is an early-stage investment firm focused on decentralised finance.",
+    shareImage: {childImageSharp: {original: { src: '/img/general/og-image.png'}}},
     article: true,
   }
 }
 
-export default SEO;
+export default Header;
 
-SEO.propTypes = {
+Header.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   shareImage: PropTypes.string,

@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Seo from "./seo";
+import Header from "./header";
 import NavBar from './navbar';
 import Footer from './footer';
 
 const Layout = ({ children, seo }) => {
   return (
     <>
-      <Seo seo={seo} />
+      <Header seo={seo} />
       <main>
         <NavBar />
          {children}

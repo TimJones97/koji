@@ -51,6 +51,21 @@ body.no-anim * {
 *:hover {
 	outline: none !important;
 }
+
+/*----CUSTOM SCROLLBAR----*/
+
+::-webkit-scrollbar {
+    height: 7px;
+    width: 7px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.0);
+    opacity: 0;
+}
+::-webkit-scrollbar-thumb {
+    background: #eea62b;
+    border-radius: 10px;
+}
 p, a, label, li {
 	font-family: 'Helvetica Bold', sans-serif;
 	font-weight: 500;
@@ -355,7 +370,7 @@ section.anim-down header {
 }
 
 
-.section-showcase header span.subheading {
+span.subheading {
 	font-family: 'Helvetica Bold', sans-serif;
 	font-size: 16px;
 	color: var(--orange);
@@ -375,19 +390,12 @@ section.anim-down header {
 	display: block;
 	color: var(--orange);
 }
-.section-showcase header a.link-white {
+a.link-white {
 	position: relative;
 	color: #fff;
 	display: inline-block;
 }
-/*.section-showcase header a.link-white:before {
-	content: "";
-	position: absolute;
-	bottom: -2px;
-	width: calc(100% + 80px);
-	border-bottom: 1px solid #fff;
-}*/
-.section-showcase header .circle-btn {
+.circle-btn {
 	position: absolute;
 	bottom: -2px;
 	right: -120px;
@@ -397,7 +405,7 @@ section.anim-down header {
 	background: transparent;
 	border-radius: 50%;
 }
-.section-showcase header .circle-btn:before {
+.circle-btn:before {
 	content: "\01F862";
 	position: absolute;
 	top: 50%;
@@ -407,7 +415,7 @@ section.anim-down header {
 	font-size: 40px;
 	padding-bottom: 5px;
 }
-.section-showcase video {
+video {
     position: absolute;
     top: 50%;
     right: 0;
@@ -418,7 +426,7 @@ section.anim-down header {
     opacity: 0;
     transition: all 0.5s ease;
 }
-.section-showcase video.loaded {
+video.loaded {
     opacity: 1;
     transform: translate(0%, -50%) scale3d(1.0, 1.0, 1.0);
 }
@@ -654,7 +662,7 @@ section.anim-down header {
 section.contact {
 	background: #000;
     display: block !important;
-    padding-top: 200px;
+    padding-top: 100px;
 }
 section.contact header {
 	position: absolute;
@@ -1076,6 +1084,12 @@ body.show-thesis #thesis-anim section .container {
 }
 .thesis-page.five footer .footer-logo {
 	margin-right: 50px;
+}
+
+/*--------------INVESTMENT PAGE--------------*/
+
+section.investment {
+	opacity: 1;
 }
 /*--------------MEDIA QUERIES--------------*/
 

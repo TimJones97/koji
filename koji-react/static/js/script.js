@@ -4,8 +4,7 @@ var navRotation = 0,
 	highdefTop = 0;
 	highdefRight = 0
 	isThesis = false
-	detachedElem = null,
-	prevContactScrollTop = 0;
+	detachedElem = null;
 
 function changeNavColor(){
 	$('section').each(function(){
@@ -167,27 +166,39 @@ function scaleHighdefBackground(){
 function goThesis(){
 	$('.go-thesis').click(function(){
 		$('body').addClass('show-thesis');
+
 		// Add 30 degrees to nav for thesis circles
 		navRotation = 30;
 
-		$('.thesis .three.nav-link').addClass('active');
+		// Make the thesis page visible 
+		$('#thesis-anim').removeAttr('hidden');
+
+		// Make the main link active if it has been affected
+		// by scrolling on the homepage
+		setTimeout(function(){
+			$('.thesis .three.nav-link').addClass('active');
+		}, 50);
 		initThesisPagepiling();
 	})
 }
 function initHomepagePagepiling(){
 	// $('body').removeClass('show-thesis');
 	// detachedElem = $('#thesis-anim').detach();
-	$('#homepage-anim').pagepiling({
-	  	menu: '.circle-nav .circles',
-		anchors: ['page1', 'page2', 'page3', 'page4'],
-		normalScrollElements: '.contact',
-	  	onLeave: function(index, nextIndex, direction){
-			rotateCircleNav(index, nextIndex, direction);
-			restartVideo();
-			changeNavColor();
-			animateHeadersOnScroll(direction);
-	  	},
-  	});
+
+	// Only initiate pagePiling if on the index page
+	if(location == '/'){
+		$('#homepage-anim').pagepiling({
+		  	menu: '.circle-nav .circles',
+			anchors: ['page1', 'page2', 'page3', 'page4'],
+			normalScrollElements: '.contact',
+		  	onLeave: function(index, nextIndex, direction){
+				rotateCircleNav(index, nextIndex, direction);
+				restartVideo();
+				changeNavColor();
+				animateHeadersOnScroll(direction);
+		  	},
+	  	});
+	}
 }
 function initThesisPagepiling(){
 	var animationDelay = 2000;
@@ -230,15 +241,11 @@ function scrollContactSection(){
 	var currentContactScrollTop = $('.contact').scrollTop();
 	// If the current scrollTop position is 0, then the user is
 	// at the top of the contact div
-	if(currentContactScrollTop == 0 && prevContactScrollTop > currentContactScrollTop){
+	if(currentContactScrollTop == 0){
 		// Go to the High Definition page when user scrolls to top of contact div
-		location.hash = "page3"
-	}
-	else {
-		prevContactScrollTop = currentContactScrollTop;
+		location.hash = "page3";
 	}
 }
-
 $('.contact').scroll(function(){
 	scrollContactSection();
 });
