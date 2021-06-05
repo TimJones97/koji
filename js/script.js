@@ -186,7 +186,7 @@ function initHomepagePagepiling(){
 	// detachedElem = $('#thesis-anim').detach();
 
 	// Only initiate pagePiling if on the index page
-	if(location == '/'){
+	if(location.pathname == '/'){
 		$('#homepage-anim').pagepiling({
 		  	menu: '.circle-nav .circles',
 			anchors: ['page1', 'page2', 'page3', 'page4'],
@@ -246,6 +246,14 @@ function scrollContactSection(){
 		location.hash = "page3";
 	}
 }
+function toggleMobileNav(){
+	$('.menu-toggle').click(function(){
+		$('.mobile-nav').addClass('display');
+	});
+	$('.close-btn').click(function(){
+		$('.mobile-nav').removeClass('display');
+	});
+}
 $('.contact').scroll(function(){
 	scrollContactSection();
 });
@@ -257,6 +265,7 @@ $(document).ready(function() {
 	scaleCircleNav();
 	scaleHighdefBackground();
 	goThesis();
+	toggleMobileNav();
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
 	initHomepagePagepiling();
