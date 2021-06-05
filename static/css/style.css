@@ -1604,6 +1604,9 @@ section.read {
 	.container {
 		padding: 0px 20px;
 	}
+	.arrow-down {
+		display: none;
+	}
 
 	/*NAV*/
 	.menu-toggle {
@@ -1613,6 +1616,51 @@ section.read {
 		display: none;
 	}
 
+	/*HOMEPAGE SECTIONS*/
+	.section-showcase header {
+		position: absolute;
+		bottom: 50px;
+	}
+	.section-showcase header h1, 
+	.section-showcase header a {
+		font-size: 48px;
+	}
+	.section-showcase .pp-tableCell {
+		position: relative;
+	}
+	.section-showcase .container {
+		position: static;
+	}
+	.circle-btn {
+		height: 65px;
+		width: 65px;
+		right: -80px;
+		bottom: -10px;
+	}
+	.circle-btn:before {
+		font-size: 40px;
+	}
+
+	/*ABOUT*/
+	.section-showcase.about header h1 span, 
+	.section-showcase.about header a.link-white {
+		font-size: 32px;
+	}
+	.section-showcase.about header .circle-btn {
+		width: 45px;
+		height: 45px;
+		bottom: -5px;
+		right: -60px;
+	}
+	.section-showcase.about header .circle-btn:before {
+		font-size: 25px;
+	}
+
+	/*HIGHDEF*/
+	.highdef-bg {
+		top: -100px !important;
+		transform: scale3d(0.4, 0.4, 1);
+	}
 
 	/*INVESTMENTS PAGE*/
 	.investment {

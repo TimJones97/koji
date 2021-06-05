@@ -19,7 +19,6 @@ class Homepage extends Component {
           <section className="pp-section section-showcase light-nav" data-anchor="page1">
             <div className="container">
               <header>
-                <span className="subheading">INVESTMENTS</span>
                 <h1>
                   <span>Koji is an early-stage</span>
                   <span>investment firm focused on</span>
