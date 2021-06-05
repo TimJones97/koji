@@ -27,16 +27,14 @@ const Listen = () => {
           </div>
           <hr/>
           <span className="subheading">ALL EPISODES</span>
-          <div class="episodes-sml">
+          <div className="episode-row">
             <Episode size="small"/>
             <Episode size="small"/>
             <Episode size="small"/>
-          </div>
-          <Episode size="large"/>
-          <div className="episode-lg">
             <Episode size="large"/>
           </div>
-          <div class="episodes-sml right">
+          <div className="episode-row">
+            <Episode size="large"/>
             <Episode size="small"/>
             <Episode size="small"/>
             <Episode size="small"/>
