@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React, { Component } from "react";
 import Footer from '../components/footer';
+import Episode from '../components/episode';
 import arrow from '../../static/img/general/arrow-down.svg';
 import homepage_01 from '../../static/img/home-page/Homepage_01.mp4';
 import homepage_02 from '../../static/img/home-page/Homepage_02.mp4';
 import hd_logo from '../../static/img/listen/high-definition-logo.svg';
-import hd_thumbnail from '../../static/img/listen/thumbnail01.svg';
 import hd_background from '../../static/img/home-page/hd-elements/high-definition-bg.jpg';
 import circle_red from '../../static/img/home-page/hd-elements/circle-red.svg';
 import circle_orange from '../../static/img/home-page/hd-elements/circle-orange.svg';
@@ -63,20 +63,8 @@ class Homepage extends Component {
               </header>
               <div className="container__episodes">
                 <span className="subheading">RECENT EPISODES</span>
-                <article className="episode">
-                  <figure className="episode-thumbnail">
-                    <div className="blur" />
-                    <img className="thumbnail" src={hd_thumbnail} />
-                  </figure>
-                  <span className="listen">Listen Now</span>
-                </article>
-                <article className="episode">
-                  <figure className="episode-thumbnail">
-                    <div className="blur" />
-                    <img className="thumbnail" src={hd_thumbnail} />
-                  </figure>
-                  <span className="listen">Listen Now</span>
-                </article>
+                <Episode/>
+                <Episode/>
               </div>
               <a className="arrow-down nav-link" data-menuanchor="page4" href="#page4">
                 <img src={arrow} />

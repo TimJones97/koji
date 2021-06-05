@@ -29,7 +29,7 @@ const Investments = () => {
           </div>
           <div className="right">
             <p>
-              Please complete the form below to get in contact with someone from our team. Alternatively, reach out directly on telegram @koji_capital
+              Please complete the form below to get in contact with someone from our team. Alternatively, reach out directly on telegram <a href="#">@koji_capital</a>
             </p>
             <form className="contact-form" action="https://formspree.io/f/mrgrprod" method="POST">
               <div className="form-item half">

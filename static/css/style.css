@@ -78,7 +78,7 @@ a {
 	text-decoration: none;
 	color: #fff;
 }
-input, textarea, button {
+input, textarea, button, span {
 	font-family: 'Helvetica';
 }
 a:hover {
@@ -167,6 +167,9 @@ nav .container {
 	display: inline-block;
 	margin-right: 20px;
 	color: #fff;
+}
+.nav-item:last-of-type {
+	margin-right: 0;
 }
 .nav-link {
 	font-family: 'Helvetica Light', sans-serif;
@@ -601,8 +604,8 @@ video.loaded {
 	position: relative;
 	display: inline-block;
 	width: 270px;
-	height: 310px;
-	border: 1px solid #601B0C;
+	height: 410px;
+	border: 1px solid var(--dark-red);
 	border-radius: 6px;
 	overflow: hidden;
 	transition: background 0.5s ease;
@@ -611,11 +614,45 @@ video.loaded {
 	transition: opacity 0.5s ease;
 }
 .episode .episode-thumbnail {
+	position: relative;
 	width: 100%;
 	height: 270px;
 	margin: 0;
 }
-/*Blur div*/
+.episode-info {
+	padding: 15px 15px 7px;
+}
+.episode-info .number,
+.episode-info .date,
+.episode-info .time {
+	display: block;
+	font-family: 'Helvetica', sans-serif;
+	font-size: 16px;
+	color: var(--orange);
+	margin-bottom: 10px;
+	margin-top: 0;
+}
+.episode-info .number,
+.episode-info .date {
+	margin-bottom: 5px;
+}
+.episode-info .heading {
+	font-family: 'Helvetica Bold', sans-serif;
+	font-size: 24px;
+	margin: 0px 0px 5px;
+	color: #fff;
+}
+
+/*MAKE DATE AND TIME ON SAME LINE*/
+.episode-info .date,
+.episode-info .time {
+	display: inline;
+}
+.episode-info .date + span {
+	color: var(--orange);
+}
+
+/*BLUR DIV*/
 .episode .episode-thumbnail .blur {
 	position: absolute;
 	top: 0;
@@ -629,9 +666,6 @@ video.loaded {
 	backdrop-filter: blur(5px);
 }
 .episode .episode-thumbnail img {
-	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 270px;
 }
@@ -652,12 +686,14 @@ video.loaded {
 	padding: 10px 15px;
 }
 .episode span.listen:after {
-	content: "\01F862";
+	content: "";
+	background: url("../img/listen/arrow-right.svg");
+	background-size: cover;
 	position: absolute;
 	right: 15px;
 	color: #fff;
-	font-size: 30px;
-	padding-bottom: 5px;
+	height: 20px;
+	width: 25px;
 }
 
 /*HOVER EFFECTS - BLUR*/
@@ -671,7 +707,7 @@ video.loaded {
 	opacity: 1.0;
 }
 .episode:hover {
-	background: #601B0C;
+	background: var(--dark-red);
 }
 
 /*FULL BG ANIMATION*/
@@ -835,7 +871,7 @@ section.contact .container .right {
 }
 .form-item input,
 .form-item textarea {
-	border: 2px solid #601B0C;
+	border: 2px solid var(--dark-red);
 	background: unset;
 	padding: 10px;
 	height: 40px;
@@ -1254,10 +1290,13 @@ section.contact-page .container {
 section.contact-page header h1 {
 	color: #fff;
 }
-section.contact-page .right p {
+section.contact-page .right p,
+section.contact-page .right p a {
 	font-size: 48px;
 	font-family: 'Helvetica Light', sans-serif;
 	color: #fff;
+}
+section.contact-page .right p {
 	margin-top: 60px;
 	margin-bottom: 0;
 }
@@ -1278,7 +1317,29 @@ section.listen {
 }
 .listen .container {
 	flex-direction: unset;
+	flex-wrap: wrap;
+	align-items: flex-start;
 	justify-content: space-between;
+	max-height: 100%;
+	height: 100%;
+}
+.episode-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	height: 100%;
+	margin-bottom: 80px;
+	width: 100%;
+}
+/*FOR THE SUBHEADING OUTSIDE THE LARGE EPISODE DIV*/
+.listen .subheading {
+	flex-basis: 100%;
+	margin-bottom: 36px;
+}
+/*FOR THE SUBHEADING INSIDE THE LARGE EPISODE DIV*/
+.listen .right-contain .subheading {
+	margin-bottom: 20px;
 }
 .listen .container header p {
 	font-size: 20px;
@@ -1286,60 +1347,150 @@ section.listen {
 	color: #fff;
 	line-height: 30px;
 }
-.episode-lg,
-.episode-lg .episode {
+.right-contain {
 	width: 630px;
 }
-.episode-lg .episode {
+/*Large episode styles*/
+.episode.large {
+	width: 630px;
 	height: 410px;
 	display: flex;
 	justify-content: flex-start;
 }
-.episode-lg .episode-thumbnail,
-.episode-lg .episode-thumbnail .blur,
-.episode-lg .episode-thumbnail .thumbnail {
+.episode.large .episode-thumbnail,
+.episode.large .episode-thumbnail .blur,
+.episode.large .episode-thumbnail .thumbnail {
 	width: 410px;
 	height: 410px;
 }
-.episode-lg .episode-info {
+.episode.large .episode-info {
 	width: 220px;
+	padding: 0;
 }
-.episode-lg .episode-info .details {
+.episode.large .episode-info .details {
 	padding: 20px 20px 15px;
-	border-bottom: 1px solid #601B0C;
+	border-bottom: 1px solid var(--dark-red);
 }
-.episode-lg .episode-info .number,
-.episode-lg .episode-info .date,
-.episode-lg .episode-info .time {
-	display: block;
-	font-family: 'Helvetica', sans-serif;
+.episode.large .episode-info .number,
+.episode.large .episode-info .date,
+.episode.large .episode-info .time {
 	font-size: 16px;
-	color: var(--orange);
 	margin-bottom: 10px;
 	margin-top: 0;
 }
-.episode-lg .episode-info .date {
+.episode.large .episode-info .number,
+.episode.large .episode-info .date {
 	margin-bottom: 5px;
 }
-.episode-lg .episode-info .heading {
-	font-family: 'Helvetica Bold', sans-serif;
-	font-size: 24px;
+.episode.large .episode-info .heading {
 	margin: 0px 0px 25px;
-	color: #fff;
 }
-.episode-lg .episode-info .description {
+.episode-info .description {
 	padding: 15px 20px;
-	border-bottom: 1px solid #601B0C;
+	border-bottom: 1px solid var(--dark-red);
 }
-.episode-lg .episode-info .description p {
+.episode .description p {
 	font-family: 'Helvetica', sans-serif;
 	font-size: 16px;
 	color: #fff;
 	margin: 0;
 }
+.episode.large .episode-info .listen {
+	padding: 10px 20px;
+	display: inline-flex;
+	align-items: center;
+	height: auto;
+}
 
-.listen footer {
+/*HORIZONTAL LINE*/
 
+.listen hr {
+	border: 0;
+	border-top: 1px solid var(--dark-red);
+	flex-basis: 100%;
+	margin: 60px 0px 35px;
+}
+
+/*-----SMALLER EPISODES CONTAINER-----*/
+
+.episodes-sml {
+	margin-bottom: 80px;
+}
+.episodes-sml .episode {
+	margin-right: 90px;
+}
+
+/*-----SMALL EPISODES CONTAINER RIGHT ALIGNED-----*/
+
+.episodes-sml.right .episode {
+	margin-left: 90px;
+	margin-right: 0px;
+}
+
+/*--------------READ PAGE--------------*/
+
+section.read {
+	opacity: 1;
+	background: var(--brown);
+	padding-top: 230px;
+	height: 100%;
+}
+.read .container {
+	flex-direction: unset;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	max-height: 100%;
+	height: 100%;
+}
+.read header {
+	width: 750px;
+}
+.read .container header h1 {
+	font-family: 'Helvetica Light', sans-serif;
+	font-size: 48px;
+	color: #fff;
+}
+/*FOR THE SUBHEADING OUTSIDE THE LARGE EPISODE DIV*/
+.read .subheading {
+	flex-basis: 100%;
+	margin-bottom: 36px;
+}
+/*FOR THE SUBHEADING INSIDE THE LARGE EPISODE DIV*/
+.read .right-contain .subheading {
+	margin-bottom: 20px;
+}
+
+/*HORIZONTAL LINE*/
+
+.read hr {
+	border: 0;
+	border-top: 1px solid var(--dark-red);
+	flex-basis: 100%;
+	margin: 60px 0px 35px;
+}
+.episode.read .heading {
+	margin-bottom: 25px;
+}
+.episode.read .episode-info {
+	padding-bottom: 15px;
+}
+.episode.read .description {
+	height: 230px;
+	padding: 15px;
+	border-top: 1px solid var(--dark-red);
+}
+.episode.read span.listen {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 50px;
+	border-top: 1px solid var(--dark-red);
+}
+
+.episodes-sml.right {
+	margin-top: 80px;
+	margin-bottom: 0px;
 }
 
 /*--------------MEDIA QUERIES--------------*/
@@ -1356,7 +1507,7 @@ section.listen {
 @media only screen and (max-height: 1000px){
 
 	/*HIGHDEF*/
-	.section-showcase.highdef .highdef-logo {
+	/*.section-showcase.highdef .highdef-logo {
 		width: 284px;
 	}
 	.section-showcase.highdef header h1 span, 
@@ -1371,11 +1522,11 @@ section.listen {
 	.episode .episode-thumbnail .blur,
 	.episode .episode-thumbnail img {
 		height: 236px;
-	}
+	}*/
 }
 @media only screen and (max-height: 900px){
 	/*HIGHDEF*/
-	.section-showcase.highdef .highdef-logo {
+	/*.section-showcase.highdef .highdef-logo {
 		width: 248px;
 	}
 	.section-showcase.highdef header h1 span, 
@@ -1390,7 +1541,7 @@ section.listen {
 	.episode .episode-thumbnail .blur,
 	.episode .episode-thumbnail img {
 		height: 206px;
-	}
+	}*/
 
 	/*THESIS PAGE*/
 	.thesis-page header h1 {

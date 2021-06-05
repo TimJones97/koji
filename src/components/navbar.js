@@ -13,14 +13,14 @@ class Navbar extends Component {
     return (
       <nav className={this.props.background}>
         <div className="container">
-          <a className="logo" href="/koji/">
+          <a className="logo" href="/">
             <img className="light" src={logo_light} />
             <img className="dark" src={logo_dark} />
           </a>
           <div className="right-nav">
             <ul>
               <li className="nav-item">
-                <a className="nav-link go-thesis" href="/about">About</a>
+                <a className="nav-link go-thesis" href="/">About</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/investments">Investments</a>
