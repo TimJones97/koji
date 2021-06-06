@@ -131,8 +131,11 @@ function scaleCircleNav(){
 		navScale = (width / maxVHeight) * 0.6;
 	}
 	// Anything smaller than this is fine at 1.0 scale
-	else if (height < maxVHeight){
+	else if (height < maxVHeight && !isMobile()){
 		navScale = 1.0;
+	}
+	else {
+		navScale = height / maxVHeight;
 	}
 
 	// Add the new scale and rotation

@@ -136,6 +136,9 @@ section.active {
 .container.scale * {
 	transform: scale3d(1.0, 1.0, 1.0);
 }
+.mobile {
+	display: none;
+}
 
 /*--------------NAV--------------*/
 
@@ -301,7 +304,7 @@ menu.mobile-nav.display {
 	font-size: 48px;
 	transition: background 0.5s ease;
 }
-.mobile-nav__items .socials {
+.mobile-nav__items .mobile-socials {
 	padding: 0px 20px;
 	height: 85px;
 	display: flex;
@@ -487,7 +490,6 @@ section.anim-down header {
 	}
 }
 
-
 span.subheading {
 	font-family: 'Helvetica Bold', sans-serif;
 	font-size: 16px;
@@ -503,10 +505,17 @@ span.subheading {
 	font-size: 72px;
 	margin: unset;
 }
-.section-showcase header h1 span {
+.section-showcase header h1,
+.section-showcase header span {
 	position: relative;
 	display: block;
 	color: var(--orange);
+	font-family: 'Helvetica Light', sans-serif;
+	font-weight: 300;
+}
+.section-showcase header span.inline {
+	display: inline;
+	font-size: 72px;
 }
 a.link-white {
 	position: relative;
@@ -523,6 +532,7 @@ a.link-white {
 	background: transparent;
 	border-radius: 50%;
 	cursor: pointer;
+	transition: all 0.5s ease;
 }
 .circle-btn:before {
 	content: "\01F862";
@@ -533,8 +543,20 @@ a.link-white {
 	color: #fff;
 	font-size: 40px;
 	padding-bottom: 5px;
+	transition: all 0.5s ease;
 }
-video {
+
+/*HOVER EFFECTS*/
+a.link-white:hover > .circle-btn,
+.circle-btn:hover {
+	background: #fff;
+}
+a.link-white:hover > .circle-btn:before,
+.circle-btn:hover:before {
+	color: var(--brown);
+}
+
+.section-showcase video {
     position: absolute;
     top: 50%;
     right: 0;
@@ -545,7 +567,7 @@ video {
     opacity: 0;
     transition: all 0.5s ease;
 }
-video.loaded {
+.section-showcase video.loaded {
     opacity: 1;
     transform: translate(0%, -50%) scale3d(1.0, 1.0, 1.0);
 }
@@ -602,8 +624,8 @@ video.loaded {
 }
 .section-showcase.highdef header .circle-btn {
 	right: -80px;
-	height: 64px;
-	width: 64px;
+	height: 65px;
+	width: 65px;
 }
 .episodes {
 	margin-top: 30px;
@@ -836,8 +858,9 @@ section.contact header {
 	top: 0;
 }
 section.contact header h1 {
-	font-size: 48px;
 	font-family: 'Helvetica Bold', sans-serif;
+	font-size: 48px;
+	color: #fff;
 }
 section.contact > .container:first-of-type {
 	display: flex;
@@ -953,16 +976,16 @@ div[id^=__lpform_] {
 
 footer {
 	width: 100%;
-	height: 200px;
 	background: #000;
 	overflow: hidden;
-	padding-top: 40px;
+	padding: 50px 0 40px;
 }
 footer .container {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
 	flex-direction: unset;
+	height: 100%;
 }
 footer .footer-logo {
 	width: 75px;
@@ -1017,6 +1040,13 @@ footer .contact-links span:after {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	transition: all 0.5s ease;
+}
+
+/*HOVER EFFECTS*/
+footer .contact-links span:hover:after {
+	color: #000;
+	background: #fff;
 }
 
 /*SITEMAP AND SOCIAL LINKS*/
@@ -1067,7 +1097,7 @@ body.show-thesis #homepage-anim > section:first-of-type header {
 	animation: slideOutLeft 4s ease forwards;
 }
 body.show-thesis .circle-nav:not(.thesis) {
-	animation: slideOutLeft 5s ease forwards;
+	animation: slideOutLeftNav 5s ease forwards;
 }
 @keyframes slideOutLeft {
 	0% {
@@ -1079,6 +1109,19 @@ body.show-thesis .circle-nav:not(.thesis) {
 	}
 	100% {
 		transform: translateX(-100vw);
+		opacity: 0;
+	}
+}
+@keyframes slideOutLeftNav {
+	0% {
+		right: -10px;
+		opacity: 1;
+	}
+	20% {
+		opacity: 0;
+	}
+	100% {
+		right: 100vw;
 		opacity: 0;
 	}
 }
@@ -1199,6 +1242,7 @@ body.hide-thesis #homepage-anim {
 }
 .thesis-page header h1 {
 	font-size: 48px;
+	color: #fff;
 }
 .thesis-page header h1 span {
 	color: #fff;
@@ -1387,9 +1431,6 @@ section.listen {
 }
 .listen header {
 	width: 560px;
-}
-.listen .mobile {
-	display: none;
 }
 .listen .container {
 	flex-direction: unset;
@@ -1704,6 +1745,10 @@ section.read {
 	.arrow-down {
 		display: none;
 	}
+	/*DISPLAY ELEMENTS ONLY ON MOBILE WITH THIS CLASS*/
+	.mobile {
+		display: block !important;
+	}
 
 	/*NAV*/
 	nav {
@@ -1721,7 +1766,8 @@ section.read {
 
 	/*HOMEPAGE SECTIONS*/
 	.section-showcase header h1, 
-	.section-showcase header a {
+	.section-showcase header a,
+	.section-showcase header span.inline {
 		font-size: 48px;
 	}
 	.section-showcase .pp-tableCell {
@@ -1839,6 +1885,7 @@ section.read {
 	section.contact .container .right {
 		margin-right: 0;
 		max-width: 100%;
+		min-width: 100%;
 	}
 	.contact-form {
 		padding-top: 0;
@@ -1847,7 +1894,8 @@ section.read {
 
 	/*THESIS PAGE*/
 	#thesis-anim .section-showcase header h1, 
-	#thesis-anim .section-showcase header a {
+	#thesis-anim .section-showcase header a,
+	#thesis-anim .section-showcase header span {
 		font-size: 32px;
 	}
 	.thesis-page header p {
@@ -1866,7 +1914,7 @@ section.read {
 	.circle-nav.thesis {
 		display: none;
 	}
-	.thesis-page video {
+	.section-showcase.thesis-page video {
 		top: 30px;
 		left: 50%;
 		min-height: unset;
@@ -1908,9 +1956,6 @@ section.read {
 	}
 	.listen .subheading {
 		color: #fff;
-	}
-	.mobile {
-		display: block;
 	}
 	.episode.mobile {
 		display: flex;
@@ -2026,14 +2071,11 @@ section.read {
 	}
 
 	/*FOOTER*/
-	footer {
-		height: 260px;
-	}
 	footer .contact-links {
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
-		width: 300px;
+		width: 280px;
 	}
 	footer .contact-links span {
     	font-size: 24px;
@@ -2041,4 +2083,148 @@ section.read {
 	footer .contact-links span:first-of-type {
 		margin-bottom: 20px;
 	}
+
+	/*CONTACT*/
+	section.contact header h1 {
+		font-size: 32px;
+	}
+	.contact .container {
+		max-height: unset;
+		height: unset;
+	}
+	section.contact .container .socials {
+		display: none !important;
+	}
+	.contact-form {
+		padding-top: 20px;
+	}
+}
+
+@media only screen and (max-width: 767px){
+	/*NAV*/
+	.mobile-nav__items .social-link {
+		margin-right: 40px;
+	}
+
+	/*FULL HOMEPAGE SECTIONS*/
+	section.section-showcase > .container:first-of-type {
+		max-height: unset;
+	}
+	.section-showcase header h1, 
+	.section-showcase header a,
+	.section-showcase header span.inline {
+		font-size: 24px !important;
+	}
+	span.subheading {
+		margin-bottom: 10px;
+		font-size: 12px;
+	}
+	.section-showcase.highdef header .circle-btn,
+	.section-showcase.about header .circle-btn,
+	.circle-btn {
+		width: 25px;
+		height: 25px;
+		right: -30px;
+		bottom: 0;
+	}
+	.section-showcase.about header .circle-btn:before,
+	.circle-btn:before {
+		font-size: 15px;
+	}
+	.section-showcase video {
+		min-height: 100%;
+		min-height: unset;
+		height: 100vh;
+	}
+
+	/*ABOUT*/
+	.section-showcase.about header h1 span, 
+	.section-showcase.about header a.link-white {
+		font-size: 24px;
+	}
+	.section-showcase.about header h1 span {
+		display: inline;
+	}
+
+	/*HIGHDEF*/
+	.section-showcase.highdef header h1 span, 
+	.section-showcase.highdef header a.link-white {
+		font-size: 24px;
+	}
+	.section-showcase.highdef header span {
+		display: block;
+	}
+	.section-showcase.highdef .highdef-logo {
+		width: 200px;
+	}
+	.section-showcase.highdef header {
+		width: 100%;
+	}
+	.section-showcase.highdef .episodes {
+		display: none;
+	}
+	.section-showcase.highdef header a.link-white {
+		margin-top: 10px;
+	}
+	.highdef-bg {
+	    transform: scale3d(0.3, 0.3, 1) !important;
+	}
+
+	/*CONTACT*/
+	.contact .container {
+		max-height: unset;
+		height: unset;
+	}
+	.socials {
+		/*Override .mobile class display: block*/
+		display: flex !important;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		width: 100%;
+		padding-top: 30px !important;
+	}
+	.socials .title {
+		flex-basis: 100%;
+	}
+	.socials a {
+		flex-basis: 50%;
+	}
+	.form-item label {
+		font-size: 12px;
+	}
+
+	/*THESIS PAGE*/
+	.thesis-page header {
+		width: 100%;
+	}
+	.thesis-page header p {
+		line-height: 22px;
+	}
+	.section-showcase.thesis-page video {
+		height: auto;
+	}
+	#thesis-anim .section-showcase header h1, 
+	#thesis-anim .section-showcase header a, 
+	#thesis-anim .section-showcase header span {
+		font-size: 24px;
+	}
+
+	/*FOOTER*/
+	footer .container {
+		flex-direction: column;
+		height: 100% !important;
+	}
+	footer .footer-logo {
+		padding-bottom: 25px;
+	}
+	footer .collaborate-links {
+		flex-basis: 100%;
+	}
+	footer .site-links {
+		margin-top: 20px;
+	}
+}
+@media only screen and (max-width: 479px){
+
+	
 }
