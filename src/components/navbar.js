@@ -1,5 +1,8 @@
 /* eslint-disable */
 import React, { Component } from "react";
+import { Link } from "gatsby"
+
+// Icon assets
 import logo_light from '../../static/img/general/logo-light.svg';
 import logo_dark from '../../static/img/general/logo-dark.svg';
 import close_btn from '../../static/img/general/close.svg';
@@ -13,7 +16,7 @@ class Navbar extends Component {
     return (
       <nav className={this.props.background}>
         <div className="container">
-          <a className="logo" href="/">
+          <a className="logo" href={(this.props.home ? "#go-home" : "/")}>
             <img className="light" src={logo_light} />
             <img className="dark" src={logo_dark} />
           </a>
@@ -69,7 +72,7 @@ class Navbar extends Component {
               <li className="nav-item">
               </li>
             </ul>
-            <div className="socials">
+            <div className="mobile-socials">
               <a className="social-link" href="#">
                 <picture>
                   <img src={discourse_icon}/>

@@ -8,7 +8,7 @@ class Episode extends Component {
     return (
       <>
         {(this.props.size === 'small') &&
-          <article className={"episode " + (this.props.read && 'read')}>
+          <article className={"episode " + (this.props.read ? 'read' : '') + (this.props.mobile ? ' mobile' : '')}>
             <div className="episode-info">
               <div className="details">
                 <span className="number">Article #01</span>
@@ -16,6 +16,9 @@ class Episode extends Component {
                 <p className="date">December 15, 2020</p>
                 <span>&nbsp;|&nbsp;</span>
                 <p className="time">45 mins</p>
+                {!(this.props.read) &&
+                  <span className="listen mobile">Listen Now</span>
+                }
               </div>
             </div>
             {(this.props.read) 
@@ -30,7 +33,7 @@ class Episode extends Component {
               : <>
                   <figure className="episode-thumbnail">
                     <div className="blur" />
-                      <img className="thumbnail" src={read_thumbnail} />
+                    <img className="thumbnail" src={hd_thumbnail} />
                   </figure>
                   <span className="listen">Listen Now</span>
                 </>
@@ -38,7 +41,7 @@ class Episode extends Component {
           </article>
         }
         {(this.props.size === 'large') &&
-          <article className="episode large">
+          <article className={"episode large " + (this.props.mobile ? 'mobile' : '')}>
             <figure className="episode-thumbnail">
               <div className="blur" />
               {(this.props.read) 

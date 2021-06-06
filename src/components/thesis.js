@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import Footer from '../components/footer'
 import Arrow from '../../static/img/general/arrow-down.svg';
+// Thesis videos
 import Thesis_01 from '../../static/img/thesis/Thesis_01.mp4';
 import Thesis_02 from '../../static/img/thesis/Thesis_02.mp4';
 import Thesis_03 from '../../static/img/thesis/Thesis_03.mp4';

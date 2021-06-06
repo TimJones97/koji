@@ -3,12 +3,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import "/static/css/style.css";
-import Favicon from "/static/img/general/favicon.png";
-import Logo_OG from "/static/img/general/og-image.jpg";
-import Logo_dark from "/static/img/general/logo-dark.svg";
-import Logo_light from "/static/img/general/logo-light.svg";
+import favicon from "/static/img/general/favicon.png";
+import logo_OG from "/static/img/general/og-image.jpg";
+import logo_dark from "/static/img/general/logo-dark.svg";
+import logo_light from "/static/img/general/logo-light.svg";
 
-const Header = ({ seo, overflow }) => {
+const Header = ({ seo, overflow, black }) => {
   // Merge default and page-specific SEO values
   const fullSeo = { ...seo };
   const imageUrl =
@@ -36,20 +36,20 @@ const Header = ({ seo, overflow }) => {
       link={[
         {
           rel: "icon",
-          href: {Favicon},
+          href: {favicon},
         }, {
           rel: "image",
-          href: {Logo_OG}
+          href: {logo_OG}
         }, {
           rel: "image",
-          href: {Logo_dark}
+          href: {logo_dark}
         }, {
           rel: "image",
-          href: {Logo_light}
+          href: {logo_light}
         },
         {
           rel: "image",
-          href: {Logo_light}
+          href: {logo_light}
         }
       ]}
       meta={getMetaTags()}
@@ -67,8 +67,24 @@ const Header = ({ seo, overflow }) => {
       {/*If the page is not the homepage or thesis*/}
       {overflow &&
         <style type="text/css">{`
+          html {
+            overflow: initial;
+            overflow-x: visible;
+          }
           body {
-            overflow: overlay;
+            overflow-y: scroll;
+            overflow-x: hidden;
+          }
+        `}</style>
+      }
+      {/*If on the contact page/section, make the scrollbar and body background black*/}
+      {black &&
+        <style type="text/css">{`
+          body {
+            background: #000;
+          }
+          ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 1);
           }
         `}</style>
       }

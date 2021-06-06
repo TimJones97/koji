@@ -9,7 +9,7 @@ import Scripts from '../components/scripts'
 const Read = () => {
   return (
     <>
-      <Header overflow="true"/>
+      <Header overflow/>
       <Navbar background="light brown-bg"/>
       <section className="read">
         <div className="container">
@@ -19,28 +19,32 @@ const Read = () => {
               Curated writing and research from the Koji team and other collaborators.
             </h1>
           </header>
+          <hr className="mobile"/>
           <div className="right-contain">
             <span className="subheading">MOST RECENT ARTICLE</span>
             <Episode size="large" read/>
+            <Episode size="small" mobile read/>
           </div>
           <hr/>
           <span className="subheading">COMPLETE LISTING</span>
           <div className="episode-row">
             <Episode size="small" read/>
             <Episode size="small" read/>
-            <Episode size="large" read/>
             <Episode size="small" read/>
+            <Episode size="large" read/>
+            <Episode size="small" mobile read/>
           </div>
           <div className="episode-row">
+            <Episode size="small" read/>
+            <Episode size="small" read/>
+            <Episode size="small" read/>
+            <Episode size="small" mobile read/>
             <Episode size="large" read/>
-            <Episode size="small" read/>
-            <Episode size="small" read/>
-            <Episode size="small" read/>
           </div>
         </div>
       </section>
       <Footer/>
-      <Scripts/>
+      <Scripts nestedLink/>
     </>
   )
 }

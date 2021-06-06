@@ -2,6 +2,9 @@
 import React, { Component } from "react";
 import Footer from '../components/footer';
 import Episode from '../components/episode';
+import Socials from '../components/socials';
+
+// Image and video assets
 import arrow from '../../static/img/general/arrow-down.svg';
 import homepage_01 from '../../static/img/home-page/Homepage_01.mp4';
 import homepage_02 from '../../static/img/home-page/Homepage_02.mp4';
@@ -16,14 +19,14 @@ class Homepage extends Component {
     return (
       <>
         <main id="homepage-anim">
-          <section className="pp-section section-showcase light-nav" data-anchor="page1">
+          <section className="pp-section banner section-showcase light-nav" data-anchor="page1">
             <div className="container">
               <header>
                 <h1>
                   <span>Koji is an early-stage</span>
-                  <span>investment firm focused on</span>
+                  <span>investment firm building</span>
                 </h1>
-                <a className="link-white go-thesis" data-menuanchor="thesis-page1" href="#thesis-page1">decentralised finance<button role="button" className="circle-btn" /></a>
+                <span className="inline">the </span><a className="link-white go-thesis" data-menuanchor="thesis-page1" href="#thesis-page1">Global Financial Stack<button role="button" className="circle-btn" /></a>
               </header>
               <a className="arrow-down nav-link" data-menuanchor="page2" href="#page2">
                 <img src={arrow} />
@@ -40,7 +43,7 @@ class Homepage extends Component {
                 <h1>
                   <span>We believe blockchain technology is&nbsp;</span><span>shaking the foundations of traditional&nbsp;</span><span>internet infrastructure, clearing way for&nbsp;</span><span>a new era of capitalism<span>
                     </span></span></h1>
-                <a className="link-white" href="#">View all investments<button role="button" className="circle-btn" /></a>
+                <a className="link-white" href="/investments">Read More<button role="button" className="circle-btn" /></a>
               </header>
               <a className="arrow-down nav-link" data-menuanchor="page3" href="#page3">
                 <img src={arrow} />
@@ -54,16 +57,16 @@ class Homepage extends Component {
             <div className="container">
               <header>
                 <img className="highdef-logo" src={hd_logo} />
-                <span className="subheading">ABOUT</span>
+                <span className="subheading">LISTEN</span>
                 <h1>
                   <span>Illuminating the motives&nbsp;</span><span>behind the person.</span>
                 </h1>
-                <a className="link-white">Listen to their journeys<button role="button" className="circle-btn" /></a>
+                <a className="link-white" href="/listen">Listen to their journeys<button role="button" className="circle-btn" /></a>
               </header>
-              <div className="container__episodes">
+              <div className="episodes">
                 <span className="subheading">RECENT EPISODES</span>
-                <Episode/>
-                <Episode/>
+                <Episode size="small"/>
+                <Episode size="small"/>
               </div>
               <a className="arrow-down nav-link" data-menuanchor="page4" href="#page4">
                 <img src={arrow} />
@@ -78,7 +81,7 @@ class Homepage extends Component {
               <img className="circle-white" src={circle_white} />
             </div>
           </section>
-          <section className="pp-section pp-scrollable section-showcase contact light-nav contrast-nav" data-anchor="page4">
+          <section className="pp-section pp-scrollable section-showcase contact light-nav contrast-nav hide-circles-mobile" data-anchor="page4">
             <div className="container">
               <div className="left">
                 <header>
@@ -87,13 +90,7 @@ class Homepage extends Component {
                     Get in touch.
                   </h1>
                 </header>
-                <div className="socials">
-                  <p className="title">SOCIALS</p>
-                  <a href="#">AngelList</a>
-                  <a href="#">LinkedIn</a>
-                  <a href="#">Telegram</a>
-                  <a href="#">Twitter</a>
-                </div>
+                <Socials/>
               </div>
               <div className="right">
                 <form className="contact-form" action="https://formspree.io/f/mrgrprod" method="POST">
@@ -124,6 +121,7 @@ class Homepage extends Component {
                   <button type="submit">SEND</button>
                 </form>
               </div>
+              <Socials mobile/>
             </div>
             <Footer />
           </section>

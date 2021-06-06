@@ -2,33 +2,35 @@
 import React from 'react';
 import Header from '../components/header';
 import Navbar from '../components/navbar'
+import Socials from '../components/socials';
 import Footer from '../components/footer'
 import Scripts from '../components/scripts'
 
 const Investments = () => {
   return (
     <>
-      <Header overflow="true"/>
+      <Header overflow black/>
       <Navbar background="light brown-bg"/>
       <section className="contact contact-page">
         <div className="container">
           <div className="left">
-            <header>
-              <span className="subheading">CONTACT</span>
-              <h1>
-                Get in touch.
-              </h1>
-            </header>
-            <div className="socials">
-              <p className="title">SOCIALS</p>
-              <a href="#">AngelList</a>
-              <a href="#">LinkedIn</a>
-              <a href="#">Telegram</a>
-              <a href="#">Twitter</a>
+            <div className="split-mobile">
+              <header>
+                <span className="subheading">CONTACT</span>
+                <h1>
+                  Get in touch.
+                </h1>
+              </header>
+              <Socials/>
+            </div>
+            <div className="split-mobile help">
+              <p>
+                Please complete the form below to get in contact with someone from our team. Alternatively, reach out directly on telegram <a href="#">@koji_capital</a>
+              </p>
             </div>
           </div>
           <div className="right">
-            <p>
+            <p className="help-text">
               Please complete the form below to get in contact with someone from our team. Alternatively, reach out directly on telegram <a href="#">@koji_capital</a>
             </p>
             <form className="contact-form" action="https://formspree.io/f/mrgrprod" method="POST">
@@ -62,7 +64,7 @@ const Investments = () => {
         </div>
         <Footer />
       </section>
-      <Scripts/>
+      <Scripts nestedLink/>
     </>
   )
 }

@@ -10,7 +10,7 @@ import hd_logo from '../../static/img/listen/high-definition-logo.svg';
 const Listen = () => {
   return (
     <>
-      <Header overflow="true"/>
+      <Header overflow/>
       <Navbar background="light brown-bg"/>
       <section className="listen">
         <div className="container">
@@ -21,9 +21,11 @@ const Listen = () => {
               High Definition illuminates the motives within these stories, that drive people to achieve great things. Pretences are left at the door. Truth rises to the surface with refreshing transparency. Unglamorous. Unvarnished. Unscrutinised. Captured in, High Definition.
             </p>
           </header>
+          <hr className="mobile"/>
           <div className="episode-lg">
             <span className="subheading">MOST RECENT EPISODE</span>
             <Episode size="large"/>
+            <Episode size="small" mobile/>
           </div>
           <hr/>
           <span className="subheading">ALL EPISODES</span>
@@ -32,17 +34,19 @@ const Listen = () => {
             <Episode size="small"/>
             <Episode size="small"/>
             <Episode size="large"/>
+            <Episode size="small" mobile/>
           </div>
           <div className="episode-row">
+            <Episode size="small"/>
+            <Episode size="small"/>
+            <Episode size="small"/>
+            <Episode size="small" mobile/>
             <Episode size="large"/>
-            <Episode size="small"/>
-            <Episode size="small"/>
-            <Episode size="small"/>
           </div>
         </div>
       </section>
-      <Footer />
-      <Scripts/>
+      <Footer/>
+      <Scripts nestedLink/>
     </>
   )
 }

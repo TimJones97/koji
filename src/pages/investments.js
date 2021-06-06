@@ -5,17 +5,26 @@ import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import Scripts from '../components/scripts'
 
+// Investment logos
+import transak_logo from '../../static/img/investments/transak.svg';
+import monk_logo from '../../static/img/investments/monk.svg';
+import glimpse_logo from '../../static/img/investments/glimpse.svg';
+import maple_logo from '../../static/img/investments/maple.svg';
+import lao_logo from '../../static/img/investments/lao.svg';
+import consensys_logo from '../../static/img/investments/consensys.svg';
+import flamingo_logo from '../../static/img/investments/flamingo.svg';
+
 const Investments = () => {
   return (
     <>
-      <Header overflow="true"/>
+      <Header overflow black/>
       <Navbar background="light black-bg"/>
       <section className="investments">
         <div className="container">
           <span className="subheading">INVESTMENTS</span>
           <div className="investment">
             <picture>
-              <img src="/img/investments/transak.svg"/>
+              <img src={transak_logo}/>
             </picture>
             <p>Transak</p>
             <p>20XX partnership.</p>
@@ -23,7 +32,7 @@ const Investments = () => {
           </div>
           <div className="investment">
             <picture>
-              <img src="/img/investments/monk.svg"/>
+              <img src={monk_logo}/>
             </picture>
             <p>Monk</p>
             <p>20XX partnership.</p>
@@ -31,7 +40,7 @@ const Investments = () => {
           </div>
           <div className="investment">
             <picture>
-              <img src="/img/investments/glimpse.svg"/>
+              <img src={glimpse_logo}/>
             </picture>
             <p>Glimpse Protocol</p>
             <p>20XX partnership.</p>
@@ -39,7 +48,7 @@ const Investments = () => {
           </div>
           <div className="investment">
             <picture>
-              <img src="/img/investments/maple.svg"/>
+              <img src={maple_logo}/>
             </picture>
             <p>Maple</p>
             <p>20XX partnership.</p>
@@ -47,7 +56,7 @@ const Investments = () => {
           </div>
           <div className="investment">
             <picture>
-              <img src="/img/investments/lao.svg"/>
+              <img src={lao_logo}/>
             </picture>
             <p>The LAO</p>
             <p>20XX partnership.</p>
@@ -55,7 +64,7 @@ const Investments = () => {
           </div>
           <div className="investment">
             <picture>
-              <img src="/img/investments/consensys.svg"/>
+              <img src={consensys_logo}/>
             </picture>
             <p>Consensys</p>
             <p>20XX partnership.</p>
@@ -63,7 +72,7 @@ const Investments = () => {
           </div>
           <div className="investment">
             <picture>
-              <img src="/img/investments/flamingo.svg"/>
+              <img src={flamingo_logo}/>
             </picture>
             <p>Flamingo</p>
             <p>20XX partnership.</p>
@@ -72,7 +81,7 @@ const Investments = () => {
         </div>
         <Footer />
       </section>
-      <Scripts/>
+      <Scripts nestedLink/>
     </>
   )
 }

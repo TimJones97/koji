@@ -11,7 +11,7 @@ const Index = () => {
   return (
     <>
       <Header/>
-      <Navbar background="light"/>
+      <Navbar background="light" home/>
       <CircleNav location="home"/>
       <Homepage/>
       <CircleNav location="thesis"/>

@@ -1,13 +1,16 @@
 /* eslint-disable */
 import React, { Component } from "react";
 
+// Footer Koji light logo
+import footer_logo from '../../static/img/general/logo-light.svg';
+
 class Footer extends Component {
   render() {
     return (
       <>
         <footer>
           <div className="container">
-            <img className="footer-logo" src="/img/general/logo-light.svg" />
+            <img className="footer-logo" src={footer_logo} />
             <div className="footer-group">
               <div className="collaborate-links">
                 <p>Want to collaborate with us?</p>
@@ -15,10 +18,10 @@ class Footer extends Component {
               </div>
               <div className="contact-links">
                 <a href="#">
-                  Contact Us
+                  <span>Contact Us</span>
                 </a>
                 <a href="#">
-                  Subscribe for Updates
+                  <span>Subscribe for Updates</span>
                 </a>
               </div>
             </div>
