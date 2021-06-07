@@ -360,7 +360,7 @@ function truncateEpisodeText(){
 }
 function setThesisMobileStyles(){
 	// If the thesis-anim element exists and is not hidden
-	if($('#thesis-anim').length && !$('#thesis-anim').prop('hidden')){
+	if($('#thesis-anim').length && $('body').hasClass('show-thesis')){
 		if(isMobile()){
 			// Make body overflow scrollable
 			$('body').addClass('scroll');
@@ -368,7 +368,7 @@ function setThesisMobileStyles(){
 			// without waiting for animations
 			$('#thesis-anim section').addClass('active');
 			// Make nav permanently brown
-			$('nav').addClass('brown-bg').addClass('light');
+			$('nav').addClass('brown-bg').addClass('light').removeClass('dark');
 		}
 		// Remove styles if window resized from mobile
 		// to desktop
@@ -380,7 +380,8 @@ function setThesisMobileStyles(){
 			$('nav').removeClass('brown-bg');
 		}
 	}
-	if($('#thesis-anim').length){
+	// If the thesis is hidden, remove styles
+	if($('#thesis-anim').length && !$('body').hasClass('show-thesis')){
 		$('body').removeClass('scroll');
 		$('#thesis-anim section').removeClass('active');
 		// Make first section active
@@ -392,10 +393,10 @@ function setThesisMobileStyles(){
 // to the inner viewport height to prevent hidden text
 function setSectionHeightMobile(){
 	if(isMobile()){
-		$('#homepage-anim').css('height', $(window).innerHeight() + 'px');
+		$('#homepage-anim section').css('height', $(window).innerHeight() + 'px');
 	}
 	else {
-		$('#homepage-anim').css('height', 'unset');
+		$('#homepage-anim section').css('height', 'unset');
 	}
 }
 $(window).resize(function(){
