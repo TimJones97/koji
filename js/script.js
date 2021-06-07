@@ -358,7 +358,7 @@ $(window).resize(function(){
 		$('.mobile-nav').removeClass('display');
 	}
 });
-$(document).ready(function() {
+document.addEventListener( "DOMContentLoaded", () => {
 	scaleCircleNav();
 	scrollContactSection();
 	goHome();
