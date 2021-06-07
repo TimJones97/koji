@@ -11,6 +11,12 @@ function changeNavColor(){
 		// If the active section slide has light-nav class,
 		// make the nav elements white
 		if($(this).hasClass('active')){
+			if ($(this).hasClass('contrast-nav-yellow')){
+				$('nav').addClass('yellow-bg');
+			}
+			else {
+				$('nav').removeClass('yellow-bg');
+			}
 			if ($(this).hasClass('contrast-nav')){
 				$('nav').addClass('black-bg');
 			}
@@ -179,9 +185,6 @@ function goThesis(){
 		// Add 30 degrees to nav for thesis circles
 		navRotation = 30;
 
-		// Rotate nav to start position
-		$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
-
 		// Make the thesis page visible 
 		$('#thesis-anim').removeAttr('hidden');
 
@@ -189,6 +192,10 @@ function goThesis(){
 		// by scrolling on the homepage
 		setTimeout(function(){
 			$('.circle-nav.thesis .three.nav-link').addClass('active');
+
+			// Rotate nav to start position
+			$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
+
 			setActiveCircle();
 		}, 50);		
 
@@ -344,16 +351,15 @@ function truncateEpisodeText(){
 }
 $(window).resize(function(){
 	scaleCircleNav();
-	scaleHighdefBackground();
+	// scaleHighdefBackground();
 	hideCircleNavMobile();
 	if(!isMobile()){
 		$('.circle-nav').removeClass('hide');
 		$('.mobile-nav').removeClass('display');
 	}
 });
-$(document).ready(function() {
+document.addEventListener( "DOMContentLoaded", () => {
 	scaleCircleNav();
-	scaleHighdefBackground();
 	scrollContactSection();
 	goHome();
 	goThesis();
@@ -363,13 +369,15 @@ $(document).ready(function() {
 	location.hash = '';
 
 	// Only initiate pagePiling if on the index page
-	if(location.pathname == '/'){
+	// (change to '/' when in production)
+	if(location.pathname == '/koji/'){
+	// if(location.pathname == '/'){
 		initHomepagePagepiling();
 	}
 
-	if(location.pathname == '/listen' || location.pathname == '/read'){
-		truncateEpisodeText();
-	}
+	// if(location.pathname == '/listen' || location.pathname == '/read'){
+	// 	truncateEpisodeText();
+	// }
 
   	// Remove this at the end
   	setTimeout(function(){

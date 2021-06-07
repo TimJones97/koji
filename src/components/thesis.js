@@ -92,7 +92,7 @@ class Thesis extends Component {
               <source src={Thesis_04} type="video/mp4" />
             </video>
           </section>
-          <section className="pp-section pp-scrollable section-showcase thesis-page five" data-anchor="thesis-page5">
+          <section className="pp-section pp-scrollable section-showcase thesis-page five contrast-nav-yellow" data-anchor="thesis-page5">
             <div className="container">
               <header>
                 <h1>

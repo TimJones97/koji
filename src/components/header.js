@@ -8,7 +8,7 @@ import logo_OG from "/static/img/general/og-image.jpg";
 import logo_dark from "/static/img/general/logo-dark.svg";
 import logo_light from "/static/img/general/logo-light.svg";
 
-const Header = ({ seo, overflow, black }) => {
+const Header = ({ seo, allowOverflow, black }) => {
   // Merge default and page-specific SEO values
   const fullSeo = { ...seo };
   const imageUrl =
@@ -64,16 +64,16 @@ const Header = ({ seo, overflow, black }) => {
       <meta name="og:description" content={fullSeo.metaDescription} />
       <meta name="og:image" content={imageUrl} />
       <link rel="preload" as="stylesheet" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css" integrity="sha512-W9OWS8dgpQBw5Hb+tbMto1BMsHvYOXT/AFBGvASCPUJleaEdpOAN5lzgj9RrTbo3YrlR+m9xdOBccp8F+SFyQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      {/*If the page is not the homepage or thesis*/}
-      {overflow &&
+      {/*If the page is not the homepage or thesis, allow overflow scrolling*/}
+      {allowOverflow &&
         <style type="text/css">{`
           html {
-            overflow: initial;
-            overflow-x: visible;
+            overflow: initial !important;
+            overflow-x: visible !important;
           }
           body {
-            overflow-y: scroll;
-            overflow-x: hidden;
+            overflow-y: scroll !important;
+            overflow-x: hidden !important;
           }
         `}</style>
       }

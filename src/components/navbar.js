@@ -16,26 +16,26 @@ class Navbar extends Component {
     return (
       <nav className={this.props.background}>
         <div className="container">
-          <a className="logo" href={(this.props.home ? "#go-home" : "/")}>
+          <a className="logo" href={(this.props.home ? "#go-home" : "./")}>
             <img className="light" src={logo_light} />
             <img className="dark" src={logo_dark} />
           </a>
           <div className="right-nav">
             <ul>
               <li className="nav-item">
-                <a className="nav-link go-thesis" href="/">About</a>
+                <a className="nav-link go-thesis" href="./">About</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/investments">Investments</a>
+                <a className="nav-link" href="./investments">Investments</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/read">Read</a>
+                <a className="nav-link" href="./read">Read</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/listen">Listen</a>
+                <a className="nav-link" href="./listen">Listen</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/contact">Contact</a>
+                <a className="nav-link" href="./contact">Contact</a>
               </li>
             </ul>
           </div>
@@ -55,19 +55,19 @@ class Navbar extends Component {
           <div className="mobile-nav__items">
             <ul>
               <li className="nav-item">
-                <a className="nav-link go-thesis" href="/about">About</a>
+                <a className="nav-link go-thesis" href="#">About</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/investments">Investments</a>
+                <a className="nav-link" href="./investments">Investments</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/read">Read</a>
+                <a className="nav-link" href="./read">Read</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/listen">Listen</a>
+                <a className="nav-link" href="./listen">Listen</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/contact">Contact</a>
+                <a className="nav-link" href="./contact">Contact</a>
               </li>
               <li className="nav-item">
               </li>

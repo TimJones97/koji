@@ -17,9 +17,9 @@ import flamingo_logo from '../../static/img/investments/flamingo.svg';
 const Investments = () => {
   return (
     <>
-      <Header overflow black/>
+      <Header allowOverflow black/>
       <Navbar background="light black-bg"/>
-      <section className="investments">
+      <section className="normal-section investments">
         <div className="container">
           <span className="subheading">INVESTMENTS</span>
           <div className="investment">
@@ -79,8 +79,8 @@ const Investments = () => {
             <p>Flamingo is a DAO, incubated by the LAO community supporting the expanding NFT metaverse.</p>
           </div>
         </div>
-        <Footer />
       </section>
+      <Footer/>
       <Scripts nestedLink/>
     </>
   )

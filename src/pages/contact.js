@@ -9,9 +9,9 @@ import Scripts from '../components/scripts'
 const Investments = () => {
   return (
     <>
-      <Header overflow black/>
+      <Header allowOverflow black/>
       <Navbar background="light brown-bg"/>
-      <section className="contact contact-page">
+      <section className="contact normal-section contact-page">
         <div className="container">
           <div className="left">
             <div className="split-mobile">

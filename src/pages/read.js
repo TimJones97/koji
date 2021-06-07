@@ -9,9 +9,9 @@ import Scripts from '../components/scripts'
 const Read = () => {
   return (
     <>
-      <Header overflow/>
+      <Header allowOverflow/>
       <Navbar background="light brown-bg"/>
-      <section className="read">
+      <section className="normal-section read">
         <div className="container">
           <header>
             <span className="subheading">READ</span>
@@ -22,24 +22,24 @@ const Read = () => {
           <hr className="mobile"/>
           <div className="right-contain">
             <span className="subheading">MOST RECENT ARTICLE</span>
-            <Episode size="large" read/>
-            <Episode size="small" mobile read/>
+            <Episode large read/>
+            <Episode small mobile read/>
           </div>
           <hr/>
           <span className="subheading">COMPLETE LISTING</span>
           <div className="episode-row">
-            <Episode size="small" read/>
-            <Episode size="small" read/>
-            <Episode size="small" read/>
-            <Episode size="large" read/>
-            <Episode size="small" mobile read/>
+            <Episode small read/>
+            <Episode small read/>
+            <Episode large read/>
+            <Episode small read/>
+            <Episode small mobile read/>
           </div>
           <div className="episode-row">
-            <Episode size="small" read/>
-            <Episode size="small" read/>
-            <Episode size="small" read/>
-            <Episode size="small" mobile read/>
-            <Episode size="large" read/>
+            <Episode large read/>
+            <Episode small read/>
+            <Episode small read/>
+            <Episode small read/>
+            <Episode small mobile read/>
           </div>
         </div>
       </section>

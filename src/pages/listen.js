@@ -10,9 +10,9 @@ import hd_logo from '../../static/img/listen/high-definition-logo.svg';
 const Listen = () => {
   return (
     <>
-      <Header overflow/>
+      <Header allowOverflow/>
       <Navbar background="light brown-bg"/>
-      <section className="listen">
+      <section className="normal-section listen">
         <div className="container">
           <header>
             <img className="highdef-logo" src={hd_logo} />
@@ -24,24 +24,24 @@ const Listen = () => {
           <hr className="mobile"/>
           <div className="episode-lg">
             <span className="subheading">MOST RECENT EPISODE</span>
-            <Episode size="large"/>
-            <Episode size="small" mobile/>
+            <Episode large/>
+            <Episode small mobile/>
           </div>
           <hr/>
           <span className="subheading">ALL EPISODES</span>
           <div className="episode-row">
-            <Episode size="small"/>
-            <Episode size="small"/>
-            <Episode size="small"/>
-            <Episode size="large"/>
-            <Episode size="small" mobile/>
+            <Episode small/>
+            <Episode small/>
+            <Episode small/>
+            <Episode large/>
+            <Episode small mobile/>
           </div>
           <div className="episode-row">
-            <Episode size="small"/>
-            <Episode size="small"/>
-            <Episode size="small"/>
-            <Episode size="small" mobile/>
-            <Episode size="large"/>
+            <Episode large/>
+            <Episode small/>
+            <Episode small/>
+            <Episode small/>
+            <Episode small mobile/>
           </div>
         </div>
       </section>

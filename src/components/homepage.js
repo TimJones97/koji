@@ -41,8 +41,8 @@ class Homepage extends Component {
               <header>
                 <span className="subheading">ABOUT</span>
                 <h1>
-                  <span>We believe blockchain technology is&nbsp;</span><span>shaking the foundations of traditional&nbsp;</span><span>internet infrastructure, clearing way for&nbsp;</span><span>a new era of capitalism<span>
-                    </span></span></h1>
+                  <span>We believe blockchain technology is shaking the foundations of traditional internet infrastructure, clearing way for a new era of capitalism.</span>
+                </h1>
                 <a className="link-white" href="/investments">Read More<button role="button" className="circle-btn" /></a>
               </header>
               <a className="arrow-down nav-link" data-menuanchor="page3" href="#page3">
@@ -65,17 +65,18 @@ class Homepage extends Component {
               </header>
               <div className="episodes">
                 <span className="subheading">RECENT EPISODES</span>
-                <Episode size="small"/>
-                <Episode size="small"/>
+                <Episode small/>
+                <Episode small/>
+                <a className="link-white" href="/listen">View all Episodes<button role="button" className="circle-btn"/></a>
               </div>
               <a className="arrow-down nav-link" data-menuanchor="page4" href="#page4">
                 <img src={arrow} />
               </a>
             </div>
-            <div className="highdef-bg">
-              <picture className="bg-full">
+            <div className="graphics">
+              <div className="highdef-bg">
                 <img src={hd_background} />
-              </picture>
+              </div>
               <img className="circle-red" src={circle_red} />
               <img className="circle-orange" src={circle_orange} />
               <img className="circle-white" src={circle_white} />

@@ -1,13 +1,13 @@
 /* eslint-disable */
 import React, { Component } from "react";
 import hd_thumbnail from '../../static/img/listen/thumbnail.svg';
-import read_thumbnail from '../../static/img/read/thumbnail.svg';
+import read_thumbnail from '../../static/img/read/thumbnail.png';
 
 class Episode extends Component {
   render() {
     return (
       <>
-        {(this.props.size === 'small') &&
+        {(this.props.small) &&
           <article className={"episode " + (this.props.read ? 'read' : '') + (this.props.mobile ? ' mobile' : '')}>
             <div className="episode-info">
               <div className="details">
@@ -17,7 +17,7 @@ class Episode extends Component {
                 <span>&nbsp;|&nbsp;</span>
                 <p className="time">45 mins</p>
                 {!(this.props.read) &&
-                  <span className="listen mobile">Listen Now</span>
+                  <a href="/episode-page" className="open mobile">Listen Now</a>
                 }
               </div>
             </div>
@@ -25,22 +25,22 @@ class Episode extends Component {
               ? <>
                   <div className="description">
                     <p>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed d
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Lorem ipsum dolor sit amet
                     </p>
                   </div>
-                  <span className="listen">Read Now</span>
+                  <a href="/read-page" className="open">Read Now</a>
                 </>
               : <>
                   <figure className="episode-thumbnail">
                     <div className="blur" />
                     <img className="thumbnail" src={hd_thumbnail} />
                   </figure>
-                  <span className="listen">Listen Now</span>
+                  <a href="/episode-page" className="open">Listen Now</a>
                 </>
             }
           </article>
         }
-        {(this.props.size === 'large') &&
+        {(this.props.large) &&
           <article className={"episode large " + (this.props.mobile ? 'mobile' : '')}>
             <figure className="episode-thumbnail">
               <div className="blur" />
@@ -61,7 +61,10 @@ class Episode extends Component {
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed d
                 </p>
               </div>
-              <span className="listen">Listen Now</span>
+              {(this.props.read) 
+                ? <a href="/read-page" className="open">Read Now</a>
+                : <a href="/episode-page" className="open">Listen Now</a>
+              }
             </div>
           </article>
         }
