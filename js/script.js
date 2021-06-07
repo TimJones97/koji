@@ -370,13 +370,14 @@ $(document).ready(function() {
 
 	// Only initiate pagePiling if on the index page
 	// (change to '/' when in production)
-	if(location.pathname == '/koji'){
+	// if(location.pathname == '/koji'){
+	if(location.pathname == '/'){
 		initHomepagePagepiling();
 	}
 
-	if(location.pathname == '/listen' || location.pathname == '/read'){
-		truncateEpisodeText();
-	}
+	// if(location.pathname == '/listen' || location.pathname == '/read'){
+	// 	truncateEpisodeText();
+	// }
 
   	// Remove this at the end
   	setTimeout(function(){

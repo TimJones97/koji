@@ -138,7 +138,13 @@ section.active {
 	transform: scale3d(1.0, 1.0, 1.0);
 }
 .mobile {
-	display: none;
+	display: none !important;
+}
+.normal-section {
+	opacity: 1;
+	background: var(--brown);
+	padding-top: 230px;
+	height: 100%;
 }
 
 /*--------------NAV--------------*/
@@ -191,7 +197,7 @@ nav.light .logo .light {
 nav.light .right-nav p {
 	color: #fff;
 }
-nav.dark .menu-toggle .bar {
+nav.light .menu-toggle .bar {
 	background: #fff;
 }
 /*DARK NAV WITH YELLOW BACKGROUND*/
@@ -524,14 +530,12 @@ span.subheading {
 	font-size: 72px;
 }
 a.link-white {
-	position: relative;
 	color: #fff;
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 }
 .circle-btn {
-	position: absolute;
-	bottom: -2px;
-	right: -120px;
+	position: relative;
 	height: 84px;
 	width: 84px;
 	border: 1px solid #fff;
@@ -539,6 +543,7 @@ a.link-white {
 	border-radius: 50%;
 	cursor: pointer;
 	transition: all 0.5s ease;
+	margin-left: 20px;
 }
 .circle-btn:before {
 	content: "\01F862";
@@ -596,12 +601,10 @@ a.link-white:hover > .circle-btn:before,
 	position: relative;
 	color: #fff;
 	margin-top: 20px;
-	display: inline-block;
 }
 .section-showcase.about header .circle-btn {
 	width: 60px;
 	height: 60px;
-	right: -80px;
 }
 .section-showcase.about header .circle-btn:before {
 	font-size: 30px;
@@ -620,7 +623,7 @@ a.link-white:hover > .circle-btn:before,
 	width: 325px;
 }
 .section-showcase.highdef header {
-	width: 550px;
+	width: 575px;
 }
 .section-showcase.highdef header a.link-white:before {
 	width: calc(100% + 50px);
@@ -633,7 +636,6 @@ a.link-white:hover > .circle-btn:before,
 	margin-top: 20px;
 }
 .section-showcase.highdef header .circle-btn {
-	right: -80px;
 	height: 65px;
 	width: 65px;
 }
@@ -648,6 +650,12 @@ a.link-white:hover > .circle-btn:before,
 	color: var(--orange);
 	display: block;
 	margin-bottom: 20px;
+}
+.episodes a.link-white {
+	font-family: 'Helvetica Light', sans-serif;
+	font-weight: 300;
+	font-size: 32px;
+	margin-top: 30px;
 }
 .episodes .episode:first-of-type {
 	margin-right: 25px;
@@ -730,7 +738,7 @@ a.link-white:hover > .circle-btn:before,
 .episode .episode-thumbnail .thumbnail-blur {
 	opacity: 0;
 }
-.episode span.listen {
+.episode a.open {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -743,7 +751,7 @@ a.link-white:hover > .circle-btn:before,
 .episode .mobile {
 	display: none !important;
 }
-.episode span.listen:after {
+.episode a.open:after {
 	content: "";
 	background: url("../img/listen/arrow-right.svg");
 	background-size: cover;
@@ -783,7 +791,7 @@ a.link-white:hover > .circle-btn:before,
 	min-height: 170vh;
 	min-width: 170vh;
 	overflow: hidden;
-	transition: all 3s ease, height 0s ease, right 3s ease, opacity 2s ease;
+	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 0s;
 	opacity: 0.3;
 }
 .highdef-bg img {
@@ -863,6 +871,7 @@ section.contact header h1 {
 	font-family: 'Helvetica Bold', sans-serif;
 	font-size: 48px;
 	color: #fff;
+	margin-top: 0;
 }
 section.contact > .container:first-of-type {
 	display: flex;
@@ -981,6 +990,7 @@ footer {
 	background: #000;
 	overflow: hidden;
 	padding: 50px 0 40px;
+	margin-top: 35px;
 }
 footer .container {
 	display: flex;
@@ -1333,17 +1343,14 @@ body.hide-thesis #homepage-anim {
 /*--------------INVESTMENTS PAGE--------------*/
 
 section.investments {
-	opacity: 1;
 	background: #000;
-	padding-top: 150px;
-	height: 100%;
 }
 
 /*
   ONLY AFFECT FIRST CONTAINER
   AND NOT FOOTER
 */
-section.investments > .container {
+section.investments > .container:first-of-type {
 	display: flex;
 	flex-direction: unset;
 	justify-content: flex-start;
@@ -1391,10 +1398,8 @@ section.investments .container .subheading {
 /*--------------CONTACT PAGE--------------*/
 
 section.contact-page {
-	opacity: 1;
-	background: var(--brown);
 	padding-top: 150px;
-	height: 100%;
+	background: var(--brown);
 }
 section.contact-page .container {
 	position: static;
@@ -1420,6 +1425,9 @@ section.contact-page .right p a {
     font-weight: 300;
 	color: #fff;
 }
+section.contact-page .right p a {
+	color: var(--orange);
+}
 section.contact-page .right p.help-text {
 	margin-top: 60px;
 	margin-bottom: 0;
@@ -1428,16 +1436,72 @@ section.contact-page .right form {
 	padding-top: 100px;
 }
 
-/*--------------LISTEN PAGE--------------*/
+/*--------------READ PAGE--------------*/
 
-section.listen {
-	opacity: 1;
-	background: var(--brown);
-	padding-top: 230px;
+.read .container {
+	flex-direction: unset;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	max-height: 100%;
 	height: 100%;
 }
+.read header {
+	width: 750px;
+}
+.read .container header h1 {
+	font-family: 'Helvetica Light', sans-serif;
+    font-weight: 300;
+	font-size: 48px;
+	color: #fff;
+}
+/*FOR THE SUBHEADING OUTSIDE THE LARGE EPISODE DIV*/
+.read .subheading {
+	flex-basis: 100%;
+	margin-bottom: 35px;
+}
+/*FOR THE SUBHEADING INSIDE THE LARGE EPISODE DIV*/
+.read .right-contain .subheading {
+	margin-bottom: 20px;
+}
+
+/*HORIZONTAL LINE*/
+.read hr {
+	border: 0;
+	border-top: 1px solid var(--dark-red);
+	flex-basis: 100%;
+	margin: 60px 0px 35px;
+}
+.episode.read .heading {
+	margin-bottom: 25px;
+}
+.episode.read .episode-info {
+	padding-bottom: 15px;
+}
+.episode.read .description {
+	height: 230px;
+	padding: 15px;
+	border-top: 1px solid var(--dark-red);
+}
+.episode.read a.open {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 50px;
+	border-top: 1px solid var(--dark-red);
+}
+
+.episodes-sml.right {
+	margin-top: 80px;
+	margin-bottom: 0px;
+}
+
+
+/*--------------LISTEN PAGE--------------*/
+
 .listen header {
 	width: 560px;
+	margin-bottom: 35px;
 }
 .listen .container {
 	flex-direction: unset;
@@ -1446,6 +1510,7 @@ section.listen {
 	justify-content: space-between;
 	max-height: 100%;
 	height: 100%;
+	overflow: hidden;
 }
 .episode-row {
 	display: flex;
@@ -1453,7 +1518,7 @@ section.listen {
 	align-items: flex-start;
 	justify-content: space-between;
 	height: 100%;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	width: 100%;
 }
 /*FOR THE SUBHEADING OUTSIDE THE LARGE EPISODE DIV*/
@@ -1522,93 +1587,180 @@ section.listen {
 	color: #fff;
 	margin: 0;
 }
-.episode.large .episode-info .listen {
+.episode.large .episode-info a.open {
 	padding: 10px 20px;
 	display: inline-flex;
 	align-items: center;
 	height: auto;
 }
+.episode-row .episode {
+	margin-bottom: 50px;
+}
 
 /*HORIZONTAL LINE*/
 
-.listen hr {
+.normal-section hr {
 	border: 0;
 	border-top: 1px solid var(--dark-red);
 	flex-basis: 100%;
 	margin: 60px 0px 35px;
 }
 
-/*HIDE SMALL ARTICLE FOR MOBILE VIEW ONLY*/
+/*--------------ARTICLE TEMPLATE PAGE--------------*/
 
-.episode.mobile {
-	display: none;
-}
-
-/*--------------READ PAGE--------------*/
-
-section.read {
-	opacity: 1;
-	background: var(--brown);
-	padding-top: 230px;
+.article .container {
+	max-height: 100%;
 	height: 100%;
 }
-.read .container {
+.article .container > div:first-of-type {
+	display: flex;
 	flex-direction: unset;
 	flex-wrap: wrap;
 	align-items: flex-start;
 	justify-content: space-between;
-	max-height: 100%;
-	height: 100%;
 }
-.read header {
-	width: 750px;
-}
-.read .container header h1 {
-	font-family: 'Helvetica Light', sans-serif;
-    font-weight: 300;
-	font-size: 48px;
-	color: #fff;
-}
-/*FOR THE SUBHEADING OUTSIDE THE LARGE EPISODE DIV*/
-.read .subheading {
-	flex-basis: 100%;
-	margin-bottom: 36px;
-}
-/*FOR THE SUBHEADING INSIDE THE LARGE EPISODE DIV*/
-.read .right-contain .subheading {
-	margin-bottom: 20px;
-}
-
-/*HORIZONTAL LINE*/
-
-.read hr {
+.article hr {
 	border: 0;
 	border-top: 1px solid var(--dark-red);
 	flex-basis: 100%;
-	margin: 60px 0px 35px;
+	margin: 30px 0px 30px;
 }
-.episode.read .heading {
-	margin-bottom: 25px;
+.article header {
+	border-bottom: 1px solid var(--dark-red);
+	padding-bottom: 30px;
 }
-.episode.read .episode-info {
-	padding-bottom: 15px;
+/*MAKE FIRST HR HAVE NO MARGIN ON TOP*/
+.article .left-contain > hr:first-of-type {
+	margin-top: 0;
 }
-.episode.read .description {
-	height: 230px;
-	padding: 15px;
-	border-top: 1px solid var(--dark-red);
+.article .number, 
+.article .date, 
+.article .time,
+.article .date + span {
+	display: inline;
+	font-family: 'Helvetica', sans-serif;
+	font-size: 16px;
+	color: var(--orange);
+	margin-bottom: 10px;
+	margin-top: 0;
 }
-.episode.read span.listen {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	height: 50px;
-	border-top: 1px solid var(--dark-red);
+.article .number {
+	display: block;
+}
+.article .date + span {
+	display: inline;
+}
+.article .title {
+	font-family: 'Helvetica Bold', sans-serif;
+	font-size: 48px;
+	color: #fff;
+	margin-top: 5px;
+	margin-bottom: 35px;
+}
+/*LEFT IS ARTICLE CONTENT*/
+.left-contain {
+	width: 70%;
+	padding-right: 100px;
+	overflow: visible;
+}
+.flexbox {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.flexbox .share-links {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 460px;
+}
+.flexbox .share-links p {
+	margin: 0;
+}
+.flexbox .share-links a {
+	color: var(--orange);
+}
+/*ARTICLE TAGLINE*/
+h2.tagline {
+	color: var(--orange);
+	font-family: 'Helvetica Light', sans-serif;
+	font-size: 48px;
+	font-weight: 300;
+}
+/*ARTICLE SOUND EMBED*/
+.episode-play {
+	width: 100%;
+	border-bottom: 1px solid var(--dark-red);
+}
+.episode-play img {
+	width: 100%;
+}
+/*ARTICLE TEXT*/
+.text-contain {
+	width: 85%;
+}
+.text-contain p,
+.text-contain p a {
+	font-family: 'Helvetica', sans-serif;
+	font-size: 20px;
+	line-height: 30px;
+	color: #fff;
 }
 
-.episodes-sml.right {
-	margin-top: 80px;
-	margin-bottom: 0px;
+/*IF THE ARTICLE HAS A VIDEO*/
+.article-video {
+	margin-top: 125px;
+	width: 100%;
+	margin-bottom: 75px;
+	overflow: hidden;
+}
+/*Make the placeholder image stretch full*/
+.article-video img {
+	width: 100%;
+}
+
+/*ARTICLE IMAGE*/
+.article .right-contain {
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.article .right-contain .article-img {
+	display: block;
+	width: 100%;
+	max-width: 500px;
+	margin-bottom: 10px;
+}
+.article .right-contain .article-img img {
+	width: 100%;
+}
+
+/*Recent episodes appear on tablet res and down*/
+.article .recent-episodes {
+	flex-wrap: wrap;
+	margin-top: 10px;
+	overflow: hidden;
+}
+.recent-episodes .subheading,
+.recent-episodes a.link-white {
+	flex-basis: 100%;
+}
+.recent-episodes .episode {
+	margin-right: auto;
+}
+.recent-episodes a.link-white {
+	font-family: 'Helvetica Neue Light';
+	font-weight: 300;
+	font-size: 24px;
+	margin-top: 20px;
+}
+.recent-episodes a.link-white .circle-btn {
+	width: 35px;
+	height: 35px;
+}
+.recent-episodes a.link-white .circle-btn:before {
+	font-size: 20px;
 }
 
 /*--------------MEDIA QUERIES--------------*/
@@ -1705,6 +1857,9 @@ section.read {
 	section.contact .container .left .socials {
 		display: none;
 	}
+	section.contact-page .right p.help-text {
+		margin-top: 0;
+	}
 }
 @media only screen and (max-width: 1600px){
 	/*FOOTER*/
@@ -1739,6 +1894,9 @@ section.read {
 	/*DISPLAY ELEMENTS ONLY ON MOBILE WITH THIS CLASS*/
 	.mobile {
 		display: block !important;
+	}	
+	.normal-section {
+		padding-top: 120px;
 	}
 
 	/*NAV*/
@@ -1772,8 +1930,6 @@ section.read {
 	.circle-btn {
 		height: 65px;
 		width: 65px;
-		right: -80px;
-		bottom: -10px;
 	}
 	.circle-btn:before {
 		font-size: 40px;
@@ -1790,8 +1946,6 @@ section.read {
 	.section-showcase.about header .circle-btn {
 		width: 45px;
 		height: 45px;
-		bottom: -5px;
-		right: -60px;
 	}
 	.section-showcase.about header .circle-btn:before {
 		font-size: 25px;
@@ -1802,16 +1956,76 @@ section.read {
 	.section-showcase.highdef header {
 		position: relative;
 	}
-	.highdef-bg {
-		top: -300px !important;
-		transform: scale3d(0.3, 0.3, 1) !important;
-	}
 	.section-showcase.highdef .episodes {
 		display: flex;
 		flex-wrap: wrap;
 	}
 	.section-showcase.highdef .subheading {
 		flex-basis: 100%;
+	}
+	.section-showcase.highdef header h1 span, 
+	.section-showcase.highdef header a.link-white {
+		font-size: 32px;
+	}
+	.section-showcase.highdef header .circle-btn,
+	.section-showcase.highdef .episodes .circle-btn {
+		height: 35px;
+		width: 35px;
+		margin-left: 10px;
+	}
+	.section-showcase.highdef header .circle-btn:before,
+	.section-showcase.highdef .episodes .circle-btn:before {
+		font-size: 20px;
+	}
+	.graphics {
+		width: 100%;
+		height: 50vh;
+		right: -30vw;
+	}
+	.highdef-bg,
+	.highdef.active .highdef-bg {
+		min-height: 80vw;
+		min-width: 80vw;
+		left: 60vw;
+		top: unset;
+		bottom: 0;
+		transform: translate(-50%, 0%);
+	}
+	.highdef-bg img {
+		height: 80vw;
+		width: auto;
+		top: 50%;
+		left: 100px;
+		right: unset;
+		transform: translate(-50%, -50%);
+	}
+	.graphics .circle-orange {
+		width: 180px;
+		height: 180px;
+		left: 150px;
+	}
+	.graphics .circle-white {
+		width: 70px;
+		height: 70px;
+		left: 100px;
+	}
+	.graphics .circle-red {
+		width: 200px;
+		height: 200px;
+		left: 100px;
+	}
+	/*Active styles*/
+	.highdef.active .highdef-bg {
+		left: 50vw;
+	}
+	.highdef.active .circle-orange {
+		left: 100px;
+	}
+	.highdef.active .circle-white {
+		left: 50px;
+	}
+	.highdef.active .circle-red {
+		left: 50px;
 	}
 
 	/*GENERAL EPISODE STYLES*/
@@ -1824,10 +2038,10 @@ section.read {
 	.episode-info {
 		padding: 8px 10px;
 	}
-	.episode span.listen {
+	.episode a.open {
 		display: none;
 	}
-	.episode span.listen.mobile {
+	.episode a.open.mobile {
 		display: block !important;
 		position: absolute;
 		bottom: 0;
@@ -1838,7 +2052,7 @@ section.read {
 		border-top: 1px solid var(--dark-red);
 		padding: 5px 10px;
 	}
-	.episode span.listen.mobile:after {
+	.episode a.open.mobile:after {
 		background: url('../img/listen/arrow-right-orange.svg');
 	    background-size: cover;
 		width: 15px;
@@ -1882,9 +2096,40 @@ section.read {
 		max-width: 100%;
 		min-width: 100%;
 	}
+	section.contact .container .left .socials .title {
+		flex-basis: 100%;
+	}
+	section.contact .container .left .socials a {
+		flex-basis: 50%;
+	}
 	.contact-form {
 		padding-top: 0;
 		padding-bottom: 0px;
+	}
+	section.contact header h1 {
+		font-size: 32px;
+	}
+	.contact .container {
+		max-height: unset;
+		height: unset;
+	}
+	section.contact .container .socials {
+		display: none !important;
+	}
+	.contact-form {
+		padding-top: 20px;
+	}
+	section.contact .container .left {
+		display: flex;
+		width: 100%;
+	}
+	section.contact .container .left .socials {
+		position: static;
+		transform: unset;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		width: 250px;
 	}
 
 	/*THESIS PAGE*/
@@ -1938,11 +2183,15 @@ section.read {
 	.investment {
 		padding: 25px 10px 20px;
 		margin-bottom: 15px;
+		margin-right: 0;
 	}
 	.investment picture {
 		width: 55px;
 		height: 55px;
 		margin-bottom: 25px;
+	}
+	section.investments > .container:first-of-type {
+		justify-content: space-between;
 	}
 
 	/*LISTEN PAGE*/
@@ -1979,17 +2228,17 @@ section.read {
 	.read .container header h1 {
 		font-size: 24px;
 	}
-	.read .episode {
+	.episode.read {
 		flex-direction: column;
 	}
-	.read .episode .episode-info {
+	.episode.read .episode-info {
 		padding-bottom: 10px;
 	}
 	.read .episode-info .number, 
 	.read .episode-info .date, 
 	.read .episode-info .time,
-	.read .episode .description p,
-	.read .episode span.listen {
+	.episode.read .description p,
+	.episode.read a.open {
 		font-size: 12px;
 	}
 	.read .episode-info .heading {
@@ -2002,12 +2251,11 @@ section.read {
 	.read .episode-info .time {
 		display: inline;
 	}
-	.read .episode .description {
+	.episode.read .description {
 		padding: 15px 10px 5px;
-		height: 60px;
 		overflow: hidden;
 	}
-	.read .episode span.listen {
+	.episode.read a.open {
 		position: relative;
 		display: block;
 		font-family: 'Helvetica', sans-serif;
@@ -2017,7 +2265,7 @@ section.read {
 		padding: 5px 10px;
 		height: auto;
 	}
-	.episode span.listen:after {
+	.episode a.open:after {
 		background: url('../img/listen/arrow-right-orange.svg');
 	    background-size: cover;
 		width: 15px;
@@ -2034,23 +2282,8 @@ section.read {
 		margin: 0;
 		font-size: 24px;
 	}
-	section.contact .container .left {
-		display: flex;
-		width: 100%;
-	}
-	section.contact .container .left .socials {
-		position: static;
-		transform: unset;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		width: 250px;
-	}
-	section.contact .container .left .socials .title {
-		flex-basis: 100%;
-	}
-	section.contact .container .left .socials a {
-		flex-basis: 50%;
+	section.contact-page .container .socials {
+		display: flex !important;
 	}
 	section.contact-page .left .split-mobile {
 		flex-basis: 50%;
@@ -2065,6 +2298,40 @@ section.read {
 		padding: 35px 0px 40px;
 	}
 
+	/*ARTICLE TEMPLATE*/
+	.article header {
+		padding-bottom: 45px;
+	}
+	.episode-play {
+		display: none;
+		border: 0;
+	}
+	.left-contain {
+		padding-right: 10px;
+	}
+	.text-contain {
+		width: 100%;
+	}
+	.flexbox .share-links {
+		display: none;
+	}
+	h2.tagline {
+		font-size: 24px;
+	}
+	.article-video {
+		margin: 25px 0px 25px -20px;
+		margin-left: -20px;
+		width: 100vw;
+	}
+	.text-contain p, 
+	.text-contain p a {
+		font-size: 16px;
+		line-height: 24px;
+	}
+	.article .recent-episodes {
+		display: flex !important;
+	}
+
 	/*FOOTER*/
 	footer .contact-links {
 		display: flex;
@@ -2077,21 +2344,6 @@ section.read {
 	}
 	footer .contact-links span:first-of-type {
 		margin-bottom: 20px;
-	}
-
-	/*CONTACT*/
-	section.contact header h1 {
-		font-size: 32px;
-	}
-	.contact .container {
-		max-height: unset;
-		height: unset;
-	}
-	section.contact .container .socials {
-		display: none !important;
-	}
-	.contact-form {
-		padding-top: 20px;
 	}
 }
 
@@ -2119,13 +2371,12 @@ section.read {
 	.circle-btn {
 		width: 25px;
 		height: 25px;
-		right: -30px;
-		bottom: 0;
+		margin-left: 10px;
 	}
 	.section-showcase.about header .circle-btn:before,
 	.circle-btn:before {
 		font-size: 15px;
-		padding-bottom: 0px;
+		padding-bottom: 3px;
 	}
 	.section-showcase video {
 		min-height: 100%;
@@ -2165,8 +2416,29 @@ section.read {
 	.section-showcase.highdef header a.link-white {
 		margin-top: 10px;
 	}
-	.highdef-bg {
-	    transform: scale3d(0.3, 0.3, 1) !important;
+	.graphics {
+		width: 100%;
+		height: 50vh;
+	}
+	.highdef-bg,
+	.highdef.active .highdef-bg {
+		min-height: 120vw;
+		min-width: 120vw;
+		left: 50%;
+		top: unset;
+		bottom: 0;
+		transform: translate(-50%, 0%);
+	}
+	.highdef-bg img {
+		height: 120vw;
+		width: auto;
+		top: 50%;
+		left: 100px;
+		right: unset;
+		transform: translate(-50%, -50%);
+	}
+	.circle-red {
+		display: none;
 	}
 
 	/*CONTACT*/
@@ -2220,7 +2492,7 @@ section.read {
 	.listen .subheading {
 		font-size: 16px;
 	}
-	.episode-row .episode {
+	.episode {
 		margin-bottom: 20px;
 	}
 
@@ -2232,6 +2504,36 @@ section.read {
 		flex-basis: 100%;
 		margin-bottom: 20px;
 		padding: 25px 15px 20px;
+	}
+	.read .subheading { 
+		margin-bottom: 20px;
+	}
+	.read header h1 { 
+		margin-top: 0;
+	}
+	.normal-section hr {
+		margin-top: 25px;
+	}
+
+	/*ARTICLE TEMPLATE*/
+	.article .container > div:first-of-type {
+		flex-direction: column-reverse;
+	}
+	.article .left-contain,
+	.article .right-contain {
+		width: 100%;
+	}
+	.article .right-contain .article-img {
+		margin-left: -20px;
+		margin-right: -20px;
+		width: 100vw;
+	}
+	.article .left-contain p {
+		font-size: 16px;
+		line-height: 20px;
+	}
+	.article .recent-episodes .subheading {
+		margin-bottom: 20px;
 	}
 
 	/*FOOTER*/
@@ -2253,9 +2555,47 @@ section.read {
 	}
 }
 @media only screen and (max-width: 479px){
+	/*GENERAL*/
+	.container {
+		padding: 0px 15px;
+	}
 
 	/*ABOUT*/
 	.section-showcase.about header {
 		width: 100%;
+	}
+
+	/*LISTEN PAGE*/
+	.listen header {
+		width: 100%;
+	}
+	.listen header img {
+		width: 100%;
+		max-width: 320px;
+	}
+	.episode {
+		width: 100%;
+	}
+
+	/*THESIS PAGE*/
+	#thesis-anim .thesis-page.five > .container, 
+	#thesis-anim .pp-tableCell > .container {
+		padding-bottom: 30px;
+	}
+
+	/*CONTACT PAGE*/
+	section.contact-page .container .socials {
+		display: none !important;
+	}
+	section.contact-page .left .split-mobile.help {
+		display: none;
+	}
+	section.contact .container .right {
+		margin-top: 15px;
+	}
+	section.contact-page .right p.help-text,
+	section.contact-page .right p.help-text a {
+		display: block;
+		font-size: 24px;
 	}
 }
