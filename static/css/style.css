@@ -684,6 +684,7 @@ a.link-white:hover > .circle-btn:before,
 .episode-info {
 	position: relative;
 	padding: 15px 15px 7px;
+	width: 100%;
 }
 .episode-info .number,
 .episode-info .date,
@@ -990,7 +991,6 @@ footer {
 	background: #000;
 	overflow: hidden;
 	padding: 50px 0 40px;
-	margin-top: 35px;
 }
 footer .container {
 	display: flex;
@@ -2575,6 +2575,7 @@ h2.tagline {
 	}
 	.episode {
 		width: 100%;
+		justify-content: flex-end;
 	}
 
 	/*THESIS PAGE*/

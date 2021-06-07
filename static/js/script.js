@@ -358,7 +358,7 @@ $(window).resize(function(){
 		$('.mobile-nav').removeClass('display');
 	}
 });
-document.addEventListener( "DOMContentLoaded", () => {
+$(document).ready(function() {
 	scaleCircleNav();
 	scrollContactSection();
 	goHome();
@@ -369,9 +369,7 @@ document.addEventListener( "DOMContentLoaded", () => {
 	location.hash = '';
 
 	// Only initiate pagePiling if on the index page
-	// (change to '/' when in production)
-	if(location.pathname == '/koji/'){
-	// if(location.pathname == '/'){
+	if($('#homepage-anim').length){
 		initHomepagePagepiling();
 	}
 

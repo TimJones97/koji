@@ -18,7 +18,7 @@ class Scripts extends Component {
       scripts.push('../js/script.js');
     }
     else {
-      scripts.push('/js/script.js');
+      scripts.push('./js/script.js');
     }
 
     const div = this.div;
