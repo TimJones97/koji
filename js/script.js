@@ -369,9 +369,7 @@ $(document).ready(function() {
 	location.hash = '';
 
 	// Only initiate pagePiling if on the index page
-	// (change to '/' when in production)
-	if(location.pathname == '/koji/'){
-	// if(location.pathname == '/'){
+	if($('#homepage-anim').length){
 		initHomepagePagepiling();
 	}
 
