@@ -380,7 +380,7 @@ function setThesisMobileStyles(){
 			$('nav').removeClass('brown-bg');
 		}
 	}
-	if(!$('#thesis-anim').length){
+	if($('#thesis-anim').length){
 		$('body').removeClass('scroll');
 		$('#thesis-anim section').removeClass('active');
 		// Make first section active
@@ -388,9 +388,19 @@ function setThesisMobileStyles(){
 		$('nav').removeClass('brown-bg');
 	}
 }
+// Set the height of the fullpage sections on mobile
+// to the inner viewport height to prevent hidden text
+function setSectionHeightMobile(){
+	if(isMobile()){
+		$('#homepage-anim').css('height', $(window).innerHeight() + 'px');
+	}
+	else {
+		$('#homepage-anim').css('height', 'unset');
+	}
+}
 $(window).resize(function(){
 	scaleCircleNav();
-	// scaleHighdefBackground();
+	setSectionHeightMobile();
 	hideCircleNavMobile();
 	setThesisMobileStyles();
 	if(!isMobile()){
@@ -405,6 +415,7 @@ $(document).ready(function() {
 	goThesis();
 	toggleMobileNav();
 	setThesisMobileStyles();
+	setSectionHeightMobile();
 
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
