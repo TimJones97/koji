@@ -393,7 +393,7 @@ function setThesisMobileStyles(){
 // to the inner viewport height to prevent hidden text
 function setSectionHeightMobile(){
 	if(isMobile()){
-		$('#homepage-anim section').css('height', $(window).innerHeight() + 'px');
+		$('#homepage-anim section').css('height', window.innerHeight + 'px');
 	}
 	else {
 		$('#homepage-anim section').css('height', 'unset');

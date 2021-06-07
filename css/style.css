@@ -2598,6 +2598,10 @@ h2.tagline {
 	.section-showcase.about header {
 		width: 100%;
 	}
+	/*CONTACT*/
+	section.contact {
+	    padding-top: 50px;
+	}
 
 	/*LISTEN PAGE*/
 	.listen header {
