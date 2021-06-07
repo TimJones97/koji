@@ -370,7 +370,7 @@ document.addEventListener( "DOMContentLoaded", () => {
 
 	// Only initiate pagePiling if on the index page
 	// (change to '/' when in production)
-	if(location.pathname == '/koji'){
+	if(location.pathname == '/koji/'){
 	// if(location.pathname == '/'){
 		initHomepagePagepiling();
 	}
