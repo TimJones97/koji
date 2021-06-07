@@ -360,7 +360,6 @@ $(window).resize(function(){
 });
 $(document).ready(function() {
 	scaleCircleNav();
-	// scaleHighdefBackground();
 	scrollContactSection();
 	goHome();
 	goThesis();
