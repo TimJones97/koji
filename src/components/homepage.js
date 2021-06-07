@@ -19,7 +19,7 @@ class Homepage extends Component {
     return (
       <>
         <main id="homepage-anim">
-          <section className="pp-section banner section-showcase light-nav" data-anchor="page1">
+          <section className="pp-section banner active section-showcase light-nav" data-anchor="page1">
             <div className="container">
               <header>
                 <h1>
