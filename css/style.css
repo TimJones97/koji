@@ -76,6 +76,7 @@ p, a, label, li {
 }
 a {
 	font-family: 'Helvetica Neue Light';
+    font-weight: 300;
 	text-decoration: none;
 	color: #fff;
 }
@@ -178,6 +179,7 @@ nav .container {
 }
 .nav-link {
 	font-family: 'Helvetica Light', sans-serif;
+    font-weight: 300;
 }
 /*LIGHT NAV*/
 nav.light .logo .dark {
@@ -188,6 +190,14 @@ nav.light .logo .light {
 }
 nav.light .right-nav p {
 	color: #fff;
+}
+nav.dark .menu-toggle .bar {
+	background: #fff;
+}
+/*DARK NAV WITH YELLOW BACKGROUND*/
+nav.yellow-bg {
+	background: #efa52d;
+	transition: background 0.2s ease 0.4s;
 }
 /*LIGHT NAV WITH BLACK BACKGROUND*/
 nav.black-bg {
@@ -207,6 +217,9 @@ nav.dark .logo .light {
 }
 nav.dark .right-nav a {
 	color: var(--brown);
+}
+nav.dark .menu-toggle .bar {
+	background: var(--brown);
 }
 
 /*MENU BUTTON*/
@@ -231,22 +244,14 @@ nav.dark .right-nav a {
     background: #fff;
     display: block;
     margin-bottom: 3px;
-    transition: background 0.3s ease, width 0.3s ease;
+    transition: background 0.5s ease;
 }
 .nav-btn .bar:last-of-type {
     width: 25px;
 }
 
 /*HOVER EFFECTS*/
-/*.menu-toggle:hover .nav-button .bar:first-of-type {
-    width: 20px;
-}
-.menu-toggle:hover .nav-button .bar {
-    width: 25px;
-}
-.menu-toggle:hover .nav-button .bar:last-of-type {
-    width: 30px;
-}*/
+
 
 /*-----MOBILE NAV-----*/
 
@@ -272,6 +277,7 @@ menu.mobile-nav.display {
 	top: 20px;
 	left: 20px;
 	font-family: 'Helvetica Light', sans-serif;
+    font-weight: 300;
 	color: #fff;
 	font-size: 20px;
 }
@@ -491,7 +497,7 @@ section.anim-down header {
 }
 
 span.subheading {
-	font-family: 'Helvetica Bold', sans-serif;
+	font-family: 'Helvetica Bold', sans-serif !important;
 	font-size: 16px;
 	color: var(--orange);
 	display: block;
@@ -566,6 +572,7 @@ a.link-white:hover > .circle-btn:before,
     z-index: -1;
     opacity: 0;
     transition: all 0.5s ease;
+    backface-visibility: hidden;
 }
 .section-showcase video.loaded {
     opacity: 1;
@@ -574,6 +581,9 @@ a.link-white:hover > .circle-btn:before,
 
 /*-----SECOND PAGE - ABOUT-----*/
 
+.section-showcase.about header {
+	width: 860px;
+}
 .section-showcase.about header .subheading {
 	color: var(--brown);
 }
@@ -745,9 +755,6 @@ a.link-white:hover > .circle-btn:before,
 }
 
 /*HOVER EFFECTS - BLUR*/
-/*.episode:hover .episode-thumbnail .thumbnail {
-	opacity: 0;
-}*/
 .episode:hover .episode-thumbnail .thumbnail-blur {
 	opacity: 1;
 }
@@ -759,90 +766,85 @@ a.link-white:hover > .circle-btn:before,
 }
 
 /*FULL BG ANIMATION*/
+.graphics {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	width: 50vw;
+	z-index: 0;
+}
 .highdef-bg {
 	position: absolute;
 	top: 50%;
-	right: 0;
-	transform: translate(0%, -50%);
-	height: 100%;
-	width: 100%;
-	z-index: 0;
-	pointer-events: none;
-}
-.highdef-bg .bg-full {
-	position: absolute;
-	top: 50%;
-	right: -550px;
+	left: 100px;
 	transform: scale3d(1.0, 1.0, 1.0) translate(0%, -50%);
-	min-height: 1600px;
-	min-width: 1600px;
-	opacity: 0;
-	transition: all 3s ease 0.7s, height 0s ease, transform 3s ease 0.7s;
 	border-radius: 50%;
-	overflow-x: hidden;
+	min-height: 170vh;
+	min-width: 170vh;
+	overflow: hidden;
+	transition: all 3s ease, height 0s ease, right 3s ease, opacity 2s ease;
+	opacity: 0.3;
 }
-.highdef-bg .bg-full img {
+.highdef-bg img {
 	position: absolute;
 	top: 50%;
-	transform: translate(0%, -50%);
 	right: 150px;
-	height: 1200px;
+	transform: translate(0%, -50%);
+	height: calc(100% - 35vh);
 	width: auto;
-	transition: all 1s ease;
-	/*min-height: 1080px;*/
 }
-.highdef-bg .circle-red,
-.highdef-bg .circle-orange,
-.highdef-bg .circle-white {
+.graphics .circle-red,
+.graphics .circle-orange,
+.graphics .circle-white {
 	transition: all 3.5s ease;
 }
-.highdef-bg .circle-red {
+.graphics .circle-red {
 	position: absolute;
-	right: 800px;
+	left: 0px;
 	top: -100px;
 	height: 300px;
 	width: 300px;
 	opacity: 0.3;
 }
-.highdef-bg .circle-orange {
+.graphics .circle-orange {
 	position: absolute;
-	right: 900px;
+	left: 0px;
 	bottom: -50px;
 	height: 240px;
 	width: 240px;
 	opacity: 0.3;
 }
-.highdef-bg .circle-white {
+.graphics .circle-white {
 	position: absolute;
-	right: 1000px;
-	bottom: 250px;
+	left: 100px;
+	bottom: 170px;
 	height: 100px;
 	width: 100px;
 	z-index: -1;
 	opacity: 0.3;
 }
 /*When the slide is active, activate the animations*/
-.highdef-bg.active .circle-red,
-.highdef-bg.active .circle-orange,
-.highdef-bg.active .circle-white {
+.graphics.active .circle-red,
+.graphics.active .circle-orange,
+.graphics.active .circle-white {
 	transition: all 3.5s ease 0.7s;
 }
-.highdef.active .bg-full {
-	right: -450px;
+.highdef.active .highdef-bg {
+	left: 0px;
 	opacity: 1;
 	transform: scale3d(1.02, 1.02, 1.0) translate(0%, -50%);
-	transition: all 3s ease, height 0s ease, transform 3s ease;
 }
 .highdef.active .circle-red {
-	right: 900px;
+	left: -100px;
 	opacity: 1;
 }
 .highdef.active .circle-orange {
-	right: 1000px;
+	left: -100px;
 	opacity: 1;
 }
 .highdef.active .circle-white {
-	right: 1100px;
+	left: 0px;
 	opacity: 1;
 }
 
@@ -867,7 +869,7 @@ section.contact > .container:first-of-type {
 	justify-content: space-between;
 	flex-direction: unset;
 	flex-wrap: wrap;
-	max-height: calc(100% - 100px);
+	max-height: unset;
 }
 section.contact .container .left {
 	position: relative;
@@ -986,6 +988,7 @@ footer .container {
 	justify-content: space-between;
 	flex-direction: unset;
 	height: 100%;
+	max-height: unset;
 }
 footer .footer-logo {
 	width: 75px;
@@ -1022,6 +1025,7 @@ footer .contact-links span {
 	position: relative;
 	display: inline-block;
     font-family: 'Helvetica Neue Light';
+    font-weight: 300;
     font-size: 22px;
 }
 footer .contact-links span:after {
@@ -1067,7 +1071,7 @@ footer .site-links .link-box a {
 	margin-top: 0px;
 }
 footer .site-links .link-box .title {
-	/*font-family: 'Helvetica Bold', sans-serif;*/
+	margin-bottom: 10px;
 }
 
 /*--------------THESIS STYLES--------------*/
@@ -1232,6 +1236,7 @@ body.hide-thesis #homepage-anim {
 
 /*-----THESIS PAGE STYLES-----*/
 
+#thesis-anim .section-showcase > .container,
 #thesis-anim .pp-tableCell > .container {
 	width: calc(100% - 480px);
 }
@@ -1401,6 +1406,7 @@ section.contact-page .left .split-mobile.help {
 section.contact-page .left .split-mobile.help p,
 section.contact-page .left .split-mobile.help a {
 	font-family: 'Helvetica Light', sans-serif;
+    font-weight: 300;
 	color: #fff;
 	font-size: 24px;
 }
@@ -1411,6 +1417,7 @@ section.contact-page .right p,
 section.contact-page .right p a {
 	font-size: 48px;
 	font-family: 'Helvetica Light', sans-serif;
+    font-weight: 300;
 	color: #fff;
 }
 section.contact-page .right p.help-text {
@@ -1461,8 +1468,10 @@ section.listen {
 .listen .container header p {
 	font-size: 20px;
 	font-family: 'Helvetica Light', sans-serif;
+    font-weight: 300;
 	color: #fff;
 	line-height: 30px;
+	margin-bottom: 0px;
 }
 .right-contain {
 	width: 630px;
@@ -1556,6 +1565,7 @@ section.read {
 }
 .read .container header h1 {
 	font-family: 'Helvetica Light', sans-serif;
+    font-weight: 300;
 	font-size: 48px;
 	color: #fff;
 }
@@ -1615,44 +1625,11 @@ section.read {
 @media only screen and (max-height: 1000px){
 
 	/*HIGHDEF*/
-	.section-showcase.highdef .highdef-logo {
-		width: 284px;
-	}
-	.section-showcase.highdef header h1 span, 
-	.section-showcase.highdef header a.link-white {
-		font-size: 42px;
-	}
-	.section-showcase.highdef .episode {
-		width: 245px;
-		height: 380px;
-	}	
-	.section-showcase.highdef .episode .episode-thumbnail,
-	.section-showcase.highdef .episode .episode-thumbnail .blur,
-	.section-showcase.highdef .episode .episode-thumbnail img {
-		height: 245px;
-	}
-	.section-showcase.highdef .episode .episode-info .heading {
-		font-size: 18px;
+	.episodes {
+		display: none;
 	}
 }
 @media only screen and (max-height: 900px){
-	/*HIGHDEF*/
-	/*.section-showcase.highdef .highdef-logo {
-		width: 248px;
-	}
-	.section-showcase.highdef header h1 span, 
-	.section-showcase.highdef header a.link-white {
-		font-size: 42px;
-	}
-	.episode {
-		width: 206px;
-		height: 241px;
-	}	
-	.episode .episode-thumbnail,
-	.episode .episode-thumbnail .blur,
-	.episode .episode-thumbnail img {
-		height: 206px;
-	}*/
 
 	/*THESIS PAGE*/
 	.thesis-page header h1 {
@@ -1666,10 +1643,21 @@ section.read {
 	}
 }
 @media only screen and (max-height: 800px){
+
 	/*HIGHDEF*/
-	.container__episodes {
-		display: none;
+	.graphics {
+		width: 40vw;
 	}
+	.highdef.active .circle-red {
+		left: -120px;
+	}
+	.highdef.active .circle-orange {
+		left: -120px;
+	}
+	.highdef.active .circle-white {
+		left: -20px;
+	}
+
 	/*CONTACT*/
 	section.contact header {
 		position: relative;
@@ -1686,10 +1674,13 @@ section.read {
 
 	/*THESIS PAGE*/
 	.thesis-page header h1 {
-		font-size: 36px;
+		font-size: 24px;
 	}
 	.thesis-page header p {
-		font-size: 17px;
+		font-size: 16px;
+	}
+	.thesis-page header p {
+		margin-top: 20px;
 	}
 
 	/*FOOTER*/
@@ -1789,6 +1780,9 @@ section.read {
 	}
 
 	/*ABOUT*/
+	.section-showcase.about header {
+		width: 560px;
+	}
 	.section-showcase.about header h1 span, 
 	.section-showcase.about header a.link-white {
 		font-size: 32px;
@@ -1801,6 +1795,7 @@ section.read {
 	}
 	.section-showcase.about header .circle-btn:before {
 		font-size: 25px;
+		padding-bottom: 0px;
 	}
 
 	/*HIGHDEF*/
@@ -1958,7 +1953,7 @@ section.read {
 		color: #fff;
 	}
 	.episode.mobile {
-		display: flex;
+		display: flex !important;
 	}
 	.episode.large {
 		display: none;
@@ -2130,6 +2125,7 @@ section.read {
 	.section-showcase.about header .circle-btn:before,
 	.circle-btn:before {
 		font-size: 15px;
+		padding-bottom: 0px;
 	}
 	.section-showcase video {
 		min-height: 100%;
@@ -2138,6 +2134,9 @@ section.read {
 	}
 
 	/*ABOUT*/
+	.section-showcase.about header {
+		width: 420px;
+	}
 	.section-showcase.about header h1 span, 
 	.section-showcase.about header a.link-white {
 		font-size: 24px;
@@ -2209,6 +2208,32 @@ section.read {
 		font-size: 24px;
 	}
 
+	/*LISTEN PAGE*/
+	.listen .container header p {
+		font-size: 16px;
+		line-height: 24px;
+		margin-top: 25px;
+	}
+	.listen hr {
+		margin-top: 40px;
+	}
+	.listen .subheading {
+		font-size: 16px;
+	}
+	.episode-row .episode {
+		margin-bottom: 20px;
+	}
+
+	/*INVESTMENTS PAGE*/
+	.investments .subheading {
+		font-size: 16px;
+	}
+	.investment {
+		flex-basis: 100%;
+		margin-bottom: 20px;
+		padding: 25px 15px 20px;
+	}
+
 	/*FOOTER*/
 	footer .container {
 		flex-direction: column;
@@ -2220,11 +2245,17 @@ section.read {
 	footer .collaborate-links {
 		flex-basis: 100%;
 	}
+	footer .collaborate-links span {
+		font-size: 22px;
+	}
 	footer .site-links {
 		margin-top: 20px;
 	}
 }
 @media only screen and (max-width: 479px){
 
-	
+	/*ABOUT*/
+	.section-showcase.about header {
+		width: 100%;
+	}
 }

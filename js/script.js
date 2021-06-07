@@ -11,6 +11,12 @@ function changeNavColor(){
 		// If the active section slide has light-nav class,
 		// make the nav elements white
 		if($(this).hasClass('active')){
+			if ($(this).hasClass('contrast-nav-yellow')){
+				$('nav').addClass('yellow-bg');
+			}
+			else {
+				$('nav').removeClass('yellow-bg');
+			}
 			if ($(this).hasClass('contrast-nav')){
 				$('nav').addClass('black-bg');
 			}
@@ -179,9 +185,6 @@ function goThesis(){
 		// Add 30 degrees to nav for thesis circles
 		navRotation = 30;
 
-		// Rotate nav to start position
-		$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
-
 		// Make the thesis page visible 
 		$('#thesis-anim').removeAttr('hidden');
 
@@ -189,6 +192,10 @@ function goThesis(){
 		// by scrolling on the homepage
 		setTimeout(function(){
 			$('.circle-nav.thesis .three.nav-link').addClass('active');
+
+			// Rotate nav to start position
+			$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
+			
 			setActiveCircle();
 		}, 50);		
 
@@ -344,7 +351,7 @@ function truncateEpisodeText(){
 }
 $(window).resize(function(){
 	scaleCircleNav();
-	scaleHighdefBackground();
+	// scaleHighdefBackground();
 	hideCircleNavMobile();
 	if(!isMobile()){
 		$('.circle-nav').removeClass('hide');
@@ -353,7 +360,7 @@ $(window).resize(function(){
 });
 $(document).ready(function() {
 	scaleCircleNav();
-	scaleHighdefBackground();
+	// scaleHighdefBackground();
 	scrollContactSection();
 	goHome();
 	goThesis();
