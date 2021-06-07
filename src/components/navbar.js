@@ -16,7 +16,7 @@ class Navbar extends Component {
     return (
       <nav className={this.props.background}>
         <div className="container">
-          <a className="logo" href={(this.props.home ? "#go-home" : "./")}>
+          <a className="logo" href={(this.props.home ? "#go-home" : "/")}>
             <img className="light" src={logo_light} />
             <img className="dark" src={logo_dark} />
           </a>

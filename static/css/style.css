@@ -1202,6 +1202,21 @@ body.hide-thesis #homepage-anim {
 	left: 0;
 }
 
+/*THESIS MOBILE STYLES*/
+
+body.scroll,
+body.scroll #thesis-anim {
+	overflow-y: overlay !important;
+	overflow-x: hidden !important;
+}
+body.scroll #thesis-anim section {
+	opacity: 1;
+	position: relative;
+}
+body.scroll #thesis-anim .pp-scrollable {
+	overflow: visible;
+}
+
 /*-----THESIS NAV - LEFT ALIGNED-----*/
 
 /*Left side*/
@@ -1901,7 +1916,7 @@ h2.tagline {
 
 	/*NAV*/
 	nav {
-		height: 80px;
+		height: 64px;
 	}
 	nav .container {
 		padding-top: 20px;
@@ -1911,6 +1926,9 @@ h2.tagline {
 	}
 	.right-nav {
 		display: none;
+	}
+	.logo img {
+		width: 64px;
 	}
 
 	/*HOMEPAGE SECTIONS*/
@@ -2469,15 +2487,30 @@ h2.tagline {
 		width: 100%;
 	}
 	.thesis-page header p {
-		line-height: 22px;
-	}
-	.section-showcase.thesis-page video {
-		height: auto;
+		line-height: 20px;
 	}
 	#thesis-anim .section-showcase header h1, 
 	#thesis-anim .section-showcase header a, 
 	#thesis-anim .section-showcase header span {
 		font-size: 24px;
+	}
+
+	/*THESIS SCROLLABLE*/
+	#thesis-anim .thesis-page.five > .container, 
+	#thesis-anim .pp-tableCell > .container {
+		height: unset;
+	}
+	.section-showcase .pp-tableCell {
+		display: flex;
+		flex-direction: column;
+	}
+	.section-showcase.thesis-page video {
+		height: auto;
+		position: relative;
+		width: 100vw;
+		transform: unset;
+		left: 0;
+		margin-bottom: 50px;
 	}
 
 	/*LISTEN PAGE*/

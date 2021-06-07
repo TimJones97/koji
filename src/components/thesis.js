@@ -15,6 +15,9 @@ class Thesis extends Component {
       <>
         <main id="thesis-anim" hidden>
           <section className="pp-section section-showcase thesis-page one light-nav" data-anchor="thesis-page1">
+            <video muted loop="loop" autoPlay playsInline>
+              <source src={Thesis_01} type="video/mp4" />
+            </video>
             <div className="container">
               <header>
                 <h1>
@@ -28,11 +31,11 @@ class Thesis extends Component {
                 <img src={Arrow} />
               </a>
             </div>
-            <video muted loop="loop" autoPlay playsInline>
-              <source src={Thesis_01} type="video/mp4" />
-            </video>
           </section>
           <section className="pp-section section-showcase thesis-page two" data-anchor="thesis-page2">
+            <video muted loop="loop" autoPlay playsInline>
+              <source src={Thesis_02} type="video/mp4" />
+            </video>
             <div className="container">
               <header>
                 <h1>
@@ -46,11 +49,11 @@ class Thesis extends Component {
                 <img src={Arrow} />
               </a>
             </div>
-            <video muted loop="loop" autoPlay playsInline>
-              <source src={Thesis_02} type="video/mp4" />
-            </video>
           </section>
           <section className="pp-section section-showcase thesis-page three light-nav" data-anchor="thesis-page3">
+            <video muted loop="loop" autoPlay playsInline>
+              <source src={Thesis_03} type="video/mp4" />
+            </video>
             <div className="container">
               <header>
                 <h1>
@@ -67,11 +70,11 @@ class Thesis extends Component {
                 <img src={Arrow} />
               </a>
             </div>
-            <video muted loop="loop" autoPlay playsInline>
-              <source src={Thesis_03} type="video/mp4" />
-            </video>
           </section>
           <section className="pp-section section-showcase thesis-page four light-nav" data-anchor="thesis-page4">
+            <video muted loop="loop" autoPlay playsInline>
+              <source src={Thesis_04} type="video/mp4" />
+            </video>
             <div className="container">
               <header>
                 <h1>
@@ -88,11 +91,11 @@ class Thesis extends Component {
                 <img src={Arrow} />
               </a>
             </div>
-            <video muted loop="loop" autoPlay playsInline>
-              <source src={Thesis_04} type="video/mp4" />
-            </video>
           </section>
           <section className="pp-section pp-scrollable section-showcase thesis-page five contrast-nav-yellow" data-anchor="thesis-page5">
+            <video muted loop="loop" autoPlay playsInline>
+              <source src={Thesis_05} type="video/mp4" />
+            </video>
             <div className="container">
               <header>
                 <h1>
@@ -106,10 +109,7 @@ class Thesis extends Component {
                 </h1>
               </header>
             </div>
-            <video muted loop="loop" autoPlay playsInline>
-              <source src={Thesis_05} type="video/mp4" />
-            </video>
-            <Footer />
+            <Footer/>
           </section>
         </main>
       </>
