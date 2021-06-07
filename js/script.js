@@ -197,8 +197,13 @@ function goThesis(){
 			$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 
 			setActiveCircle();
-		}, 50);		
 
+			
+		}, 50);		
+		setTimeout(function(){
+			// Make thesis scrollable if on mobile device
+			setThesisMobileStyles();
+		}, 2000);		
 		initThesisPagepiling();
 	})
 }
@@ -232,6 +237,10 @@ function goHome(){
 				$('.circle-nav.home .four.nav-link').addClass('active');
 				setActiveCircle();
 				restartVideo();
+
+				// Remove thesis scroll styles affecting 
+				// the navbar
+				setThesisMobileStyles();
 			}, 50);	
 		}, animationDelay);
 	});
@@ -349,10 +358,41 @@ function truncateEpisodeText(){
    };
    new Dotdotdot( wrapper, options );
 }
+function setThesisMobileStyles(){
+	// If the thesis-anim element exists and is not hidden
+	if($('#thesis-anim').length && !$('#thesis-anim').prop('hidden')){
+		if(isMobile()){
+			// Make body overflow scrollable
+			$('body').addClass('scroll');
+			// Make all sections active to show header elements
+			// without waiting for animations
+			$('#thesis-anim section').addClass('active');
+			// Make nav permanently brown
+			$('nav').addClass('brown-bg').addClass('light');
+		}
+		// Remove styles if window resized from mobile
+		// to desktop
+		else {
+			$('body').removeClass('scroll');
+			$('#thesis-anim section').removeClass('active');
+			// Make first section active
+			$('#thesis-anim section.one').addClass('active');
+			$('nav').removeClass('brown-bg');
+		}
+	}
+	if(!$('#thesis-anim').length){
+		$('body').removeClass('scroll');
+		$('#thesis-anim section').removeClass('active');
+		// Make first section active
+		$('#thesis-anim section.one').addClass('active');
+		$('nav').removeClass('brown-bg');
+	}
+}
 $(window).resize(function(){
 	scaleCircleNav();
 	// scaleHighdefBackground();
 	hideCircleNavMobile();
+	setThesisMobileStyles();
 	if(!isMobile()){
 		$('.circle-nav').removeClass('hide');
 		$('.mobile-nav').removeClass('display');
@@ -364,6 +404,7 @@ $(document).ready(function() {
 	goHome();
 	goThesis();
 	toggleMobileNav();
+	setThesisMobileStyles();
 
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
