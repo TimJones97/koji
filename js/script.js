@@ -195,7 +195,7 @@ function goThesis(){
 
 			// Rotate nav to start position
 			$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
-			
+
 			setActiveCircle();
 		}, 50);		
 
@@ -370,7 +370,8 @@ $(document).ready(function() {
 	location.hash = '';
 
 	// Only initiate pagePiling if on the index page
-	if(location.pathname == '/'){
+	// (change to '/' when in production)
+	if(location.pathname == '/koji'){
 		initHomepagePagepiling();
 	}
 
