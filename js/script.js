@@ -393,7 +393,6 @@ function setThesisMobileStyles(){
 // to the inner viewport height to prevent hidden text
 function setSectionHeightMobile(){
 	if(isMobile()){
-		$('.section-showcase header h1, .section-showcase header span').text(window.innerHeight);
 		$('#homepage-anim .pp-tableCell').css('height', window.innerHeight + 'px');
 	}
 	else {
@@ -417,7 +416,6 @@ $(document).ready(function() {
 	goThesis();
 	toggleMobileNav();
 	setThesisMobileStyles();
-	setSectionHeightMobile();
 
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
@@ -427,12 +425,14 @@ $(document).ready(function() {
 		initHomepagePagepiling();
 	}
 
+
 	// if(location.pathname == '/listen' || location.pathname == '/read'){
 	// 	truncateEpisodeText();
 	// }
 
   	// Remove this at the end
   	setTimeout(function(){
+		setSectionHeightMobile();
 	    $('video').addClass('loaded');
   	}, 500);
 });
