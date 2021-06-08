@@ -140,12 +140,13 @@ function scaleCircleNav(){
 	else if (height < maxVHeight && !isMobile()){
 		navScale = 1.0;
 	}
-	else if (height > maxVHeight && isMobile()){
-		navScale = (height / maxVHeight) * 1.1;
-	}
 	else {
 		navScale = height / maxVHeight;
 	}
+	if (isMobile()){
+		navScale = navScale * 1.15;
+	}
+	
 
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
