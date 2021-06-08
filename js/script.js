@@ -286,6 +286,7 @@ function scrollContactSection() {
 	var currentContactScrollTop = $('.contact').scrollTop(),
     	lastScrollTop = 0;
 
+    // For mobile
     $(window).on('touchstart', function(e) {
         var swipe = e.originalEvent.touches,
         start = swipe[0].pageY;
@@ -310,10 +311,13 @@ function scrollContactSection() {
         });
     	lastScrollTop = currentContactScrollTop;
     });
+    // For desktop
     $('.contact').mousewheel(function(event){
-
+    	
     	// If the current scrollTop position is 0, then the user is
     	// at the top of the contact div
+        currentContactScrollTop = $('.contact').scrollTop();
+
     	if(currentContactScrollTop == 0 && event.deltaY == 1 && lastScrollTop > 0){
     		// Go to the High Definition page when user scrolls to top of contact div
     		location.hash = "page3";
@@ -428,6 +432,9 @@ function setThesisMobileStyles(){
 // to the inner viewport height to prevent hidden text
 function setSectionHeightMobile(){
 	if(isMobile()){
+		if(window.innerHeight < window.outerHeight){
+			$('footer').css('padding-bottom', '100px');
+		}
 		$('#homepage-anim .pp-tableCell').css('height', window.innerHeight + 'px');
 		$('.mobile-nav').css('height', window.innerHeight + 'px');
 	}
