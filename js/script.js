@@ -394,9 +394,11 @@ function setThesisMobileStyles(){
 function setSectionHeightMobile(){
 	if(isMobile()){
 		$('#homepage-anim .pp-tableCell').css('height', window.innerHeight + 'px');
+		$('.mobile-nav').css('height', window.innerHeight + 'px');
 	}
 	else {
 		$('#homepage-anim .pp-tableCell').css('height', 'unset');
+		$('.mobile-nav').css('height', '100vh');
 	}
 }
 $(window).resize(function(){
