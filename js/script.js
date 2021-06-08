@@ -146,7 +146,6 @@ function scaleCircleNav(){
 	if (isMobile()){
 		navScale = navScale * 1.15;
 	}
-	
 
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
@@ -325,6 +324,34 @@ function hideCircleNavMobile(){
 		$('.circle-nav').removeClass('hide');
 	}
 }
+// Remove the "large" class from episodes when downsizing to mobile
+function convertLargeEpisodesMobile(){
+	// For the Listen and Read pages:
+	// if the window width is less than 1600px
+	// make the episodes smaller to collapse properly
+	if($(window).width() < 1600){
+		$('.episode').each(function(){
+			if($(this).hasClass('lg')){
+				$(this).removeClass('lg');
+				// Add on an empty class to track which 
+				// episodes were large before
+				$(this).addClass('lg-removed');
+			}
+		});
+	}
+	else {
+		$('.episode').each(function(){
+			if($(this).hasClass('lg-removed')){
+				// If the user resizes from mobile to desktop
+				// make the episodes large again
+				if($(this).hasClass('lg-removed')){
+					$(this).addClass('lg');
+					$(this).removeClass('lg-removed');
+				}
+			}
+		});
+	}
+}
 function truncateEpisodeText(){
    let wrapper = document.querySelector( ".description" );
    let options = {
@@ -380,6 +407,7 @@ $(window).resize(function(){
 	setSectionHeightMobile();
 	hideCircleNavMobile();
 	setThesisMobileStyles();
+	convertLargeEpisodesMobile();
 	if(!isMobile()){
 		$('.circle-nav').removeClass('hide');
 		$('.mobile-nav').removeClass('display');
@@ -392,6 +420,7 @@ $(document).ready(function() {
 	goThesis();
 	toggleMobileNav();
 	setThesisMobileStyles();
+	convertLargeEpisodesMobile();
 
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
@@ -405,7 +434,6 @@ $(document).ready(function() {
 	// 	truncateEpisodeText();
 	// }
 
-  	// Remove this at the end
   	setTimeout(function(){
 		setSectionHeightMobile();
 	    $('video').addClass('loaded');
