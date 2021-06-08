@@ -140,42 +140,15 @@ function scaleCircleNav(){
 	else if (height < maxVHeight && !isMobile()){
 		navScale = 1.0;
 	}
+	else if (height > maxVHeight && isMobile()){
+		navScale = (height / maxVHeight) * 1.05;
+	}
 	else {
 		navScale = height / maxVHeight;
 	}
 
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
-}
-function scaleHighdefBackground(){
-	var minWidth = 1920,
-		width = $(window).width();
-
-	if(width > minWidth){
-		highdefBackgroundScale = width / minWidth;
-		highdefTop = 0;
-		highdefRight = (1.0 - (width / minWidth)) / 2 * 100;
-
-		// Make the negative values positive
-		highdefRight = Math.abs(highdefRight)
-	}
-	if(width < minWidth){
-		highdefBackgroundScale = width / minWidth;
-		highdefTop = (1.0 - (width / minWidth)) / 2 * 100;
-		highdefRight = (1.0 - (width / minWidth)) / 2 * 100;
-		// Make the values negative
-		highdefTop = '-' + highdefTop;
-		highdefRight = '-' + highdefRight;
-	}
-	else {
-		highdefBackgroundScale = 1.0;
-		highdefTop = 0;
-		highdefRight = 0;
-	}
-	// Add the styles to the dynamic background in the high definition section
-	$('.highdef-bg').css('transform', 'scale3d(' + highdefBackgroundScale + ',' + highdefBackgroundScale + ', 1.0) translate(0%, -50%)');
-	// $('.highdef-bg').css('top',  highdefTop + '%');
-	$('.highdef-bg').css('right', highdefRight + '%');
 }
 function goThesis(){
 	$('.go-thesis').click(function(){
@@ -426,7 +399,6 @@ $(document).ready(function() {
 	if($('#homepage-anim').length){
 		initHomepagePagepiling();
 	}
-
 
 	// if(location.pathname == '/listen' || location.pathname == '/read'){
 	// 	truncateEpisodeText();
