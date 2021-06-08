@@ -858,6 +858,11 @@ a.link-white:hover > .circle-btn:before,
 	opacity: 1;
 }
 
+/*VIEW ALL EPISODES LINK*/
+.section-showcase.highdef .episodes a.link-white {
+	display: none;
+}
+
 /*-----FOURTH PAGE - CONTACT-----*/
 
 section.contact {
@@ -2045,6 +2050,10 @@ h2.tagline {
 	}
 	.highdef.active .circle-red {
 		left: 50px;
+	}
+	/*VIEW ALL EPISODES LINK*/
+	.section-showcase.highdef .episodes a.link-white {
+		display: flex;
 	}
 
 	/*GENERAL EPISODE STYLES*/
