@@ -124,7 +124,7 @@ function rotateCircleNav(index, nextIndex, direction){
 }
 function scaleCircleNav(){
 	var maxVHeight = 1080,
-		height = $(window).height(),
+		height = window.innerHeight,
 		width = $(window).width();
 
 	// If the screen height is larger than full hd 1080px
@@ -144,10 +144,10 @@ function scaleCircleNav(){
 		navScale = height / maxVHeight;
 	}
 	// On mobile, account for the URL and bottom navigation
-	// by scaling circle-nav up by 1.15x
-	if (isMobile()){
-		navScale = navScale * 1.15;
-	}
+	// by scaling circle-nav up by 1.3x
+	// if (isMobile()){
+	// 	navScale = navScale * 1.3;
+	// }
 
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
@@ -163,9 +163,15 @@ function goThesis(){
 		// Make the thesis page visible 
 		$('#thesis-anim').removeAttr('hidden');
 
-		// Make the main link active if it has been affected
-		// by scrolling on the homepage
+		
 		setTimeout(function(){
+
+			// Re-add the thesis-anim element
+		  	detachedElem.insertAfter($('.circle-nav.thesis'));
+			detachedElem = $('#homepage-anim').detach();
+
+			// Make the main link active if it has been affected
+			// by scrolling on the homepage
 			$('.circle-nav.thesis .three.nav-link').addClass('active');
 
 			// Rotate nav to start position
@@ -221,6 +227,7 @@ function goHome(){
 	});
 }
 function initHomepagePagepiling(){
+	detachedElem = $('#thesis-anim').detach();
 	$('#homepage-anim').pagepiling({
 	  	menu: '.circle-nav .circles',
 		anchors: ['page1', 'page2', 'page3', 'page4'],
@@ -240,9 +247,7 @@ function initThesisPagepiling(){
 	setTimeout(function(){
 		// Set global thesis variable to true
   		isThesis = true;
-  		if(detachedElem != null){
-		  	detachedElem.insertAfter($('.circle-nav.thesis'));
-  		}
+  		
   		// Get the homepage element and assign it 
   		// to a var for later
 		detachedElem = $('#homepage-anim').detach();
@@ -277,17 +282,44 @@ function animateHeadersOnScroll(direction){
 		}
 	});
 }
-function scrollContactSection(){
-	$('.contact').mousewheel(function(event){
-		var currentContactScrollTop = $('.contact').scrollTop();
+function scrollContactSection() {
+	var currentContactScrollTop = $('.contact').scrollTop(),
+    	lastScrollTop = 0;
 
-		// If the current scrollTop position is 0, then the user is
-		// at the top of the contact div
-		if(currentContactScrollTop == 0 && event.deltaY == 1){
-			// Go to the High Definition page when user scrolls to top of contact div
-			location.hash = "page3";
-		}
-	});
+    $(window).on('touchstart', function(e) {
+        var swipe = e.originalEvent.touches,
+        start = swipe[0].pageY;
+
+        $(this).on('touchmove', function(e) {
+            var contact = e.originalEvent.touches,
+            end = contact[0].pageY,
+            distance = end-start;
+
+            currentContactScrollTop = $('.contact').scrollTop();
+
+            if (distance > 0 && currentContactScrollTop == 0
+            	&& lastScrollTop > 0){
+                location.hash = "page3";
+            } 
+            console.log(distance);
+            console.log(currentContactScrollTop);
+            console.log(lastScrollTop);
+        })
+        .one('touchend', function() {
+            $(this).off('touchmove touchend');
+        });
+    	lastScrollTop = currentContactScrollTop;
+    });
+    $('.contact').mousewheel(function(event){
+
+    	// If the current scrollTop position is 0, then the user is
+    	// at the top of the contact div
+    	if(currentContactScrollTop == 0 && event.deltaY == 1 && lastScrollTop > 0){
+    		// Go to the High Definition page when user scrolls to top of contact div
+    		location.hash = "page3";
+    	}
+    	lastScrollTop = currentContactScrollTop;
+    });
 }
 function toggleMobileNav(){
 	$('.menu-toggle').click(function(){
@@ -429,12 +461,12 @@ $(window).resize(function(){
 });
 $(document).ready(function() {
 	scaleCircleNav();
-	scrollContactSection();
 	goHome();
 	goThesis();
 	toggleMobileNav();
 	setThesisMobileStyles();
 	convertLargeEpisodesMobile();
+	scrollContactSection();
 
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
