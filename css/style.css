@@ -666,15 +666,6 @@ a.link-white:hover > .circle-btn:after,
 .section-showcase.highdef header a.link-white {
 	margin-top: 20px;
 }
-.section-showcase.highdef header .circle-btn {
-	height: 65px;
-	width: 65px;
-}
-.section-showcase.highdef header .circle-btn:before,
-.section-showcase.highdef header .circle-btn:after {
-	width: 32px;
-	width: px;
-}
 
 .episodes {
 	margin-top: 30px;
@@ -694,9 +685,6 @@ a.link-white:hover > .circle-btn:after,
 	font-size: 32px;
 	margin-top: 30px;
 }
-.episodes .episode:first-of-type {
-	margin-right: 25px;
-}
 .episode {
 	position: relative;
 	display: inline-block;
@@ -708,6 +696,9 @@ a.link-white:hover > .circle-btn:after,
 	transition: background 0.5s ease;
 	background: var(--brown);
 }	
+.episodes .episode:first-of-type {
+	margin-right: 20px;
+}
 .episode .blur {
 	transition: all 0.5s ease;
 }
@@ -829,7 +820,7 @@ a.link-white:hover > .circle-btn:after,
 	min-height: 170vh;
 	min-width: 170vh;
 	overflow: hidden;
-	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 0s;
+	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 0.3s;
 	opacity: 0.3;
 }
 .highdef-bg img {
@@ -1960,6 +1951,12 @@ h2.tagline {
 	}
 }
 @media only screen and (max-width: 1300px){
+
+	/*HIGHDEF*/
+	.episodes .episode:first-of-type {
+		margin-bottom: 20px;
+	}
+
 	/*INVESTMENTS PAGE*/
 	.investment {
 		width: 32.3333%;
@@ -2168,14 +2165,6 @@ h2.tagline {
 	.section-showcase.about header a.link-white {
 		font-size: 32px;
 	}
-	.section-showcase.about header .circle-btn {
-		width: 45px;
-		height: 45px;
-	}
-	.section-showcase.about header .circle-btn:before {
-		font-size: 25px;
-		padding-bottom: 0px;
-	}
 
 	/*HIGHDEF*/
 	.section-showcase.highdef header {
@@ -2191,16 +2180,6 @@ h2.tagline {
 	.section-showcase.highdef header h1 span, 
 	.section-showcase.highdef header a.link-white {
 		font-size: 32px;
-	}
-	.section-showcase.highdef header .circle-btn,
-	.section-showcase.highdef .episodes .circle-btn {
-		height: 35px;
-		width: 35px;
-		margin-left: 10px;
-	}
-	.section-showcase.highdef header .circle-btn:before,
-	.section-showcase.highdef .episodes .circle-btn:before {
-		font-size: 20px;
 	}
 	.graphics {
 		width: 100%;
@@ -2458,7 +2437,7 @@ h2.tagline {
 	footer .contact-links span {
     	font-size: 24px;
 	}
-	footer .contact-links a:first-of-type {
+	footer .contact-links a {
 		margin-bottom: 20px;
 	}
 }
@@ -2482,17 +2461,22 @@ h2.tagline {
 		margin-bottom: 10px;
 		font-size: 12px;
 	}
-	.section-showcase.highdef header .circle-btn,
-	.section-showcase.about header .circle-btn,
-	.circle-btn {
-		width: 25px;
-		height: 25px;
+	/*Override styles for all button sizes*/
+	.circle-btn,
+	.circle-btn.md, 
+	.circle-btn.sm {
+		width: 26px;
+		height: 26px;
 		margin-left: 10px;
 	}
-	.section-showcase.about header .circle-btn:before,
-	.circle-btn:before {
-		font-size: 15px;
-		padding-bottom: 3px;
+	.circle-btn:after,
+	.circle-btn:before,
+	.circle-btn.md:after,
+	.circle-btn.md:before,
+	.circle-btn.sm:after,
+	.circle-btn.sm:before {
+		width: 14px;
+		height: 12px;
 	}
 	.section-showcase video {
 		min-height: 100%;

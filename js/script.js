@@ -143,6 +143,8 @@ function scaleCircleNav(){
 	else {
 		navScale = height / maxVHeight;
 	}
+	// On mobile, account for the URL and bottom navigation
+	// by scaling circle-nav up by 1.15x
 	if (isMobile()){
 		navScale = navScale * 1.15;
 	}
@@ -307,7 +309,7 @@ function isMobile(){
 }
 function hideCircleNavMobile(){
 	if(isMobile()){
-		$('section').each(function(){
+		$('#homepage-anim section').each(function(){
 			// Hide the circle nav to give the user 
 			// more space on contact sections
 			if($(this).hasClass('active')){
@@ -402,6 +404,19 @@ function setSectionHeightMobile(){
 		$('.mobile-nav').css('height', '100vh');
 	}
 }
+
+// Append links for non-root path links 
+// on Github pages website
+function modifyLinksForPublishing(){
+	$('a[href*="/"]').each(function(){
+		var	thisElem = $(this),
+			thisHref = $(this).attr('href'),
+			newHref = '';
+
+		newHref = '/koji' + thisHref;
+		thisElem.attr('href', newHref);
+	});
+}
 $(window).resize(function(){
 	scaleCircleNav();
 	setSectionHeightMobile();
@@ -424,6 +439,11 @@ $(document).ready(function() {
 
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
+
+	// Append /koji to links if published to site (can delete after)
+	if(location.pathname == '/koji/'){
+		modifyLinksForPublishing();
+	}
 
 	// Only initiate pagePiling if on the index page
 	if($('#homepage-anim').length){
