@@ -395,8 +395,10 @@ function setSectionHeightMobile(){
 	if(isMobile()){
 		$('.section-showcase header h1, .section-showcase header span').text(window.innerHeight);
 		$('#homepage-anim section').css('height', window.innerHeight + 'px');
+		$('#homepage-anim').css('height', window.innerHeight + 'px');
 	}
 	else {
+		$('#homepage-anim').css('height', 'unset');
 		$('#homepage-anim section').css('height', 'unset');
 	}
 }
