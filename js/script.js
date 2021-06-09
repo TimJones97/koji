@@ -480,7 +480,7 @@ $(document).ready(function() {
 
 	// Append /koji to links if published to site (can delete after)
 	if(location.pathname == '/koji/'){
-		// modifyLinksForPublishing();
+		modifyLinksForPublishing();
 	}
 
 	// Only initiate pagePiling if on the index page
