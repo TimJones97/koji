@@ -27,7 +27,7 @@ class Thesis extends Component {
                   The creation of the Internet was a seminal moment in the history of technology - it enabled the first communication and consensus formation between distributed computers. At the time of its inception, few could understand the value of a communications protocol for distributed machines. Today, it enables so many of our daily functions that we don't feel whole without it.
                 </p>
               </header>
-              <a className="arrow-down nav-link" data-menuanchor="thesis-page2" href="#thesis-page2">
+              <a className="arrow nav-link" data-menuanchor="thesis-page2" href="#thesis-page2">
                 <img src={Arrow} />
               </a>
             </div>
@@ -45,7 +45,7 @@ class Thesis extends Component {
                   The creation of the Internet was a seminal moment in the history of technology - it enabled the first communication and consensus formation between distributed computers. At the time of its inception, few could understand the value of a communications protocol for distributed machines. Today, it enables so many of our daily functions that we don't feel whole without it.
                 </p>
               </header>
-              <a className="arrow-down nav-link" data-menuanchor="thesis-page3" href="#thesis-page3">
+              <a className="arrow nav-link" data-menuanchor="thesis-page3" href="#thesis-page3">
                 <img src={Arrow} />
               </a>
             </div>
@@ -66,7 +66,7 @@ class Thesis extends Component {
                   Anyone with an internet connection can access applications built on the global financial stack. More still, because the smart-contract libraries are open and write access to the blockchain is free, anyone can contribute to improving it.
                 </p>
               </header>
-              <a className="arrow-down nav-link" data-menuanchor="thesis-page4" href="#thesis-page4">
+              <a className="arrow nav-link" data-menuanchor="thesis-page4" href="#thesis-page4">
                 <img src={Arrow} />
               </a>
             </div>
@@ -87,7 +87,7 @@ class Thesis extends Component {
                   Without a strong capital base to support them, financial protocols and the applications built on them are unusable. The presence of capital is entwined with the design of financial protocols themselves. More still, a network of active participants is vital to the early success of these protocols. Without engaged protocol governors oriented toward the protocol's long term goals, there can be little hope for a new financial ecosystem to emerge.
                 </p>
               </header>
-              <a className="arrow-down nav-link" data-menuanchor="thesis-page5" href="#thesis-page5">
+              <a className="arrow nav-link" data-menuanchor="thesis-page5" href="#thesis-page5">
                 <img src={Arrow} />
               </a>
             </div>

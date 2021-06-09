@@ -25,7 +25,6 @@ const Listen = () => {
           <div className="episode-lg">
             <span className="subheading">MOST RECENT EPISODE</span>
             <Episode large/>
-            <Episode small mobile/>
           </div>
           <hr/>
           <span className="subheading">ALL EPISODES</span>
@@ -34,14 +33,12 @@ const Listen = () => {
             <Episode small/>
             <Episode small/>
             <Episode large/>
-            <Episode small mobile/>
           </div>
           <div className="episode-row">
             <Episode large/>
             <Episode small/>
             <Episode small/>
             <Episode small/>
-            <Episode small mobile/>
           </div>
         </div>
       </section>

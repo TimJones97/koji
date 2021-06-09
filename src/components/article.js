@@ -87,15 +87,24 @@ class Article extends Component {
                 }
               </div>
               <div className="right-contain">
-                <picture className="article-img">
-                  <img src={hd_thumbnail}/>
-                </picture>
-                <div className="episode-play mobile">
-                  <img src={player_img_small}/>
-                </div>
+                {(this.props.read) 
+                  ? <>
+                      <picture className="article-img">
+                        <img src={read_thumbnail}/>
+                      </picture>
+                    </>
+                  : <>
+                      <picture className="article-img">
+                        <img src={hd_thumbnail}/>
+                      </picture>
+                      <div className="episode-play mobile">
+                        <img src={player_img_small}/>
+                      </div>
+                    </>
+                }
               </div>
             </div>
-            <div className="recent-episodes mobile">
+            <div className="recent-episodes">
               {(this.props.read) 
                 ? <>
                     <hr/>
@@ -107,7 +116,7 @@ class Article extends Component {
                     <span className="subheading">RECENT EPISODES</span>
                     <Episode small/>
                     <Episode small/>
-                    <a className="link-white" href="/listen">View all Episodes<button role="button" className="circle-btn"/></a>
+                    <a className="link-white" href="/listen">View all Episodes<button role="button" className="circle-btn md"/></a>
                   </>
               }
             </div>

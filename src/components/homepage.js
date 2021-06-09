@@ -1,8 +1,9 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import Footer from '../components/footer';
+import Arrow from '../components/arrow';
 import Episode from '../components/episode';
 import Socials from '../components/socials';
+import Footer from '../components/footer';
 
 // Image and video assets
 import arrow from '../../static/img/general/arrow-down.svg';
@@ -28,9 +29,7 @@ class Homepage extends Component {
                 </h1>
                 <span className="inline">the </span><a className="link-white go-thesis" data-menuanchor="thesis-page1" href="#thesis-page1">Global Financial Stack<button role="button" className="circle-btn" /></a>
               </header>
-              <a className="arrow-down nav-link" data-menuanchor="page2" href="#page2">
-                <img src={arrow} />
-              </a>
+              <Arrow down anchor="page2"/>
             </div>
             <video muted loop="loop" autoPlay playsInline>
               <source src={homepage_01} type="video/mp4" />
@@ -43,14 +42,12 @@ class Homepage extends Component {
                 <h1>
                   <span>We believe blockchain technology is shaking the foundations of traditional internet infrastructure, clearing way for a new era of capitalism.</span>
                 </h1>
-                <a className="link-white" href="/investments">Read More<button role="button" className="circle-btn" /></a>
+                <a className="link-white" href="/investments">Read More<button role="button" className="circle-btn md" /></a>
               </header>
-              <a className="arrow-down nav-link" data-menuanchor="page3" href="#page3">
-                <img src={arrow} />
-              </a>
+              <Arrow down anchor="page3"/>
             </div>
             <video muted loop="loop" autoPlay playsInline>
-              <source src={homepage_02} type="video/mp4" />
+              <source src={homepage_02} type="video/mp4"/>
             </video>
           </section>
           <section className="pp-section section-showcase highdef light-nav" data-anchor="page3">
@@ -61,17 +58,15 @@ class Homepage extends Component {
                 <h1>
                   <span>Illuminating the motives&nbsp;</span><span>behind the person.</span>
                 </h1>
-                <a className="link-white" href="/listen">Listen to their journeys<button role="button" className="circle-btn" /></a>
+                <a className="link-white" href="/listen">Listen to their journeys<button role="button" className="circle-btn md" /></a>
               </header>
               <div className="episodes">
                 <span className="subheading">RECENT EPISODES</span>
                 <Episode small/>
                 <Episode small/>
-                <a className="link-white" href="/listen">View all Episodes<button role="button" className="circle-btn"/></a>
+                <a className="link-white" href="/listen">View all Episodes<button role="button" className="circle-btn md"/></a>
               </div>
-              <a className="arrow-down nav-link" data-menuanchor="page4" href="#page4">
-                <img src={arrow} />
-              </a>
+              <Arrow down anchor="page4"/>
             </div>
             <div className="graphics">
               <div className="highdef-bg">
@@ -85,6 +80,7 @@ class Homepage extends Component {
           <section className="pp-section pp-scrollable section-showcase contact light-nav contrast-nav hide-circles-mobile" data-anchor="page4">
             <div className="container">
               <div className="left">
+                <Arrow up anchor="page3"/>
                 <header>
                   <span className="subheading">CONTACT</span>
                   <h1>
@@ -94,7 +90,7 @@ class Homepage extends Component {
                 <Socials/>
               </div>
               <div className="right">
-                <form className="contact-form" action="https://formspree.io/f/mrgrprod" method="POST">
+                <form className="contact-form" method="POST">
                   <div className="form-item half">
                     <label>FIRST NAME</label>
                     <input placeholder="First name" name="first_name" type="text" required />

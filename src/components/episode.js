@@ -8,7 +8,7 @@ class Episode extends Component {
     return (
       <>
         {(this.props.small) &&
-          <article className={"episode " + (this.props.read ? 'read' : '') + (this.props.mobile ? ' mobile' : '')}>
+          <article className={"episode " + (this.props.read ? 'read' : '')}>
             <div className="episode-info">
               <div className="details">
                 <span className="number">Article #01</span>
@@ -16,6 +16,7 @@ class Episode extends Component {
                 <p className="date">December 15, 2020</p>
                 <span>&nbsp;|&nbsp;</span>
                 <p className="time">45 mins</p>
+                {/* Remove /Koji links when going into production*/}
                 {!(this.props.read) &&
                   <a href="/episode-page" className="open mobile">Listen Now</a>
                 }
@@ -41,8 +42,8 @@ class Episode extends Component {
           </article>
         }
         {(this.props.large) &&
-          <article className={"episode large " + (this.props.mobile ? 'mobile' : '')}>
-            <figure className="episode-thumbnail">
+          <article className={"episode lg " + (this.props.read ? 'read' : '')}>
+            <figure className="episode-thumbnail collapse-sm">
               <div className="blur" />
               {(this.props.read) 
                 ? <img className="thumbnail" src={read_thumbnail} />
@@ -54,11 +55,18 @@ class Episode extends Component {
                 <span className="number">Article #01</span>
                 <p className="heading">Article Heading</p>
                 <p className="date">December 15, 2020</p>
+                <span>&nbsp;|&nbsp;</span>
                 <p className="time">45 mins</p>
               </div>
+              {!(this.props.read) &&
+                <figure className="episode-thumbnail collapse-md">
+                  <div className="blur" />
+                  <img className="thumbnail" src={hd_thumbnail} />
+                </figure>
+              }
               <div className="description">
                 <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed d
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Lorem ipsum dolor sit amet
                 </p>
               </div>
               {(this.props.read) 

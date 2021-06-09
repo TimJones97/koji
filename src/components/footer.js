@@ -19,9 +19,11 @@ class Footer extends Component {
               <div className="contact-links">
                 <a href="#">
                   <span>Contact Us</span>
+                  <button role="button" className="circle-btn sml"/>
                 </a>
                 <a href="#">
                   <span>Subscribe for Updates</span>
+                  <button role="button" className="circle-btn sml"/>
                 </a>
               </div>
             </div>

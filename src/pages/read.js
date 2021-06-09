@@ -23,7 +23,6 @@ const Read = () => {
           <div className="right-contain">
             <span className="subheading">MOST RECENT ARTICLE</span>
             <Episode large read/>
-            <Episode small mobile read/>
           </div>
           <hr/>
           <span className="subheading">COMPLETE LISTING</span>
@@ -32,14 +31,12 @@ const Read = () => {
             <Episode small read/>
             <Episode large read/>
             <Episode small read/>
-            <Episode small mobile read/>
           </div>
           <div className="episode-row">
             <Episode large read/>
             <Episode small read/>
             <Episode small read/>
             <Episode small read/>
-            <Episode small mobile read/>
           </div>
         </div>
       </section>

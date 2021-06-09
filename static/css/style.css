@@ -112,7 +112,7 @@ section.active {
     overflow-y: scroll !important;
 }
 /*Arrow down to next page*/
-.arrow-down {
+.arrow {
 	position: absolute;
 	bottom: -60px;
 	left: 40px;
@@ -148,6 +148,60 @@ section.active {
 	height: 100%;
 }
 
+/*CIRCLE BUTTONS WITH ARROW*/
+.circle-btn {
+	position: relative;
+	height: 84px;
+	width: 84px;
+	border: 1px solid #fff;
+	background: transparent;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	margin-left: 20px;
+}
+.circle-btn:before,
+.circle-btn:after {
+	content: "";
+	background: url('../img/general/arrow-right.svg');
+	background-size: cover;
+	height: 32px;
+	width: 37px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateZ(0) translate(-50%, -50%);
+	transition: opacity 0.5s ease;
+	backface-visibility: hidden;
+}
+.circle-btn:after {
+	background: url('../img/general/arrow-right-black.svg');
+	background-size: cover;
+	opacity: 0;
+}
+
+/*MEDIUM SIZE*/
+.circle-btn.md {
+	width: 64px;
+	height: 64px;
+}
+.circle-btn.md:before,
+.circle-btn.md:after {
+	height: 27px;
+	width: 32px;
+}
+
+/*SMALL SIZE*/
+.circle-btn.sml {
+	width: 35px;
+	height: 35px;
+}
+.circle-btn.sml:before,
+.circle-btn.sml:after {
+	height: 15px;
+	width: 18px;
+}
+
 /*--------------NAV--------------*/
 
 nav {
@@ -174,6 +228,9 @@ nav .container {
 	left: 0;
 	width: 100%;
 	opacity: 0;
+}
+.right-nav ul {
+	margin: 0;
 }
 .nav-item {
 	margin: unset;
@@ -257,9 +314,6 @@ nav.dark .menu-toggle .bar {
     width: 25px;
 }
 
-/*HOVER EFFECTS*/
-
-
 /*-----MOBILE NAV-----*/
 
 menu.mobile-nav {
@@ -306,6 +360,7 @@ menu.mobile-nav.display {
 .mobile-nav__items .nav-item {
 	display: block;
 	margin-right: 0;
+	opacity: 0;
 }
 .mobile-nav__items .nav-link {
 	display: flex;
@@ -330,6 +385,35 @@ menu.mobile-nav.display {
 	background: var(--dark-red);
 }
 
+/*OPEN ANIMATION*/
+menu.mobile-nav.display .nav-item {
+	animation: fadeIn 0.5s linear forwards;
+}
+menu.mobile-nav.display .nav-item:nth-child(1) {
+	animation-delay: 0.2s;
+}
+menu.mobile-nav.display .nav-item:nth-child(2) {
+	animation-delay: 0.4s;
+}
+menu.mobile-nav.display .nav-item:nth-child(3) {
+	animation-delay: 0.6s;
+}
+menu.mobile-nav.display .nav-item:nth-child(4) {
+	animation-delay: 0.8s;
+}
+menu.mobile-nav.display .nav-item:nth-child(5) {
+	animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 /*-----CIRCLE NAV-----*/
 
 .circle-nav,
@@ -338,7 +422,7 @@ menu.mobile-nav.display {
 	right: 0px;
 	top: 0;
 	height: 100%;
-	z-index: 999;
+	z-index: 998;
 	display: flex;
 	align-items: center;
     transition: transform 0.5s ease, opacity 0.3s ease;
@@ -535,39 +619,22 @@ a.link-white {
 	display: inline-flex;
 	align-items: center;
 }
-.circle-btn {
-	position: relative;
-	height: 84px;
-	width: 84px;
-	border: 1px solid #fff;
-	background: transparent;
-	border-radius: 50%;
-	cursor: pointer;
-	transition: all 0.5s ease;
-	margin-left: 20px;
-}
-.circle-btn:before {
-	content: "\01F862";
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	color: #fff;
-	font-size: 40px;
-	padding-bottom: 5px;
-	transition: all 0.5s ease;
-}
 
 /*HOVER EFFECTS*/
 a.link-white:hover > .circle-btn,
 .circle-btn:hover {
 	background: #fff;
 }
+/*Make the white arrow opacity 0*/
 a.link-white:hover > .circle-btn:before,
 .circle-btn:hover:before {
-	color: var(--brown);
+	opacity: 0;
 }
-
+/*And black arrow opacity 1*/
+a.link-white:hover > .circle-btn:after,
+.circle-btn:hover:after {
+	opacity: 1;
+}
 .section-showcase video {
     position: absolute;
     top: 50%;
@@ -603,13 +670,6 @@ a.link-white:hover > .circle-btn:before,
 	color: #fff;
 	margin-top: 20px;
 }
-.section-showcase.about header .circle-btn {
-	width: 60px;
-	height: 60px;
-}
-.section-showcase.about header .circle-btn:before {
-	font-size: 30px;
-}
 
 /*-----THIRD PAGE - HIGH DEF-----*/
 
@@ -636,10 +696,7 @@ a.link-white:hover > .circle-btn:before,
 .section-showcase.highdef header a.link-white {
 	margin-top: 20px;
 }
-.section-showcase.highdef header .circle-btn {
-	height: 65px;
-	width: 65px;
-}
+
 .episodes {
 	margin-top: 30px;
 }
@@ -658,9 +715,6 @@ a.link-white:hover > .circle-btn:before,
 	font-size: 32px;
 	margin-top: 30px;
 }
-.episodes .episode:first-of-type {
-	margin-right: 25px;
-}
 .episode {
 	position: relative;
 	display: inline-block;
@@ -669,11 +723,13 @@ a.link-white:hover > .circle-btn:before,
 	border: 1px solid var(--dark-red);
 	border-radius: 6px;
 	overflow: hidden;
-	transition: all 0.5s ease;
+	transition: background 0.5s ease;
 	background: var(--brown);
 }	
-.episode .blur, 
-.episode .episode-thumbnail {
+.episodes .episode:first-of-type {
+	margin-right: 20px;
+}
+.episode .blur {
 	transition: all 0.5s ease;
 }
 .episode .episode-thumbnail {
@@ -696,6 +752,7 @@ a.link-white:hover > .circle-btn:before,
 	color: var(--orange);
 	margin-bottom: 10px;
 	margin-top: 0;
+	font-weight: 300;
 }
 .episode-info .number,
 .episode-info .date {
@@ -793,7 +850,7 @@ a.link-white:hover > .circle-btn:before,
 	min-height: 170vh;
 	min-width: 170vh;
 	overflow: hidden;
-	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 0s;
+	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 3s;
 	opacity: 0.3;
 }
 .highdef-bg img {
@@ -856,6 +913,11 @@ a.link-white:hover > .circle-btn:before,
 .highdef.active .circle-white {
 	left: 0px;
 	opacity: 1;
+}
+
+/*VIEW ALL EPISODES LINK*/
+.section-showcase.highdef .episodes a.link-white {
+	display: none;
 }
 
 /*-----FOURTH PAGE - CONTACT-----*/
@@ -1032,6 +1094,10 @@ footer .contact-links {
 	justify-content: space-between;
 	margin-right: 100px;
 }
+footer .contact-links a {
+    display: flex;
+    align-items: center;
+}
 footer .contact-links span {
 	position: relative;
 	display: inline-block;
@@ -1039,29 +1105,19 @@ footer .contact-links span {
     font-weight: 300;
     font-size: 22px;
 }
-footer .contact-links span:after {
-	content: "\01F862";
-	width: 35px;
-	height: 35px;
-	position: absolute;
-	top: 50%;
-	right: -50px;
-	transform: translate(0%, -50%);
-	color: #fff;
-	font-size: 20px;
-	border: 1px solid #fff;
-	padding-bottom: 2px;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: all 0.5s ease;
-}
 
 /*HOVER EFFECTS*/
-footer .contact-links span:hover:after {
-	color: #000;
+.contact-links a:hover .circle-btn,
+.circle-btn:hover {
 	background: #fff;
+}
+.contact-links a:hover .circle-btn:before,
+.circle-btn:hover:before {
+	opacity: 0;
+}
+.contact-links a:hover .circle-btn:after,
+.circle-btn:hover:after {
+	opacity: 1;
 }
 
 /*SITEMAP AND SOCIAL LINKS*/
@@ -1471,12 +1527,12 @@ section.contact-page .right form {
 	font-size: 48px;
 	color: #fff;
 }
-/*FOR THE SUBHEADING OUTSIDE THE LARGE EPISODE DIV*/
+/*FOR THE SUBHEADING OUTSIDE THE lg EPISODE DIV*/
 .read .subheading {
 	flex-basis: 100%;
 	margin-bottom: 35px;
 }
-/*FOR THE SUBHEADING INSIDE THE LARGE EPISODE DIV*/
+/*FOR THE SUBHEADING INSIDE THE lg EPISODE DIV*/
 .read .right-contain .subheading {
 	margin-bottom: 20px;
 }
@@ -1492,10 +1548,9 @@ section.contact-page .right form {
 	margin-bottom: 25px;
 }
 .episode.read .episode-info {
-	padding-bottom: 15px;
+    padding: 15px 15px 15px;
 }
 .episode.read .description {
-	height: 230px;
 	padding: 15px;
 	border-top: 1px solid var(--dark-red);
 }
@@ -1537,12 +1592,12 @@ section.contact-page .right form {
 	margin-bottom: 60px;
 	width: 100%;
 }
-/*FOR THE SUBHEADING OUTSIDE THE LARGE EPISODE DIV*/
+/*FOR THE SUBHEADING OUTSIDE THE lg EPISODE DIV*/
 .listen .subheading {
 	flex-basis: 100%;
 	margin-bottom: 36px;
 }
-/*FOR THE SUBHEADING INSIDE THE LARGE EPISODE DIV*/
+/*FOR THE SUBHEADING INSIDE THE lg EPISODE DIV*/
 .listen .right-contain .subheading {
 	margin-bottom: 20px;
 }
@@ -1557,45 +1612,52 @@ section.contact-page .right form {
 .right-contain {
 	width: 630px;
 }
-/*Large episode styles*/
-.episode.large {
+/*lg episode styles*/
+.episode.lg {
 	width: 630px;
 	height: 410px;
 	display: flex;
 	justify-content: flex-start;
 }
-.episode.large .episode-thumbnail,
-.episode.large .episode-thumbnail .blur,
-.episode.large .episode-thumbnail .thumbnail {
+.episode.lg .episode-thumbnail,
+.episode.lg .episode-thumbnail .blur,
+.episode.lg .episode-thumbnail .thumbnail {
 	width: 410px;
 	height: 410px;
 }
-.episode.large .episode-info {
+/*Hide the second thumbnail on desktop*/
+.episode.lg .episode-thumbnail.collapse-md {
+	display: none;
+}
+.episode.lg .episode-info {
 	width: 220px;
 	padding: 0;
 }
-.episode.large .episode-info .details {
+.episode.lg .episode-info .details {
 	padding: 20px 20px 15px;
 	border-bottom: 1px solid var(--dark-red);
 }
-.episode.large .episode-info .number,
-.episode.large .episode-info .date,
-.episode.large .episode-info .time {
+.episode.lg .episode-info .number,
+.episode.lg .episode-info .date,
+.episode.lg .episode-info .time {
 	display: block;
 	font-size: 16px;
 	margin-bottom: 10px;
 	margin-top: 0;
 }
-.episode.large .episode-info .number,
-.episode.large .episode-info .date {
+/*Hide the divider between date and time on desktop*/
+.episode.lg .episode-info .date + span {
+	display: none;
+}
+.episode.lg .episode-info .number,
+.episode.lg .episode-info .date {
 	margin-bottom: 5px;
 }
-.episode.large .episode-info .heading {
+.episode.lg .episode-info .heading {
 	margin: 0px 0px 25px;
 }
 .episode-info .description {
 	padding: 15px 20px;
-	border-bottom: 1px solid var(--dark-red);
 }
 .episode .description p {
 	font-family: 'Helvetica', sans-serif;
@@ -1603,14 +1665,35 @@ section.contact-page .right form {
 	color: #fff;
 	margin: 0;
 }
-.episode.large .episode-info a.open {
-	padding: 10px 20px;
+.episode.lg .episode-info a.open {
+	position: absolute;
+	bottom: 0;
+	left: 0;
 	display: inline-flex;
+	padding: 10px 20px;
 	align-items: center;
 	height: auto;
+	border-top: 1px solid var(--dark-red);
 }
 .episode-row .episode {
 	margin-bottom: 50px;
+}
+
+/*Remove the thumbnail from episodes that were lg previously*/
+.episode.lg-removed .episode-thumbnail {
+	display: none;
+}
+.episode.lg-removed .episode-info {
+	padding: 0;
+    height: 100%;
+}
+.episode.lg-removed .details {
+    padding: 15px 15px 15px;
+}
+.episode.lg-removed .description {
+    border-top: 1px solid var(--dark-red);
+	padding: 15px;
+    overflow: hidden;
 }
 
 /*HORIZONTAL LINE*/
@@ -1755,7 +1838,7 @@ h2.tagline {
 /*Recent episodes appear on tablet res and down*/
 .article .recent-episodes {
 	flex-wrap: wrap;
-	margin-top: 10px;
+	margin: 10px 0px 35px;
 	overflow: hidden;
 }
 .recent-episodes .subheading,
@@ -1763,20 +1846,13 @@ h2.tagline {
 	flex-basis: 100%;
 }
 .recent-episodes .episode {
-	margin-right: auto;
+	margin-right: 20px;
 }
 .recent-episodes a.link-white {
 	font-family: 'Helvetica Neue Light';
 	font-weight: 300;
 	font-size: 24px;
 	margin-top: 20px;
-}
-.recent-episodes a.link-white .circle-btn {
-	width: 35px;
-	height: 35px;
-}
-.recent-episodes a.link-white .circle-btn:before {
-	font-size: 20px;
 }
 
 /*--------------MEDIA QUERIES--------------*/
@@ -1878,6 +1954,18 @@ h2.tagline {
 	}
 }
 @media only screen and (max-width: 1600px){
+
+	/*EPISODE STYLES*/
+	.episode:not(.read) .description {
+		display: none;
+	}
+	.episode.lg-removed:not(.read) .episode-thumbnail.collapse-md {
+		display: block !important;
+	}
+	.episode.lg-removed:not(.read) .details {
+	    padding: 15px 15px 7px;
+	}
+
 	/*FOOTER*/
 	footer .container {
 		flex-direction: row;
@@ -1893,9 +1981,154 @@ h2.tagline {
 	}
 }
 @media only screen and (max-width: 1300px){
+
+	/*HIGHDEF*/
+	.episodes .episode:first-of-type {
+		margin-bottom: 20px;
+	}
+
 	/*INVESTMENTS PAGE*/
 	.investment {
 		width: 32.3333%;
+	}
+
+	/*SMALLER EPISODE STYLES*/
+	.episode {
+		width: 45vw;
+		height: 175px;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	.episode-info {
+		padding: 8px 10px;
+	}
+	.episode a.open {
+		display: none;
+	}
+	.episode a.open.mobile {
+		display: block !important;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		font-family: 'Helvetica', sans-serif;
+		font-size: 13px;
+		color: var(--orange);
+		border-top: 1px solid var(--dark-red);
+		padding: 5px 10px;
+	}
+	.episode a.open.mobile:after {
+		background: url('../img/listen/arrow-right-orange.svg');
+	    background-size: cover;
+		width: 15px;
+		height: 13px;
+		bottom: 6px;
+	}
+	.episode .episode-thumbnail,
+	.episode .episode-thumbnail .blur,
+	.episode .episode-thumbnail .thumbnail {
+		width: 175px;
+		height: 175px;
+	}
+	/*HIDE THE DIVIDER*/
+	.episode-info .date + span {
+		display: none;
+	}
+	/*MAKE DATE AND TIME ON DIFFERENT LINES*/
+	.episode-info .date,
+	.episode-info .time {
+		display: block;
+	}
+	.episode-info .heading {
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+	.episode-info .number, 
+	.episode-info .date, 
+	.episode-info .time {
+		font-size: 13px;
+	}
+	.episode.mobile {
+		display: flex !important;
+	}
+	.episode-row .episode {
+		margin-bottom: 30px;
+	}
+	.episode-row {
+		margin-bottom: 0;
+	}
+	.episode.lg-removed .details {
+		padding: 15px 15px 10px;
+	}
+
+	/*LISTEN EPISODE SPECIFIC*/
+	.episode.lg-removed:not(.read) {
+		flex-direction: row;
+	}
+	.episode.lg-removed:not(.read) .episode-thumbnail.collapse-md {
+		display: none !important;
+	}
+	.episode.lg-removed:not(.read) .episode-thumbnail.collapse-sm {
+		display: block !important;
+	}
+	.episode.lg-removed:not(.read) .details {
+	    padding: 15px 15px 7px;
+	}
+	.episode.lg-removed:not(.read) a.open {
+		display: flex;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	    font-family: 'Helvetica', sans-serif;
+	    font-size: 13px;
+	    color: var(--orange);
+	    border-top: 1px solid var(--dark-red);
+	    padding: 5px 10px;
+	}
+
+	/*READ PAGE*/
+	.episode.read {
+		flex-direction: column;
+	}
+	.episode.read .episode-info {
+		padding-bottom: 10px;
+	}
+	.read .episode-info .number, 
+	.read .episode-info .date, 
+	.read .episode-info .time,
+	.episode.read .description p,
+	.episode.read a.open {
+		font-size: 12px;
+	}
+	.read .episode-info .heading {
+		margin-bottom: 2px;
+	}
+	.read .episode-info .date + span {
+		display: inline;
+	}
+	.read .episode-info .date,
+	.read .episode-info .time {
+		display: inline;
+	}
+	.episode.read .description {
+		padding: 5px 10px;
+		overflow: hidden;
+	}
+	.episode.read a.open {
+		position: relative;
+		display: block;
+		font-family: 'Helvetica', sans-serif;
+		font-size: 13px;
+		color: var(--orange);
+		border-top: 1px solid var(--dark-red);
+		padding: 5px 10px;
+		height: auto;
+	}
+	.episode a.open:after {
+		background: url('../img/listen/arrow-right-orange.svg');
+	    background-size: cover;
+		width: 15px;
+		height: 13px;
+		bottom: 6px;
 	}
 }
 
@@ -1962,14 +2195,6 @@ h2.tagline {
 	.section-showcase.about header a.link-white {
 		font-size: 32px;
 	}
-	.section-showcase.about header .circle-btn {
-		width: 45px;
-		height: 45px;
-	}
-	.section-showcase.about header .circle-btn:before {
-		font-size: 25px;
-		padding-bottom: 0px;
-	}
 
 	/*HIGHDEF*/
 	.section-showcase.highdef header {
@@ -1986,16 +2211,6 @@ h2.tagline {
 	.section-showcase.highdef header a.link-white {
 		font-size: 32px;
 	}
-	.section-showcase.highdef header .circle-btn,
-	.section-showcase.highdef .episodes .circle-btn {
-		height: 35px;
-		width: 35px;
-		margin-left: 10px;
-	}
-	.section-showcase.highdef header .circle-btn:before,
-	.section-showcase.highdef .episodes .circle-btn:before {
-		font-size: 20px;
-	}
 	.graphics {
 		width: 100%;
 		height: 50vh;
@@ -2009,6 +2224,7 @@ h2.tagline {
 		top: unset;
 		bottom: 0;
 		transform: translate(-50%, 0%);
+		transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 0s;
 	}
 	.highdef-bg img {
 		height: 80vw;
@@ -2046,61 +2262,9 @@ h2.tagline {
 	.highdef.active .circle-red {
 		left: 50px;
 	}
-
-	/*GENERAL EPISODE STYLES*/
-	.episode {
-		width: 300px;
-		height: 175px;
+	/*VIEW ALL EPISODES LINK*/
+	.section-showcase.highdef .episodes a.link-white {
 		display: flex;
-		flex-direction: row-reverse;
-	}
-	.episode-info {
-		padding: 8px 10px;
-	}
-	.episode a.open {
-		display: none;
-	}
-	.episode a.open.mobile {
-		display: block !important;
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		font-family: 'Helvetica', sans-serif;
-		font-size: 13px;
-		color: var(--orange);
-		border-top: 1px solid var(--dark-red);
-		padding: 5px 10px;
-	}
-	.episode a.open.mobile:after {
-		background: url('../img/listen/arrow-right-orange.svg');
-	    background-size: cover;
-		width: 15px;
-		height: 13px;
-		bottom: 6px;
-	}
-	.episode .episode-thumbnail,
-	.episode .episode-thumbnail .blur,
-	.episode .episode-thumbnail .thumbnail {
-		width: 175px;
-		height: 175px;
-	}
-	/*HIDE THE DIVIDER*/
-	.episode-info .date + span {
-		display: none;
-	}
-	/*MAKE DATE AND TIME ON DIFFERENT LINES*/
-	.episode-info .date,
-	.episode-info .time {
-		display: block;
-	}
-	.episode-info .heading {
-		font-size: 20px;
-		margin-bottom: 10px;
-	}
-	.episode-info .number, 
-	.episode-info .date, 
-	.episode-info .time {
-		font-size: 13px;
 	}
 
 	/*CONTACT*/
@@ -2220,19 +2384,6 @@ h2.tagline {
 	.listen .subheading {
 		color: #fff;
 	}
-	.episode.mobile {
-		display: flex !important;
-	}
-	.episode.large {
-		display: none;
-	}
-	.episode-row .episode {
-		margin-bottom: 30px;
-		margin-right: auto;
-	}
-	.episode-row {
-		margin-bottom: 0;
-	}
 
 	/*READ PAGE*/
 	section.read {
@@ -2246,50 +2397,6 @@ h2.tagline {
 	}
 	.read .container header h1 {
 		font-size: 24px;
-	}
-	.episode.read {
-		flex-direction: column;
-	}
-	.episode.read .episode-info {
-		padding-bottom: 10px;
-	}
-	.read .episode-info .number, 
-	.read .episode-info .date, 
-	.read .episode-info .time,
-	.episode.read .description p,
-	.episode.read a.open {
-		font-size: 12px;
-	}
-	.read .episode-info .heading {
-		margin-bottom: 2px;
-	}
-	.read .episode-info .date + span {
-		display: inline;
-	}
-	.read .episode-info .date,
-	.read .episode-info .time {
-		display: inline;
-	}
-	.episode.read .description {
-		padding: 15px 10px 5px;
-		overflow: hidden;
-	}
-	.episode.read a.open {
-		position: relative;
-		display: block;
-		font-family: 'Helvetica', sans-serif;
-		font-size: 13px;
-		color: var(--orange);
-		border-top: 1px solid var(--dark-red);
-		padding: 5px 10px;
-		height: auto;
-	}
-	.episode a.open:after {
-		background: url('../img/listen/arrow-right-orange.svg');
-	    background-size: cover;
-		width: 15px;
-		height: 13px;
-		bottom: 6px;
 	}
 
 	/*CONTACT PAGE*/
@@ -2356,12 +2463,12 @@ h2.tagline {
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
-		width: 280px;
+		width: 300px;
 	}
 	footer .contact-links span {
     	font-size: 24px;
 	}
-	footer .contact-links span:first-of-type {
+	footer .contact-links a {
 		margin-bottom: 20px;
 	}
 }
@@ -2385,17 +2492,22 @@ h2.tagline {
 		margin-bottom: 10px;
 		font-size: 12px;
 	}
-	.section-showcase.highdef header .circle-btn,
-	.section-showcase.about header .circle-btn,
-	.circle-btn {
-		width: 25px;
-		height: 25px;
+	/*Override styles for all button sizes*/
+	.circle-btn,
+	.circle-btn.md, 
+	.circle-btn.sm {
+		width: 26px;
+		height: 26px;
 		margin-left: 10px;
 	}
-	.section-showcase.about header .circle-btn:before,
-	.circle-btn:before {
-		font-size: 15px;
-		padding-bottom: 3px;
+	.circle-btn:after,
+	.circle-btn:before,
+	.circle-btn.md:after,
+	.circle-btn.md:before,
+	.circle-btn.sm:after,
+	.circle-btn.sm:before {
+		width: 14px;
+		height: 12px;
 	}
 	.section-showcase video {
 		min-height: 100%;
@@ -2568,6 +2680,11 @@ h2.tagline {
 	}
 	.article .recent-episodes .subheading {
 		margin-bottom: 20px;
+	}
+
+	/*SMALLER EPISODE STYLES*/
+	.episode {
+		width: 300px;
 	}
 
 	/*FOOTER*/

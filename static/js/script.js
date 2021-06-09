@@ -124,7 +124,7 @@ function rotateCircleNav(index, nextIndex, direction){
 }
 function scaleCircleNav(){
 	var maxVHeight = 1080,
-		height = $(window).height(),
+		height = window.innerHeight,
 		width = $(window).width();
 
 	// If the screen height is larger than full hd 1080px
@@ -143,39 +143,14 @@ function scaleCircleNav(){
 	else {
 		navScale = height / maxVHeight;
 	}
+	// On mobile, account for the URL and bottom navigation
+	// by scaling circle-nav up by 1.3x
+	// if (isMobile()){
+	// 	navScale = navScale * 1.3;
+	// }
 
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
-}
-function scaleHighdefBackground(){
-	var minWidth = 1920,
-		width = $(window).width();
-
-	if(width > minWidth){
-		highdefBackgroundScale = width / minWidth;
-		highdefTop = 0;
-		highdefRight = (1.0 - (width / minWidth)) / 2 * 100;
-
-		// Make the negative values positive
-		highdefRight = Math.abs(highdefRight)
-	}
-	if(width < minWidth){
-		highdefBackgroundScale = width / minWidth;
-		highdefTop = (1.0 - (width / minWidth)) / 2 * 100;
-		highdefRight = (1.0 - (width / minWidth)) / 2 * 100;
-		// Make the values negative
-		highdefTop = '-' + highdefTop;
-		highdefRight = '-' + highdefRight;
-	}
-	else {
-		highdefBackgroundScale = 1.0;
-		highdefTop = 0;
-		highdefRight = 0;
-	}
-	// Add the styles to the dynamic background in the high definition section
-	$('.highdef-bg').css('transform', 'scale3d(' + highdefBackgroundScale + ',' + highdefBackgroundScale + ', 1.0) translate(0%, -50%)');
-	// $('.highdef-bg').css('top',  highdefTop + '%');
-	$('.highdef-bg').css('right', highdefRight + '%');
 }
 function goThesis(){
 	$('.go-thesis').click(function(){
@@ -188,9 +163,15 @@ function goThesis(){
 		// Make the thesis page visible 
 		$('#thesis-anim').removeAttr('hidden');
 
-		// Make the main link active if it has been affected
-		// by scrolling on the homepage
+		
 		setTimeout(function(){
+
+			// Re-add the thesis-anim element
+		  	detachedElem.insertAfter($('.circle-nav.thesis'));
+			detachedElem = $('#homepage-anim').detach();
+
+			// Make the main link active if it has been affected
+			// by scrolling on the homepage
 			$('.circle-nav.thesis .three.nav-link').addClass('active');
 
 			// Rotate nav to start position
@@ -246,6 +227,7 @@ function goHome(){
 	});
 }
 function initHomepagePagepiling(){
+	detachedElem = $('#thesis-anim').detach();
 	$('#homepage-anim').pagepiling({
 	  	menu: '.circle-nav .circles',
 		anchors: ['page1', 'page2', 'page3', 'page4'],
@@ -265,9 +247,7 @@ function initThesisPagepiling(){
 	setTimeout(function(){
 		// Set global thesis variable to true
   		isThesis = true;
-  		if(detachedElem != null){
-		  	detachedElem.insertAfter($('.circle-nav.thesis'));
-  		}
+  		
   		// Get the homepage element and assign it 
   		// to a var for later
 		detachedElem = $('#homepage-anim').detach();
@@ -302,17 +282,48 @@ function animateHeadersOnScroll(direction){
 		}
 	});
 }
-function scrollContactSection(){
-	$('.contact').mousewheel(function(event){
-		var currentContactScrollTop = $('.contact').scrollTop();
+function scrollContactSection() {
+	var currentContactScrollTop = $('.contact').scrollTop(),
+    	lastScrollTop = 0;
 
-		// If the current scrollTop position is 0, then the user is
-		// at the top of the contact div
-		if(currentContactScrollTop == 0 && event.deltaY == 1){
-			// Go to the High Definition page when user scrolls to top of contact div
-			location.hash = "page3";
-		}
-	});
+    // For mobile
+    $(window).on('touchstart', function(e) {
+        var swipe = e.originalEvent.touches,
+        start = swipe[0].pageY;
+
+        $(this).on('touchmove', function(e) {
+            var contact = e.originalEvent.touches,
+            end = contact[0].pageY,
+            distance = end-start;
+
+            currentContactScrollTop = $('.contact').scrollTop();
+
+            if (distance > 0 && currentContactScrollTop == 0
+            	&& lastScrollTop > 0){
+                location.hash = "page3";
+            } 
+            console.log(distance);
+            console.log(currentContactScrollTop);
+            console.log(lastScrollTop);
+        })
+        .one('touchend', function() {
+            $(this).off('touchmove touchend');
+        });
+    	lastScrollTop = currentContactScrollTop;
+    });
+    // For desktop
+    $('.contact').mousewheel(function(event){
+    	
+    	// If the current scrollTop position is 0, then the user is
+    	// at the top of the contact div
+        currentContactScrollTop = $('.contact').scrollTop();
+
+    	if(currentContactScrollTop == 0 && event.deltaY == 1 && lastScrollTop > 0){
+    		// Go to the High Definition page when user scrolls to top of contact div
+    		location.hash = "page3";
+    	}
+    	lastScrollTop = currentContactScrollTop;
+    });
 }
 function toggleMobileNav(){
 	$('.menu-toggle').click(function(){
@@ -334,7 +345,7 @@ function isMobile(){
 }
 function hideCircleNavMobile(){
 	if(isMobile()){
-		$('section').each(function(){
+		$('#homepage-anim section').each(function(){
 			// Hide the circle nav to give the user 
 			// more space on contact sections
 			if($(this).hasClass('active')){
@@ -349,6 +360,34 @@ function hideCircleNavMobile(){
 	}
 	else {
 		$('.circle-nav').removeClass('hide');
+	}
+}
+// Remove the "large" class from episodes when downsizing to mobile
+function convertLargeEpisodesMobile(){
+	// For the Listen and Read pages:
+	// if the window width is less than 1600px
+	// make the episodes smaller to collapse properly
+	if($(window).width() < 1600){
+		$('.episode').each(function(){
+			if($(this).hasClass('lg')){
+				$(this).removeClass('lg');
+				// Add on an empty class to track which 
+				// episodes were large before
+				$(this).addClass('lg-removed');
+			}
+		});
+	}
+	else {
+		$('.episode').each(function(){
+			if($(this).hasClass('lg-removed')){
+				// If the user resizes from mobile to desktop
+				// make the episodes large again
+				if($(this).hasClass('lg-removed')){
+					$(this).addClass('lg');
+					$(this).removeClass('lg-removed');
+				}
+			}
+		});
 	}
 }
 function truncateEpisodeText(){
@@ -393,17 +432,35 @@ function setThesisMobileStyles(){
 // to the inner viewport height to prevent hidden text
 function setSectionHeightMobile(){
 	if(isMobile()){
-		$('#homepage-anim section').css('height', window.innerHeight + 'px');
+		if(window.innerHeight < window.outerHeight){
+			$('footer').css('padding-bottom', '100px');
+		}
+		$('#homepage-anim .pp-tableCell').css('height', window.innerHeight + 'px');
+		$('.mobile-nav').css('height', window.innerHeight + 'px');
 	}
 	else {
-		$('#homepage-anim section').css('height', 'unset');
+		$('#homepage-anim .pp-tableCell').css('height', 'unset');
+		$('.mobile-nav').css('height', '100vh');
 	}
+}
+
+// Append links for non-root path links 
+// on Github pages website
+function modifyLinksForPublishing(){
+	$('a[href*="/"]').each(function(){
+		var	thisElem = $(this),
+			thisHref = $(this).attr('href'),
+			newHref = '';
+		newHref = '/koji' + thisHref;
+		thisElem.attr('href', newHref);
+	});
 }
 $(window).resize(function(){
 	scaleCircleNav();
 	setSectionHeightMobile();
 	hideCircleNavMobile();
 	setThesisMobileStyles();
+	convertLargeEpisodesMobile();
 	if(!isMobile()){
 		$('.circle-nav').removeClass('hide');
 		$('.mobile-nav').removeClass('display');
@@ -411,15 +468,20 @@ $(window).resize(function(){
 });
 $(document).ready(function() {
 	scaleCircleNav();
-	scrollContactSection();
 	goHome();
 	goThesis();
 	toggleMobileNav();
 	setThesisMobileStyles();
-	setSectionHeightMobile();
+	convertLargeEpisodesMobile();
+	scrollContactSection();
 
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
+
+	// Append /koji to links if published to site (can delete after)
+	if(location.pathname == '/koji/'){
+		// modifyLinksForPublishing();
+	}
 
 	// Only initiate pagePiling if on the index page
 	if($('#homepage-anim').length){
@@ -430,8 +492,8 @@ $(document).ready(function() {
 	// 	truncateEpisodeText();
 	// }
 
-  	// Remove this at the end
   	setTimeout(function(){
+		setSectionHeightMobile();
 	    $('video').addClass('loaded');
   	}, 500);
 });
