@@ -2740,6 +2740,9 @@ h2.tagline {
 	}
 
 	/*CONTACT PAGE*/
+	section.contact {
+		padding-top: 100px;
+	}
 	section.contact-page .container .socials {
 		display: none !important;
 	}

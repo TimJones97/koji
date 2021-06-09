@@ -480,8 +480,8 @@ $(document).ready(function() {
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
 
-	// Append /koji to links if published to site (can delete after)
-	if(location.pathname == '/koji/'){
+	// Append /koji to links if published to personal Github pages site (can delete after)
+	if(location.host == 'timj.design'){
 		modifyLinksForPublishing();
 	}
 
