@@ -112,7 +112,7 @@ section.active {
     overflow-y: scroll !important;
 }
 /*Arrow down to next page*/
-.arrow-down {
+.arrow {
 	position: absolute;
 	bottom: -60px;
 	left: 40px;
@@ -820,7 +820,7 @@ a.link-white:hover > .circle-btn:after,
 	min-height: 170vh;
 	min-width: 170vh;
 	overflow: hidden;
-	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 0.3s;
+	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 3s;
 	opacity: 0.3;
 }
 .highdef-bg img {
@@ -2194,6 +2194,7 @@ h2.tagline {
 		top: unset;
 		bottom: 0;
 		transform: translate(-50%, 0%);
+		transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 0s;
 	}
 	.highdef-bg img {
 		height: 80vw;
