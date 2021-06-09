@@ -1345,7 +1345,7 @@ body.scroll #thesis-anim .pp-scrollable {
 /*PULL VIDEO RIGHT*/
 
 .thesis-page video {
-	left: 30%;
+	left: 25%;
 	min-height: 70vh;
 	height: 70vh;
 }

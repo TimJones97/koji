@@ -35,7 +35,7 @@ function changeNavColor(){
 	});
 }
 function restartVideo(){
-	$('section').each(function(){
+	$('#thesis-anim section').each(function(){
 		// If the active section slide has light-nav class,
 		// make the nav elements white
 		if($(this).hasClass('active')){
@@ -161,7 +161,6 @@ function goThesis(){
 		navRotation = 30;
 
 		// Make the thesis page visible 
-		$('#thesis-anim').removeAttr('hidden');
 
 		
 		setTimeout(function(){
@@ -182,6 +181,7 @@ function goThesis(){
 			
 		}, 50);		
 		setTimeout(function(){
+			$('#thesis-anim').removeAttr('hidden');
 			// Make thesis scrollable if on mobile device
 			setThesisMobileStyles();
 		}, 2000);		
@@ -217,7 +217,6 @@ function goHome(){
 			setTimeout(function(){
 				$('.circle-nav.home .four.nav-link').addClass('active');
 				setActiveCircle();
-				restartVideo();
 
 				// Remove thesis scroll styles affecting 
 				// the navbar
@@ -227,6 +226,8 @@ function goHome(){
 	});
 }
 function initHomepagePagepiling(){
+	// Make sure the videos in thesis section are already loaded
+	$('#thesis-anim video').addClass('loaded');
 	detachedElem = $('#thesis-anim').detach();
 	$('#homepage-anim').pagepiling({
 	  	menu: '.circle-nav .circles',
@@ -302,9 +303,6 @@ function scrollContactSection() {
             	&& lastScrollTop > 0){
                 location.hash = "page3";
             } 
-            console.log(distance);
-            console.log(currentContactScrollTop);
-            console.log(lastScrollTop);
         })
         .one('touchend', function() {
             $(this).off('touchmove touchend');
@@ -313,7 +311,7 @@ function scrollContactSection() {
     });
     // For desktop
     $('.contact').mousewheel(function(event){
-    	
+
     	// If the current scrollTop position is 0, then the user is
     	// at the top of the contact div
         currentContactScrollTop = $('.contact').scrollTop();
@@ -435,12 +433,16 @@ function setSectionHeightMobile(){
 		if(window.innerHeight < window.outerHeight){
 			$('footer').css('padding-bottom', '100px');
 		}
+		else {
+			$('footer').removeAttr('style');
+		}
 		$('#homepage-anim .pp-tableCell').css('height', window.innerHeight + 'px');
 		$('.mobile-nav').css('height', window.innerHeight + 'px');
 	}
 	else {
 		$('#homepage-anim .pp-tableCell').css('height', 'unset');
 		$('.mobile-nav').css('height', '100vh');
+		$('footer').removeAttr('style');
 	}
 }
 
