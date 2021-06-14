@@ -10,9 +10,9 @@ class Scripts extends Component {
                      'https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js',
                      'https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/4.1.0/dotdotdot.js'];
     // For production                 
-    // scripts.push('/koji/js/script.js');
+    scripts.push('/koji/js/script.js');
     // For development
-    scripts.push('../js/script.js');
+    // scripts.push('../js/script.js');
 
     const div = this.div;
     scripts.forEach(function(value, index, array){

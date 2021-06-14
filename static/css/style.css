@@ -268,9 +268,8 @@ nav .container {
 	color: #fff;
 }
 .nav-item.active .nav-link {
-	font-family: 'Helvetica Bold', sans-serif;
-    font-weight: bold;
-    color: #f7900a;
+	color: #f7900a;
+	text-shadow: 0px 0px 2px #f7900a;
 }
 .nav-item:last-of-type {
 	margin-right: 0;
@@ -895,15 +894,15 @@ a.link-white:hover > .circle-btn:after,
 	background: var(--dark-red);
 }
 
-/*FULL BG ANIMATION*/
+/*BG ANIMATION GRAPHICS*/
 .graphics {
 	position: absolute;
 	top: 0;
 	right: 0;
 	height: 100vh;
-	width: 60vw;
+	width: 58vw;
 	z-index: 0;
-	transition: width 0.5s ease;
+	transition: width 0.2s ease;
 }
 .highdef-bg {
 	position: absolute;
@@ -911,8 +910,8 @@ a.link-white:hover > .circle-btn:after,
 	left: 100px;
 	transform: scale3d(1.0, 1.0, 1.0) translate(0%, -50%);
 	border-radius: 50%;
-	min-height: 150vh;
-	min-width: 150vh;
+	min-height: 170vh;
+	min-width: 170vh;
 	overflow: hidden;
 	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 3s;
 	opacity: 0.3;
@@ -1809,7 +1808,7 @@ h2.tagline {
 /*--------------VERTICAL RESOLUTION QUERIES--------------*/
 
 /*For 2K-4K screens at 1:1 pixel ratio*/
-@media only screen and (min-height: 1200px){
+@media only screen and (min-height: 1100px){
 	/*HIGHDEF*/
 	.graphics .circle-red {
 		left: 0px;
