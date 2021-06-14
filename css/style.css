@@ -1211,6 +1211,9 @@ body.scroll .thesis-anim {
 	overflow-y: overlay !important;
 	overflow-x: hidden !important;
 }
+body.scroll .thesis-anim {
+	height: unset;
+}
 body.scroll .thesis-anim section {
 	opacity: 1;
 	position: relative;
