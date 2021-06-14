@@ -1203,7 +1203,10 @@ footer .site-links .link-box .title {
 }
 
 /*THESIS MOBILE STYLES*/
-
+html.scroll {
+	overflow: initial !important;
+	overflow-x: visible !important;
+}
 body.scroll,
 body.scroll .thesis-anim {
 	overflow-y: overlay !important;
@@ -2598,7 +2601,7 @@ h2.tagline {
 		min-height: 120vw;
 		min-width: 120vw;
 		left: 50%;
-		top: -100px;
+		top: -50px;
 		bottom: 0;
 		transform: translate(-50%, 0%);
 		transition: height 0s ease, right 0s ease, opacity 2s ease, top 3s ease, transform 0s;
@@ -2615,13 +2618,13 @@ h2.tagline {
 		width: 80px;
 		height: 80px;
 		left: 50px;
-		bottom: -40px;
+		bottom: -20px;
 	}
 	.graphics .circle-white {
 		width: 50px;
 		height: 50px;
 		left: 130px;
-		bottom: -70px;
+		bottom: -30px;
 	}
 	.graphics .circle-red {
 		width: 150px;

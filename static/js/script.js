@@ -336,6 +336,7 @@ function setThesisMobileStyles(){
 	if($('.thesis-anim').length){
 		if(isMobile()){
 			// Make body overflow scrollable
+			$('html').addClass('scroll');
 			$('body').addClass('scroll');
 			// Make all sections active to show header elements
 			// without waiting for animations
@@ -347,6 +348,7 @@ function setThesisMobileStyles(){
 		// to desktop
 		else {
 			$('.thesis-anim section').removeClass('show-headers');
+			$('html').removeClass('scroll');
 			$('body').removeClass('scroll');
 			$('nav').removeClass('brown-bg');
 		}
@@ -380,7 +382,7 @@ function setActiveNavItem(){
 		// Remove spaces and make lowercase
 		title = title.replace(' ', '').toLowerCase();
 	}
-	$('.nav-item .nav-link').each(function(){
+	$('.right-nav .nav-link').each(function(){
 		// Get the anchor element in each nav item and split the href
 		// attribute by / and - to get the page name
 		pageHref = $(this).attr('href');
