@@ -267,14 +267,17 @@ nav .container {
 	margin-right: 20px;
 	color: #fff;
 }
-.nav-item.active .nav-link {
-	color: #f7900a;
-	text-shadow: 0px 0px 2px #f7900a;
-}
 .nav-item:last-of-type {
 	margin-right: 0;
 }
+.nav-item.active .nav-link {
+	color: #f2850f;
+	font-family: 'Helvetica Bold', sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px var(--brown);
+}
 .nav-link {
+	display: block;
 	font-family: 'Helvetica Light', sans-serif;
     font-weight: 300;
 }
@@ -1202,10 +1205,6 @@ footer .site-links .link-box .title {
 }
 
 /*THESIS MOBILE STYLES*/
-html.scroll,
-body.scroll {
-	-webkit-overflow-scrolling: touch;
-}
 html.scroll {
 	overflow: initial !important;
 	overflow-x: visible !important;
@@ -1213,7 +1212,8 @@ html.scroll {
 body.scroll,
 body.scroll .thesis-anim {
 	overflow-y: overlay !important;
-	overflow-x: hidden !important;
+	overflow-x: auto !important;
+	-webkit-overflow-scrolling: touch;
 }
 body.scroll .thesis-anim {
 	height: unset;
