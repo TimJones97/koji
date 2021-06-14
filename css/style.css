@@ -1215,7 +1215,7 @@ footer .site-links .link-box .title {
 }
 
 /*THESIS MOBILE STYLES*/
-/*html.scroll {
+html.scroll {
 	overflow: initial !important;
 	overflow-x: visible !important;
 }
@@ -1225,19 +1225,8 @@ body.scroll {
 }
 body.scroll,
 body.scroll .thesis-anim {
-	overflow-y: overlay !important;
+	overflow-y: scroll !important;
 	overflow-x: hidden !important;
-}*/
-html.scroll {
-	overflow: auto !important;
-}
-html.scroll,
-body.scroll {
-	-webkit-overflow-scrolling: touch;
-}
-body.scroll,
-body.scroll .thesis-anim {
-	overflow: auto !important;
 }
 body.scroll .thesis-anim {
 	height: unset;
