@@ -1202,6 +1202,10 @@ footer .site-links .link-box .title {
 }
 
 /*THESIS MOBILE STYLES*/
+html.scroll,
+body.scroll {
+	-webkit-overflow-scrolling: touch;
+}
 html.scroll {
 	overflow: initial !important;
 	overflow-x: visible !important;
