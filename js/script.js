@@ -380,7 +380,7 @@ function setActiveNavItem(){
 		// Remove spaces and make lowercase
 		title = title.replace(' ', '').toLowerCase();
 	}
-	$('.nav-item .nav-link').each(function(){
+	$('nav .nav-link').each(function(){
 		// Get the anchor element in each nav item and split the href
 		// attribute by / and - to get the page name
 		pageHref = $(this).attr('href');
