@@ -1206,16 +1206,17 @@ footer .site-links .link-box .title {
 
 /*THESIS MOBILE STYLES*/
 html.scroll {
-	overflow: auto !important;
-	-webkit-overflow-scrolling: touch;
+	overflow: initial !important;
+	overflow-x: visible !important;
 }
 body.scroll,
 body.scroll .thesis-anim {
-	overflow: auto !important;
-	-webkit-overflow-scrolling: touch;
+	overflow-y: overlay !important;
+	overflow-x: hidden !important;
 }
 body.scroll .thesis-anim {
 	height: 100%;
+	touch-action: auto !important;
 }
 body.scroll .thesis-anim section {
 	opacity: 1;
@@ -2792,14 +2793,14 @@ h2.tagline {
 
 	/*NAV*/
 	.mobile-nav__items .nav-link {
-		height: 100px;
-		font-size: 48px;
+		height: 80px;
+		font-size: 36px;
 	}
 	.mobile-nav__items .mobile-socials {
-		height: 85px;
+		height: 60px;
 	}
 	.mobile-nav__items .social-link picture {
-		width: 30px;
+		width: 25px;
 	}
 
 	/*ABOUT*/
