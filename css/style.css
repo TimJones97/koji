@@ -1208,6 +1208,7 @@ footer .site-links .link-box .title {
 html.scroll {
 	overflow: initial !important;
 	overflow-x: visible !important;
+	-webkit-overflow-scrolling: touch;
 }
 body.scroll,
 body.scroll .thesis-anim {
@@ -1216,7 +1217,7 @@ body.scroll .thesis-anim {
 	-webkit-overflow-scrolling: touch;
 }
 body.scroll .thesis-anim {
-	height: unset;
+	height: 100%;
 }
 body.scroll .thesis-anim section {
 	opacity: 1;
