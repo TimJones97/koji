@@ -214,25 +214,27 @@ function scrollContactSection() {
 
     // For mobile
     $(window).on('touchstart', function(e) {
-        var swipe = e.originalEvent.touches,
-        start = swipe[0].pageY;
+    	if($('.contact').hasClass('active')){
+	        var swipe = e.originalEvent.touches,
+	        start = swipe[0].pageY;
 
-        $(this).on('touchmove', function(e) {
-            var contact = e.originalEvent.touches,
-            end = contact[0].pageY,
-            distance = end-start;
+	        $(this).on('touchmove', function(e) {
+	            var contact = e.originalEvent.touches,
+	            end = contact[0].pageY,
+	            distance = end-start;
 
-            currentContactScrollTop = $('.contact').scrollTop();
+	            currentContactScrollTop = $('.contact').scrollTop();
 
-            if (distance > 0 && currentContactScrollTop == 0
-            	&& lastScrollTop == 0){
-                location.hash = "page3";
-            } 
-        })
-        .one('touchend', function() {
-            $(this).off('touchmove touchend');
-        });
-    	lastScrollTop = currentContactScrollTop;
+	            if (distance > 0 && currentContactScrollTop == 0
+	            	&& lastScrollTop == 0){
+	                location.hash = "page3";
+	            } 
+	        })
+	        .one('touchend', function() {
+	            $(this).off('touchmove touchend');
+	        });
+	    	lastScrollTop = currentContactScrollTop;
+    	}
     });
     // For desktop
     $('.contact').mousewheel(function(event){
