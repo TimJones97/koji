@@ -408,10 +408,10 @@ menu.mobile-nav.display {
 	transition: background 0.5s ease;
 }
 .mobile-nav__items .mobile-socials {
-	padding: 0px 20px;
+	padding: 20px;
 	height: 85px;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 }
 .mobile-nav__items .social-link {
 	margin-right: 55px;
@@ -1219,7 +1219,7 @@ body.scroll .thesis-anim {
 }
 body.scroll .thesis-anim {
 	height: unset;
-	touch-action: unset !important;
+	touch-action: auto !important;
 	pointer-events: all;
 }
 body.scroll .thesis-anim section {
@@ -2517,9 +2517,6 @@ h2.tagline {
 		height: 50px;
 		font-size: 24px;
 	}
-	.mobile-nav__items .mobile-socials {
-		height: 60px;
-	}
 	.mobile-nav__items .social-link picture {
 		width: 22px;
 	}
@@ -2682,6 +2679,9 @@ h2.tagline {
 	.form-item label {
 		font-size: 12px;
 	}
+	section.contact:not(.contact-page) footer {
+		padding-bottom: 100px;
+	}
 
 	/*THESIS PAGE*/
 	.thesis-page header {
@@ -2701,14 +2701,17 @@ h2.tagline {
 		height: auto;
 		position: relative;
 		width: 100%;
+		left: 50%;
 		max-height: 60vh;
-		transform: unset;
-		left: 0;
+		transform: translate(-50%, 0%);
 		margin-bottom: 50px;
 	}
 	.section-showcase .pp-tableCell {
 		display: flex;
 		flex-direction: column;
+	}
+	section.thesis-page.five footer {
+		padding-bottom: 100px;
 	}
 
 	/*LISTEN PAGE*/
@@ -2800,9 +2803,6 @@ h2.tagline {
 	.mobile-nav__items .nav-link {
 		height: 80px;
 		font-size: 36px;
-	}
-	.mobile-nav__items .mobile-socials {
-		height: 60px;
 	}
 	.mobile-nav__items .social-link picture {
 		width: 25px;
