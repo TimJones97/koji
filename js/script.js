@@ -9,8 +9,10 @@ var navRotation = 0,
 function changeNavColor(){
 	$('section').each(function(){
 		// If the active section slide has light-nav class,
-		// make the nav elements white (only on desktop)
-		if($(this).hasClass('active') && !isMobile() || $(this).hasClass('normal-section')){
+		// make the nav elements white (exclude Thesis on mobile)
+		if($(this).hasClass('active') && !isThesis || 
+			$(this).hasClass('normal-section') || 
+			($(this).hasClass('active') && isThesis && !isMobile())){
 			if ($(this).hasClass('contrast-nav-yellow')){
 				$('nav').addClass('yellow-bg');
 			}
@@ -214,42 +216,46 @@ function scrollContactSection() {
     	lastScrollTop = 0;
 
     // For mobile
-    $(window).on('touchstart', function(e) {
-    	if($('.contact').hasClass('active')){
-	        var swipe = e.originalEvent.touches,
-	        start = swipe[0].pageY;
+    if(isMobile()){
+	    $(window).on('touchstart', function(e) {
+	    	if($('.contact').hasClass('active')){
+		        var swipe = e.originalEvent.touches,
+		        start = swipe[0].pageY;
 
-	        $(this).on('touchmove', function(e) {
-	            var contact = e.originalEvent.touches,
-	            end = contact[0].pageY,
-	            distance = end-start;
+		        $(this).on('touchmove', function(e) {
+		            var contact = e.originalEvent.touches,
+		            end = contact[0].pageY,
+		            distance = end-start;
 
-	            currentContactScrollTop = $('.contact').scrollTop();
+		            currentContactScrollTop = $('.contact').scrollTop();
 
-	            if (distance > 0 && currentContactScrollTop == 0
-	            	&& lastScrollTop == 0){
-	                location.hash = "page3";
-	            } 
-	        })
-	        .one('touchend', function() {
-	            $(this).off('touchmove touchend');
-	        });
+		            if (distance > 0 && currentContactScrollTop == 0
+		            	&& lastScrollTop == 0){
+		                location.hash = "page3";
+		            } 
+		        })
+		        .one('touchend', function() {
+		            $(this).off('touchmove touchend');
+		        });
+		    	lastScrollTop = currentContactScrollTop;
+	    	}
+	    });
+    }
+    else {
+	    // For desktop
+	    $('.contact').mousewheel(function(event){
+
+	    	// If the current scrollTop position is 0, then the user is
+	    	// at the top of the contact div
+	        currentContactScrollTop = $('.contact').scrollTop();
+
+	    	if(currentContactScrollTop == 0 && event.deltaY == 1 && lastScrollTop == 0){
+	    		// Go to the High Definition page when user scrolls to top of contact div
+	    		location.hash = "page3";
+	    	}
 	    	lastScrollTop = currentContactScrollTop;
-    	}
-    });
-    // For desktop
-    $('.contact').mousewheel(function(event){
-
-    	// If the current scrollTop position is 0, then the user is
-    	// at the top of the contact div
-        currentContactScrollTop = $('.contact').scrollTop();
-
-    	if(currentContactScrollTop == 0 && event.deltaY == 1 && lastScrollTop == 0){
-    		// Go to the High Definition page when user scrolls to top of contact div
-    		location.hash = "page3";
-    	}
-    	lastScrollTop = currentContactScrollTop;
-    });
+	    });
+    }
 }
 function toggleMobileNav(){
 	$('.menu-toggle').click(function(){

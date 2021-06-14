@@ -901,8 +901,9 @@ a.link-white:hover > .circle-btn:after,
 	top: 0;
 	right: 0;
 	height: 100vh;
-	width: 50vw;
+	width: 60vw;
 	z-index: 0;
+	transition: width 0.5s ease;
 }
 .highdef-bg {
 	position: absolute;
@@ -910,8 +911,8 @@ a.link-white:hover > .circle-btn:after,
 	left: 100px;
 	transform: scale3d(1.0, 1.0, 1.0) translate(0%, -50%);
 	border-radius: 50%;
-	min-height: 170vh;
-	min-width: 170vh;
+	min-height: 150vh;
+	min-width: 150vh;
 	overflow: hidden;
 	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 3s;
 	opacity: 0.3;
@@ -919,7 +920,7 @@ a.link-white:hover > .circle-btn:after,
 .highdef-bg img {
 	position: absolute;
 	top: 50%;
-	right: 150px;
+	right: 250px;
 	transform: translate(0%, -50%);
 	height: calc(100% - 35vh);
 	width: auto;
@@ -928,31 +929,27 @@ a.link-white:hover > .circle-btn:after,
 .graphics .circle-orange,
 .graphics .circle-white {
 	transition: all 3.5s ease;
+	position: absolute;
+	opacity: 0.3;
 }
 .graphics .circle-red {
-	position: absolute;
 	left: 0px;
 	top: -100px;
 	height: 300px;
 	width: 300px;
-	opacity: 0.3;
 }
 .graphics .circle-orange {
-	position: absolute;
 	left: 0px;
 	bottom: -50px;
 	height: 240px;
 	width: 240px;
-	opacity: 0.3;
 }
 .graphics .circle-white {
-	position: absolute;
 	left: 100px;
 	bottom: 170px;
 	height: 100px;
 	width: 100px;
 	z-index: -1;
-	opacity: 0.3;
 }
 /*When the slide is active, activate the animations*/
 .graphics.active .circle-red,
@@ -1006,6 +1003,7 @@ section.contact > .container:first-of-type {
 	flex-direction: unset;
 	flex-wrap: wrap;
 	max-height: unset;
+	height: unset;
 }
 section.contact .container .left {
 	position: relative;
@@ -1628,7 +1626,6 @@ section.contact-page .right form {
 .episode-row .episode {
 	margin-bottom: 50px;
 }
-
 /*Remove the thumbnail from episodes that were lg previously*/
 .episode.lg-removed .episode-thumbnail {
 	display: none;
@@ -1808,6 +1805,50 @@ h2.tagline {
 
 /*--------------VERTICAL RESOLUTION QUERIES--------------*/
 
+/*For 2K-4K screens at 1:1 pixel ratio*/
+@media only screen and (min-height: 1200px){
+	/*HIGHDEF*/
+	.graphics .circle-red {
+		left: 0px;
+		height: 500px;
+		width: 500px;
+	}
+	.graphics .circle-orange {
+		left: 50px;
+		bottom: -50px;
+		height: 340px;
+		width: 340px;
+	}
+	.graphics .circle-white {
+		left: 80px;
+		bottom: 240px;
+		height: 200px;
+		width: 200px;
+	}
+	/*When the slide is active, activate the animations*/
+	.graphics.active .circle-red,
+	.graphics.active .circle-orange,
+	.graphics.active .circle-white {
+		transition: all 3.5s ease 0.7s;
+	}
+	.highdef.active .highdef-bg {
+		left: 0px;
+		opacity: 1;
+		transform: scale3d(1.02, 1.02, 1.0) translate(0%, -50%);
+	}
+	.highdef.active .circle-red {
+		left: -100px;
+		opacity: 1;
+	}
+	.highdef.active .circle-orange {
+		left: -50px;
+		opacity: 1;
+	}
+	.highdef.active .circle-white {
+		left: -20px;
+		opacity: 1;
+	}
+}
 @media only screen and (max-width: 1919px){
 	.highdef-bg .bg-full img {
 		height: 100%;
@@ -1824,6 +1865,24 @@ h2.tagline {
 }
 @media only screen and (max-height: 900px){
 
+	/*HIGHDEF*/
+	.graphics {
+		width: 50vw;
+	}
+	.highdef-bg {
+		min-height: 140vh;
+		min-width: 140vh;
+	}
+	.highdef.active .circle-red {
+		left: -60px;
+	}
+	.highdef.active .circle-orange {
+		left: -120px;
+	}
+	.highdef.active .circle-white {
+		left: -20px;
+	}
+
 	/*THESIS PAGE*/
 	.thesis-page header h1 {
 		font-size: 42px;
@@ -1836,20 +1895,6 @@ h2.tagline {
 	}
 }
 @media only screen and (max-height: 800px){
-
-	/*HIGHDEF*/
-	.graphics {
-		width: 40vw;
-	}
-	.highdef.active .circle-red {
-		left: -120px;
-	}
-	.highdef.active .circle-orange {
-		left: -120px;
-	}
-	.highdef.active .circle-white {
-		left: -20px;
-	}
 
 	/*CONTACT*/
 	section.contact header {
@@ -1871,6 +1916,7 @@ h2.tagline {
 	}
 	.thesis-page header p {
 		font-size: 16px;
+		line-height: 20px;
 	}
 	.thesis-page header p {
 		margin-top: 20px;
@@ -1886,6 +1932,7 @@ h2.tagline {
 }
 
 /*--------------HORIZONTAL RESOLUTION QUERIES--------------*/
+
 @media only screen and (max-width: 1800px){
 	/*CONTACT*/
 	section.contact header {
@@ -1947,6 +1994,11 @@ h2.tagline {
 		height: 175px;
 		display: flex;
 		flex-direction: row-reverse;
+	}
+	/*Make the larger episode container
+	  full width*/
+	.episode-lg {
+		width: 100%;
 	}
 	.episode-info {
 		padding: 8px 10px;
@@ -2020,7 +2072,7 @@ h2.tagline {
 		display: block !important;
 	}
 	.episode.lg-removed:not(.read) .details {
-	    padding: 15px 15px 7px;
+	    padding: 8px 10px;
 	}
 	.episode.lg-removed:not(.read) a.open {
 		display: flex;
@@ -2235,6 +2287,9 @@ h2.tagline {
 	}
 
 	/*CONTACT*/
+	section.contact {
+		padding-top: 150px;
+	}
 	section.contact > .container:first-of-type {
 		max-height: 100%;
 	}
@@ -2443,6 +2498,16 @@ h2.tagline {
 	/*NAV*/
 	.mobile-nav__items .social-link {
 		margin-right: 40px;
+	}
+	.mobile-nav__items .nav-link {
+		height: 50px;
+		font-size: 24px;
+	}
+	.mobile-nav__items .mobile-socials {
+		height: 60px;
+	}
+	.mobile-nav__items .social-link picture {
+		width: 22px;
 	}
 
 	/*FULL HOMEPAGE SECTIONS*/
@@ -2715,6 +2780,18 @@ h2.tagline {
 	/*GENERAL*/
 	.container {
 		padding: 0px 15px;
+	}
+
+	/*NAV*/
+	.mobile-nav__items .nav-link {
+		height: 100px;
+		font-size: 48px;
+	}
+	.mobile-nav__items .mobile-socials {
+		height: 85px;
+	}
+	.mobile-nav__items .social-link picture {
+		width: 30px;
 	}
 
 	/*ABOUT*/
