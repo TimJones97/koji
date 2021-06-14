@@ -38,6 +38,13 @@ module.exports = {
         icon: './static/img/general/favicon.png'
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-page-creator`,
+    //   options: {
+    //     path: `${__dirname}\\src\\index`,
+    //     ignore: [`${__dirname}\\src\\pages`],
+    //   },
+    // },
     "gatsby-plugin-remove-serviceworker"
   ],
 };

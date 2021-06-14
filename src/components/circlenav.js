@@ -12,12 +12,11 @@ class CircleNav extends Component {
           <a className="two nav-link">
             <span />
           </a>
-          <a className="three nav-link">
-            <span />
-          </a>
-
           {(this.props.location === 'home') &&
             <>
+              <a className="three nav-link">
+                <span />
+              </a>
               <a className="four active nav-link" data-menuanchor="page1" href="#page1">
                 <span />
               </a>

@@ -9,17 +9,7 @@ class Scripts extends Component {
                      'https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js',
                      'https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js',
                      'https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/4.1.0/dotdotdot.js'];
-
-    // Change script location depending on current page  
-    // as site is published to a subfolder (https://timj.design/koji)
-    // Actual site will be published to a root folder.
-    // (only for development - can be removed after)
-    if(this.props.nestedLink){
-      scripts.push('../js/script.js');
-    }
-    else {
-      scripts.push('./js/script.js');
-    }
+    scripts.push('/koji/js/script.js');
 
     const div = this.div;
     scripts.forEach(function(value, index, array){
@@ -34,7 +24,7 @@ class Scripts extends Component {
   render() {
     return (
       <div className="scripts" ref={el => (this.div = el)}>
-        {/* Script is inserted here */}
+        {/* Scripts are inserted here */}
       </div>
     );
   }

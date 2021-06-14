@@ -6,7 +6,7 @@ import arrow_down from '../../static/img/general/arrow-down.svg';
 class Arrow extends Component {
   render() {
     return (
-      <a className="arrow nav-link" data-menuanchor={this.props.anchor} href={"# " + (this.props.anchor)}>
+      <a className={"arrow nav-link " + (!(this.props.down) && 'up')} data-menuanchor={this.props.anchor} href={"#" + (this.props.anchor)}>
         <img src={this.props.down ? arrow_down : arrow_up} />
       </a>
     );

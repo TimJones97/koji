@@ -1,19 +1,18 @@
 /* eslint-disable */
 import React from 'react';
-import Header from '../components/header';
-import Navbar from '../components/navbar'
 import Article from '../components/article'
+import SEO from '../components/seo';
+import Layout from '../components/layout';
 import Footer from '../components/footer'
-import Scripts from '../components/scripts'
 
 const EpisodePage = () => {
   return (
     <>
-      <Header allowOverflow/>
-      <Navbar background="light brown-bg"/>
-      <Article/>
-      <Footer/>
-      <Scripts/>
+      <Layout>
+        <SEO title="Listen"/>
+        <Article/>
+        <Footer/>
+      </Layout>
     </>
   )
 }

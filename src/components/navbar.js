@@ -1,42 +1,50 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import { Link } from "gatsby"
+import { Link, Navigate } from "gatsby"
+import PropTypes from "prop-types"
+// import TransitionLink from 'gatsby-plugin-transition-link'
 
 // Icon assets
-import logo_light from '../../static/img/general/logo-light.svg';
-import logo_dark from '../../static/img/general/logo-dark.svg';
-import close_btn from '../../static/img/general/close.svg';
-import discourse_icon from '../../static/img/social-icons/discourse.svg';
-import github_icon from '../../static/img/social-icons/github.svg';
-import discord_icon from '../../static/img/social-icons/discord.svg';
-import twitter_icon from '../../static/img/social-icons/twitter.svg';
+import logo_light from '../../static/img/general/logo-light.svg'
+import logo_dark from '../../static/img/general/logo-dark.svg'
+import close_btn from '../../static/img/general/close.svg'
+import angelist_icon from '../../static/img/social-icons/angelist.svg'
+import linkedin_icon from '../../static/img/social-icons/linkedin.svg'
+import telegram_icon from '../../static/img/social-icons/telegram.svg'
+import twitter_icon from '../../static/img/social-icons/twitter.svg'
+
+const routes = [
+  { to: '/about', label: 'About' },
+  { to: '/investments', label: 'Investments' },
+  { to: '/read', label: 'Read' },
+  { to: '/listen', label: 'Listen' },
+  { to: '/contact', label: 'Contact' }
+];
 
 class Navbar extends Component {
+  links() {
+    let navLinks = routes.map(({ to, label }) => {
+      return (
+        <>
+          <li className="nav-item" key={label}>
+            <Link className="nav-link" to={to}>{label}</Link>
+          </li>
+        </>
+      )
+    });
+    return navLinks;
+  }
   render() {
     return (
-      <nav className={this.props.background}>
+      <nav className={this.props.style}>
         <div className="container">
-          <a className="logo" href={(this.props.home ? "#go-home" : "/")}>
+          <Link className="logo nav-link" to='/'>
             <img className="light" src={logo_light} />
             <img className="dark" src={logo_dark} />
-          </a>
+          </Link>
           <div className="right-nav">
             <ul>
-              <li className="nav-item">
-                <a className="nav-link go-thesis" href="/">About</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/investments">Investments</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/read">Read</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/listen">Listen</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/contact">Contact</a>
-              </li>
+              {this.links()}
             </ul>
           </div>
           <a className="menu-toggle">
@@ -54,38 +62,24 @@ class Navbar extends Component {
           </a>
           <div className="mobile-nav__items">
             <ul>
-              <li className="nav-item">
-                <a className="nav-link go-thesis" href="#">About</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/investments">Investments</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/read">Read</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/listen">Listen</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/contact">Contact</a>
-              </li>
+              {this.links()}
               <li className="nav-item">
               </li>
             </ul>
             <div className="mobile-socials">
               <a className="social-link" href="#">
                 <picture>
-                  <img src={discourse_icon}/>
+                  <img src={angelist_icon}/>
                 </picture>
               </a>
               <a className="social-link" href="#">
                 <picture>
-                  <img src={github_icon}/>
+                  <img src={linkedin_icon}/>
                 </picture>
               </a>
               <a className="social-link" href="#">
                 <picture>
-                  <img src={discord_icon}/>
+                  <img src={telegram_icon}/>
                 </picture>
               </a>
               <a className="social-link" href="#">
@@ -99,6 +93,10 @@ class Navbar extends Component {
       </nav>
     );
   }
+}
+
+Navbar.propTypes = {
+  style: PropTypes.string,
 }
 
 export default Navbar;

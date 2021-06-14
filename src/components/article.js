@@ -13,13 +13,13 @@ class Article extends Component {
   render() {
     return (
       <>
-        <section className="normal-section article">
+        <section className="normal-section article light-nav brown-nav">
           <div className="container">
             <div>
               <div className="left-contain">
                 <hr/>
                 <header>
-                  {(this.props.read) 
+                  {(this.props.read)
                     ? <>
                         <span className="number">Article #1</span>
                         <h1 className="title">

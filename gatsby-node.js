@@ -5,7 +5,7 @@ module.exports.onCreateNode = async ({ node, getNode, actions }) => {
   if (node.internal.type === `Mdx`) {
 
     const collection = getNode(node.parent).sourceInstanceName;
-    const pageSlug = createFilePath({ node, getNode, basePath: `pages` })
+    const pageSlug = createFilePath({ node, getNode, basePath: `index` })
 
     createNodeField({
       node,
