@@ -194,8 +194,9 @@ function animateHeadersOnScroll(direction){
 	$('section').each(function(){
 		// Add a slide down animation to the header text
 		// if going from down to up for a more natural
-		// interaction
-		if($(this).hasClass('active')){
+		// interaction (only desktop for thesis, mobile + desktop for
+		// homepage)
+		if($(this).hasClass('active') && !(isMobile && isThesis)){
 			if(direction == 'up'){
 				$(this).addClass('anim-down');
 				$(this).next().addClass('anim-down');
@@ -334,17 +335,15 @@ function setThesisMobileStyles(){
 			$('body').addClass('scroll');
 			// Make all sections active to show header elements
 			// without waiting for animations
-			$('.thesis-anim section').addClass('active');
+			$('.thesis-anim section').addClass('show-headers');
 			// Make nav permanently brown
 			$('nav').addClass('brown-bg').addClass('light').removeClass('dark').removeClass('yellow-bg');
 		}
 		// Remove styles if window resized from mobile
 		// to desktop
 		else {
+			$('.thesis-anim section').removeClass('show-headers');
 			$('body').removeClass('scroll');
-			$('.thesis-anim section').removeClass('active');
-			// Make first section active
-			$('.thesis-anim section.one').addClass('active');
 			$('nav').removeClass('brown-bg');
 		}
 	}
