@@ -2099,6 +2099,15 @@ h2.tagline {
 	.arrow:not(.up) {
 		display: none;
 	}
+	.circle-btn.md {
+		width: 35px;
+		height: 35px;
+	}
+	.circle-btn.md:after,
+	.circle-btn.md:before {
+		height: 15px;
+		width: 18px;
+	}
 
 	/*NAV*/
 	nav {
@@ -2172,7 +2181,7 @@ h2.tagline {
 	.graphics {
 		width: 100%;
 		height: 50vh;
-		right: -30vw;
+		right: -40vw;
 	}
 	.highdef-bg,
 	.highdef.active .highdef-bg {
@@ -2513,15 +2522,21 @@ h2.tagline {
 	.graphics {
 		width: 100%;
 		height: 50vh;
+		right: 0;
+	}
+	.highdef-bg {
+		border-top-right-radius: 0;
+		border-top-left-radius: 0;
 	}
 	.highdef-bg,
 	.highdef.active .highdef-bg {
 		min-height: 120vw;
 		min-width: 120vw;
 		left: 50%;
-		top: unset;
+		top: -100px;
 		bottom: 0;
 		transform: translate(-50%, 0%);
+		transition: height 0s ease, right 0s ease, opacity 2s ease, top 3s ease, transform 0s;
 	}
 	.highdef-bg img {
 		height: 120vw;
@@ -2531,8 +2546,39 @@ h2.tagline {
 		right: unset;
 		transform: translate(-50%, -50%);
 	}
-	.circle-red {
-		display: none;
+	.graphics .circle-orange {
+		width: 80px;
+		height: 80px;
+		left: 50px;
+		bottom: -40px;
+	}
+	.graphics .circle-white {
+		width: 50px;
+		height: 50px;
+		left: 130px;
+		bottom: -70px;
+	}
+	.graphics .circle-red {
+		width: 150px;
+		height: 150px;
+		left: unset;
+		right: -50px;
+		top: -20px;
+	}
+	/*Active styles*/
+	.highdef.active .highdef-bg {
+		left: 50%;
+		top: -50px;
+	}
+	.highdef.active .circle-orange {
+		left: 0px;
+	}
+	.highdef.active .circle-white {
+		left: 70px;
+	}
+	.highdef.active .circle-red {
+		left: unset;
+		right: -100px;
 	}
 
 	/*CONTACT*/
