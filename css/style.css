@@ -271,22 +271,25 @@ nav .container {
 	margin-right: 0;
 }
 .nav-item.active .nav-link {
-	position: relative;
-	color: #f2850f;
-	font-family: 'Helvetica Bold', sans-serif;
-    font-weight: bold;
-    text-shadow: 1px 1px var(--brown);
+	color: transparent;
+}
+.nav-item.active .nav-link:before {
+	opacity: 1;
 }
 .nav-link:before {
 	position: absolute;
 	left: 0;
-    display: block;
-    content: attr(data-text);
+	display: block;
+	content: attr(data-text);
+	font-weight: bold;
+	opacity: 0;
+	color: #f2850f;
+	font-family: 'Helvetica Bold', sans-serif;
     font-weight: bold;
-    overflow: hidden;
-    visibility: hidden;
+    transition: inherit;
 }
 .nav-link {
+	position: relative;
 	display: block;
 	font-family: 'Helvetica Light', sans-serif;
     font-weight: 300;
@@ -1225,8 +1228,9 @@ body.scroll {
 }
 body.scroll,
 body.scroll .thesis-anim {
+	overflow: scroll !important;
 	overflow-y: scroll !important;
-	overflow-x: hidden !important;
+	overflow-x: scroll !important;
 }
 body.scroll .thesis-anim {
 	height: unset;
