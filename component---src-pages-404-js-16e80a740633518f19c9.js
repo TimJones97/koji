@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{w2l6:function(e,n,t){"use strict";t.r(n);var a=t("q1tI"),l=t.n(a),o=t("Bl7J"),r=t("vrFN");n.default=function(){return l.a.createElement(o.a,null,l.a.createElement(r.a,{title:"404: Not found"}),l.a.createElement("h1",null,"404: Not Found"),l.a.createElement("p",null,"These arent the droids you are looking for... the sadness."))}}}]);
+//# sourceMappingURL=component---src-pages-404-js-16e80a740633518f19c9.js.map
