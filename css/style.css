@@ -34,7 +34,6 @@ body, html {
 	overflow: hidden;
 	height: 100%; 
 	width: 100%;
-	min-height: 100vh;
 }
 body {
 	background: var(--brown);
@@ -1209,13 +1208,17 @@ html.scroll {
 	overflow: initial !important;
 	overflow-x: visible !important;
 }
+html.scroll,
+body.scroll {
+	-webkit-overflow-scrolling: touch;
+}
 body.scroll,
 body.scroll .thesis-anim {
 	overflow-y: overlay !important;
 	overflow-x: hidden !important;
 }
 body.scroll .thesis-anim {
-	height: 100%;
+	height: unset;
 	touch-action: unset !important;
 	pointer-events: all;
 }
