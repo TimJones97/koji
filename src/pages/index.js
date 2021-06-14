@@ -34,6 +34,14 @@ const Home = () => {
           ::-webkit-scrollbar-track {
             background: rgba(0, 0, 0, 1);
           }
+          /* Show the footer that is inside the Pagepiling element
+             but not the one outside of it */
+          footer {
+            display: none;
+          }
+          .contact footer {
+            display: block;
+          }
         `}</style>
         <motion.div 
           initial={{
@@ -196,7 +204,7 @@ const Home = () => {
                 </div>
                 <Socials mobile/>
               </div>
-              <Footer />
+              <Footer/>
             </section>
           </div>
         </motion.div>

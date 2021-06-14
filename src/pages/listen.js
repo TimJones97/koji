@@ -43,7 +43,6 @@ const Listen = () => {
             </div>
           </div>
         </section>
-        <Footer/>
       </Layout>
     </>
   )

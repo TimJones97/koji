@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { motion } from "framer-motion"
 
 import Navbar from "./navbar"
+import Footer from "./footer"
 import Scripts from "./scripts"
 
 // Global CSS styles
@@ -24,11 +25,13 @@ const Layout = ({ children }) => {
         }}
         transition={{
           ease: "easeOut",
-          duration: 0.5
+          duration: 0.5,
+          delay: 0.2
         }}
       >
         {children}
       </motion.main>
+      <Footer/>
       <Scripts/>
     </>
   )

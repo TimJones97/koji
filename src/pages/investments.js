@@ -87,7 +87,6 @@ const Investments = () => {
             </div>
           </div>
         </section>
-        <Footer/>
       </Layout>
     </>
   )

@@ -25,6 +25,14 @@ class About extends Component {
             body {
               overflow: hidden !important;
             }
+            footer {
+              display: none;
+            }
+            /* Show the footer that is inside the Pagepiling element
+               but not the one outside of it */
+            .thesis-page.five footer {
+              display: block;
+            }
           `}</style>
           <SEO title="About"/>
           <motion.div 

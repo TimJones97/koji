@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Component } from "react";
+import { Link } from "gatsby"
 import hd_thumbnail from '../../static/img/listen/thumbnail.svg';
 import read_thumbnail from '../../static/img/read/thumbnail.png';
 
@@ -18,7 +19,7 @@ class Episode extends Component {
                 <p className="time">45 mins</p>
                 {/* Remove /Koji links when going into production*/}
                 {!(this.props.read) &&
-                  <a href="/episode-page" className="open mobile">Listen Now</a>
+                  <Link to="/episode-page" className="open mobile">Listen Now</Link>
                 }
               </div>
             </div>
@@ -29,14 +30,14 @@ class Episode extends Component {
                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Lorem ipsum dolor sit amet
                     </p>
                   </div>
-                  <a href="/read-page" className="open">Read Now</a>
+                  <Link to="/read-page" className="open">Read Now</Link>
                 </>
               : <>
                   <figure className="episode-thumbnail">
                     <div className="blur" />
                     <img className="thumbnail" src={hd_thumbnail} />
                   </figure>
-                  <a href="/episode-page" className="open">Listen Now</a>
+                  <Link to="/episode-page" className="open">Listen Now</Link>
                 </>
             }
           </article>
@@ -70,8 +71,8 @@ class Episode extends Component {
                 </p>
               </div>
               {(this.props.read) 
-                ? <a href="/read-page" className="open">Read Now</a>
-                : <a href="/episode-page" className="open">Listen Now</a>
+                ? <Link to="/read-page" className="open">Read Now</Link>
+                : <Link to="/episode-page" className="open">Listen Now</Link>
               }
             </div>
           </article>

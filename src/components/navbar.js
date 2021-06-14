@@ -23,10 +23,10 @@ const routes = [
 
 class Navbar extends Component {
   links() {
-    let navLinks = routes.map(({ to, label }) => {
+    let navLinks = routes.map(({ to, label, index }) => {
       return (
         <>
-          <li className="nav-item" key={label}>
+          <li className="nav-item" key={index}>
             <Link className="nav-link" to={to}>{label}</Link>
           </li>
         </>

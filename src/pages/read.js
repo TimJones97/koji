@@ -39,7 +39,6 @@ const Read = () => {
             </div>
           </div>
         </section>
-        <Footer/>
       </Layout>
     </>
   )
