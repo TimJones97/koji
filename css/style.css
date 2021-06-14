@@ -1221,6 +1221,7 @@ body.scroll .thesis-anim {
 	height: unset;
 	touch-action: auto !important;
 	pointer-events: all;
+	transform: translate3d(0, 0, 0);
 }
 body.scroll .thesis-anim section {
 	opacity: 1;
