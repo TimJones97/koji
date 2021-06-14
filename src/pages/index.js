@@ -124,21 +124,25 @@ const Home = () => {
             </section>
             <section className="pp-section section-showcase highdef light-nav" data-anchor="page3">
               <div className="container">
-                <header>
+                <div className="top">
                   <img className="highdef-logo" src={hd_logo} />
-                  <span className="subheading">LISTEN</span>
-                  <h1>
-                    <span>Illuminating the motives&nbsp;</span><span>behind the person.</span>
-                  </h1>
-                  <Link className="link-white" to="/listen">Listen to their journeys<button role="button" className="circle-btn md" /></Link>
-                </header>
-                <div className="episodes">
-                  <span className="subheading">RECENT EPISODES</span>
-                  <Episode small/>
-                  <Episode small/>
-                  <Link className="link-white" to="/listen">View all Episodes<button role="button" className="circle-btn md"/></Link>
-                </div>
-                <Arrow down anchor="page4"/>
+                </div>  
+                <div className="bottom">
+                  <header>
+                    <span className="subheading">LISTEN</span>
+                    <h1>
+                      <span>Illuminating the motives&nbsp;</span><span>behind the person.</span>
+                    </h1>
+                    <Link className="link-white" to="/listen">Listen to their journeys<button role="button" className="circle-btn md" /></Link>
+                  </header>
+                  <div className="episodes">
+                    <span className="subheading">RECENT EPISODES</span>
+                    <Episode small/>
+                    <Episode small/>
+                    <Link className="link-white" to="/listen">View all Episodes<button role="button" className="circle-btn md"/></Link>
+                  </div>
+                  <Arrow down anchor="page4"/>
+                </div>  
               </div>
               <div className="graphics">
                 <div className="highdef-bg">

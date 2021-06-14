@@ -36,7 +36,7 @@ class Navbar extends Component {
   }
   render() {
     return (
-      <nav className={this.props.style}>
+      <nav className={this.props.type}>
         <div className="container">
           <Link className="logo nav-link" to='/'>
             <img className="light" src={logo_light} />
@@ -96,7 +96,7 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  style: PropTypes.string,
+  type: PropTypes.string,
 }
 
 export default Navbar;

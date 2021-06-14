@@ -11,7 +11,7 @@ import "/static/css/style.css";
 const Layout = ({ children }) => {
   return (
     <>
-      <Navbar style="light"/>
+      <Navbar type="light"/>
       <motion.main
         initial={{
           opacity: 0
@@ -24,8 +24,7 @@ const Layout = ({ children }) => {
         }}
         transition={{
           ease: "easeOut",
-          duration: 1,
-          delay: 0.3
+          duration: 0.5
         }}
       >
         {children}

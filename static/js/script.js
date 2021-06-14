@@ -150,9 +150,9 @@ function scaleCircleNav(){
 		navScale = height / maxVHeight;
 	}
 	// On mobile, account for the URL and bottom navigation
-	// by scaling circle-nav up by 1.3x
+	// by scaling circle-nav up by 1.25x
 	if (isMobile()){
-		navScale = navScale * 1.3;
+		navScale = navScale * 1.25;
 	}
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
@@ -194,8 +194,9 @@ function animateHeadersOnScroll(direction){
 	$('section').each(function(){
 		// Add a slide down animation to the header text
 		// if going from down to up for a more natural
-		// interaction
-		if($(this).hasClass('active')){
+		// interaction (only desktop for thesis, mobile + desktop for
+		// homepage)
+		if($(this).hasClass('active') && !(isMobile && isThesis)){
 			if(direction == 'up'){
 				$(this).addClass('anim-down');
 				$(this).next().addClass('anim-down');
@@ -334,17 +335,15 @@ function setThesisMobileStyles(){
 			$('body').addClass('scroll');
 			// Make all sections active to show header elements
 			// without waiting for animations
-			$('.thesis-anim section').addClass('active');
+			$('.thesis-anim section').addClass('show-headers');
 			// Make nav permanently brown
 			$('nav').addClass('brown-bg').addClass('light').removeClass('dark').removeClass('yellow-bg');
 		}
 		// Remove styles if window resized from mobile
 		// to desktop
 		else {
+			$('.thesis-anim section').removeClass('show-headers');
 			$('body').removeClass('scroll');
-			$('.thesis-anim section').removeClass('active');
-			// Make first section active
-			$('.thesis-anim section.one').addClass('active');
 			$('nav').removeClass('brown-bg');
 		}
 	}
@@ -368,60 +367,25 @@ function setSectionHeightMobile(){
 		$('footer').removeAttr('style');
 	}
 }
-
-// Append links for non-root path links 
-// on Github pages website
-function modifyLinksForPublishing(){
-	$('a[href*="/"]').each(function(){
-		var	thisElem = $(this),
-			thisHref = $(this).attr('href'),
-			newHref = '';
-		newHref = '/koji' + thisHref;
-		thisElem.attr('href', newHref);
-	});
-}
 function setActiveNavItem(){
 	var title = document.title,
 		pageHref;
 	if(title != null){
-		// Get first word of title
-		title = title.split(' ')[0].toLowerCase();
+		// Get first word of title before the | divider
+		title = title.split('|')[0];
+		// Remove spaces and make lowercase
+		title = title.replace(' ', '').toLowerCase();
 	}
-	$('nav .nav-item').each(function(){
+	$('.nav-item .nav-link').each(function(){
 		// Get the anchor element in each nav item and split the href
 		// attribute by / and - to get the page name
-		pageHref = $(this).children().first().attr('href').split('/')[2]; // Affected by /compass-legal URL, change to 1 after publishing
-		if(pageHref != null){
-			// Get the first word of page name
-			pageHref = pageHref.split('-')[0];
-			if(title == pageHref){
-				$(this).addClass('active');
-			}
+		pageHref = $(this).attr('href');
+		pageHref = pageHref.split('/');
+		pageHref = pageHref[pageHref.length - 1];
+		if(title == pageHref){
+			$(this).parent().addClass('active');
 		}
 	});
-}
-function interceptNavigation() {
-    // If going from Home to About
-    let currentPage = location.pathname,
-        goingTo = '',
-        allowNavigation = this.state.navigation;
-
-    // Split the pathname, only get the last word
-    // which will be the current page name
-    currentPage = currentPage.split();
-    currentPage = currentPage[currentPage.length - 1];
-    $('.nav-link').each(function(){
-    	goingTo = currentElem.getAttribute('href'); 
-	    if(currentPage == '/' && goingTo == '/about'){
-	    	window.onbeforeunload = function() {
-	    		animateHomeToThesis(currentElem);
-	    	}
-	    }
-    })
-}
-function animateHomeToThesis(currentElem){
-    var body = document.body;
-    body.classList.add("animate-out")
 }
 $(window).resize(function(){
 	scaleCircleNav();
@@ -445,14 +409,10 @@ $(document).ready(function() {
 	toggleMobileNav();
 	convertLargeEpisodesMobile();
 	scrollContactSection();
+	setActiveNavItem();
 
 	// Clear the anchor hash from the URL before initialising pagepiling
 	location.hash = '';
-
-	// Append /koji to links if published to personal Github pages site (can delete after)
-	if(location.host == 'timj.design'){
-		modifyLinksForPublishing();
-	}
 
 	// Only initiate pagePiling if on the index page
 	if($('.homepage-anim').length){

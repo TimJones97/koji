@@ -57,7 +57,7 @@ class About extends Component {
                 <motion.div 
                   initial={{
                     opacity: 0,
-                    x: 100
+                    x: 50
                   }}
                   animate={{
                     opacity: 1,

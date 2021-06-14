@@ -3,7 +3,7 @@
   --black: #000000;
   --orange: #EEA62B;
   --dark-red: #601B0C;
-  --brown: #280000;
+  --brown: #290001;
   --grey: #4D4D4D;
 }
 @font-face {
@@ -267,6 +267,11 @@ nav .container {
 	margin-right: 20px;
 	color: #fff;
 }
+.nav-item.active .nav-link {
+	font-family: 'Helvetica Bold', sans-serif;
+    font-weight: bold;
+    color: #f7900a;
+}
 .nav-item:last-of-type {
 	margin-right: 0;
 }
@@ -471,6 +476,10 @@ menu.mobile-nav.display .nav-item:nth-child(5) {
 	transform: rotate(255deg);
 	margin-top: 400px;
 }
+.circle-nav.hide {
+	opacity: 0;
+	pointer-events: none;
+}
 .circle-animator {
 	top: 0;
 	right: 0px;
@@ -577,12 +586,14 @@ menu.mobile-nav.display .nav-item:nth-child(5) {
 
 /*-----HEADER SCROLL ANIMATION-----*/
 
+section.show-headers:not(.active) header,
 section.active header {
 	animation: headerSlideFromBottom 0.8s ease forwards;
 	animation-delay: 0.3s;
 	opacity: 0;
 }
 /*For current slide that came from scrolling up*/
+section.show-headers:not(.active).anim-down header,
 section.active.anim-down header {
 	animation: unset;
 	animation: headerSlideToBottomNoFade 0.8s ease forwards !important;
@@ -648,6 +659,7 @@ span.subheading {
 	font-weight: 300;
 	font-size: 72px;
 	margin: unset;
+	transition: font-size 0.5s ease;
 }
 .section-showcase header h1,
 .section-showcase header span {
@@ -665,6 +677,9 @@ a.link-white {
 	color: #fff;
 	display: inline-flex;
 	align-items: center;
+	font-family: inherit;
+	font-size: inherit;
+	transition: inherit;
 }
 
 /*HOVER EFFECTS*/
@@ -691,7 +706,7 @@ a.link-white:hover > .circle-btn:after,
     min-height: 100%;
     z-index: -1;
     opacity: 0;
-    transition: all 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
     backface-visibility: hidden;
 }
 .section-showcase video.loaded {
@@ -702,7 +717,7 @@ a.link-white:hover > .circle-btn:after,
 /*-----SECOND PAGE - ABOUT-----*/
 
 .section-showcase.about header {
-	width: 860px;
+	width: 800px;
 }
 .section-showcase.about header .subheading {
 	color: var(--brown);
@@ -732,6 +747,7 @@ a.link-white:hover > .circle-btn:after,
 }
 .section-showcase.highdef header {
 	width: 575px;
+	margin-top: 0;
 }
 .section-showcase.highdef header a.link-white:before {
 	width: calc(100% + 50px);
@@ -760,7 +776,7 @@ a.link-white:hover > .circle-btn:after,
 	font-family: 'Helvetica Light', sans-serif;
 	font-weight: 300;
 	font-size: 32px;
-	margin-top: 30px;
+	margin-top: 10px;
 }
 .episode {
 	position: relative;
@@ -1281,11 +1297,14 @@ body.scroll .thesis-anim .pp-scrollable {
 /*PULL VIDEO RIGHT*/
 
 .thesis-page video {
-	left: 25%;
-	min-height: 70vh;
-	height: 70vh;
+	height: 120vh;
+	top: 50%;
+	min-width: unset;
+	left: 45vw;
 }
-
+.thesis-page video.loaded {
+	transform:  translate(0%, -50%) scale3d(1.0, 1.0, 1.0)
+}
 /*-----PAGE ONE-----*/
 
 .thesis-page.one {
@@ -1295,6 +1314,7 @@ body.scroll .thesis-anim .pp-scrollable {
 	display: inline-block;
 	color: var(--orange);
 	font-size: inherit;
+	transition: inherit;
 }
 
 /*-----PAGE TWO-----*/
@@ -1343,10 +1363,6 @@ body.scroll .thesis-anim .pp-scrollable {
 .thesis-page.five header h1,
 .thesis-page.five header p {
 	color: #000;
-}
-.thesis-page.five video {
-	height: 70vh;
-	min-height: 70vh;
 }
 
 /*--------------INVESTMENTS PAGE--------------*/
@@ -1783,9 +1799,8 @@ h2.tagline {
 	margin-right: 20px;
 }
 .recent-episodes a.link-white {
-	font-family: 'Helvetica Neue Light';
-	font-weight: 300;
-	font-size: 24px;
+	font-family: inherit;
+	font-size: inherit;
 	margin-top: 20px;
 }
 
@@ -2137,6 +2152,12 @@ h2.tagline {
 	.section-showcase.highdef header {
 		position: relative;
 	}
+	.section-showcase.highdef .pp-tableCell > .container:first-of-type {
+		justify-content: space-between;
+	}
+	.section-showcase.highdef .container .top {
+		margin-top: 100px;
+	}
 	.section-showcase.highdef .episodes {
 		display: flex;
 		flex-wrap: wrap;
@@ -2471,6 +2492,12 @@ h2.tagline {
 	.section-showcase.highdef header span {
 		display: block;
 	}
+	.section-showcase.highdef .pp-tableCell > .container:first-of-type {
+		justify-content: flex-end;
+	}
+	.section-showcase.highdef .container .top {
+		margin-top: 0px;
+	}
 	.section-showcase.highdef .highdef-logo {
 		width: 200px;
 	}
@@ -2535,15 +2562,11 @@ h2.tagline {
 	.thesis-page header {
 		width: 100%;
 	}
-	.thesis-page header p {
-		line-height: 20px;
-	}
 	.thesis-anim .section-showcase header h1, 
 	.thesis-anim .section-showcase header a, 
 	.thesis-anim .section-showcase header span {
 		font-size: 24px;
 	}
-
 	/*THESIS SCROLLABLE*/
 	.thesis-anim .thesis-page.five > .container, 
 	.thesis-anim .pp-tableCell > .container {
@@ -2552,7 +2575,8 @@ h2.tagline {
 	.section-showcase.thesis-page video {
 		height: auto;
 		position: relative;
-		width: 100vw;
+		width: 100%;
+		max-height: 60vh;
 		transform: unset;
 		left: 0;
 		margin-bottom: 50px;
