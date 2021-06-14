@@ -99,7 +99,7 @@ function rotateCircleNav(index, nextIndex, direction){
 			// Reverse rotation by 30 degrees to animate backward
 			navRotation = navRotation - 30;
 		}
-		$('.home').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
+		$('.circle-nav.home').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 	}
 	// If pagepiling is active for thesis page
 	else {
@@ -126,7 +126,7 @@ function rotateCircleNav(index, nextIndex, direction){
 		else {
 			navRotation = navRotation + 30;
 		}
-		$('.thesis').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
+		$('.circle-nav.thesis').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 	}
 	setActiveCircle();
 }

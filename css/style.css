@@ -271,10 +271,20 @@ nav .container {
 	margin-right: 0;
 }
 .nav-item.active .nav-link {
+	position: relative;
 	color: #f2850f;
 	font-family: 'Helvetica Bold', sans-serif;
     font-weight: bold;
     text-shadow: 1px 1px var(--brown);
+}
+.nav-link:before {
+	position: absolute;
+	left: 0;
+    display: block;
+    content: attr(data-text);
+    font-weight: bold;
+    overflow: hidden;
+    visibility: hidden;
 }
 .nav-link {
 	display: block;
@@ -903,7 +913,7 @@ a.link-white:hover > .circle-btn:after,
 	top: 0;
 	right: 0;
 	height: 100vh;
-	width: 58vw;
+	width: 55vw;
 	z-index: 0;
 	transition: width 0.2s ease;
 }
@@ -1205,9 +1215,21 @@ footer .site-links .link-box .title {
 }
 
 /*THESIS MOBILE STYLES*/
+/*html.scroll {
+	overflow: initial !important;
+	overflow-x: visible !important;
+}
+html.scroll,
+body.scroll {
+	-webkit-overflow-scrolling: touch;
+}
+body.scroll,
+body.scroll .thesis-anim {
+	overflow-y: overlay !important;
+	overflow-x: hidden !important;
+}*/
 html.scroll {
 	overflow: auto !important;
-	overflow-x: hidden !important;
 }
 html.scroll,
 body.scroll {
@@ -1221,7 +1243,6 @@ body.scroll .thesis-anim {
 	height: unset;
 	touch-action: auto !important;
 	pointer-events: all;
-	transform: translate3d(0, 0, 0);
 }
 body.scroll .thesis-anim section {
 	opacity: 1;
