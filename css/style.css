@@ -1216,11 +1216,13 @@ body.scroll .thesis-anim {
 }
 body.scroll .thesis-anim {
 	height: 100%;
-	touch-action: auto !important;
+	touch-action: unset !important;
+	pointer-events: all;
 }
 body.scroll .thesis-anim section {
 	opacity: 1;
 	position: relative;
+	pointer-events: all;
 }
 body.scroll .thesis-anim .pp-scrollable {
 	overflow: visible;
