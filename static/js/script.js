@@ -257,11 +257,9 @@ function toggleMobileNav(){
 		$('.mobile-nav').addClass('display');
 	});
 	$('.close-btn').click(function(){
-		$('.circle-nav').removeClass('hide');
 		$('.mobile-nav').removeClass('display');
 	});
 	$('.nav-link').click(function(){
-		$('.circle-nav').removeClass('hide');
 		$('.mobile-nav').removeClass('display');
 	});
 }
