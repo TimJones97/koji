@@ -267,6 +267,11 @@ nav .container {
 	margin-right: 20px;
 	color: #fff;
 }
+.nav-item.active .nav-link {
+	font-family: 'Helvetica Bold', sans-serif;
+    font-weight: bold;
+    color: #efa52d;
+}
 .nav-item:last-of-type {
 	margin-right: 0;
 }
