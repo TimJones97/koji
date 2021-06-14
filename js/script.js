@@ -336,6 +336,7 @@ function setThesisMobileStyles(){
 	if($('.thesis-anim').length){
 		if(isMobile()){
 			// Make body overflow scrollable
+			$('html').addClass('scroll');
 			$('body').addClass('scroll');
 			// Make all sections active to show header elements
 			// without waiting for animations
@@ -347,6 +348,7 @@ function setThesisMobileStyles(){
 		// to desktop
 		else {
 			$('.thesis-anim section').removeClass('show-headers');
+			$('html').removeClass('scroll');
 			$('body').removeClass('scroll');
 			$('nav').removeClass('brown-bg');
 		}
