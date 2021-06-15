@@ -2811,6 +2811,7 @@ h2.tagline {
 		margin-left: -20px;
 		margin-right: -20px;
 		width: 100vw;
+		max-width: unset;
 	}
 	.article .left-contain p {
 		font-size: 16px;
