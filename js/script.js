@@ -154,7 +154,7 @@ function scaleCircleNav(){
 	// On mobile, account for the URL and bottom navigation
 	// by scaling circle-nav up by 1.25x
 	if (isMobile()){
-		navScale = navScale * 1.25;
+		navScale = navScale * 1.2;
 	}
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
