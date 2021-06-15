@@ -82,7 +82,7 @@ class About extends Component {
                   }}
                   >
                   <header>
-                    <h1>
+                    <h1 className="constrain-sml">
                       Koji is an early-stage investment firm building the global financial stack. We inherit our values from our parent, <a className="orange" href="https://mycelium.ventures/" target="_blank">Mycelium.</a>
                     </h1>
                     <p>
@@ -134,7 +134,7 @@ class About extends Component {
               </video>
               <div className="container">
                 <header>
-                  <h1>
+                  <h1 className="constrain">
                     The global financial stack can be built without permission, but it is obsolete without a rich network of participants and supporting capital.
                   </h1>
                   <p>
