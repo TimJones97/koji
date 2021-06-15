@@ -88,7 +88,7 @@ const EpisodePage = () => {
               <span className="subheading">RECENT EPISODES</span>
               <Episode small/>
               <Episode small/>
-              <a className="link-white" href="/listen">View all Episodes<button role="button" className="circle-btn md"/></a>
+              <a className="link-white" href="/listen">View all Episodes<button role="button" className="circle-btn sml"/></a>
             </div>
           </div>
         </section>

@@ -103,6 +103,11 @@ a:hover {
 	pointer-events: none;
 	transition: opacity 0.5s ease;
 }
+/*Allow overflow to show highdef bg circle
+  when transitioning*/
+.homepage-anim {
+    overflow: visible !important;
+}
 /*Add a class to animate when Pagepiling active*/
 .homepage-anim.pp-active,
 .thesis-anim.pp-active {
@@ -562,6 +567,7 @@ menu.mobile-nav.display .nav-item:nth-child(5) {
 
 .section-showcase {
 	overflow: hidden;
+	overflow-x: visible;
 	pointer-events: none;
 }
 .section-showcase .pp-tableCell {
@@ -790,7 +796,7 @@ a.link-white:hover > .circle-btn:after,
 	border: 1px solid var(--dark-red);
 	border-radius: 6px;
 	overflow: hidden;
-	transition: background 0.5s ease;
+	transition: background 0.5s ease, width 0.5s ease;
 	background: var(--brown);
 }	
 .episodes .episode:first-of-type {
@@ -864,7 +870,7 @@ a.link-white:hover > .circle-btn:after,
 .episode .episode-thumbnail .thumbnail-blur {
 	opacity: 0;
 }
-.episode a.open {
+.episode span.open {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -877,7 +883,7 @@ a.link-white:hover > .circle-btn:after,
 .episode .mobile {
 	display: none !important;
 }
-.episode a.open:after {
+.episode span.open:after {
 	content: "";
 	background: url("../img/listen/arrow-right.svg");
 	background-size: cover;
@@ -1323,7 +1329,7 @@ body.scroll .thesis-anim .pp-scrollable {
 	display: inline-block;
 	color: var(--orange);
 	font-size: inherit;
-	transition: inherit;
+	transition: unset;
 }
 
 /*-----PAGE TWO-----*/
@@ -1516,14 +1522,13 @@ section.contact-page .right form {
 	padding: 15px;
 	border-top: 1px solid var(--dark-red);
 }
-.episode.read a.open {
+.episode.read span.open {
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	height: 50px;
 	border-top: 1px solid var(--dark-red);
 }
-
 .episodes-sml.right {
 	margin-top: 80px;
 	margin-bottom: 0px;
@@ -1624,7 +1629,7 @@ section.contact-page .right form {
 	color: #fff;
 	margin: 0;
 }
-.episode.lg .episode-info a.open {
+.episode.lg .episode-info span.open {
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -1811,6 +1816,7 @@ h2.tagline {
 	font-weight: 300;
 	font-size: 22px;
 	margin-top: 20px;
+	display: flex;
 }
 
 /*--------------MEDIA QUERIES--------------*/
@@ -2013,10 +2019,10 @@ h2.tagline {
 	.episode-info {
 		padding: 8px 10px;
 	}
-	.episode a.open {
+	.episode span.open {
 		display: none;
 	}
-	.episode a.open.mobile {
+	.episode span.open.mobile {
 		display: block !important;
 		position: absolute;
 		bottom: 0;
@@ -2027,7 +2033,7 @@ h2.tagline {
 		border-top: 1px solid var(--dark-red);
 		padding: 5px 10px;
 	}
-	.episode a.open.mobile:after {
+	.episode span.open.mobile:after {
 		background: url('../img/listen/arrow-right-orange.svg');
 	    background-size: cover;
 		width: 15px;
@@ -2084,7 +2090,7 @@ h2.tagline {
 	.episode.lg-removed:not(.read) .details {
 	    padding: 8px 10px;
 	}
-	.episode.lg-removed:not(.read) a.open {
+	.episode.lg-removed:not(.read) span.open {
 		display: flex;
 		position: absolute;
 		bottom: 0;
@@ -2107,7 +2113,7 @@ h2.tagline {
 	.read .episode-info .date, 
 	.read .episode-info .time,
 	.episode.read .description p,
-	.episode.read a.open {
+	.episode.read span.open {
 		font-size: 12px;
 	}
 	.read .episode-info .heading {
@@ -2124,8 +2130,7 @@ h2.tagline {
 		padding: 5px 10px;
 		overflow: hidden;
 	}
-	.episode.read a.open {
-		position: relative;
+	.episode.read span.open {
 		display: block;
 		font-family: 'Helvetica', sans-serif;
 		font-size: 13px;
@@ -2134,7 +2139,7 @@ h2.tagline {
 		padding: 5px 10px;
 		height: auto;
 	}
-	.episode a.open:after {
+	.episode span.open:after {
 		background: url('../img/listen/arrow-right-orange.svg');
 	    background-size: cover;
 		width: 15px;
@@ -2350,7 +2355,10 @@ h2.tagline {
 
 	/*THESIS PAGE*/
 	.thesis-anim .section-showcase .pp-tableCell {
-		display: block;
+		display: flex;
+		min-height: 100vh;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 	/*Constrain the width of the header and some h1 elements*/
 	.thesis-anim .section-showcase header {
@@ -2739,6 +2747,10 @@ h2.tagline {
 		flex-direction: column;
 		justify-content: flex-end;
 	}
+	/*PAGE 5*/
+	.section-showcase.thesis-page video {
+		margin-bottom: 0;
+	}
 
 	/*LISTEN PAGE*/
 	.listen .container header p {
@@ -2821,6 +2833,9 @@ h2.tagline {
 	.recent-episodes .episode {
 		margin-bottom: 20px;
 	}
+	.recent-episodes a.link-white {
+	    font-size: 22px;
+	}
 
 	/*SMALLER EPISODE STYLES*/
 	.episode {
@@ -2877,6 +2892,12 @@ h2.tagline {
 		margin-left: -15px; 
 		margin-right: -15px;
 	}
+	.episode.read {
+		justify-content: flex-start;
+	}
+	.episode.read .description {
+		padding: 1px 10px;
+	}
 
 	/*LISTEN PAGE*/
 	.listen header {
@@ -2885,6 +2906,10 @@ h2.tagline {
 	.listen header img {
 		width: 100%;
 		max-width: 320px;
+	}
+	.episode-row a.episode-link {
+		display: block;
+		width: 100%;
 	}
 	.episode {
 		width: 100%;

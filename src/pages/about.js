@@ -38,7 +38,7 @@ class About extends Component {
           <motion.div 
             initial={{
               opacity: 0,
-              x: 200
+              x: 150
             }}
             animate={{
               opacity: 1,
@@ -46,11 +46,11 @@ class About extends Component {
             }}
             exit={{
               opacity: 0,
-              x: -10
+              x: 150
             }}
             transition={{
               ease: "easeOut",
-              duration: 1
+              duration: 1.5
             }}
             className="circle-animator thesis"
             >
@@ -65,7 +65,7 @@ class About extends Component {
                 <motion.div 
                   initial={{
                     opacity: 0,
-                    x: 50
+                    x: 150
                   }}
                   animate={{
                     opacity: 1,
@@ -73,12 +73,11 @@ class About extends Component {
                   }}
                   exit={{
                     opacity: 0,
-                    x: 0
+                    x: 150
                   }}
                   transition={{
                     ease: "easeOut",
-                    duration: 0.7,
-                    delay: 1
+                    duration: 1.5
                   }}
                   >
                   <header>

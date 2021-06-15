@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import Episode from '../components/episode'
+import ReadEpisode from '../components/read-episode'
 import SEO from '../components/seo';
 import Layout from '../components/layout';
 import Footer from '../components/footer'
@@ -21,21 +21,21 @@ const Read = () => {
             <hr className="mobile"/>
             <div className="right-contain">
               <span className="subheading">MOST RECENT ARTICLE</span>
-              <Episode large read/>
+              <ReadEpisode large/>
             </div>
             <hr/>
             <span className="subheading">COMPLETE LISTING</span>
             <div className="episode-row">
-              <Episode small read/>
-              <Episode small read/>
-              <Episode large read/>
-              <Episode small read/>
+              <ReadEpisode small/>
+              <ReadEpisode small/>
+              <ReadEpisode large/>
+              <ReadEpisode small/>
             </div>
             <div className="episode-row">
-              <Episode large read/>
-              <Episode small read/>
-              <Episode small read/>
-              <Episode small read/>
+              <ReadEpisode large/>
+              <ReadEpisode small/>
+              <ReadEpisode small/>
+              <ReadEpisode small/>
             </div>
           </div>
         </section>

@@ -45,8 +45,8 @@ const Home = () => {
         `}</style>
         <motion.div 
           initial={{
-            opacity: 1,
-            x: 0
+            opacity: 0,
+            x: -150
           }}
           animate={{
             opacity: 1,
@@ -54,11 +54,11 @@ const Home = () => {
           }}
           exit={{
             opacity: 0,
-            x: -500
+            x: -150
           }}
           transition={{
             ease: "easeOut",
-            duration: 3.5
+            duration: 1.5
           }}
           className="circle-animator"
           >
@@ -75,11 +75,11 @@ const Home = () => {
           }}
           exit={{
             opacity: 0,
-            x: -500
+            x: -150
           }}
           transition={{
             ease: "easeOut",
-            duration: 3.5
+            duration: 1.5
           }}
         >
           <div className="homepage-anim">

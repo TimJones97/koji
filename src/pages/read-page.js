@@ -3,7 +3,7 @@ import React from 'react';
 import Article from '../components/article'
 import SEO from '../components/seo';
 import Layout from '../components/layout';
-import Episode from '../components/episode'
+import ReadEpisode from '../components/read-episode'
 
 // Image assets
 import read_thumbnail from '../../static/img/read/thumbnail.png';
@@ -82,8 +82,8 @@ const ReadPage = () => {
             <div className="recent-episodes">
               <hr/>
               <span className="subheading">READ</span>
-              <Episode small read/>
-              <Episode small read/>
+              <ReadEpisode small/>
+              <ReadEpisode small/>
             </div>
           </div>
         </section>
