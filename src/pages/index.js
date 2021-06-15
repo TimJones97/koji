@@ -109,7 +109,7 @@ const Home = () => {
                     <span className="inline">the </span><Link className="link-white" data-menuanchor="thesis-page1" to="/about">global financial stack<button role="button" className="circle-btn" /></Link>
                   </motion.h1>
                 </header>
-                <Arrow down anchor="page2"/>
+                <Arrow down anchor="page2" type="orange"/>
               </div>
               <video muted loop="loop" autoPlay playsInline>
                 <source src={homepage_01} type="video/mp4" />
@@ -122,9 +122,9 @@ const Home = () => {
                   <h1>
                     <span>We provide growth-capital to drive the adoption of a new generation of applications.</span>
                   </h1>
-                  <Link className="link-white" to="/investments">Read More<button role="button" className="circle-btn md" /></Link>
+                  <Link className="link-white hover-black" to="/investments">Read More<button role="button" className="circle-btn md" /></Link>
                 </header>
-                <Arrow down anchor="page3"/>
+                <Arrow down anchor="page3" type="black"/>
               </div>
               <video muted loop="loop" autoPlay playsInline>
                 <source src={homepage_02} type="video/mp4"/>
@@ -149,7 +149,7 @@ const Home = () => {
                     <Episode small/>
                     <Link className="link-white" to="/listen">View all Episodes<button role="button" className="circle-btn md"/></Link>
                   </div>
-                  <Arrow down anchor="page4"/>
+                  <Arrow down anchor="page4" type="orange"/>
                 </div>  
               </div>
               <div className="graphics">
@@ -164,7 +164,7 @@ const Home = () => {
             <section className="pp-section pp-scrollable section-showcase contact light-nav contrast-nav hide-circles-mobile" data-anchor="page4">
               <div className="container">
                 <div className="left">
-                  <Arrow up anchor="page3"/>
+                  <Arrow up anchor="page3" type="orange"/>
                   <header>
                     <span className="subheading">CONTACT</span>
                     <h1>

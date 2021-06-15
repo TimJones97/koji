@@ -23,6 +23,14 @@
     font-display: swap;
 }
 @font-face {
+    font-family: 'Helvetica';
+    src: url('../fonts/Helvetica.woff2') format('woff2'),
+        url('../fonts/Helvetica.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
     font-family: 'Helvetica Bold';
     src: url('../fonts/Helvetica-Bold.woff2') format('woff2'),
         url('../fonts/Helvetica-Bold.woff') format('woff');
@@ -135,25 +143,57 @@ section.active {
     height: 100%;
     overflow-y: scroll !important;
 }
+
 /*Arrow down to next page*/
 .arrow.nav-link {
 	position: absolute;
 	bottom: 50px;
 	left: 40px;
 }
-/*Arrow will be further up on thesis page*/
-.thesis-anim .arrow {
-	bottom: -50px;
-}
-.arrow img {
-	width: 25px;
-	height: 25px;
-}
+/*Arrow up from contact page*/
 .arrow.up {
 	left: 0px;
 	bottom: unset;
 	top: -20px;
 }
+/*Arrow will be further up on thesis page*/
+.thesis-anim .arrow {
+	bottom: -50px;
+}
+.arrow img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 25px;
+	height: 25px;
+	transition: opacity 0.3s ease;
+}
+.arrow img.white {
+	opacity: 1;
+}
+.arrow img.black {
+	opacity: 0;
+}
+.arrow img.orange {
+	opacity: 0;
+}
+
+/*WHITE TO BLACK*/
+.arrow.black:hover img.white {
+	opacity: 0;
+}
+.arrow.black:hover img.black {
+	opacity: 1;
+}
+
+/*WHITE TO ORANGE*/
+.arrow.orange:hover img.white {
+	opacity: 0;
+}
+.arrow.orange:hover img.orange {
+	opacity: 1;
+}
+
 
 /*HELPER DIVS*/
 .container {
@@ -191,13 +231,13 @@ section.active {
 	background: transparent;
 	border-radius: 50%;
 	cursor: pointer;
-	transition: all 0.5s ease;
-	margin-left: 20px;
+	transition: border 0.5s ease, transform 0.2s ease;
+	transform: translateX(20px);
 }
 .circle-btn:before,
 .circle-btn:after {
 	content: "";
-	background: url('../img/general/arrow-right.svg');
+	background: url('../img/general/arrow-right_white.svg');
 	background-size: cover;
 	height: 32px;
 	width: 37px;
@@ -209,7 +249,7 @@ section.active {
 	backface-visibility: hidden;
 }
 .circle-btn:after {
-	background: url('../img/general/arrow-right-black.svg');
+	background: url('../img/general/arrow-right_orange.svg');
 	background-size: cover;
 	opacity: 0;
 }
@@ -669,7 +709,7 @@ span.subheading {
 	font-weight: 300;
 	font-size: 72px;
 	margin: unset;
-	transition: font-size 0.5s ease;
+	transition: font-size 0.5s ease, color 0.3s ease;
 }
 .section-showcase header h1,
 .section-showcase header span {
@@ -689,13 +729,15 @@ a.link-white {
 	align-items: center;
 	font-family: inherit;
 	font-size: inherit;
-	transition: inherit;
 }
-
 /*HOVER EFFECTS*/
+a.link-white:hover {
+	color: #acacac !important;
+}
 a.link-white:hover > .circle-btn,
 .circle-btn:hover {
-	background: #fff;
+	transform: translateX(30px);
+	border-color: #EEA62B;
 }
 /*Make the white arrow opacity 0*/
 a.link-white:hover > .circle-btn:before,
@@ -706,6 +748,18 @@ a.link-white:hover > .circle-btn:before,
 a.link-white:hover > .circle-btn:after,
 .circle-btn:hover:after {
 	opacity: 1;
+}
+
+/*BLACK CIRCLE HOVER*/
+a.link-white.hover-black:hover {
+	color: #fff !important;
+}
+a.link-white.hover-black:hover > .circle-btn {
+	border-color: #000;
+}
+a.link-white.hover-black .circle-btn:after {
+	background: url('../img/general/arrow-right_black.svg');
+	background-size: cover;
 }
 .section-showcase video {
     position: absolute;
@@ -825,7 +879,7 @@ a.link-white:hover > .circle-btn:after,
 	color: var(--orange);
 	margin-bottom: 10px;
 	margin-top: 0;
-	font-weight: 300;
+	font-weight: normal;
 }
 .episode-info .number,
 .episode-info .date {
@@ -902,8 +956,10 @@ a.link-white:hover > .circle-btn:after,
 	opacity: 1.0;
 }
 .episode:hover {
-	background: var(--dark-red);
+	background: rgba(96, 27, 12, 0.2);
 }
+
+
 
 /*BG ANIMATION GRAPHICS*/
 .graphics {
@@ -1177,9 +1233,13 @@ footer .contact-links span {
 }
 
 /*HOVER EFFECTS*/
+.contact-links a:hover {
+	color: #acacac;
+}
 .contact-links a:hover .circle-btn,
 .circle-btn:hover {
-	background: #fff;
+	transform: translateX(30px);
+	border-color: #EEA62B;
 }
 .contact-links a:hover .circle-btn:before,
 .circle-btn:hover:before {
@@ -1303,6 +1363,7 @@ body.scroll .thesis-anim .pp-scrollable {
 }
 .thesis-page header p {
 	font-family: 'Helvetica', sans-serif;
+	font-weight: normal;
 	font-size: 20px;
 	color: #fff;
 	margin-top: 40px;
@@ -1329,7 +1390,10 @@ body.scroll .thesis-anim .pp-scrollable {
 	display: inline-block;
 	color: var(--orange);
 	font-size: inherit;
-	transition: unset;
+	transition: color 0.3s ease;
+}
+.thesis-page.one header h1 a.orange:hover {
+	color: #f2850f;
 }
 
 /*-----PAGE TWO-----*/
@@ -1416,6 +1480,7 @@ section.investments .container .subheading {
 .investment p:nth-child(4) {
 	color: #fff;
 	font-family: 'Helvetica', sans-serif;
+	font-weight: normal;
 }
 .investment p:nth-child(4) {
 	margin-bottom: 0;
@@ -1625,6 +1690,7 @@ section.contact-page .right form {
 }
 .episode .description p {
 	font-family: 'Helvetica', sans-serif;
+	font-weight: normal;
 	font-size: 16px;
 	color: #fff;
 	margin: 0;
@@ -1701,6 +1767,7 @@ section.contact-page .right form {
 .article .date + span {
 	display: inline;
 	font-family: 'Helvetica', sans-serif;
+	font-weight: normal;
 	font-size: 16px;
 	color: var(--orange);
 	margin-bottom: 10px;
@@ -1764,6 +1831,7 @@ h2.tagline {
 .text-contain p,
 .text-contain p a {
 	font-family: 'Helvetica', sans-serif;
+	font-weight: normal;
 	font-size: 20px;
 	line-height: 30px;
 	color: #fff;
@@ -2028,6 +2096,7 @@ h2.tagline {
 		bottom: 0;
 		right: 0;
 		font-family: 'Helvetica', sans-serif;
+		font-weight: normal;
 		font-size: 13px;
 		color: var(--orange);
 		border-top: 1px solid var(--dark-red);
@@ -2096,6 +2165,7 @@ h2.tagline {
 		bottom: 0;
 		left: 0;
 	    font-family: 'Helvetica', sans-serif;
+		font-weight: normal;
 	    font-size: 13px;
 	    color: var(--orange);
 	    border-top: 1px solid var(--dark-red);
@@ -2133,6 +2203,7 @@ h2.tagline {
 	.episode.read span.open {
 		display: block;
 		font-family: 'Helvetica', sans-serif;
+		font-weight: normal;
 		font-size: 13px;
 		color: var(--orange);
 		border-top: 1px solid var(--dark-red);
@@ -2660,13 +2731,13 @@ h2.tagline {
 		width: 80px;
 		height: 80px;
 		left: 50px;
-		bottom: -20px;
+		bottom: -10px;
 	}
 	.graphics .circle-white {
 		width: 50px;
 		height: 50px;
 		left: 130px;
-		bottom: -30px;
+		bottom: -15px;
 	}
 	.graphics .circle-red {
 		width: 150px;
@@ -2843,9 +2914,6 @@ h2.tagline {
 	}
 
 	/*FOOTER*/
-	footer {
-		padding: 40px 0px 0px;
-	}
 	footer .container {
 		flex-direction: column;
 		height: 100% !important;
@@ -2896,7 +2964,7 @@ h2.tagline {
 		justify-content: flex-start;
 	}
 	.episode.read .description {
-		padding: 1px 10px;
+		padding: 5px 10px;
 	}
 
 	/*LISTEN PAGE*/

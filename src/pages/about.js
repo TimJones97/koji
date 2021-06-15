@@ -89,7 +89,7 @@ class About extends Component {
                         The creation of the Internet was a seminal moment in the history of technology - it enabled the first communication and consensus formation between distributed computers. At the time of its inception, few could understand the value of a communications protocol for distributed machines. Today, it enables so many of our daily functions that we don't feel whole without it.
                       </p>
                     </header>
-                  <Arrow down anchor="thesis-page2"/>
+                  <Arrow down anchor="thesis-page2" type="orange"/>
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page two" data-anchor="thesis-page2">
@@ -105,7 +105,7 @@ class About extends Component {
                       The creation of Bitcoin was a historic moment not only for computing, but for finance as well. Bitcoin was the first mechanism for the exchange of value over a communications channel with no trusted third party. The protocol replaced trust with cryptographic proof, enabling entirely digital transactions, requiring no approval by an appointed intermediary. The Ethereum protocol is an expansion upon this trustless digital payments system, incorporating a wider set of logic to allow new kinds of applications to be built. A native programming language enables developers to write arbitrary ‘smart contracts’ to form applications that were previously inconceivable.
                     </p>
                   </header>
-                  <Arrow down anchor="thesis-page3"/>
+                  <Arrow down anchor="thesis-page3" type="black"/>
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page three light-nav" data-anchor="thesis-page3">
@@ -124,7 +124,7 @@ class About extends Component {
                       Anyone with an internet connection can access applications built on the global financial stack. More still, because the smart-contract libraries are open and write access to the blockchain is free, anyone can contribute to improving it.
                     </p>
                   </header>
-                  <Arrow down anchor="thesis-page4"/>
+                  <Arrow down anchor="thesis-page4" type="orange"/>
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page four light-nav" data-anchor="thesis-page4">
@@ -143,7 +143,7 @@ class About extends Component {
                       Without a strong capital base to support them, financial protocols and the applications built on them are unusable. The presence of capital is entwined with the design of financial protocols themselves. More still, a network of active participants is vital to the early success of these protocols. Without engaged protocol governors oriented toward the protocol's long term goals, there can be little hope for a new financial ecosystem to emerge.
                     </p>
                   </header>
-                  <Arrow down anchor="thesis-page5"/>
+                  <Arrow down anchor="thesis-page5" type="orange"/>
                 </div>
               </section>
               <section className="pp-section pp-scrollable section-showcase thesis-page five contrast-nav-yellow" data-anchor="thesis-page5">
