@@ -2033,14 +2033,12 @@ h2.tagline {
 	}
 	section.contact .container .left {
 		height: auto;
-		display: flex;
-		flex-wrap: wrap;
 	}
 	section.contact .container .socials {
 		position: relative;
 		top: unset;
 		transform: unset;
-		margin: 30px 0px 50px;
+		margin: 30px 0px 20px;
 	}
 	section.contact-page .right p.help-text {
 		margin-top: 0;
@@ -2439,6 +2437,9 @@ h2.tagline {
 	section.contact .container .socials .title {
 		font-size: 12px;
 	}
+	section.contact .contact-form {
+		padding: 35px 0px 40px;
+	}
 
 	/*THESIS PAGE*/
 	.thesis-anim .section-showcase .pp-tableCell {
@@ -2565,9 +2566,6 @@ h2.tagline {
 	}
 	section.contact-page .right p.help-text {
 		display: none;
-	}
-	section.contact-page .right .contact-form {
-		padding: 35px 0px 40px;
 	}
 
 	/*ARTICLE TEMPLATE*/
@@ -2805,6 +2803,15 @@ h2.tagline {
 	.form-item label {
 		font-size: 12px;
 	}
+	section.contact .container .socials:not(.mobile-sml) {
+		display: none !important;
+	}
+	section.contact .container .socials.mobile-sml {
+		margin-bottom: 25px;
+		padding-top: 0;
+		margin-top: 0;
+		width: 250px;
+	}
 	section.contact:not(.contact-page) footer {
 		padding-bottom: 150px;
 	}
@@ -2937,15 +2944,6 @@ h2.tagline {
 	/*CONTACT PAGE*/
 	section.contact .container .left {
 		display: block;
-	}
-	section.contact-page .container .socials:not(.mobile-sml) {
-		display: none !important;
-	}
-	section.contact-page .container .socials.mobile-sml {
-		margin-bottom: 25px;
-		padding-top: 0;
-		margin-top: 0;
-		width: 250px;
 	}
 
 	/*FOOTER*/
