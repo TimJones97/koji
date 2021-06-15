@@ -103,6 +103,11 @@ a:hover {
 	pointer-events: none;
 	transition: opacity 0.5s ease;
 }
+/*Allow overflow to show highdef bg circle
+  when transitioning*/
+.homepage-anim {
+    overflow: visible !important;
+}
 /*Add a class to animate when Pagepiling active*/
 .homepage-anim.pp-active,
 .thesis-anim.pp-active {
@@ -562,6 +567,7 @@ menu.mobile-nav.display .nav-item:nth-child(5) {
 
 .section-showcase {
 	overflow: hidden;
+	overflow-x: visible;
 	pointer-events: none;
 }
 .section-showcase .pp-tableCell {
@@ -2349,7 +2355,10 @@ h2.tagline {
 
 	/*THESIS PAGE*/
 	.thesis-anim .section-showcase .pp-tableCell {
-		display: block;
+		display: flex;
+		min-height: 100vh;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 	/*Constrain the width of the header and some h1 elements*/
 	.thesis-anim .section-showcase header {
@@ -2737,6 +2746,10 @@ h2.tagline {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
+	}
+	/*PAGE 5*/
+	.section-showcase.thesis-page video {
+		margin-bottom: 0;
 	}
 
 	/*LISTEN PAGE*/
