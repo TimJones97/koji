@@ -23,6 +23,15 @@
     font-display: swap;
 }
 @font-face {
+    font-family: 'Helvetica Neue Medium';
+    src: url('../fonts/HelveticaNeue-Medium.woff2') format('woff2'),
+        url('../fonts/HelveticaNeue-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'Helvetica';
     src: url('../fonts/Helvetica.woff2') format('woff2'),
         url('../fonts/Helvetica.woff') format('woff');
@@ -318,6 +327,8 @@ nav .container {
 }
 .nav-item.active .nav-link {
 	color: #f2850f;
+	font-family: 'Helvetica Neue Medium', sans-serif;
+    font-weight: 500;
 }
 .nav-item.active .nav-link:before {
 	opacity: 1;
@@ -1085,6 +1096,7 @@ section.contact .container .socials .title {
 	font-family: 'Helvetica Bold', sans-serif;
 	margin-bottom: 15px;
 	color: var(--orange);
+	font-size: 16px;
 }
 section.contact .container .socials a {
 	margin-bottom: 15px;
@@ -1162,6 +1174,7 @@ section.contact .container .right {
 	display: block;
 	margin: 30px auto 0px;
 	transition: background 0.5s ease;
+	cursor: pointer;
 }
 .contact-form button:hover {
 	background: #EEA62B;
@@ -2019,15 +2032,14 @@ h2.tagline {
 	}
 	section.contact .container .left {
 		height: auto;
+		display: flex;
+		flex-wrap: wrap;
 	}
-/*	section.contact .container .left .socials {
-		display: none;
-	}*/
 	section.contact .container .socials {
 		position: relative;
 		top: unset;
 		transform: unset;
-		margin-top: 30px;
+		margin: 30px 0px 50px;
 	}
 	section.contact-page .right p.help-text {
 		margin-top: 0;
@@ -2412,7 +2424,7 @@ h2.tagline {
 	section.contact .container .left {
 		width: 100%;
 	}
-	section.contact .container .socials.mobile {
+	section.contact:not(.contact-page) .container .socials.mobile {
 		display: none !important;
 	}
 	section.contact .container .left .socials {
@@ -2422,6 +2434,9 @@ h2.tagline {
 		flex-wrap: wrap;
 		justify-content: space-between;
 		width: 250px;
+	}
+	section.contact .container .socials .title {
+		font-size: 12px;
 	}
 
 	/*THESIS PAGE*/
@@ -2538,7 +2553,7 @@ h2.tagline {
 		margin: 0;
 		font-size: 24px;
 	}
-	section.contact-page .container .socials {
+	section.contact-page .left .socials {
 		display: flex !important;
 	}
 	section.contact-page .left .split-mobile {
@@ -2773,7 +2788,7 @@ h2.tagline {
 		flex-wrap: wrap;
 		justify-content: space-between;
 		width: 100%;
-		padding-top: 30px !important;
+		padding-top: 30px;
 	}
 	.socials .title {
 		flex-basis: 100%;
@@ -2785,7 +2800,7 @@ h2.tagline {
 		font-size: 12px;
 	}
 	section.contact:not(.contact-page) footer {
-		margin-bottom: 50px;
+		padding-bottom: 150px;
 	}
 
 	/*THESIS PAGE*/
@@ -2913,6 +2928,20 @@ h2.tagline {
 		width: 300px;
 	}
 
+	/*CONTACT PAGE*/
+	section.contact .container .left {
+		display: block;
+	}
+	section.contact-page .container .socials:not(.mobile-sml) {
+		display: none !important;
+	}
+	section.contact-page .container .socials.mobile-sml {
+		margin-bottom: 25px;
+		padding-top: 0;
+		margin-top: 0;
+		width: 250px;
+	}
+
 	/*FOOTER*/
 	footer .container {
 		flex-direction: column;
@@ -2994,8 +3023,8 @@ h2.tagline {
 	section.contact {
 		padding-top: 100px;
 	}
-	section.contact-page .container .socials {
-		display: none !important;
+	section.contact-page .right .contact-form {
+		padding-bottom: 30px;
 	}
 	section.contact-page .left .split-mobile.help {
 		display: none;
