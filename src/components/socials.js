@@ -4,7 +4,7 @@ import React, { Component } from "react";
 class Socials extends Component {
   render() {
     return (
-      <div className={"socials " + (this.props.mobile ? 'mobile' : '')}>
+      <div className={"socials " + (this.props.mobileSml ? 'mobile-sml' : '')}>
         <p className="title">SOCIALS</p>
         <a href="#">AngelList</a>
         <a href="#">LinkedIn</a>

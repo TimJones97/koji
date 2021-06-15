@@ -365,12 +365,6 @@ function setThesisMobileStyles(){
 // to the inner viewport height to prevent hidden text
 function setSectionHeightMobile(){
 	if(isMobile()){
-		if(window.innerHeight < window.outerHeight){
-			$('footer').css('padding-bottom', '100px');
-		}
-		else {
-			$('footer').removeAttr('style');
-		}
 		$('.homepage-anim .pp-tableCell').css('height', window.innerHeight + 'px');
 		$('.mobile-nav').css('height', window.innerHeight + 'px');
 	}

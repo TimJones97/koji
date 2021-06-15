@@ -59,6 +59,7 @@ const Contact = () => {
                 </div>
                 <button type="submit">SEND</button>
               </form>
+              <Socials mobileSml/>
             </div>
           </div>
         </section>

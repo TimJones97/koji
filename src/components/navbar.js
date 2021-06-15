@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link, Navigate } from "gatsby"
 import PropTypes from "prop-types"
 // import TransitionLink from 'gatsby-plugin-transition-link'
@@ -23,13 +23,14 @@ const routes = [
 
 class Navbar extends Component {
   links() {
-    let navLinks = routes.map(({ to, label, index }) => {
+    let navLinks = routes.map(({ to, label }) => {
       return (
-        <>
-          <li className="nav-item" key={index}>
-            <Link className="nav-link" data-text={label} to={to}>{label}</Link>
+        // Use react fragment to bypass non-unique key error
+        <React.Fragment key={ Math.random().toString(36).substr(2, 9) }>
+          <li className="nav-item">
+            <Link className="nav-link" to={to}>{label}</Link>
           </li>
-        </>
+        </React.Fragment>
       )
     });
     return navLinks;
