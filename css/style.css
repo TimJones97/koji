@@ -131,7 +131,7 @@ section.active {
     overflow-y: scroll !important;
 }
 /*Arrow down to next page*/
-.arrow {
+.arrow.nav-link {
 	position: absolute;
 	bottom: 50px;
 	left: 40px;
@@ -1222,15 +1222,10 @@ html.scroll {
 	overflow: initial !important;
 	overflow-x: visible !important;
 }
-html.scroll,
-body.scroll {
-	-webkit-overflow-scrolling: touch;
-}
 body.scroll,
 body.scroll .thesis-anim {
-	overflow: scroll !important;
-	overflow-y: scroll !important;
-	overflow-x: scroll !important;
+	overflow-y: overlay !important;
+	overflow-x: hidden !important;
 }
 body.scroll .thesis-anim {
 	height: unset;
