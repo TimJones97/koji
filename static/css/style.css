@@ -166,7 +166,8 @@ section.active {
 .container.scale * {
 	transform: scale3d(1.0, 1.0, 1.0);
 }
-.mobile {
+.mobile,
+.mobile-sml {
 	display: none !important;
 }
 .normal-section {
@@ -271,27 +272,15 @@ nav .container {
 	margin-right: 0;
 }
 .nav-item.active .nav-link {
-	color: transparent;
+	color: #f2850f;
 }
 .nav-item.active .nav-link:before {
 	opacity: 1;
 }
-.nav-link:before {
-	position: absolute;
-	left: 0;
-	display: block;
-	content: attr(data-text);
-	font-weight: bold;
-	opacity: 0;
-	color: #f2850f;
-	font-family: 'Helvetica Bold', sans-serif;
-    font-weight: bold;
-    transition: inherit;
-}
 .nav-link {
 	position: relative;
 	display: block;
-	font-family: 'Helvetica Light', sans-serif;
+	font-family: 'Helvetica Neue Light', sans-serif;
     font-weight: 300;
 }
 /*LIGHT NAV*/
@@ -929,7 +918,7 @@ a.link-white:hover > .circle-btn:after,
 	min-height: 170vh;
 	min-width: 170vh;
 	overflow: hidden;
-	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 3s;
+	transition: right 3s ease, opacity 2s ease, left 3s ease;
 	opacity: 0.3;
 }
 .highdef-bg img {
@@ -975,7 +964,6 @@ a.link-white:hover > .circle-btn:after,
 .highdef.active .highdef-bg {
 	left: 0px;
 	opacity: 1;
-	transform: scale3d(1.02, 1.02, 1.0) translate(0%, -50%);
 }
 .highdef.active .circle-red {
 	left: -100px;
@@ -1238,8 +1226,7 @@ body.scroll .thesis-anim section {
 	pointer-events: all;
 }
 body.scroll .thesis-anim .pp-scrollable {
-	overflow: visible;
-	overflow-y: visible !important;
+	overflow: hidden hidden !important;
 	height: unset;
 }
 
@@ -1796,13 +1783,13 @@ h2.tagline {
 	flex-direction: column;
 	align-items: flex-start;
 }
-.article .right-contain .article-img {
+.article .article-img {
 	display: block;
 	width: 100%;
 	max-width: 500px;
 	margin-bottom: 10px;
 }
-.article .right-contain .article-img img {
+.article .article-img img {
 	width: 100%;
 }
 
@@ -1820,8 +1807,9 @@ h2.tagline {
 	margin-right: 20px;
 }
 .recent-episodes a.link-white {
-	font-family: inherit;
-	font-size: inherit;
+	font-family: 'Helvetia Neue Light', sans-serif;
+	font-weight: 300;
+	font-size: 22px;
 	margin-top: 20px;
 }
 
@@ -1849,16 +1837,9 @@ h2.tagline {
 		height: 200px;
 		width: 200px;
 	}
-	/*When the slide is active, activate the animations*/
-	.graphics.active .circle-red,
-	.graphics.active .circle-orange,
-	.graphics.active .circle-white {
-		transition: all 3.5s ease 0.7s;
-	}
 	.highdef.active .highdef-bg {
 		left: 0px;
 		opacity: 1;
-		transform: scale3d(1.02, 1.02, 1.0) translate(0%, -50%);
 	}
 	.highdef.active .circle-red {
 		left: -100px;
@@ -1964,10 +1945,15 @@ h2.tagline {
 	}
 	section.contact .container .left {
 		height: auto;
-		margin-bottom: 80px;
 	}
-	section.contact .container .left .socials {
+/*	section.contact .container .left .socials {
 		display: none;
+	}*/
+	section.contact .container .socials {
+		position: relative;
+		top: unset;
+		transform: unset;
+		margin-top: 30px;
 	}
 	section.contact-page .right p.help-text {
 		margin-top: 0;
@@ -2210,7 +2196,7 @@ h2.tagline {
 	}
 	.section-showcase .pp-tableCell {
 		position: relative;
-		display: block;
+		align-items: flex-end;
 	}
 	.section-showcase .pp-tableCell > .container:first-of-type {
 		max-height: 100%;
@@ -2269,7 +2255,6 @@ h2.tagline {
 		top: unset;
 		bottom: 0;
 		transform: translate(-50%, 0%);
-		transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 0s;
 	}
 	.highdef-bg img {
 		height: 80vw;
@@ -2317,7 +2302,8 @@ h2.tagline {
 		padding-top: 150px;
 	}
 	section.contact > .container:first-of-type {
-		max-height: 100%;
+		max-height: unset;
+		height: unset;
 	}
 	section.contact .container .left {
 		margin-bottom: 0px;
@@ -2344,15 +2330,14 @@ h2.tagline {
 		max-height: unset;
 		height: unset;
 	}
-	section.contact .container .socials {
-		display: none !important;
-	}
 	.contact-form {
 		padding-top: 20px;
 	}
 	section.contact .container .left {
-		display: flex;
 		width: 100%;
+	}
+	section.contact .container .socials.mobile {
+		display: none !important;
 	}
 	section.contact .container .left .socials {
 		position: static;
@@ -2364,7 +2349,9 @@ h2.tagline {
 	}
 
 	/*THESIS PAGE*/
-
+	.thesis-anim .section-showcase .pp-tableCell {
+		display: block;
+	}
 	/*Constrain the width of the header and some h1 elements*/
 	.thesis-anim .section-showcase header {
 		width: 570px;
@@ -2507,6 +2494,8 @@ h2.tagline {
 	}
 	h2.tagline {
 		font-size: 24px;
+		border-bottom: 1px solid var(--dark-red);
+		padding-bottom: 30px;
 	}
 	.article-video {
 		margin: 25px 0px 25px -20px;
@@ -2520,6 +2509,9 @@ h2.tagline {
 	}
 	.article .recent-episodes {
 		display: flex !important;
+	}
+	.recent-episodes .episode {
+		margin-bottom: 30px;
 	}
 
 	/*FOOTER*/
@@ -2538,6 +2530,11 @@ h2.tagline {
 }
 
 @media only screen and (max-width: 767px){
+	/*GENERAL*/
+	.mobile-sml {
+		display: block !important;
+	}
+
 	/*NAV*/
 	.mobile-nav__items .social-link {
 		margin-right: 40px;
@@ -2709,7 +2706,7 @@ h2.tagline {
 		font-size: 12px;
 	}
 	section.contact:not(.contact-page) footer {
-		padding-bottom: 100px;
+		margin-bottom: 50px;
 	}
 
 	/*THESIS PAGE*/
@@ -2740,9 +2737,7 @@ h2.tagline {
 	.section-showcase .pp-tableCell {
 		display: flex;
 		flex-direction: column;
-	}
-	section.thesis-page.five footer {
-		padding-bottom: 100px;
+		justify-content: flex-end;
 	}
 
 	/*LISTEN PAGE*/
@@ -2758,6 +2753,9 @@ h2.tagline {
 		font-size: 16px;
 	}
 	.episode {
+		margin-bottom: 20px;
+	}
+	.episode-row .episode {
 		margin-bottom: 20px;
 	}
 
@@ -2788,16 +2786,39 @@ h2.tagline {
 	.article .right-contain {
 		width: 100%;
 	}
-	.article .right-contain .article-img {
+	.article .article-img {
 		margin-left: -20px;
 		margin-right: -20px;
 		width: 100vw;
+		max-width: unset;
 	}
 	.article .left-contain p {
 		font-size: 16px;
 		line-height: 20px;
 	}
 	.article .recent-episodes .subheading {
+		margin-bottom: 20px;
+	}
+	.article .title {
+		margin-bottom: 5px;
+	}
+	/*READ ARTICLE*/
+	.article.read-article header {
+		border-bottom: 0;
+	}
+	.article .desktop {
+		display: none;
+	}
+	/*LISTEN ARTICLE*/
+	.episode-play {
+		border-bottom: 0;
+		margin-bottom: 15px;
+	}
+	.article.listen-article h2.tagline {
+		border-bottom: 0;
+		padding-bottom: 10px;
+	}
+	.recent-episodes .episode {
 		margin-bottom: 20px;
 	}
 
@@ -2807,6 +2828,9 @@ h2.tagline {
 	}
 
 	/*FOOTER*/
+	footer {
+		padding: 40px 0px 0px;
+	}
 	footer .container {
 		flex-direction: column;
 		height: 100% !important;
@@ -2846,6 +2870,12 @@ h2.tagline {
 	/*CONTACT*/
 	section.contact {
 	    padding-top: 50px;
+	}
+
+	/*READ PAGE*/
+	.article .article-img {
+		margin-left: -15px; 
+		margin-right: -15px;
 	}
 
 	/*LISTEN PAGE*/

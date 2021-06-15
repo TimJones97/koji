@@ -154,7 +154,7 @@ function scaleCircleNav(){
 	// On mobile, account for the URL and bottom navigation
 	// by scaling circle-nav up by 1.25x
 	if (isMobile()){
-		navScale = navScale * 1.25;
+		navScale = navScale * 1.2;
 	}
 	// Add the new scale and rotation
 	$('.circle-nav').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
@@ -228,9 +228,11 @@ function scrollContactSection() {
 		            distance = end-start;
 
 		            currentContactScrollTop = $('.contact').scrollTop();
-
-		            if (distance > 0 && currentContactScrollTop == 0
-		            	&& lastScrollTop == 0){
+		            // $('.contact .subheading').text('Current: ' + currentContactScrollTop);
+		            // $('.contact h1').text('Distance: ' + distance);
+		            // $('.contact label').text('Last: ' + lastScrollTop);
+		            if (distance > 0 && currentContactScrollTop <= 0
+		            	&& lastScrollTop <= 0){
 		                location.hash = "page3";
 		            } 
 		        })
@@ -266,7 +268,9 @@ function toggleMobileNav(){
 		$('.mobile-nav').removeClass('display');
 	});
 	$('.nav-link').click(function(){
-		$('.mobile-nav').removeClass('display');
+		setTimeout(function(){
+			$('.mobile-nav').removeClass('display');
+		}, 1000)
 	});
 }
 function isMobile(){

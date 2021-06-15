@@ -17,11 +17,11 @@ const EpisodePage = () => {
     <>
       <Layout>
         <SEO title="Listen"/>
-        <section className="normal-section article light-nav brown-nav">
+        <section className="normal-section article listen-article light-nav brown-nav">
           <div className="container">
             <div>
               <div className="left-contain">
-                <hr/>
+                <hr className="desktop"/>
                 <header>
                   <span className="number">Episode #1</span>
                   <h1 className="title">
@@ -48,7 +48,6 @@ const EpisodePage = () => {
                 </div>
                 <div className="text-contain">
                   <h2 className="tagline">Donec et lorem non sem efficitur suscipit ac id ligula. Fusce consectetur lorem eu turpis tristique, ut faucibus mauris laoreet. Proin et congue risus.Proin eu mi gravida, placerat dui et tortor.</h2>
-                  <hr className="mobile"/>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras diam mi, scelerisque eu mi at, suscipit fermentum mi. In hac habitasse platea dictumst. Maecenas a venenatis nibh, non posuere tellus. Ut quis pharetra nunc, a varius nulla. Ut at tincidunt lacus, ultrices interdum lectus. Nullam hendrerit nunc sit amet placerat ultrices. Nam ultrices ipsum non ipsum interdum, vel sagittis sapien feugiat. Nullam velit orci, interdum in felis eget, ullamcorper iaculis nunc.
                   </p>

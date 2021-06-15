@@ -15,11 +15,11 @@ const ReadPage = () => {
     <>
       <Layout>
         <SEO title="Read"/>
-        <section className="normal-section article light-nav brown-nav">
+        <section className="normal-section article read-article light-nav brown-nav">
           <div className="container">
             <div>
               <div className="left-contain">
-                <hr/>
+                <hr className="desktop"/>
                 <header>
                   <span className="number">Article #1</span>
                   <h1 className="title">
@@ -41,12 +41,17 @@ const ReadPage = () => {
                     </div>
                   </div>
                 </header>
+                <picture className="article-img mobile-sml">
+                  <img src={read_thumbnail}/>
+                </picture>
                 <div className="text-contain">
                   <h2 className="tagline">Donec et lorem non sem efficitur suscipit ac id ligula. Fusce consectetur lorem eu turpis tristique, ut faucibus mauris laoreet. Proin et congue risus.Proin eu mi gravida, placerat dui et tortor.</h2>
-                  <hr className="mobile"/>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras diam mi, scelerisque eu mi at, suscipit fermentum mi. In hac habitasse platea dictumst. Maecenas a venenatis nibh, non posuere tellus. Ut quis pharetra nunc, a varius nulla. Ut at tincidunt lacus, ultrices interdum lectus. Nullam hendrerit nunc sit amet placerat ultrices. Nam ultrices ipsum non ipsum interdum, vel sagittis sapien feugiat. Nullam velit orci, interdum in felis eget, ullamcorper iaculis nunc.
                   </p>
+                  <picture className="article-img mobile">
+                    <img src={read_thumbnail}/>
+                  </picture>
                   <p>
                     Nullam maximus augue tincidunt enim lacinia placerat. Aenean id auctor lectus, ac sagittis ante. Morbi magna mauris, interdum dignissim vestibulum eu, blandit et turpis. Aliquam aliquet egestas pulvinar. Nunc accumsan rhoncus varius. Vestibulum quis egestas nibh. Quisque hendrerit dui vel erat ultrices iaculis. Sed rutrum finibus urna, nec molestie orci luctus vel. Mauris sed erat id ipsum dapibus tempus. Maecenas sed lacinia ligula. Ut tempus augue et neque imperdiet, eget pellentesque nulla posuere. Integer vel felis elementum, vulputate velit vitae, tincidunt sem. In nibh odio, consectetur ac ligula ut, faucibus tincidunt urna.
                   </p>
@@ -68,7 +73,7 @@ const ReadPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="right-contain">
+              <div className="right-contain desktop">
                 <picture className="article-img">
                   <img src={read_thumbnail}/>
                 </picture>
