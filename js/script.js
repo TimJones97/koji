@@ -228,9 +228,11 @@ function scrollContactSection() {
 		            distance = end-start;
 
 		            currentContactScrollTop = $('.contact').scrollTop();
-
-		            if (distance > 0 && currentContactScrollTop == 0
-		            	&& lastScrollTop == 0){
+		            // $('.contact .subheading').text('Current: ' + currentContactScrollTop);
+		            // $('.contact h1').text('Distance: ' + distance);
+		            // $('.contact label').text('Last: ' + lastScrollTop);
+		            if (distance > 0 && currentContactScrollTop <= 0
+		            	&& lastScrollTop <= 0){
 		                location.hash = "page3";
 		            } 
 		        })
