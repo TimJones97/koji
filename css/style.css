@@ -930,7 +930,7 @@ a.link-white:hover > .circle-btn:after,
 	min-height: 170vh;
 	min-width: 170vh;
 	overflow: hidden;
-	transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 3s;
+	transition: right 3s ease, opacity 2s ease, left 3s ease;
 	opacity: 0.3;
 }
 .highdef-bg img {
@@ -976,7 +976,6 @@ a.link-white:hover > .circle-btn:after,
 .highdef.active .highdef-bg {
 	left: 0px;
 	opacity: 1;
-	transform: scale3d(1.02, 1.02, 1.0) translate(0%, -50%);
 }
 .highdef.active .circle-red {
 	left: -100px;
@@ -1850,16 +1849,9 @@ h2.tagline {
 		height: 200px;
 		width: 200px;
 	}
-	/*When the slide is active, activate the animations*/
-	.graphics.active .circle-red,
-	.graphics.active .circle-orange,
-	.graphics.active .circle-white {
-		transition: all 3.5s ease 0.7s;
-	}
 	.highdef.active .highdef-bg {
 		left: 0px;
 		opacity: 1;
-		transform: scale3d(1.02, 1.02, 1.0) translate(0%, -50%);
 	}
 	.highdef.active .circle-red {
 		left: -100px;
@@ -2275,7 +2267,6 @@ h2.tagline {
 		top: unset;
 		bottom: 0;
 		transform: translate(-50%, 0%);
-		transition: height 0s ease, right 3s ease, opacity 2s ease, left 3s ease, transform 0s;
 	}
 	.highdef-bg img {
 		height: 80vw;
