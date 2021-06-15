@@ -2121,7 +2121,7 @@ h2.tagline {
 		display: inline;
 	}
 	.episode.read .description {
-		padding: 5px 10px;
+		padding: 2px 10px;
 		overflow: hidden;
 	}
 	.episode.read a.open {
