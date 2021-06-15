@@ -1238,8 +1238,7 @@ body.scroll .thesis-anim section {
 	pointer-events: all;
 }
 body.scroll .thesis-anim .pp-scrollable {
-	overflow: visible;
-	overflow-y: visible !important;
+	overflow: hidden hidden !important;
 	height: unset;
 }
 
