@@ -1,11 +1,18 @@
 /*--------------GENERAL STYLES--------------*/
 :root {
   --black: #000000;
+  --orange: #F1AF30;
+  --dark-red: #601B0C;
+  --brown: #2E0000;
+  --grey: #4D4D4D;
+}
+/*:root {
+  --black: #000000;
   --orange: #EEA62B;
   --dark-red: #601B0C;
   --brown: #290001;
   --grey: #4D4D4D;
-}
+}*/
 @font-face {
     font-family: 'Helvetica Light';
     src: url('../fonts/Helvetica-Light.woff2') format('woff2'),
@@ -744,7 +751,7 @@ a.link-white {
 }
 /*HOVER EFFECTS*/
 a.link-white:hover {
-	color: #acacac !important;
+	color: var(--grey) !important;
 }
 a.link-white:hover > .circle-btn,
 .circle-btn:hover {
@@ -1248,7 +1255,7 @@ footer .contact-links span {
 
 /*HOVER EFFECTS*/
 .contact-links a:hover {
-	color: #acacac;
+	color: var(--grey);
 }
 .contact-links a:hover .circle-btn,
 .circle-btn:hover {
