@@ -343,6 +343,9 @@ function setThesisMobileStyles(){
 			$('.thesis-anim section').addClass('show-headers');
 			// Make nav permanently brown
 			$('nav').addClass('brown-bg').addClass('light').removeClass('dark').removeClass('yellow-bg');
+
+			// Remove event listeners
+			$('.thesis-anim').unbind();
 		}
 		// Remove styles if window resized from mobile
 		// to desktop
