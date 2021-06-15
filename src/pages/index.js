@@ -202,7 +202,7 @@ const Home = () => {
                     <button type="submit">SEND</button>
                   </form>
                 </div>
-                <Socials mobile/>
+                <Socials mobileSml/>
               </div>
               <Footer/>
             </section>
