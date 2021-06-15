@@ -2715,7 +2715,7 @@ h2.tagline {
 		font-size: 12px;
 	}
 	section.contact:not(.contact-page) footer {
-		padding-bottom: 100px;
+		margin-bottom: 50px;
 	}
 
 	/*THESIS PAGE*/
@@ -2747,9 +2747,6 @@ h2.tagline {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
-	}
-	section.thesis-page.five footer {
-		padding-bottom: 100px;
 	}
 
 	/*LISTEN PAGE*/
@@ -2814,6 +2811,9 @@ h2.tagline {
 	}
 
 	/*FOOTER*/
+	footer {
+		padding: 40px 0px 0px;
+	}
 	footer .container {
 		flex-direction: column;
 		height: 100% !important;

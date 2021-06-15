@@ -268,7 +268,9 @@ function toggleMobileNav(){
 		$('.mobile-nav').removeClass('display');
 	});
 	$('.nav-link').click(function(){
-		$('.mobile-nav').removeClass('display');
+		setTimeout(function(){
+			$('.mobile-nav').removeClass('display');
+		}, 1000)
 	});
 }
 function isMobile(){
