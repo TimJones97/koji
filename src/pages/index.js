@@ -57,8 +57,8 @@ const Home = () => {
             x: -500
           }}
           transition={{
-            ease: "linear",
-            duration: 3
+            ease: "easeOut",
+            duration: 3.5
           }}
           className="circle-animator"
           >
@@ -78,8 +78,8 @@ const Home = () => {
             x: -500
           }}
           transition={{
-            ease: "linear",
-            duration: 3
+            ease: "easeOut",
+            duration: 3.5
           }}
         >
           <div className="homepage-anim">
@@ -100,7 +100,7 @@ const Home = () => {
                       x: -100
                     }}
                     transition={{
-                      ease: "linear",
+                      ease: "easeOut",
                       duration: 0.8
                     }}
                   >

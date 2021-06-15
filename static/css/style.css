@@ -34,7 +34,6 @@ body, html {
 	overflow: hidden;
 	height: 100%; 
 	width: 100%;
-	min-height: 100vh;
 }
 body {
 	background: var(--brown);
@@ -132,7 +131,7 @@ section.active {
     overflow-y: scroll !important;
 }
 /*Arrow down to next page*/
-.arrow {
+.arrow.nav-link {
 	position: absolute;
 	bottom: 50px;
 	left: 40px;
@@ -257,6 +256,7 @@ nav .container {
 	left: 0;
 	width: 100%;
 	opacity: 0;
+	transition: opacity 0.5s ease;
 }
 .right-nav ul {
 	margin: 0;
@@ -267,14 +267,30 @@ nav .container {
 	margin-right: 20px;
 	color: #fff;
 }
-.nav-item.active .nav-link {
-	color: #f7900a;
-	text-shadow: 0px 0px 2px #f7900a;
-}
 .nav-item:last-of-type {
 	margin-right: 0;
 }
+.nav-item.active .nav-link {
+	color: transparent;
+}
+.nav-item.active .nav-link:before {
+	opacity: 1;
+}
+.nav-link:before {
+	position: absolute;
+	left: 0;
+	display: block;
+	content: attr(data-text);
+	font-weight: bold;
+	opacity: 0;
+	color: #f2850f;
+	font-family: 'Helvetica Bold', sans-serif;
+    font-weight: bold;
+    transition: inherit;
+}
 .nav-link {
+	position: relative;
+	display: block;
 	font-family: 'Helvetica Light', sans-serif;
     font-weight: 300;
 }
@@ -406,10 +422,10 @@ menu.mobile-nav.display {
 	transition: background 0.5s ease;
 }
 .mobile-nav__items .mobile-socials {
-	padding: 0px 20px;
+	padding: 20px;
 	height: 85px;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 }
 .mobile-nav__items .social-link {
 	margin-right: 55px;
@@ -435,16 +451,16 @@ menu.mobile-nav.display .nav-item:nth-child(1) {
 	animation-delay: 0.2s;
 }
 menu.mobile-nav.display .nav-item:nth-child(2) {
-	animation-delay: 0.4s;
+	animation-delay: 0.35s;
 }
 menu.mobile-nav.display .nav-item:nth-child(3) {
-	animation-delay: 0.6s;
+	animation-delay: 0.5s;
 }
 menu.mobile-nav.display .nav-item:nth-child(4) {
-	animation-delay: 0.8s;
+	animation-delay: 0.65s;
 }
 menu.mobile-nav.display .nav-item:nth-child(5) {
-	animation-delay: 1s;
+	animation-delay: 0.8s;
 }
 
 @keyframes fadeIn {
@@ -900,7 +916,7 @@ a.link-white:hover > .circle-btn:after,
 	top: 0;
 	right: 0;
 	height: 100vh;
-	width: 58vw;
+	width: 55vw;
 	z-index: 0;
 	transition: width 0.2s ease;
 }
@@ -1204,16 +1220,21 @@ footer .site-links .link-box .title {
 /*THESIS MOBILE STYLES*/
 html.scroll {
 	overflow: initial !important;
-	overflow-x: visible !important;
+	overflow-x: scroll !important;
 }
 body.scroll,
 body.scroll .thesis-anim {
-	overflow-y: overlay !important;
-	overflow-x: hidden !important;
+	overflow: overlay !important;
+}
+body.scroll .thesis-anim {
+	height: unset;
+	touch-action: auto !important;
+	pointer-events: all;
 }
 body.scroll .thesis-anim section {
 	opacity: 1;
 	position: relative;
+	pointer-events: all;
 }
 body.scroll .thesis-anim .pp-scrollable {
 	overflow: visible;
@@ -2505,9 +2526,6 @@ h2.tagline {
 		height: 50px;
 		font-size: 24px;
 	}
-	.mobile-nav__items .mobile-socials {
-		height: 60px;
-	}
 	.mobile-nav__items .social-link picture {
 		width: 22px;
 	}
@@ -2670,6 +2688,9 @@ h2.tagline {
 	.form-item label {
 		font-size: 12px;
 	}
+	section.contact:not(.contact-page) footer {
+		padding-bottom: 100px;
+	}
 
 	/*THESIS PAGE*/
 	.thesis-page header {
@@ -2689,14 +2710,17 @@ h2.tagline {
 		height: auto;
 		position: relative;
 		width: 100%;
+		left: 50%;
 		max-height: 60vh;
-		transform: unset;
-		left: 0;
+		transform: translate(-50%, 0%);
 		margin-bottom: 50px;
 	}
 	.section-showcase .pp-tableCell {
 		display: flex;
 		flex-direction: column;
+	}
+	section.thesis-page.five footer {
+		padding-bottom: 100px;
 	}
 
 	/*LISTEN PAGE*/
@@ -2786,14 +2810,11 @@ h2.tagline {
 
 	/*NAV*/
 	.mobile-nav__items .nav-link {
-		height: 100px;
-		font-size: 48px;
-	}
-	.mobile-nav__items .mobile-socials {
-		height: 85px;
+		height: 80px;
+		font-size: 36px;
 	}
 	.mobile-nav__items .social-link picture {
-		width: 30px;
+		width: 25px;
 	}
 
 	/*ABOUT*/

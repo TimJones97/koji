@@ -42,11 +42,11 @@ class About extends Component {
             }}
             animate={{
               opacity: 1,
-              x: 0
+              x: -10
             }}
             exit={{
               opacity: 0,
-              x: 0
+              x: -10
             }}
             transition={{
               ease: "easeOut",

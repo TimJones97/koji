@@ -99,7 +99,7 @@ function rotateCircleNav(index, nextIndex, direction){
 			// Reverse rotation by 30 degrees to animate backward
 			navRotation = navRotation - 30;
 		}
-		$('.home').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
+		$('.circle-nav.home').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 	}
 	// If pagepiling is active for thesis page
 	else {
@@ -126,7 +126,7 @@ function rotateCircleNav(index, nextIndex, direction){
 		else {
 			navRotation = navRotation + 30;
 		}
-		$('.thesis').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
+		$('.circle-nav.thesis').css('transform', 'scale3d(' + navScale + ',' + navScale + ', 1.0) rotate(' + navRotation + 'deg)');
 	}
 	setActiveCircle();
 }
@@ -343,6 +343,9 @@ function setThesisMobileStyles(){
 			$('.thesis-anim section').addClass('show-headers');
 			// Make nav permanently brown
 			$('nav').addClass('brown-bg').addClass('light').removeClass('dark').removeClass('yellow-bg');
+
+			// Remove event listeners
+			$('.thesis-anim').unbind();
 		}
 		// Remove styles if window resized from mobile
 		// to desktop

@@ -27,7 +27,7 @@ class Navbar extends Component {
       return (
         <>
           <li className="nav-item" key={index}>
-            <Link className="nav-link" to={to}>{label}</Link>
+            <Link className="nav-link" data-text={label} to={to}>{label}</Link>
           </li>
         </>
       )
