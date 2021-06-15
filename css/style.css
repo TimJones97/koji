@@ -166,7 +166,8 @@ section.active {
 .container.scale * {
 	transform: scale3d(1.0, 1.0, 1.0);
 }
-.mobile {
+.mobile,
+.mobile-sml {
 	display: none !important;
 }
 .normal-section {
@@ -1795,13 +1796,13 @@ h2.tagline {
 	flex-direction: column;
 	align-items: flex-start;
 }
-.article .right-contain .article-img {
+.article .article-img {
 	display: block;
 	width: 100%;
 	max-width: 500px;
 	margin-bottom: 10px;
 }
-.article .right-contain .article-img img {
+.article .article-img img {
 	width: 100%;
 }
 
@@ -1819,8 +1820,9 @@ h2.tagline {
 	margin-right: 20px;
 }
 .recent-episodes a.link-white {
-	font-family: inherit;
-	font-size: inherit;
+	font-family: 'Helvetia Neue Light', sans-serif;
+	font-weight: 300;
+	font-size: 22px;
 	margin-top: 20px;
 }
 
@@ -2513,6 +2515,8 @@ h2.tagline {
 	}
 	h2.tagline {
 		font-size: 24px;
+		border-bottom: 1px solid var(--dark-red);
+		padding-bottom: 30px;
 	}
 	.article-video {
 		margin: 25px 0px 25px -20px;
@@ -2526,6 +2530,9 @@ h2.tagline {
 	}
 	.article .recent-episodes {
 		display: flex !important;
+	}
+	.recent-episodes .episode {
+		margin-bottom: 30px;
 	}
 
 	/*FOOTER*/
@@ -2544,6 +2551,11 @@ h2.tagline {
 }
 
 @media only screen and (max-width: 767px){
+	/*GENERAL*/
+	.mobile-sml {
+		display: block !important;
+	}
+
 	/*NAV*/
 	.mobile-nav__items .social-link {
 		margin-right: 40px;
@@ -2764,6 +2776,9 @@ h2.tagline {
 	.episode {
 		margin-bottom: 20px;
 	}
+	.episode-row .episode {
+		margin-bottom: 20px;
+	}
 
 	/*INVESTMENTS PAGE*/
 	.investments .subheading {
@@ -2792,7 +2807,7 @@ h2.tagline {
 	.article .right-contain {
 		width: 100%;
 	}
-	.article .right-contain .article-img {
+	.article .article-img {
 		margin-left: -20px;
 		margin-right: -20px;
 		width: 100vw;
@@ -2802,6 +2817,28 @@ h2.tagline {
 		line-height: 20px;
 	}
 	.article .recent-episodes .subheading {
+		margin-bottom: 20px;
+	}
+	.article .title {
+		margin-bottom: 5px;
+	}
+	/*READ ARTICLE*/
+	.article.read-article header {
+		border-bottom: 0;
+	}
+	.article .desktop {
+		display: none;
+	}
+	/*LISTEN ARTICLE*/
+	.episode-play {
+		border-bottom: 0;
+		margin-bottom: 15px;
+	}
+	.article.listen-article h2.tagline {
+		border-bottom: 0;
+		padding-bottom: 10px;
+	}
+	.recent-episodes .episode {
 		margin-bottom: 20px;
 	}
 
@@ -2853,6 +2890,12 @@ h2.tagline {
 	/*CONTACT*/
 	section.contact {
 	    padding-top: 50px;
+	}
+
+	/*READ PAGE*/
+	.article .article-img {
+		margin-left: -15px; 
+		margin-right: -15px;
 	}
 
 	/*LISTEN PAGE*/
