@@ -211,53 +211,63 @@ function animateHeadersOnScroll(direction){
 		}
 	});
 }
+function isSafari() {
+  const navigator = window.navigator;
+  const ua = navigator.userAgent.toLowerCase()
+  const isSafari = ((ua.indexOf('safari') != -1) && (!(ua.indexOf('chrome')!= -1) && (ua.indexOf('version/')!= -1)))
+  return isSafari
+}
 function scrollContactSection() {
 	var currentContactScrollTop = $('.contact').scrollTop(),
-    	lastScrollTop = 0;
+    	lastContactScrollTop = 0,
+    	currentThesisPageFiveScrollTop = $('.thesis-page.five').scrollTop(),
+    	lastThesisPageFiveScrollTop = 0;
 
     // For mobile
-    if(isMobile()){
-	    $(window).on('touchstart', function(e) {
-	    	if($('.contact').hasClass('active')){
-		        var swipe = e.originalEvent.touches,
-		        start = swipe[0].pageY;
+    $(window).on('touchstart', function(e) {
+        var swipe = e.originalEvent.touches,
+        start = swipe[0].pageY;
 
-		        $(this).on('touchmove', function(e) {
-		            var contact = e.originalEvent.touches,
-		            end = contact[0].pageY,
-		            distance = end-start;
+        $(this).on('touchmove', function(e) {
+            var contact = e.originalEvent.touches,
+            end = contact[0].pageY,
+            distance = end-start;
 
-		            currentContactScrollTop = $('.contact').scrollTop();
-		            // $('.contact .subheading').text('Current: ' + currentContactScrollTop);
-		            // $('.contact h1').text('Distance: ' + distance);
-		            // $('.contact label').text('Last: ' + lastScrollTop);
-		            if (distance > 0 && currentContactScrollTop <= 0
-		            	&& lastScrollTop <= 0){
-		                location.hash = "page3";
-		            } 
-		        })
-		        .one('touchend', function() {
-		            $(this).off('touchmove touchend');
-		        });
-		    	lastScrollTop = currentContactScrollTop;
-	    	}
-	    });
-    }
-    else {
-	    // For desktop
-	    $('.contact').mousewheel(function(event){
+			if($('.contact').hasClass('active')){
+	            currentContactScrollTop = $('.contact').scrollTop();
+	            if (distance > 0 && currentContactScrollTop <= 0
+	            	&& lastScrollTop <= 0){
+	                location.hash = "page3";
+	            } 
+	        }
+			if($('.thesis-page.five').hasClass('active')){
+	            currentThesisPageFiveScrollTop = $('.thesis-page.five').scrollTop();
+	            if (distance > 0 && currentThesisPageFiveScrollTop <= 0
+	            	&& lastThesisPageFiveScrollTop <= 0){
+	                location.hash = "thesis-page4";
+	            } 
+	        }
 
-	    	// If the current scrollTop position is 0, then the user is
-	    	// at the top of the contact div
-	        currentContactScrollTop = $('.contact').scrollTop();
+        })
+        .one('touchend', function() {
+            $(this).off('touchmove touchend');
+        });
+    	lastContactScrollTop = currentContactScrollTop;
+    	lastThesisPageFiveScrollTop = currentThesisPageFiveScrollTop;
+    });
+    // For desktop
+    $('.contact').mousewheel(function(event){
 
-	    	if(currentContactScrollTop == 0 && event.deltaY == 1 && lastScrollTop == 0){
-	    		// Go to the High Definition page when user scrolls to top of contact div
-	    		location.hash = "page3";
-	    	}
-	    	lastScrollTop = currentContactScrollTop;
-	    });
-    }
+    	// If the current scrollTop position is 0, then the user is
+    	// at the top of the contact div
+        currentContactScrollTop = $('.contact').scrollTop();
+
+    	if(currentContactScrollTop == 0 && event.deltaY == 1 && lastScrollTop == 0){
+    		// Go to the High Definition page when user scrolls to top of contact div
+    		location.hash = "page3";
+    	}
+    	lastScrollTop = currentContactScrollTop;
+    });
 }
 function toggleMobileNav(){
 	$('.menu-toggle').click(function(){
@@ -424,10 +434,17 @@ $(document).ready(function() {
 	// Only initiate pagePiling if on the index page
 	if($('.homepage-anim').length){
 		initHomepagePagepiling();
+		// Add extra padding on the bottom because Safari hides elements
+		if(isSafari()){
+			$('footer').css('padding-bottom', '120px');
+		}
 	}
 
 	if($('.thesis-anim').length){
 		initThesisPagepiling();
+		if(isSafari()){
+			$('footer').css('padding-bottom', '120px');
+		}
 	}
 
 	// if(location.pathname == '/listen' || location.pathname == '/read'){

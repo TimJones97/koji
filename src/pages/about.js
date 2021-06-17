@@ -67,7 +67,7 @@ class About extends Component {
         // console.log(vid);
         if (this.isColorInRange(nativeColor, p)) {
           if(isLast){
-            document.documentElement.style.setProperty('--orange', "rgb(" + p[0] + "," + p[1] + "," + p[2] + ")")
+            document.documentElement.style.setProperty('--orange', " rgb(" + p[0] + "," + p[1] + "," + p[2] + ")")
           }   
           sectionBg.style.backgroundColor = "rgb(" + p[0] + "," + p[1] + "," + p[2] + ")";
         }
