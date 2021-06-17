@@ -2338,6 +2338,7 @@ section.not-found {
 	.section-showcase.highdef .episodes {
 		display: flex;
 		flex-wrap: wrap;
+		flex-direction: column;
 	}
 	.section-showcase.highdef .subheading {
 		flex-basis: 100%;
