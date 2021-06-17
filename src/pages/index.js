@@ -110,7 +110,7 @@ class Index extends Component {
                       }}
                       transition={{
                         ease: "easeOut",
-                        duration: 0.8
+                        duration: 0.5
                       }}
                     >
                       <span>Koji is an early-stage</span>

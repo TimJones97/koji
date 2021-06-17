@@ -51,7 +51,7 @@ class About extends Component {
         sectionBg = vid.parentElement;
       }
       else {
-        var sectionBg = vid.parentElement.parentElement;
+        sectionBg = vid.parentElement.parentElement;
       }
       if (sectionBg) {
         // draw first pixel of video to a canvas
@@ -69,7 +69,7 @@ class About extends Component {
           if(isLast){
             document.documentElement.style.setProperty('--orange', " rgb(" + p[0] + "," + p[1] + "," + p[2] + ")")
           }   
-          sectionBg.style.backgroundColor = "rgb(" + p[0] + "," + p[1] + "," + p[2] + ")";
+          sectionBg.style.background = "rgb(" + p[0] + "," + p[1] + "," + p[2] + ")";
         }
         // If didnt match
         else {
@@ -84,14 +84,14 @@ class About extends Component {
     // Fade in the videos and start them after 0.7s
     setTimeout(this.fadeInVideoLoaded, 700, e.target);
 
-    setTimeout(this.setVideoBgColor, 100, e.target, nativeColor, isLast);
+    // If document is loaded
+    if(document.readyState === 'complete'){
+      setTimeout(this.setVideoBgColor, 100, e.target, nativeColor, isLast);
+    }
   }
   fadeInVideoLoaded(video){
     if(video){
       video.classList.add('loaded');
-      // video.pause();
-      // video.currentTime = 0;
-      // video.load();
     }
   }
   render() {
@@ -154,7 +154,7 @@ class About extends Component {
           >
             <div className="thesis-anim">
               <section className="pp-section section-showcase thesis-page one light-nav" data-anchor="thesis-page1">
-                <video muted loop="loop" onCanPlay={e => this.setVideoBgColorDelayed(e, [46, 0, 0])} autoPlay playsInline>
+                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e, [46, 0, 0])} autoPlay playsInline>
                   <source src={Thesis_01} type="video/mp4" />
                 </video>
                 <div className="container">
@@ -171,7 +171,7 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page two" data-anchor="thesis-page2">
-                <video muted loop="loop" onCanPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48])} autoPlay playsInline>
+                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48])} onCanPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48])} autoPlay playsInline>
                   <source src={Thesis_02} type="video/mp4" />
                 </video>
                 <div className="container">
@@ -187,7 +187,7 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page three light-nav" data-anchor="thesis-page3">
-                <video muted loop="loop" onCanPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} autoPlay playsInline>
+                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} autoPlay playsInline>
                   <source src={Thesis_03} type="video/mp4" />
                 </video>
                 <div className="container">
@@ -206,7 +206,7 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page four light-nav" data-anchor="thesis-page4">
-                <video muted loop="loop" onCanPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} autoPlay playsInline>
+                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} autoPlay playsInline>
                   <source src={Thesis_04} type="video/mp4" />
                 </video>
                 <div className="container">
@@ -225,7 +225,7 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section pp-scrollable section-showcase thesis-page five contrast-nav-orange" data-anchor="thesis-page5">
-                <video muted loop="loop" autoPlay onCanPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48], true)} playsInline>
+                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48], true)} onCanPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48], true)} autoPlay playsInline>
                   <source src={Thesis_05} type="video/mp4" />
                 </video>
                 <div className="container">
