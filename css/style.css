@@ -157,6 +157,7 @@ section.active {
     display: block !important;
     min-height: 100vh;
     height: 100%;
+    overflow-x: hidden !important;
     overflow-y: scroll !important;
 }
 
