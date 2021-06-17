@@ -198,17 +198,15 @@ function animateHeadersOnScroll(direction){
 		// if going from down to up for a more natural
 		// interaction (only desktop for thesis, mobile + desktop for
 		// homepage)
-		if($(this).hasClass('active')){
-			if(!isMobile() && isThesis){
-				if(direction == 'up'){
-					$(this).addClass('anim-down');
-					$(this).next().addClass('anim-down');
-				}
-				else {
-					// Remove any left over class additions
-					$(this).removeClass('anim-down');
-					$(this).prev().removeClass('anim-down');
-				}
+		if($(this).hasClass('active') && (!isMobile() && isThesis)){
+			if(direction == 'up'){
+				$(this).addClass('anim-down');
+				$(this).next().addClass('anim-down');
+			}
+			else {
+				// Remove any left over class additions
+				$(this).removeClass('anim-down');
+				$(this).prev().removeClass('anim-down');
 			}
 		}
 	});
@@ -220,10 +218,8 @@ function isSafari() {
   return isSafari
 }
 function scrollContactSection() {
-	var currentContactScrollTop = $('.contact').scrollTop(),
-    	lastContactScrollTop = 0,
-    	currentThesisPageFiveScrollTop = $('.thesis-page.five').scrollTop(),
-    	lastThesisPageFiveScrollTop = 0;
+	var contactScrollTop = $('.contact').scrollTop(),
+    	thesisLastPageScrollTop = $('.thesis-page.five').scrollTop();
 
     // For mobile
     $(window).on('touchstart', function(e) {
@@ -234,41 +230,39 @@ function scrollContactSection() {
             var contact = e.originalEvent.touches,
             end = contact[0].pageY,
             distance = end-start;
-
+            
 			if($('.contact').hasClass('active')){
-	            currentContactScrollTop = $('.contact').scrollTop();
-	            if (distance > 0 && currentContactScrollTop <= 0
-	            	&& lastContactScrollTop <= 0){
+	            contactScrollTop = $('.contact').scrollTop();
+	            if (distance > 0 && contactScrollTop <= 0){
 	                location.hash = "page3";
 	            } 
 	        }
 			if($('.thesis-page.five').hasClass('active')){
-	            currentThesisPageFiveScrollTop = $('.thesis-page.five').scrollTop();
-	            if (distance > 0 && currentThesisPageFiveScrollTop <= 0
-	            	&& lastThesisPageFiveScrollTop <= 0){
+	            thesisLastPageScrollTop = $('.thesis-page.five').scrollTop();
+	            if (distance > 0 && thesisLastPageScrollTop <= 0){
 	                location.hash = "thesis-page4";
 	            } 
 	        }
-
+	        // FOR DEBUG
+	        // $('.contact .subheading').text('Current: ' + currentContactScrollTop);
+	        // $('.contact h1').text('Distance: ' + distance);
+	        // $('.contact label').text('Last: ' + lastContactScrollTop);
         })
         .one('touchend', function() {
             $(this).off('touchmove touchend');
         });
-    	lastContactScrollTop = currentContactScrollTop;
-    	lastThesisPageFiveScrollTop = currentThesisPageFiveScrollTop;
     });
     // For desktop
     $('.contact').mousewheel(function(event){
 
     	// If the current scrollTop position is 0, then the user is
     	// at the top of the contact div
-        currentContactScrollTop = $('.contact').scrollTop();
+        contactScrollTop = $('.contact').scrollTop();
 
-    	if(currentContactScrollTop == 0 && event.deltaY == 1 && lastContactScrollTop == 0){
+    	if(contactScrollTop == 0 && event.deltaY == 1){
     		// Go to the High Definition page when user scrolls to top of contact div
     		location.hash = "page3";
     	}
-    	lastScrollTop = currentContactScrollTop;
     });
 }
 function toggleMobileNav(){
