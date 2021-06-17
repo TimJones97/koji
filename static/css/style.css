@@ -1947,6 +1947,9 @@ section.not-found {
 /*For 2K-4K screens at 1:1 pixel ratio*/
 @media only screen and (min-width: 2000px) and (min-height: 900px){
 	/*HIGHDEF*/
+	.graphics .highdef-bg {
+		left: 150px;
+	}
 	.graphics .circle-red {
 		left: 0px;
 		height: 500px;
@@ -1965,7 +1968,7 @@ section.not-found {
 		width: 200px;
 	}
 	.highdef.active .highdef-bg {
-		left: 0px;
+		left: 50px;
 		opacity: 1;
 	}
 	.highdef.active .circle-red {
@@ -1991,22 +1994,12 @@ section.not-found {
 		background-position: 50% 70%;
 	}
 }
-@media only screen and (max-width: 1919px){
-	.highdef-bg .bg-full img {
-		height: 100%;
-		right: 50px;
-	}
-}
 /*Begin downsizing elements by 12.5% when screen height below 1000px*/
 @media only screen and (max-height: 1000px){
-
 	/*HIGHDEF*/
 	.episodes {
 		display: none;
 	}
-}
-@media only screen and (max-height: 900px){
-
 	/*HIGHDEF*/
 	.graphics {
 		width: 50vw;
@@ -2014,6 +2007,10 @@ section.not-found {
 	.highdef-bg {
 		min-height: 140vh;
 		min-width: 140vh;
+	}
+	.highdef .circle-red {
+		width: 350px;
+		height: 350px;
 	}
 	.highdef.active .circle-red {
 		left: -60px;
