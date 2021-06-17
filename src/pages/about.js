@@ -9,85 +9,17 @@ import Layout from '../components/layout';
 import Footer from '../components/footer';
 
 // Thesis videos
-// import Thesis_01 from '../../static/img/thesis/Thesis_01.webm';
-// import Thesis_02 from '../../static/img/thesis/Thesis_02.webm';
-// import Thesis_03 from '../../static/img/thesis/Thesis_03.webm';
-// import Thesis_04 from '../../static/img/thesis/Thesis_04.webm';
-// import Thesis_05 from '../../static/img/thesis/Thesis_05.webm';
 
-import Thesis_01 from '../../static/img/thesis/mp4/Thesis_01.mp4';
-import Thesis_02 from '../../static/img/thesis/mp4/Thesis_02.mp4';
-import Thesis_03 from '../../static/img/thesis/mp4/Thesis_03.mp4';
-import Thesis_04 from '../../static/img/thesis/mp4/Thesis_04.mp4';
-import Thesis_05 from '../../static/img/thesis/mp4/Thesis_05.mp4';
+// import Thesis_01 from '../../static/img/thesis/mp4/Thesis_01.mp4';
+// import Thesis_02 from '../../static/img/thesis/mp4/Thesis_02.mp4';
+// import Thesis_03 from '../../static/img/thesis/mp4/Thesis_03.mp4';
+// import Thesis_04 from '../../static/img/thesis/mp4/Thesis_04.mp4';
+// import Thesis_05 from '../../static/img/thesis/mp4/Thesis_05.mp4';
 
 class About extends Component {
   constructor (){
     super();
-
-    this.isColorInRange = this.isColorInRange.bind(this);
-    this.setVideoBgColor = this.setVideoBgColor.bind(this);
-    this.setVideoBgColorDelayed = this.setVideoBgColorDelayed.bind(this);
     this.fadeInVideoLoaded = this.fadeInVideoLoaded.bind(this);
-  }
-
-  isColorInRange(expectedColor, givenColor) {
-      const THRESHOLD = 80;
-      for (var i = 0; i < 3; i++) {
-        if (((expectedColor[i] - THRESHOLD) > givenColor[i]) 
-         || ((expectedColor[i] + THRESHOLD) < givenColor[i])) {
-            return false;
-        }
-      }
-      return true;
-  }
-  setVideoBgColor(vid, nativeColor, isLast=false) {
-    if(vid){
-      var sectionBg;
-
-      // If on thesis page five  which only has one parent element
-      // and no pp.tableCell (because its scrollable)
-      if(isLast){
-        sectionBg = vid.parentElement;
-      }
-      else {
-        sectionBg = vid.parentElement.parentElement;
-      }
-      if (sectionBg) {
-        // draw first pixel of video to a canvas
-        // then get pixel color from that canvas
-        var canvas = document.createElement("canvas");
-        canvas.width = 1;
-        canvas.height = 1;
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(vid, 0, 0, 10, 10);
-
-        var p = ctx.getImageData(0, 0, 10, 10).data;
-
-        // console.log(vid);
-        if (this.isColorInRange(nativeColor, p)) {
-          if(isLast){
-            document.documentElement.style.setProperty('--orange', " rgb(" + p[0] + "," + p[1] + "," + p[2] + ")")
-          }   
-          sectionBg.style.background = "rgb(" + p[0] + "," + p[1] + "," + p[2] + ")";
-        }
-        // If didnt match
-        else {
-          console.log(sectionBg);
-          console.log("Native: rgb(" + nativeColor[0] + "," + nativeColor[1] + "," + nativeColor[2] + ")");
-          console.log("Video: rgb(" + p[0] + "," + p[1] + "," + p[2] + ")");
-        }
-      }
-    }
-  }
-  setVideoBgColorDelayed(e, nativeColor, isLast=false) {
-    // Fade in the videos and start them after 0.7s
-    setTimeout(this.fadeInVideoLoaded, 700, e.target);
-
-    // If document is loaded
-    if(document.readyState === 'complete'){
-      setTimeout(this.setVideoBgColor, 100, e.target, nativeColor, isLast);
-    }
   }
   fadeInVideoLoaded(video){
     if(video){
@@ -154,9 +86,9 @@ class About extends Component {
           >
             <div className="thesis-anim">
               <section className="pp-section section-showcase thesis-page one light-nav" data-anchor="thesis-page1">
-                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e, [46, 0, 0])} autoPlay playsInline>
+                {/*<video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e, [46, 0, 0])} autoPlay playsInline>
                   <source src={Thesis_01} type="video/mp4" />
-                </video>
+                </video>*/}
                 <div className="container">
                   
                     <header>
@@ -171,9 +103,9 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page two" data-anchor="thesis-page2">
-                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48])} onCanPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48])} autoPlay playsInline>
+                {/*<video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48])} onCanPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48])} autoPlay playsInline>
                   <source src={Thesis_02} type="video/mp4" />
-                </video>
+                </video>*/}
                 <div className="container">
                   <header>
                     <h1>
@@ -187,9 +119,9 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page three light-nav" data-anchor="thesis-page3">
-                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} autoPlay playsInline>
+                {/*<video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} autoPlay playsInline>
                   <source src={Thesis_03} type="video/mp4" />
-                </video>
+                </video>*/}
                 <div className="container">
                   <header>
                     <h1>
@@ -206,9 +138,9 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page four light-nav" data-anchor="thesis-page4">
-                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} autoPlay playsInline>
+                {/*<video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} autoPlay playsInline>
                   <source src={Thesis_04} type="video/mp4" />
-                </video>
+                </video>*/}
                 <div className="container">
                   <header>
                     <h1 className="constrain">
@@ -225,9 +157,9 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section pp-scrollable section-showcase thesis-page five contrast-nav-orange" data-anchor="thesis-page5">
-                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48], true)} onCanPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48], true)} autoPlay playsInline>
+                {/*<video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48], true)} onCanPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48], true)} autoPlay playsInline>
                   <source src={Thesis_05} type="video/mp4" />
-                </video>
+                </video>*/}
                 <div className="container">
                   <header>
                     <h1>

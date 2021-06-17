@@ -16,7 +16,7 @@ import twitter_icon from '../../static/img/social-icons/twitter.svg'
 const routes = [
   { to: '/about', label: 'About' },
   { to: '/investments', label: 'Investments' },
-  { to: '/read', label: 'Read' },
+  // { to: '/read', label: 'Read' },
   { to: '/listen', label: 'Listen' },
   { to: '/contact', label: 'Contact' }
 ];
