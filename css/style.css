@@ -1908,6 +1908,11 @@ h2.tagline {
 	margin-top: 20px;
 	display: flex;
 }
+/*--------------404 PAGE--------------*/
+
+section.not-found {
+	background: #000;
+}
 
 /*--------------MEDIA QUERIES--------------*/
 
