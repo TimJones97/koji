@@ -1,18 +1,18 @@
 /*--------------GENERAL STYLES--------------*/
-:root {
+/*:root {
   --black: #000000;
   --orange: #F1AF30;
   --dark-red: #601B0C;
   --brown: #2E0000;
   --grey: #4D4D4D;
-}
-/*:root {
+}*/
+:root {
   --black: #000000;
   --orange: #EEA62B;
   --dark-red: #601B0C;
   --brown: #290001;
   --grey: #4D4D4D;
-}*/
+}
 @font-face {
     font-family: 'Helvetica Light';
     src: url('../fonts/Helvetica-Light.woff2') format('woff2'),
@@ -122,7 +122,7 @@ a:hover {
 .homepage-anim,
 .thesis-anim {
 	position: relative;
-	height: 100vh;
+	height: 100%;
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.5s ease;
@@ -138,6 +138,7 @@ a:hover {
 	opacity: 1;
 	pointer-events: all;
 }
+
 /*Page Piling styles*/
 section {
 	position: relative;
@@ -729,7 +730,7 @@ span.subheading {
 	font-weight: 300;
 	font-size: 72px;
 	margin: unset;
-	transition: font-size 0.5s ease, color 0.3s ease;
+	transition: font-size 0.5s ease, color 0.3s ease, opacity 0.5s ease;
 }
 .section-showcase header h1,
 .section-showcase header span {
@@ -785,13 +786,16 @@ a.link-white.hover-black .circle-btn:after {
     position: absolute;
     top: 50%;
     right: 0;
-    transform: translate(0%, -50%) scale3d(1.1, 1.0, 1.0);
+    transform: translate(0%, -50%) scale3d(1.1, 1.1, 1.0);
     min-width: 100%;
     min-height: 100%;
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
     backface-visibility: hidden;
+}
+.section-showcase.thesis-page video {
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 .section-showcase video.loaded {
     opacity: 1;

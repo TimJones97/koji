@@ -65,8 +65,6 @@ class About extends Component {
         var p = ctx.getImageData(0, 0, 10, 10).data;
 
         // console.log(vid);
-        
-
         if (this.isColorInRange(nativeColor, p)) {
           if(isLast){
             document.documentElement.style.setProperty('--orange', "rgb(" + p[0] + "," + p[1] + "," + p[2] + ")")

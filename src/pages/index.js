@@ -97,7 +97,7 @@ class Index extends Component {
                   <header>
                     <motion.h1
                       initial={{
-                        opacity: 1,
+                        opacity: 0,
                         x: 0
                       }}
                       animate={{
