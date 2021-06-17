@@ -238,7 +238,7 @@ function scrollContactSection() {
 			if($('.contact').hasClass('active')){
 	            currentContactScrollTop = $('.contact').scrollTop();
 	            if (distance > 0 && currentContactScrollTop <= 0
-	            	&& lastScrollTop <= 0){
+	            	&& lastContactScrollTop <= 0){
 	                location.hash = "page3";
 	            } 
 	        }
@@ -264,7 +264,7 @@ function scrollContactSection() {
     	// at the top of the contact div
         currentContactScrollTop = $('.contact').scrollTop();
 
-    	if(currentContactScrollTop == 0 && event.deltaY == 1 && lastScrollTop == 0){
+    	if(currentContactScrollTop == 0 && event.deltaY == 1 && lastContactScrollTop == 0){
     		// Go to the High Definition page when user scrolls to top of contact div
     		location.hash = "page3";
     	}
