@@ -27,6 +27,7 @@ class About extends Component {
     this.isColorInRange = this.isColorInRange.bind(this);
     this.setVideoBgColor = this.setVideoBgColor.bind(this);
     this.setVideoBgColorDelayed = this.setVideoBgColorDelayed.bind(this);
+    this.fadeInVideoLoaded = this.fadeInVideoLoaded.bind(this);
   }
   isColorInRange(expectedColor, givenColor) {
       const THRESHOLD = 40;
@@ -73,6 +74,13 @@ class About extends Component {
   }
   setVideoBgColorDelayed(e, nativeColor, isLast=false) {
     setTimeout(this.setVideoBgColor, 100, e.target, nativeColor, isLast);
+    // Fade in the videos after 1s
+    setTimeout(this.fadeInVideoLoaded, 1000, e.target);
+  }
+  fadeInVideoLoaded(video){
+    if(video){
+      video.classList.add('loaded');
+    }
   }
   render() {
     return (
@@ -167,7 +175,7 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page three light-nav" data-anchor="thesis-page3">
-                <video muted loop="loop" autoPlay playsInline>
+                <video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} autoPlay playsInline>
                   <source src={Thesis_03} type="video/mp4" />
                 </video>
                 <div className="container">

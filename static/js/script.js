@@ -436,6 +436,5 @@ $(document).ready(function() {
 
   	setTimeout(function(){
 		setSectionHeightMobile();
-	    $('video').addClass('loaded');
   	}, 500);
 });
