@@ -198,17 +198,15 @@ function animateHeadersOnScroll(direction){
 		// if going from down to up for a more natural
 		// interaction (only desktop for thesis, mobile + desktop for
 		// homepage)
-		if($(this).hasClass('active')){
-			if(!isMobile() && isThesis){
-				if(direction == 'up'){
-					$(this).addClass('anim-down');
-					$(this).next().addClass('anim-down');
-				}
-				else {
-					// Remove any left over class additions
-					$(this).removeClass('anim-down');
-					$(this).prev().removeClass('anim-down');
-				}
+		if($(this).hasClass('active') && (!isMobile() && isThesis)){
+			if(direction == 'up'){
+				$(this).addClass('anim-down');
+				$(this).next().addClass('anim-down');
+			}
+			else {
+				// Remove any left over class additions
+				$(this).removeClass('anim-down');
+				$(this).prev().removeClass('anim-down');
 			}
 		}
 	});
