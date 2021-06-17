@@ -92,6 +92,10 @@ function SEO({ description, lang, meta, title }) {
             name: `twitter:description`,
             content: metaDescription,
           },
+          {
+            name: `theme-color`,
+            content: `#F1AF30`,
+          },
         ].concat(meta)}
       >
       <style type="text/css">{`

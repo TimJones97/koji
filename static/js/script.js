@@ -13,11 +13,11 @@ function changeNavColor(){
 		if($(this).hasClass('active') && !isThesis || 
 			$(this).hasClass('normal-section') || 
 			($(this).hasClass('active') && isThesis && !isMobile())){
-			if ($(this).hasClass('contrast-nav-yellow')){
-				$('nav').addClass('yellow-bg');
+			if ($(this).hasClass('contrast-nav-orange')){
+				$('nav').addClass('orange-bg');
 			}
 			else {
-				$('nav').removeClass('yellow-bg');
+				$('nav').removeClass('orange-bg');
 			}
 			if ($(this).hasClass('contrast-nav')){
 				$('nav').addClass('black-bg');
@@ -346,7 +346,7 @@ function setThesisMobileStyles(){
 			// without waiting for animations
 			$('.thesis-anim section').addClass('show-headers');
 			// Make nav permanently brown
-			$('nav').addClass('brown-bg').addClass('light').removeClass('dark').removeClass('yellow-bg');
+			$('nav').addClass('brown-bg').addClass('light').removeClass('dark').removeClass('orange-bg');
 
 			// Remove event listeners
 			$('.thesis-anim').unbind();

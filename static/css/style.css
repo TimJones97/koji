@@ -157,6 +157,7 @@ section.active {
     display: block !important;
     min-height: 100vh;
     height: 100%;
+    overflow-x: hidden !important;
     overflow-y: scroll !important;
 }
 
@@ -359,9 +360,9 @@ nav.light .right-nav p {
 nav.light .menu-toggle .bar {
 	background: #fff;
 }
-/*DARK NAV WITH YELLOW BACKGROUND*/
-nav.yellow-bg {
-	background: #efa52d;
+/*DARK NAV WITH ORANGE BACKGROUND*/
+nav.orange-bg {
+	background: var(--orange);
 	transition: background 0.2s ease 0.8s;
 }
 /*LIGHT NAV WITH BLACK BACKGROUND*/
@@ -2648,6 +2649,60 @@ h2.tagline {
 	}
 
 	/*FULL HOMEPAGE SECTIONS*/
+
+	/*Change animation to have less px movement for mobile*/
+	@keyframes headerSlideToTop {
+		0% {
+			transform: translateY(0px);
+			opacity: 1;
+		}
+		80% {
+			opacity: 0;
+		}
+		100% {
+			transform: translateY(-40px);
+			opacity: 0;
+		}
+	}
+	@keyframes headerSlideFromBottom {
+		0% {
+			transform: translateY(20px);
+			opacity: 0;
+		}
+		80% {
+			opacity: 1;
+		}
+		100% {
+			transform: translateY(0px);
+			opacity: 1;
+		}
+	}
+	@keyframes headerSlideToBottom {
+		0% {
+			transform: translateY(0px);
+			opacity: 1;
+		}
+		80% {
+			opacity: 0;
+		}
+		100% {
+			transform: translateY(20px);
+			opacity: 0;
+		}
+	}
+	@keyframes headerSlideToBottomNoFade {
+		0% {
+			transform: translateY(-20px);
+			opacity: 0;
+		}
+		80% {
+			opacity: 1;
+		}
+		100% {
+			transform: translateY(0px);
+			opacity: 1;
+		}
+	}
 	section.section-showcase > .container:first-of-type {
 		max-height: unset;
 	}
