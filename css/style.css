@@ -1,18 +1,18 @@
 /*--------------GENERAL STYLES--------------*/
-:root {
+/*:root {
   --black: #000000;
   --orange: #F1AF30;
   --dark-red: #601B0C;
   --brown: #2E0000;
   --grey: #4D4D4D;
-}
-/*:root {
+}*/
+:root {
   --black: #000000;
   --orange: #EEA62B;
   --dark-red: #601B0C;
   --brown: #290001;
   --grey: #4D4D4D;
-}*/
+}
 @font-face {
     font-family: 'Helvetica Light';
     src: url('../fonts/Helvetica-Light.woff2') format('woff2'),
@@ -144,7 +144,7 @@ section {
 	height: 100vh;
 	transform: unset !important;
 	opacity: 0;
-	transition: opacity 0.7s ease !important;
+	transition: opacity 0.7s ease, background-color 0s !important;
 }
 section.active {
 	opacity: 1;
