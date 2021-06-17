@@ -265,6 +265,7 @@ function toggleMobileNav(){
 		$('.mobile-nav').addClass('display');
 	});
 	$('.close-btn').click(function(){
+		$('.circle-nav').removeClass('hide');
 		$('.mobile-nav').removeClass('display');
 	});
 	$('.nav-link').click(function(){
@@ -371,7 +372,6 @@ function setSectionHeightMobile(){
 	else {
 		$('.homepage-anim .pp-tableCell').css('height', 'unset');
 		$('.mobile-nav').css('height', '100vh');
-		$('footer').removeAttr('style');
 	}
 }
 function setActiveNavItem(){
@@ -434,7 +434,5 @@ $(document).ready(function() {
 	// 	truncateEpisodeText();
 	// }
 
-  	setTimeout(function(){
-		setSectionHeightMobile();
-  	}, 500);
+	setSectionHeightMobile();
 });
