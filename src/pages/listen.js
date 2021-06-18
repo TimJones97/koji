@@ -8,7 +8,39 @@ import Footer from '../components/footer'
 // Images
 import hd_logo from '../../static/img/listen/high-definition-logo.svg';
 
+export const query = graphql`
+  query AllPodcasts {
+    allStrapiHdPodcasts {
+      edges {
+        node {
+          captivate_link
+          description
+          episode
+          duration
+          guest
+          img {
+            formats {
+              medium {
+                url
+              }
+            }
+          }
+          recorded_on(formatString: "")
+          slug
+          release_date(formatString: "")
+          youtube_link
+          transcript
+        }
+      }
+    }
+  }
+`;
+
 class Listen extends Component {
+  constructor (props) {
+    super();
+    console.log(props.data, "This is all the podcasts")
+  }
   render() {
     return (
       <>
