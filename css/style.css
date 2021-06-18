@@ -300,6 +300,19 @@ nav {
 	height: 120px;
 	z-index: 999;
 	transition: none;
+	/*TEMPORARY*/
+	overflow: hidden;
+}
+/*TEMPORARY*/
+nav .thesis-five__video {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+nav.orange-bg .thesis-five__video {
+	display: block;
 }
 nav .container {
 	position: static;
@@ -362,7 +375,7 @@ nav.light .menu-toggle .bar {
 }
 /*DARK NAV WITH ORANGE BACKGROUND*/
 nav.orange-bg {
-	background: var(--orange);
+	/*background: var(--orange);*/
 	transition: background 0.2s ease 0.8s;
 }
 /*LIGHT NAV WITH BLACK BACKGROUND*/
@@ -2314,6 +2327,10 @@ section.not-found {
 	}
 	.logo img {
 		width: 64px;
+	}
+	/*TEMPORARY*/
+	nav .thesis-five__video {
+		display: none !important;
 	}
 
 	/*HOMEPAGE SECTIONS*/
