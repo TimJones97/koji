@@ -1,18 +1,48 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import Article from '../components/article'
-import SEO from '../components/seo';
-import Layout from '../components/layout';
-import Footer from '../components/footer'
-import Episode from '../components/episode'
+import Article from '../../components/article'
+import SEO from '../../components/seo';
+import Layout from '../../components/layout';
+import Footer from '../../components/footer'
+import Episode from '../../components/episode'
 
 // Image assets
-import hd_thumbnail from '../../static/img/listen/thumbnail.svg';
-import player_img from '../../static/img/article/player.png';
-import player_img_small from '../../static/img/article/player_mobile.png';
-import video_placeholder from '../../static/img/article/video_placeholder.png';
+import hd_thumbnail from '../../../static/img/listen/thumbnail.svg';
+import player_img from '../../../static/img/article/player.png';
+import player_img_small from '../../../static/img/article/player_mobile.png';
+import video_placeholder from '../../../static/img/article/video_placeholder.png';
 
+export const query = graphql`
+  query StrapiHdPodcasts($slug: String!) {
+    strapiHdPodcasts(slug: { eq: $slug }) {
+      captivate_link
+      description
+      duration
+      episode
+      guest
+      img {
+        formats {
+          medium {
+            url
+          }
+        }
+      }
+      meeting_notes {
+        description
+        note
+        notes
+        title
+      }
+      slug
+      transcript
+      youtube_link
+    }
+  }
+`;
 class EpisodePage extends Component {
+  constructor(props) {
+    console.log(props)
+  }
   render() {
     return (
       <>
