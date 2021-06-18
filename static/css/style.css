@@ -156,7 +156,6 @@ section.active {
 .pp-scrollable {
     display: block !important;
     min-height: 100vh;
-    height: unset;
     overflow-x: hidden !important;
     overflow-y: scroll !important;
 }
@@ -336,8 +335,8 @@ nav .container {
 }
 .nav-item.active .nav-link {
 	color: #f2850f;
-	font-family: 'Helvetica Neue Medium', sans-serif;
-    font-weight: 500;
+/*	font-family: 'Helvetica Neue Medium', sans-serif;
+    font-weight: 500;*/
 }
 .nav-item.active .nav-link:before {
 	opacity: 1;
@@ -1407,7 +1406,7 @@ body.scroll .thesis-anim .pp-scrollable {
 }
 /*PULL VIDEO RIGHT*/
 .thesis-page video {
-	right: -15vw;
+	right: -10vw;
 }
 .thesis-page video.loaded {
 	opacity: 1;
