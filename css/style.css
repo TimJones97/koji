@@ -156,7 +156,7 @@ section.active {
 .pp-scrollable {
     display: block !important;
     min-height: 100vh;
-    height: 100%;
+    height: unset;
     overflow-x: hidden !important;
     overflow-y: scroll !important;
 }
@@ -791,7 +791,7 @@ a.link-white.hover-black .circle-btn:after {
     min-height: 100%;
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+    transition: opacity 0.8s ease, transform 0.8s ease;
     backface-visibility: hidden;
 }
 .section-showcase.thesis-page video {
@@ -1396,7 +1396,15 @@ body.scroll .thesis-anim .pp-scrollable {
 	margin-top: 40px;
 	line-height: 30px;
 }
-
+/*PREVENT VIDEO OVERFLOW ON SCROLLAGE PAGE*/
+.thesis-page .video-contain {
+	position: absolute;
+	height: 100vh;
+	width: 100%;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
 /*PULL VIDEO RIGHT*/
 .thesis-page video {
 	right: -15vw;
