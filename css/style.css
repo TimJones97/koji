@@ -156,7 +156,6 @@ section.active {
 .pp-scrollable {
     display: block !important;
     min-height: 100vh;
-    height: unset;
     overflow-x: hidden !important;
     overflow-y: scroll !important;
 }
