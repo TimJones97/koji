@@ -6,29 +6,6 @@ module.exports = {
     siteUrl: `http://localhost:8000`
   },
   plugins: [
-    // "gatsby-plugin-sharp",
-    // "gatsby-transformer-sharp",
-    // {
-    //   resolve: 'gatsby-plugin-htaccess',
-    //   options: {
-    //     https: true,
-    //   }
-    // },
-    // {
-    //   resolve: `gatsby-plugin-mdx`,
-    //   options: {
-    //       extensions: [`.mdx`, `.md`],
-    //       gatsbyRemarkPlugins: [
-    //         {
-    //           resolve: `gatsby-remark-images`,
-    //           options: {
-    //             maxWidth: 3000,
-    //             wrapperStyle: fluidResult => `margin: 3vh auto; flex:${Math.round(fluidResult.aspectRatio, 2)};`
-    //           },
-    //         },
-    //       ],
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -38,13 +15,43 @@ module.exports = {
         icon: './static/img/general/favicon.png'
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-page-creator`,
-    //   options: {
-    //     path: `${__dirname}\\src\\index`,
-    //     ignore: [`${__dirname}\\src\\pages`],
-    //   },
-    // },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: 'src',
+        path: `${__dirname}/src/`
+      },
+    },
+    {
+      resolve: `gatsby-plugin-json-remark`,
+      options: {
+        paths: [
+          `${__dirname}/src/podcasts/`,
+        ], // Process all JSON files in these directories.
+        fieldNameBlacklist: [
+          "id",
+          "children",
+          "parent",
+          "fields",
+          "internal",
+          "path",
+          "template",
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-remove-root-p-tag`,
+            options: {
+              parents: ["gatsby-plugin-json-remark", "default-site-plugin"], // Required: will process only the MarkdownRemark nodes created by these plugins
+            },
+          },
+        ],
+      },
+    },
     "gatsby-plugin-remove-serviceworker"
   ],
 };

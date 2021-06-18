@@ -10,18 +10,26 @@ import Footer from '../components/footer';
 
 // Thesis videos
 
-// import Thesis_01 from '../../static/img/thesis/mp4/Thesis_01.mp4';
-// import Thesis_02 from '../../static/img/thesis/mp4/Thesis_02.mp4';
-// import Thesis_03 from '../../static/img/thesis/mp4/Thesis_03.mp4';
-// import Thesis_04 from '../../static/img/thesis/mp4/Thesis_04.mp4';
-// import Thesis_05 from '../../static/img/thesis/mp4/Thesis_05.mp4';
+import Thesis_01 from '../../static/img/thesis/Thesis_01.mp4';
+import Thesis_02 from '../../static/img/thesis/Thesis_02.mp4';
+import Thesis_03 from '../../static/img/thesis/Thesis_03.mp4';
+import Thesis_04 from '../../static/img/thesis/Thesis_04.mp4';
+import Thesis_05 from '../../static/img/thesis/Thesis_05.mp4';
+
+// For mobile
+import Thesis_01_portrait from '../../static/img/thesis/Thesis_01_portrait.mp4';
+import Thesis_02_portrait from '../../static/img/thesis/Thesis_02_portrait.mp4';
+import Thesis_03_portrait from '../../static/img/thesis/Thesis_03_portrait.mp4';
+import Thesis_04_portrait from '../../static/img/thesis/Thesis_04_portrait.mp4';
+import Thesis_05_portrait from '../../static/img/thesis/Thesis_05_portrait.mp4';
 
 class About extends Component {
   constructor (){
     super();
     this.fadeInVideoLoaded = this.fadeInVideoLoaded.bind(this);
   }
-  fadeInVideoLoaded(video){
+  fadeInVideoLoaded(e){
+    const video = e.target;
     if(video){
       video.classList.add('loaded');
     }
@@ -86,9 +94,12 @@ class About extends Component {
           >
             <div className="thesis-anim">
               <section className="pp-section section-showcase thesis-page one light-nav" data-anchor="thesis-page1">
-                {/*<video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e, [46, 0, 0])} autoPlay playsInline>
+                <video muted loop="loop" onPlay={e => this.fadeInVideoLoaded(e)} onCanPlay={e => this.fadeInVideoLoaded(e)} autoPlay playsInline>
                   <source src={Thesis_01} type="video/mp4" />
-                </video>*/}
+                </video>
+                <video className="mobile" muted loop="loop" onPlay={e => this.fadeInVideoLoaded(e)} onCanPlay={e => this.fadeInVideoLoaded(e)} autoPlay playsInline>
+                  <source src={Thesis_01_portrait} type="video/mp4" />
+                </video>
                 <div className="container">
                   
                     <header>
@@ -103,9 +114,12 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page two" data-anchor="thesis-page2">
-                {/*<video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48])} onCanPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48])} autoPlay playsInline>
+                <video muted loop="loop" onPlay={e => this.fadeInVideoLoaded(e)} onCanPlay={e => this.fadeInVideoLoaded(e)} autoPlay playsInline>
                   <source src={Thesis_02} type="video/mp4" />
-                </video>*/}
+                </video>
+                <video className="mobile" muted loop="loop" onPlay={e => this.fadeInVideoLoaded(e)} onCanPlay={e => this.fadeInVideoLoaded(e)} autoPlay playsInline>
+                  <source src={Thesis_02_portrait} type="video/mp4" />
+                </video>
                 <div className="container">
                   <header>
                     <h1>
@@ -119,9 +133,12 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page three light-nav" data-anchor="thesis-page3">
-                {/*<video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e,[0, 0, 0])} autoPlay playsInline>
+                <video muted loop="loop" onPlay={e => this.fadeInVideoLoaded(e)} onCanPlay={e => this.fadeInVideoLoaded(e)} autoPlay playsInline>
                   <source src={Thesis_03} type="video/mp4" />
-                </video>*/}
+                </video>
+                <video className="mobile" muted loop="loop" onPlay={e => this.fadeInVideoLoaded(e)} onCanPlay={e => this.fadeInVideoLoaded(e)} autoPlay playsInline>
+                  <source src={Thesis_03_portrait} type="video/mp4" />
+                </video>
                 <div className="container">
                   <header>
                     <h1>
@@ -138,9 +155,12 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section section-showcase thesis-page four light-nav" data-anchor="thesis-page4">
-                {/*<video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} onCanPlay={e => this.setVideoBgColorDelayed(e,[46, 0, 0])} autoPlay playsInline>
+                <video muted loop="loop" onPlay={e => this.fadeInVideoLoaded(e)} onCanPlay={e => this.fadeInVideoLoaded(e)} autoPlay playsInline>
                   <source src={Thesis_04} type="video/mp4" />
-                </video>*/}
+                </video>
+                <video className="mobile" muted loop="loop" onPlay={e => this.fadeInVideoLoaded(e)} onCanPlay={e => this.fadeInVideoLoaded(e)} autoPlay playsInline>
+                  <source src={Thesis_04_portrait} type="video/mp4" />
+                </video>
                 <div className="container">
                   <header>
                     <h1 className="constrain">
@@ -157,9 +177,14 @@ class About extends Component {
                 </div>
               </section>
               <section className="pp-section pp-scrollable section-showcase thesis-page five contrast-nav-orange" data-anchor="thesis-page5">
-                {/*<video muted loop="loop" onPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48], true)} onCanPlay={e => this.setVideoBgColorDelayed(e,[241, 175, 48], true)} autoPlay playsInline>
-                  <source src={Thesis_05} type="video/mp4" />
-                </video>*/}
+                <div className="video-contain">
+                  <video muted loop="loop" onPlay={e => this.fadeInVideoLoaded(e)} onCanPlay={e => this.fadeInVideoLoaded(e)} autoPlay playsInline>
+                    <source src={Thesis_05} type="video/mp4" />
+                  </video>
+                </div>
+                <video className="mobile" muted loop="loop" onPlay={e => this.fadeInVideoLoaded(e)} onCanPlay={e => this.fadeInVideoLoaded(e)} autoPlay playsInline>
+                  <source src={Thesis_05_portrait} type="video/mp4" />
+                </video>
                 <div className="container">
                   <header>
                     <h1>

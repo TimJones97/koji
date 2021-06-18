@@ -156,7 +156,7 @@ section.active {
 .pp-scrollable {
     display: block !important;
     min-height: 100vh;
-    height: 100%;
+    height: unset;
     overflow-x: hidden !important;
     overflow-y: scroll !important;
 }
@@ -791,11 +791,11 @@ a.link-white.hover-black .circle-btn:after {
     min-height: 100%;
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+    transition: opacity 0.8s ease, transform 0.8s ease;
     backface-visibility: hidden;
 }
 .section-showcase.thesis-page video {
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease, right 0.5s ease;
 }
 .section-showcase video.loaded {
     opacity: 1;
@@ -1396,38 +1396,21 @@ body.scroll .thesis-anim .pp-scrollable {
 	margin-top: 40px;
 	line-height: 30px;
 }
-
-/*TEMPORARY BACKGROUNDS*/
-.thesis-page.one {
-	background: url('../img/thesis/thesis_01.png');
-	background-size: cover;
+/*PREVENT VIDEO OVERFLOW ON SCROLLAGE PAGE*/
+.thesis-page .video-contain {
+	position: absolute;
+	height: 100vh;
+	width: 100%;
+	top: 0;
+	left: 0;
+	overflow: hidden;
 }
-.thesis-page.two {
-	background: url('../img/thesis/thesis_02.png');
-	background-size: cover;
-}
-.thesis-page.three {
-	background: url('../img/thesis/thesis_03.png');
-	background-size: cover;
-}
-.thesis-page.four {
-	background: url('../img/thesis/thesis_04.png');
-	background-size: cover;
-}
-.thesis-page.five {
-	background: url('../img/thesis/thesis_05.png');
-	background-size: cover;
-}
-
 /*PULL VIDEO RIGHT*/
 .thesis-page video {
-	height: 120vh;
-	top: 50%;
-	min-width: unset;
-	left: 45vw;
+	right: -15vw;
 }
 .thesis-page video.loaded {
-	transform:  translate(0%, -50%) scale3d(1.0, 1.0, 1.0)
+	opacity: 1;
 }
 /*-----PAGE ONE-----*/
 
@@ -1447,7 +1430,7 @@ body.scroll .thesis-anim .pp-scrollable {
 /*-----PAGE TWO-----*/
 
 .thesis-page.two {
-	/*background: var(--orange);*/
+	background: var(--orange);
 }
 .thesis-page.two header {
 	display: flex;
@@ -1467,19 +1450,19 @@ body.scroll .thesis-anim .pp-scrollable {
 /*-----PAGE THREE-----*/
 
 .thesis-page.three {
-	/*background: var(--black);*/
+	background: var(--black);
 }
 
 /*-----PAGE FOUR-----*/
 
 .thesis-page.four {
-	/*background: var(--brown);*/
+	background: var(--brown);
 }
 
 /*-----PAGE FIVE + FOOTER-----*/
 
 .thesis-page.five {
-	/*background: var(--orange);*/
+	background: var(--orange);
 }
 .thesis-page.five > .container {
 	max-height: 100%;
@@ -1983,15 +1966,8 @@ section.not-found {
 		left: -20px;
 		opacity: 1;
 	}
-
-	/*TEMPORARY*/
-	.thesis-page.one,
-	.thesis-page.two,
-	.thesis-page.three,
-	.thesis-page.four,
-	.thesis-page.five {
-		background-size: 100% auto;
-		background-position: 50% 70%;
+	.thesis-page video {
+		right: 0;
 	}
 }
 /*Begin downsizing elements by 12.5% when screen height below 1000px*/
@@ -2089,6 +2065,11 @@ section.not-found {
 	section.contact-page .right p.help-text {
 		margin-top: 0;
 	}
+
+	/*THESIS PAGE*/
+	.thesis-page video {
+		right: -25vw;
+	}
 }
 @media only screen and (max-width: 1600px){
 
@@ -2106,6 +2087,11 @@ section.not-found {
 	}
 	.episode.lg-removed:not(.read) .details {
 	    padding: 15px 15px 7px;
+	}
+
+	/*THESIS PAGE*/
+	.thesis-page video {
+		right: -40vw;
 	}
 
 	/*FOOTER*/
@@ -2278,6 +2264,11 @@ section.not-found {
 		width: 15px;
 		height: 13px;
 		bottom: 6px;
+	}
+
+	/*THESIS PAGE*/
+	.thesis-page video {
+		right: -70vw;
 	}
 }
 
@@ -2494,44 +2485,15 @@ section.not-found {
 	}
 
 	/*THESIS PAGE*/
-
-	/*TEMPORARY*/
-	.thesis-page.one {
-		background: url('../img/thesis/thesis_01_portrait.png');
-		background-size: cover;
-	}
-	.thesis-page.two {
-		background: url('../img/thesis/thesis_02_portrait.png');
-		background-size: cover;
-	}
-	.thesis-page.three {
-		background: url('../img/thesis/thesis_03_portrait.png');
-		background-size: cover;
-	}
-	.thesis-page.four {
-		background: url('../img/thesis/thesis_04_portrait.png');
-		background-size: cover;
-	}
-	.thesis-page.five {
-		background: url('../img/thesis/thesis_05_portrait.png');
-		background-size: cover;
-	}
-	.thesis-page.one,
-	.thesis-page.two,
-	.thesis-page.three,
-	.thesis-page.four,
-	.thesis-page.five {
-		background-position: 50% 50%;
-	}
-	/*END TEMPORARY*/
 	.thesis-anim .section-showcase .pp-tableCell {
 		display: flex;
 		min-height: 100vh;
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: flex-end;
+		overflow: hidden;
 	}
 	.thesis-anim .section-showcase .pp-tableCell .container {
-		height: 100vh;
+		padding-top: 500px;
 	}
 	/*Constrain the width of the header and some h1 elements*/
 	.thesis-anim .section-showcase header {
@@ -2567,16 +2529,18 @@ section.not-found {
 	.circle-nav.thesis {
 		display: none;
 	}
+	.thesis-page video:not(.mobile) {
+		display: none;
+	}
 	.section-showcase.thesis-page video {
-		top: -30px;
-		position: relative;
-		left: 50%;
+		top: -100px;
+		left: 0;
+		right: unset;
+		transform: unset;
 		min-height: unset;
 		min-width: unset;
 		height: auto;
 		width: 100%;
-		max-height: 50vh;
-		transform: translate(-50%, 0%) scale(1.2);
 	}
 	/*PAGE 2*/
 	.thesis-page.two header h1 {
@@ -2975,37 +2939,18 @@ section.not-found {
 		line-height: 28px;
 	}
 	/*THESIS SCROLLABLE*/
-	/*TEMPORARY*/
-	.thesis-anim .thesis-page.three {
-		background-position: 60% 50%;
-	}
-	.thesis-anim .thesis-page.three .pp-tableCell > .container,
-	.thesis-anim .thesis-page.five > .container {
+	.thesis-anim .thesis-page.three .pp-tableCell > .container {
 		padding-top: 550px;
 	}
-	/*.thesis-anim .thesis-page.five > .container, */
+	.thesis-anim .thesis-page.five > .container, 
 	.thesis-anim .section-showcase .pp-tableCell > .container {
-		/*TEMPORARY*/
-		padding-top: 350px;
-		/*END TEMPORARY*/
 		height: unset;
-	}
-	.section-showcase.thesis-page video {
-		height: auto;
-		position: relative;
-		width: 100%;
-		left: 50%;
-		max-height: 60vh;
-		margin-bottom: 50px;
+		padding-top: 500px;
 	}
 	.section-showcase .pp-tableCell {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
-	}
-	/*PAGE 5*/
-	.section-showcase.thesis-page video {
-		margin-bottom: 0;
 	}
 
 	/*LISTEN PAGE*/
@@ -3178,6 +3123,15 @@ section.not-found {
 	.thesis-anim .thesis-page.five > .container, 
 	.thesis-anim .pp-tableCell > .container {
 		padding-bottom: 30px;
+	}
+	.section-showcase.thesis-page video {
+		top: 0;
+	}
+	.thesis-anim .thesis-page .pp-tableCell > .container {
+		padding-top: 350px;
+	}
+	.thesis-anim .thesis-page.three .pp-tableCell > .container {
+		padding-top: 400px;
 	}
 
 	/*CONTACT PAGE*/
