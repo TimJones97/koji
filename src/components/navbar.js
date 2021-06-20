@@ -13,6 +13,11 @@ import linkedin_icon from '../../static/img/social-icons/linkedin.svg'
 import telegram_icon from '../../static/img/social-icons/telegram.svg'
 import twitter_icon from '../../static/img/social-icons/twitter.svg'
 
+
+// Temporary 
+
+import Thesis_05 from '../../static/img/thesis/Thesis_05.mp4';
+
 const routes = [
   { to: '/about', label: 'About' },
   { to: '/investments', label: 'Investments' },
@@ -38,6 +43,9 @@ class Navbar extends Component {
   render() {
     return (
       <nav className={this.props.type}>
+        <video className="thesis-five__video" muted loop="loop" autoPlay playsInline>
+          <source src={Thesis_05} type="video/mp4" />
+        </video>
         <div className="container">
           <Link className="logo nav-link" to='/'>
             <img className="light" src={logo_light} />
