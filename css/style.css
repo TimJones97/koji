@@ -2504,7 +2504,7 @@ section.not-found {
 	/*THESIS PAGE*/
 
 	/*Do not show animations for headers due to constant scroll*/
-	section header {
+	section.thesis-page header {
 		animation: unset !important;
 		opacity: 1 !important;
 	}
