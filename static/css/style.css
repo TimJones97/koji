@@ -2502,6 +2502,12 @@ section.not-found {
 	}
 
 	/*THESIS PAGE*/
+
+	/*Do not show animations for headers due to constant scroll*/
+	section.thesis-page header {
+		animation: unset !important;
+		opacity: 1 !important;
+	}
 	.thesis-anim .section-showcase .pp-tableCell {
 		display: flex;
 		min-height: 100vh;
@@ -2673,6 +2679,9 @@ section.not-found {
 	}
 
 	/*FOOTER*/
+	footer .logo {
+		width: 64px;
+	}
 	footer .contact-links {
 		display: flex;
 		flex-direction: column;

@@ -51,6 +51,17 @@ class Index extends Component {
             .contact footer {
               display: block;
             }
+
+            /* Fix for the pagepiling element not aligning properly after
+               coming from another page */
+            nav ~ main {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100vh;
+              overflow: hidden;
+            }
           `}</style>
           <motion.div 
             initial={{

@@ -198,7 +198,7 @@ function animateHeadersOnScroll(direction){
 		// if going from down to up for a more natural
 		// interaction (only desktop for thesis, mobile + desktop for
 		// homepage)
-		if($(this).hasClass('active') && (!isMobile() && isThesis)){
+		if($(this).hasClass('active')){
 			if(direction == 'up'){
 				$(this).addClass('anim-down');
 				$(this).next().addClass('anim-down');
