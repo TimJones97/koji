@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { Component, useState } from "react";
 import { createPortal } from 'react-dom';
-import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql, Link } from 'gatsby';
 import Moment from "react-moment";
 
@@ -74,7 +73,8 @@ class ListenArticle extends Component {
       article: this.props.data.strapiHdPodcasts,
       metaTitle: this.props.data.strapiHdPodcasts.guest,
       metaDescription: this.props.data.strapiHdPodcasts.description,
-      recentEpisodes: []
+      recentEpisodes: [],
+      currentURL: ''
     };
     this.renderRecentEpisodes = this.renderRecentEpisodes.bind(this);
   }
@@ -105,7 +105,9 @@ class ListenArticle extends Component {
               />
             ) 
           });
+    const pageURL = window.location.href;
     this.setState({recentEpisodes: sortedEpisodes});
+    this.setState({currentURL: pageURL});
   }
   componentDidMount() {
     this.renderRecentEpisodes();
@@ -135,11 +137,11 @@ class ListenArticle extends Component {
                       </div>
                       <div className="share-links">
                         <p><b>Share</b></p>
-                        <a href="#">AngelList</a>
-                        <a href="#">LinkedIn</a>
-                        <a href="#">Telegram</a>
-                        <a href="#">Twitter</a>
-                        <a href="#">Youtube</a>
+                        <a href={"https://angel.co/alpha/webext/new?url=" + this.state.currentURL} target="_blank">AngelList</a>
+                        <a href={"https://www.linkedin.com/shareArticle?mini=true&url=" + this.state.currentURL} target="_blank">LinkedIn</a>
+                        <a href={"https://t.me/share/url?url=" + this.state.currentURL} target="_blank">Telegram</a>
+                        <a href={"https://twitter.com/intent/tweet?url=" + this.state.currentURL} target="_blank">Twitter</a>
+                        <a href={this.state.article.youtube_link} target="_blank">Youtube</a>
                       </div>
                     </div>
                   </header>

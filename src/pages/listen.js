@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { graphql } from 'gatsby';
 import Episode from '../components/episode';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
