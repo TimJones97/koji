@@ -1,10 +1,15 @@
 /* eslint-disable */
-import React, { Component } from "react";
-import Article from '../../components/article'
+import React, { Component, useState } from "react";
+import { createPortal } from 'react-dom';
+import { GatsbyImage } from "gatsby-plugin-image";
+import { graphql, Link } from 'gatsby';
+import Moment from "react-moment";
+
+import Article from '../../components/article';
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
-import Footer from '../../components/footer'
-import Episode from '../../components/episode'
+import Footer from '../../components/footer';
+import Episode from '../../components/episode';
 
 // Image assets
 import hd_thumbnail from '../../../static/img/listen/thumbnail.svg';
@@ -12,7 +17,7 @@ import player_img from '../../../static/img/article/player.png';
 import player_img_small from '../../../static/img/article/player_mobile.png';
 import video_placeholder from '../../../static/img/article/video_placeholder.png';
 
-export const query = graphql`
+export const queryPodcast = graphql`
   query StrapiHdPodcasts($slug: String!) {
     strapiHdPodcasts(slug: { eq: $slug }) {
       captivate_link
@@ -37,32 +42,96 @@ export const query = graphql`
       transcript
       youtube_link
     }
+    allStrapiHdPodcasts {
+      edges {
+        node {
+          captivate_link
+          description
+          episode
+          duration
+          guest
+          img {
+            formats {
+              medium {
+                url
+              }
+            }
+          }
+          recorded_on(formatString: "")
+          slug
+          release_date(formatString: "")
+          youtube_link
+          transcript
+        }
+      }
+    }
   }
 `;
-class EpisodePage extends Component {
+class ListenArticle extends Component {
   constructor(props) {
-    console.log(props)
+    super(props)
+    this.state = {
+      article: this.props.data.strapiHdPodcasts,
+      metaTitle: this.props.data.strapiHdPodcasts.guest,
+      metaDescription: this.props.data.strapiHdPodcasts.description,
+      recentEpisodes: []
+    };
+    this.renderRecentEpisodes = this.renderRecentEpisodes.bind(this);
+  }
+
+  renderRecentEpisodes(){
+    const episode_data = this.props.data.allStrapiHdPodcasts.edges,
+          sortedEpisodes = [].concat(episode_data)
+          .sort((a, b) => a.node.episode > b.node.episode ? -1 : 1)
+          .map((single_episode, index) => {
+            const episode = single_episode.node.episode,
+                  title = single_episode.node.guest,
+                  thumbnail = single_episode.node.img.formats.medium.url,
+                  date = single_episode.node.release_date,
+                  description = single_episode.node.description,
+                  duration = single_episode.node.duration,
+                  slug = single_episode.node.slug;
+            return (
+              <Episode 
+                size='small' 
+                episode={episode}
+                title={title}
+                thumbnail={thumbnail}
+                date={date}
+                description={description}
+                duration={duration}
+                slug={slug}
+                key={index}
+              />
+            ) 
+          });
+    this.setState({recentEpisodes: sortedEpisodes});
+  }
+  componentDidMount() {
+    this.renderRecentEpisodes();
   }
   render() {
     return (
       <>
         <Layout>
-          <SEO title="Listen"/>
+          <SEO title={this.state.metaTitle} description={this.state.metaDescription}/>
           <section className="normal-section article listen-article light-nav brown-nav">
             <div className="container">
               <div>
                 <div className="left-contain">
                   <hr className="desktop"/>
                   <header>
-                    <span className="number">Episode #1</span>
+                    <span className="number">Episode #{this.state.article.episode}</span>
                     <h1 className="title">
-                      TM Lee
+                      {this.state.article.guest}
                     </h1>
                     <div className="flexbox">
                       <div className="info">
-                        <p className="date">December 15, 2020</p>
+                        <p className="date">
+                          <Moment format="Do MMMM, YYYY">{this.state.article.date}</Moment>
+                        </p>
                         <span>&nbsp;|&nbsp;</span>
-                        <p className="time">45 mins</p>
+                        <p className="time">{this.state.article.duration} minutes</p>
                       </div>
                       <div className="share-links">
                         <p><b>Share</b></p>
@@ -75,51 +144,42 @@ class EpisodePage extends Component {
                     </div>
                   </header>
                   <div className="episode-play">
-                    <img src={player_img}/>
+                    <iframe src={this.state.article.captivate_link} title="Captivate Player" width="100%" height="170px" frameBorder="0"/>
                   </div>
                   <div className="text-contain">
-                    <h2 className="tagline">Donec et lorem non sem efficitur suscipit ac id ligula. Fusce consectetur lorem eu turpis tristique, ut faucibus mauris laoreet. Proin et congue risus.Proin eu mi gravida, placerat dui et tortor.</h2>
+                    <h2 className="tagline">{this.state.article.description}</h2>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras diam mi, scelerisque eu mi at, suscipit fermentum mi. In hac habitasse platea dictumst. Maecenas a venenatis nibh, non posuere tellus. Ut quis pharetra nunc, a varius nulla. Ut at tincidunt lacus, ultrices interdum lectus. Nullam hendrerit nunc sit amet placerat ultrices. Nam ultrices ipsum non ipsum interdum, vel sagittis sapien feugiat. Nullam velit orci, interdum in felis eget, ullamcorper iaculis nunc.
+                      {this.state.article.transcript}
                     </p>
-                    <p>
-                      Nullam maximus augue tincidunt enim lacinia placerat. Aenean id auctor lectus, ac sagittis ante. Morbi magna mauris, interdum dignissim vestibulum eu, blandit et turpis. Aliquam aliquet egestas pulvinar. Nunc accumsan rhoncus varius. Vestibulum quis egestas nibh. Quisque hendrerit dui vel erat ultrices iaculis. Sed rutrum finibus urna, nec molestie orci luctus vel. Mauris sed erat id ipsum dapibus tempus. Maecenas sed lacinia ligula. Ut tempus augue et neque imperdiet, eget pellentesque nulla posuere. Integer vel felis elementum, vulputate velit vitae, tincidunt sem. In nibh odio, consectetur ac ligula ut, faucibus tincidunt urna.
-                    </p>
-                    <p>
-                      Morbi pharetra facilisis ex at tincidunt. Duis feugiat enim nec commodo dignissim. Donec vestibulum est ac ipsum mattis viverra. Donec id bibendum erat, vitae luctus velit. Maecenas efficitur cursus mi eu pharetra. Donec in nulla pulvinar, consectetur urna quis, placerat eros. Pellentesque ut cursus ex, sit amet aliquet metus. Vestibulum tempus dapibus augue, lobortis consequat orci venenatis sit amet. Vivamus ligula nisi, laoreet nec risus ut, ultricies faucibus augue. Donec laoreet rhoncus ipsum nec eleifend. Etiam rutrum, eros eget ornare aliquet, libero est volutpat est, rutrum tincidunt risus lorem sed quam. Aenean vitae tristique nulla, in scelerisque augue.
-                    </p>
-                    <p>
-                      Twitter: <a href="https://twitter.com/alexvandesande">@alexvandesande</a>
-                      Website: <a href="google.com">google.com</a>
-
-                      —
-
-                      Show Notes:
-                      Google
-                      Blockchain
-                      Internet
-                      Wikipedia
-                      Great spots to eat in Brisbane blog post
-                    </p>
+                    {this.state.article.notes && 
+                      <p>
+                        {this.state.article.notes}
+                      </p>
+                    }
+                    
                   </div>
-                  <div className="article-video">
-                    <img src={video_placeholder}/>
-                  </div>
+                  {(this.state.article.youtube_link != null) &&
+                    <div className="article-video">
+                      <iframe src={this.state.article.youtube_link} title="YouTube Video" width="100%" height="620px" frameBorder="0"/>
+                    </div>
+                  }
                 </div>
                 <div className="right-contain">
                   <picture className="article-img">
-                    <img src={hd_thumbnail}/>
+                    <img src={this.state.article.img.formats.medium.url}/>
                   </picture>
                   <div className="episode-play mobile">
-                    <img src={player_img_small}/>
+                    <iframe src={this.state.article.captivate_link} title="Captivate Player" width="100%" height="175px" frameBorder="0"/>
                   </div>
                 </div>
               </div>
               <div className="recent-episodes">
                 <span className="subheading">RECENT EPISODES</span>
-                <Episode small/>
-                <Episode small/>
-                <a className="link-white" href="/listen">View all Episodes<button role="button" className="circle-btn sml"/></a>
+                {/*Get the most recent 2 episodes*/}
+                {this.state.recentEpisodes.slice(0, 2).map((episode, index) => {
+                  return episode
+                })}
+                <Link className="link-white" to="/listen">View all Episodes<button role="button" className="circle-btn sml"/></Link>
               </div>
             </div>
           </section>
@@ -129,4 +189,4 @@ class EpisodePage extends Component {
   }
 }
 
-export default EpisodePage;
+export default ListenArticle;

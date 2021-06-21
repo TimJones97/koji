@@ -30,23 +30,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-json-remark`,
-      options: {
-        paths: [
-          `${__dirname}/src/podcasts/`,
-        ], // Process all JSON files in these directories.
-        fieldNameBlacklist: [
-          "id",
-          "children",
-          "parent",
-          "fields",
-          "internal",
-          "path",
-          "template",
-        ],
-      },
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [

@@ -1,10 +1,10 @@
 /* eslint-disable */
 import React, { Component } from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
 import Episode from '../components/episode';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
 import Footer from '../components/footer';
-import Moment from 'moment';
 
 // Images
 import hd_logo from '../../static/img/listen/high-definition-logo.svg';
@@ -47,7 +47,6 @@ class Listen extends Component {
     this.generateEpisodes = this.generateEpisodes.bind(this);
   }
   generateEpisodes() {
-    Moment.locale('en');
     const episode_data = this.props.data.allStrapiHdPodcasts.edges,
           sortedEpisodes = [].concat(episode_data)
           .sort((a, b) => a.node.episode > b.node.episode ? -1 : 1)
@@ -57,10 +56,8 @@ class Listen extends Component {
                     thumbnail = single_episode.node.img.formats.medium.url,
                     date = single_episode.node.release_date,
                     description = single_episode.node.description,
-                    // player_link = podcast.node.captivate_link,
                     duration = single_episode.node.duration,
-                    slug = single_episode.node.slug,
-                    date_formatted = Moment(date).format('Do MMMM, YYYY');
+                    slug = single_episode.node.slug;
               var size = 'small';
               // Make some of the episodes large as per design
               if (index == 3 || index == 4){
@@ -74,8 +71,7 @@ class Listen extends Component {
                     episode={episode}
                     title={title}
                     thumbnail={thumbnail}
-                    date={date_formatted}
-                    // player_link={player_link}
+                    date={date}
                     description={description}
                     duration={duration}
                     slug={slug}
@@ -89,8 +85,7 @@ class Listen extends Component {
                   episode={episode}
                   title={title}
                   thumbnail={thumbnail}
-                  date={date_formatted}
-                  // player_link={player_link}
+                  date={date}
                   description={description}
                   duration={duration}
                   slug={slug}
@@ -100,7 +95,14 @@ class Listen extends Component {
             }
           );
     // Assign the new array to the state array
-    this.setState({episodes: sortedEpisodes})
+    this.setState({episodes: sortedEpisodes});
+
+    // Get the two most recent episodes to pass it to the template page
+    const recentEpisodes = [];
+    recentEpisodes.push(sortedEpisodes[sortedEpisodes.length - 1]);
+    recentEpisodes.push(sortedEpisodes[sortedEpisodes.length - 2]);
+
+    window.recentEpisodeList = recentEpisodes;
   }
   componentDidMount() {
     this.generateEpisodes();
@@ -127,11 +129,13 @@ class Listen extends Component {
               <hr/>
               <span className="subheading">ALL EPISODES</span>
               <div className="episode-row">
+                {/*Get the first four episodes*/}
                 {this.state.episodes.slice(0, 4).map((episode, index) => {
                   return episode
                 })}
               </div>
               <div className="episode-row">
+                {/*Get the following four episodes*/}
                 {this.state.episodes.slice(4, 8).map((episode, index) => {
                   return episode
                 })}

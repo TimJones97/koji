@@ -15,7 +15,6 @@ import twitter_icon from '../../static/img/social-icons/twitter.svg'
 
 
 // Temporary 
-
 import Thesis_05 from '../../static/img/thesis/Thesis_05.mp4';
 
 const routes = [
