@@ -400,6 +400,16 @@ function setActiveNavItem(){
 		}
 	});
 }
+function truncate() {
+	$('.episode .description').each(function(){
+		var description_text = $(this).text(),
+			new_text = '';
+	   	if (description_text.length > 210) {
+	   		new_text = description_text.substring(0, 210) + '...';
+      	   	$(this).text(new_text);
+	   	}
+	});
+}
 $(window).resize(function(){
 	scaleCircleNav();
 	setSectionHeightMobile();
@@ -441,6 +451,9 @@ $(document).ready(function() {
 		if(isSafari()){
 			$('footer').css('padding-bottom', '120px');
 		}
+	}
+	if($('.episode').length){
+		truncate();
 	}
 
 	// if(location.pathname == '/listen' || location.pathname == '/read'){
