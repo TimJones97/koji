@@ -303,7 +303,7 @@ nav .thesis-five__video {
 	top: 0;
 	left: 0;
 	width: 100%;
-	transition: opacity 0.5s ease;
+	transition: opacity 0.2s ease;
 }
 nav.orange-bg .thesis-five__video {
 	opacity: 1;
@@ -987,6 +987,9 @@ a.link-white.hover-black .circle-btn:after {
 }
 .episode:hover {
 	background: rgba(96, 27, 12, 0.2);
+}
+.episode:hover span.open {
+	background: none !important;
 }
 
 
@@ -2333,6 +2336,7 @@ section.not-found {
 	/*TEMPORARY*/
 	nav .thesis-five__video {
 		opacity: 0 !important;
+		transition: opacity 0.4s ease;
 	}
 
 	/*HOMEPAGE SECTIONS*/
