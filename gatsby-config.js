@@ -23,6 +23,13 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.API_URL || "https://mycelium-content.uc.r.appspot.com/",
+        collectionTypes: ["hd-podcasts"],
+      },
+    },
+    {
       resolve: `gatsby-plugin-json-remark`,
       options: {
         paths: [
