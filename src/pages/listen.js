@@ -1,9 +1,10 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import Episode from '../components/episode'
+import Episode from '../components/episode';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
-import Footer from '../components/footer'
+import Footer from '../components/footer';
+import Moment from 'moment';
 
 // Images
 import hd_logo from '../../static/img/listen/high-definition-logo.svg';
@@ -38,8 +39,71 @@ export const query = graphql`
 
 class Listen extends Component {
   constructor (props) {
-    super();
-    console.log(props.data, "This is all the podcasts")
+    super(props);
+    this.state = {
+      episodes: [],
+      mostRecent: null
+    };
+    this.generateEpisodes = this.generateEpisodes.bind(this);
+  }
+  generateEpisodes() {
+    Moment.locale('en');
+    const episode_data = this.props.data.allStrapiHdPodcasts.edges,
+          sortedEpisodes = [].concat(episode_data)
+          .sort((a, b) => a.node.episode > b.node.episode ? -1 : 1)
+          .map((single_episode, index) => {
+              const episode = single_episode.node.episode,
+                    title = single_episode.node.guest,
+                    thumbnail = single_episode.node.img.formats.medium.url,
+                    date = single_episode.node.release_date,
+                    description = single_episode.node.description,
+                    // player_link = podcast.node.captivate_link,
+                    duration = single_episode.node.duration,
+                    slug = single_episode.node.slug,
+                    date_formatted = Moment(date).format('Do MMMM, YYYY');
+              var size = 'small';
+              // Make some of the episodes large as per design
+              if (index == 3 || index == 4){
+                size = 'large';
+              }      
+              // If the episode is the first in the array, it is the most recent one
+              if(index == 0){
+                this.setState({mostRecent:
+                  <Episode 
+                    size='large'
+                    episode={episode}
+                    title={title}
+                    thumbnail={thumbnail}
+                    date={date_formatted}
+                    // player_link={player_link}
+                    description={description}
+                    duration={duration}
+                    slug={slug}
+                    key={index}
+                  />
+                })
+              }
+              return (
+                <Episode 
+                  size={size} 
+                  episode={episode}
+                  title={title}
+                  thumbnail={thumbnail}
+                  date={date_formatted}
+                  // player_link={player_link}
+                  description={description}
+                  duration={duration}
+                  slug={slug}
+                  key={index}
+                />
+              )      
+            }
+          );
+    // Assign the new array to the state array
+    this.setState({episodes: sortedEpisodes})
+  }
+  componentDidMount() {
+    this.generateEpisodes();
   }
   render() {
     return (
@@ -58,21 +122,19 @@ class Listen extends Component {
               <hr className="mobile"/>
               <div className="episode-lg">
                 <span className="subheading">MOST RECENT EPISODE</span>
-                <Episode large/>
+                {this.state.mostRecent}
               </div>
               <hr/>
               <span className="subheading">ALL EPISODES</span>
               <div className="episode-row">
-                <Episode small/>
-                <Episode small/>
-                <Episode small/>
-                <Episode large/>
+                {this.state.episodes.slice(0, 4).map((episode, index) => {
+                  return episode
+                })}
               </div>
               <div className="episode-row">
-                <Episode large/>
-                <Episode small/>
-                <Episode small/>
-                <Episode small/>
+                {this.state.episodes.slice(4, 8).map((episode, index) => {
+                  return episode
+                })}
               </div>
             </div>
           </section>

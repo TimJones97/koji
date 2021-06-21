@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component, Fragment } from "react";
-import { Link, Navigate } from "gatsby"
+import { Link } from "gatsby"
 import PropTypes from "prop-types"
 // import TransitionLink from 'gatsby-plugin-transition-link'
 

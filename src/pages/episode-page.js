@@ -1,16 +1,17 @@
 /* eslint-disable */
-import React, { Component } from "react";
+import React, { Component } from "react"
+import { Link } from "gatsby"
 import Article from '../components/article'
-import SEO from '../components/seo';
-import Layout from '../components/layout';
+import SEO from '../components/seo'
+import Layout from '../components/layout'
 import Footer from '../components/footer'
 import Episode from '../components/episode'
 
 // Image assets
-import hd_thumbnail from '../../static/img/listen/thumbnail.svg';
-import player_img from '../../static/img/article/player.png';
-import player_img_small from '../../static/img/article/player_mobile.png';
-import video_placeholder from '../../static/img/article/video_placeholder.png';
+import hd_thumbnail from '../../static/img/listen/thumbnail.svg'
+import player_img from '../../static/img/article/player.png'
+import player_img_small from '../../static/img/article/player_mobile.png'
+import video_placeholder from '../../static/img/article/video_placeholder.png'
 
 class EpisodePage extends Component {
   render() {
@@ -89,7 +90,7 @@ class EpisodePage extends Component {
                 <span className="subheading">RECENT EPISODES</span>
                 <Episode small/>
                 <Episode small/>
-                <a className="link-white" href="/listen">View all Episodes<button role="button" className="circle-btn sml"/></a>
+                <Link className="link-white" to="/listen">View all Episodes<button role="button" className="circle-btn sml"/></Link>
               </div>
             </div>
           </section>
