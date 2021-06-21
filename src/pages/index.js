@@ -1,6 +1,6 @@
 /* eslint-disable */
-import React, { Component } from 'react';
-import { Link } from "gatsby"
+import React, { Component, useState } from "react";
+import { graphql, Link } from 'gatsby';
 import { motion } from "framer-motion"
 
 // Components
@@ -21,14 +21,79 @@ import circle_red from '../../static/img/home-page/hd-elements/circle-red.svg';
 import circle_orange from '../../static/img/home-page/hd-elements/circle-orange.svg';
 import circle_white from '../../static/img/home-page/hd-elements/circle-white.svg';
 
+export const query = graphql`
+  query allPodcastsQuery {
+    allStrapiHdPodcasts {
+      edges {
+        node {
+          captivate_link
+          description
+          episode
+          duration
+          guest
+          img {
+            formats {
+              medium {
+                url
+              }
+            }
+          }
+          recorded_on(formatString: "")
+          slug
+          release_date(formatString: "")
+          youtube_link
+          transcript
+        }
+      }
+    }
+  }
+`;
+
 class Index extends Component {
   constructor (props){
     super(props);
+    this.state = {
+      recentEpisodes: []
+    };
     this.fadeInVideoLoaded = this.fadeInVideoLoaded.bind(this);
+    this.renderRecentEpisodes = this.renderRecentEpisodes.bind(this);
   }
 
   fadeInVideoLoaded(e){
     e.target.classList.add('loaded');
+  }
+
+  renderRecentEpisodes(){
+    console.log(this.props);
+    const episode_data = this.props.data.allStrapiHdPodcasts.edges,
+          sortedEpisodes = [].concat(episode_data)
+          .sort((a, b) => a.node.episode > b.node.episode ? -1 : 1)
+          .map((single_episode, index) => {
+            const episode = single_episode.node.episode,
+                  title = single_episode.node.guest,
+                  thumbnail = single_episode.node.img.formats.medium.url,
+                  date = single_episode.node.release_date,
+                  description = single_episode.node.description,
+                  duration = single_episode.node.duration,
+                  slug = single_episode.node.slug;
+            return (
+              <Episode 
+                size='small' 
+                episode={episode}
+                title={title}
+                thumbnail={thumbnail}
+                date={date}
+                description={description}
+                duration={duration}
+                slug={slug}
+                key={index}
+              />
+            ) 
+          });
+    this.setState({recentEpisodes: sortedEpisodes});
+  }
+  componentDidMount() {
+    this.renderRecentEpisodes();
   }
   render() {
     return (
@@ -165,8 +230,10 @@ class Index extends Component {
                     </header>
                     <div className="episodes">
                       <span className="subheading">RECENT EPISODES</span>
-                      <Episode small/>
-                      <Episode small/>
+                      {/*Get the most recent 2 episodes*/}
+                      {this.state.recentEpisodes.slice(0, 2).map((episode, index) => {
+                        return episode
+                      })}
                       <Link className="link-white" to="/listen">View all Episodes<button role="button" className="circle-btn md"/></Link>
                     </div>
                     <Arrow down anchor="page4" type="orange"/>
