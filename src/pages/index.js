@@ -64,7 +64,6 @@ class Index extends Component {
   }
 
   renderRecentEpisodes(){
-    console.log(this.props);
     const episode_data = this.props.data.allStrapiHdPodcasts.edges,
           sortedEpisodes = [].concat(episode_data)
           .sort((a, b) => a.node.episode > b.node.episode ? -1 : 1)
