@@ -1865,7 +1865,6 @@ h2.tagline {
 	width: 100%;
 	border-bottom: 1px solid var(--dark-red);
 	overflow: hidden;
-	border-radius: 7px;
 }
 .episode-play iframe {
 	margin: 30px 0px;
