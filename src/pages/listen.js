@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import Episode from '../components/episode';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
-import Footer from '../components/footer';
 
 // Images
 import hd_logo from '../../static/img/listen/high-definition-logo.svg';

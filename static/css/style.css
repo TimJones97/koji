@@ -410,6 +410,7 @@ nav.dark .menu-toggle .bar {
 	border: unset;
 	width: 30px;
 	padding: 0;
+    cursor: pointer;
 }
 .nav-btn .bar {
     height: 3px;
@@ -452,9 +453,12 @@ menu.mobile-nav.display {
 	font-size: 20px;
 }
 .close-btn {
+	background: unset;
+	border: 0;
 	position: absolute;
 	top: 20px;
 	right: 25px;
+    cursor: pointer;
 }
 .mobile-nav__items {
 	position: absolute;

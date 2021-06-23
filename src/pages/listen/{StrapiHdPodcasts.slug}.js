@@ -1,13 +1,9 @@
-/* eslint-disable */
-import React, { Component, useState } from "react";
-import { createPortal } from 'react-dom';
+import React, { Component } from "react";
 import { graphql, Link } from 'gatsby';
 import Moment from "react-moment";
 
-import Article from '../../components/article';
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
-import Footer from '../../components/footer';
 import Episode from '../../components/episode';
 
 export const queryPodcast = graphql`
@@ -131,11 +127,11 @@ class ListenArticle extends Component {
                       </div>
                       <div className="share-links">
                         <p><b>Share</b></p>
-                        <a href={"https://angel.co/alpha/webext/new?url=" + this.state.currentURL} target="_blank">AngelList</a>
-                        <a href={"https://www.linkedin.com/shareArticle?mini=true&url=" + this.state.currentURL} target="_blank">LinkedIn</a>
-                        <a href={"https://t.me/share/url?url=" + this.state.currentURL} target="_blank">Telegram</a>
-                        <a href={"https://twitter.com/intent/tweet?url=" + this.state.currentURL} target="_blank">Twitter</a>
-                        <a href={this.state.article.youtube_link} target="_blank">Youtube</a>
+                        {/*<a href={"https://angel.co/alpha/webext/new?url=" + this.state.currentURL} target="_blank">AngelList</a>*/}
+                        <a href={"https://www.linkedin.com/shareArticle?mini=true&url=" + this.state.currentURL} target="_blank" rel="noreferrer">LinkedIn</a>
+                        <a href={"https://t.me/share/url?url=" + this.state.currentURL} target="_blank" rel="noreferrer">Telegram</a>
+                        <a href={"https://twitter.com/intent/tweet?url=" + this.state.currentURL} target="_blank" rel="noreferrer">Twitter</a>
+                        <a href={this.state.article.youtube_link} target="_blank" rel="noreferrer">Youtube</a>
                       </div>
                     </div>
                   </header>
@@ -162,7 +158,7 @@ class ListenArticle extends Component {
                 </div>
                 <div className="right-contain">
                   <picture className="article-img">
-                    <img src={this.state.article.img.formats.medium.url}/>
+                    <img alt="article-thumbnail" src={this.state.article.img.formats.medium.url}/>
                   </picture>
                   <div className="episode-play mobile">
                     <iframe src={this.state.article.captivate_link} title="Captivate Player" width="100%" height="175px" frameBorder="0"/>
@@ -175,7 +171,7 @@ class ListenArticle extends Component {
                 {this.state.recentEpisodes.slice(0, 2).map((episode, index) => {
                   return episode
                 })}
-                <Link className="link-white" to="/listen">View all Episodes<button role="button" className="circle-btn sml"/></Link>
+                <Link className="link-white" to="/listen">View all Episodes<button aria-label="View all episodes" className="circle-btn sml"/></Link>
               </div>
             </div>
           </section>

@@ -1,5 +1,4 @@
-/* eslint-disable */
-import React, { Component } from "react";
+import React, { Component, Link } from "react";
 import Episode from '../components/episode'
 
 // Image assets
@@ -41,17 +40,17 @@ class Article extends Component {
                     </div>
                     <div className="share-links">
                       <p><b>Share</b></p>
-                      <a href="#">AngelList</a>
-                      <a href="#">LinkedIn</a>
-                      <a href="#">Telegram</a>
-                      <a href="#">Twitter</a>
-                      <a href="#">Youtube</a>
+                      {/*<a href={"https://angel.co/alpha/webext/new?url=" + this.state.currentURL} target="_blank">AngelList</a>*/}
+                      <a href={"https://www.linkedin.com/shareArticle?mini=true&url=" + this.state.currentURL} target="_blank" rel="noreferrer">LinkedIn</a>
+                      <a href={"https://t.me/share/url?url=" + this.state.currentURL} target="_blank" rel="noreferrer">Telegram</a>
+                      <a href={"https://twitter.com/intent/tweet?url=" + this.state.currentURL} target="_blank" rel="noreferrer">Twitter</a>
+                      <a href={this.state.article.youtube_link} target="_blank" rel="noreferrer">Youtube</a>
                     </div>
                   </div>
                 </header>
                 {!(this.props.read) &&
                   <div className="episode-play">
-                    <img src={player_img}/>
+                    <img alt="placeholder-player" src={player_img}/>
                   </div>
                 }
                 <div className="text-contain">
@@ -82,7 +81,7 @@ class Article extends Component {
                 </div>
                 {!(this.props.read) &&
                   <div className="article-video">
-                    <img src={video_placeholder}/>
+                    <img alt="placeholder-video" src={video_placeholder}/>
                   </div>
                 }
               </div>
@@ -90,15 +89,15 @@ class Article extends Component {
                 {(this.props.read) 
                   ? <>
                       <picture className="article-img">
-                        <img src={read_thumbnail}/>
+                        <img alt="read-thumbnail" src={read_thumbnail}/>
                       </picture>
                     </>
                   : <>
                       <picture className="article-img">
-                        <img src={hd_thumbnail}/>
+                        <img alt="listen-thumbnail" src={hd_thumbnail}/>
                       </picture>
                       <div className="episode-play mobile">
-                        <img src={player_img_small}/>
+                        <img alt="player-placeholder" src={player_img_small}/>
                       </div>
                     </>
                 }
@@ -116,7 +115,7 @@ class Article extends Component {
                     <span className="subheading">RECENT EPISODES</span>
                     <Episode small/>
                     <Episode small/>
-                    <a className="link-white" href="/listen">View all Episodes<button role="button" className="circle-btn md"/></a>
+                    <Link className="link-white" to ="/listen">View all Episodes<button aria-label="View all episodes" className="circle-btn md"/></Link>
                   </>
               }
             </div>

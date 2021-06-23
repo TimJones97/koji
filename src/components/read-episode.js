@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from "react";
 import { Link } from "gatsby"
 import read_thumbnail from '../../static/img/read/thumbnail.png';
@@ -31,7 +30,7 @@ class Episode extends Component {
             <article className="episode lg read">
               <figure className="episode-thumbnail collapse-sm">
                 <div className="blur" />
-                <img className="thumbnail" src={read_thumbnail} />
+                <img alt="read-thumbnail" className="thumbnail" src={read_thumbnail} />
               </figure>
               <div className="episode-info">
                 <div className="details">

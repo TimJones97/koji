@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import SEO from '../components/seo';
 import Layout from '../components/layout';
-import Footer from '../components/footer'
 
 // Investment logos
 import transak_logo from '../../static/img/investments/transak.svg';

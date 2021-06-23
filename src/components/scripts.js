@@ -1,15 +1,12 @@
-/* eslint-disable */
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
 class Scripts extends Component {
   componentDidMount() {
     const scripts = ['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js', 
                      'https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js',
                      'https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js'];
-    // For production       
-    // scripts.push('/koji/js/script.js');
-    // For development
+
+    // Grab the local path for jQuery functions
     scripts.push('../js/script.js');
 
     const div = this.div;

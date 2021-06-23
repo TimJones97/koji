@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from "react";
 import { motion } from "framer-motion"
 
@@ -104,7 +103,7 @@ class About extends Component {
                   
                     <header>
                       <h1 className="constrain-sml">
-                        Koji is an early-stage investment firm building the global financial stack. We inherit our values from our parent, <a className="orange" href="https://mycelium.ventures/" target="_blank">Mycelium.</a>
+                        Koji is an early-stage investment firm building the global financial stack. We inherit our values from our parent, <a className="orange" href="https://mycelium.ventures/" rel="noreferrer" target="_blank">Mycelium.</a>
                       </h1>
                       <p>
                         The creation of the Internet was a seminal moment in the history of technology - it enabled the first communication and consensus formation between distributed computers. At the time of its inception, few could understand the value of a communications protocol for distributed machines. Today, it enables so many of our daily functions that we don't feel whole without it.

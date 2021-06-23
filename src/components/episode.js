@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from "react";
 import { Link } from "gatsby";
 import Moment from "react-moment";
@@ -11,7 +10,7 @@ class Episode extends Component {
     return (
       <>
         <Link className="episode-link" to={"/listen/" + this.props.slug} state={this.props.episodeData}>
-          {(this.props.size == 'small') &&
+          {(this.props.size === 'small') &&
             <article className="episode">
               <div className="episode-info">
                 <div className="details">
@@ -27,16 +26,16 @@ class Episode extends Component {
               </div>
               <figure className="episode-thumbnail">
                 <div className="blur" />
-                <img className="thumbnail" src={this.props.thumbnail} />
+                <img alt="episode-thumbnail" className="thumbnail" src={this.props.thumbnail} />
               </figure>
               <span className="open">Listen Now</span>
             </article>
           }
-          {(this.props.size == 'large') &&
+          {(this.props.size === 'large') &&
             <article className="episode lg">
               <figure className="episode-thumbnail collapse-sm">
                 <div className="blur" />
-                <img className="thumbnail" src={this.props.thumbnail} />
+                <img alt="episode-thumbnail" className="thumbnail" src={this.props.thumbnail} />
               </figure>
               <div className="episode-info">
                 <div className="details">
@@ -50,7 +49,7 @@ class Episode extends Component {
                 </div>
                 <figure className="episode-thumbnail collapse-md">
                   <div className="blur" />
-                  <img className="thumbnail" src={this.props.thumbnail} />
+                  <img alt="episode-thumbnail" className="thumbnail" src={this.props.thumbnail} />
                 </figure>
                 <div className="description">
                   <p>

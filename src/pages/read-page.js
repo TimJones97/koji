@@ -8,8 +8,6 @@ import ReadEpisode from '../components/read-episode'
 // Image assets
 import read_thumbnail from '../../static/img/read/thumbnail.png';
 
-import Footer from '../components/footer'
-
 class ReadPage extends Component {
   render() {
     return (

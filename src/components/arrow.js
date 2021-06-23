@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from "react";
 
 // White arrow
@@ -16,11 +15,11 @@ class Arrow extends Component {
   render() {
     return (
       <a className={'arrow nav-link ' + (this.props.up ? 'up ' : '') + this.props.type} data-menuanchor={this.props.anchor} href={'#' + (this.props.anchor)}>
-        <img className='white' src={this.props.down ? arrow_down_white : arrow_up_white} />
-        <img className='orange' src={this.props.down ? arrow_down_orange : arrow_up_orange} />
+        <img alt="arrow-down" className='white' src={this.props.down ? arrow_down_white : arrow_up_white} />
+        <img alt="arrow-down" className='orange' src={this.props.down ? arrow_down_orange : arrow_up_orange} />
         {/*There is no arrow up white/black combo, only for down*/}
         {this.props.down &&
-          <img className='black' src={arrow_down_black} />
+          <img alt="arrow-down" className='black' src={arrow_down_black} />
         }
       </a>
     );

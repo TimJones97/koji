@@ -452,13 +452,11 @@ $(document).ready(function() {
 			$('footer').css('padding-bottom', '120px');
 		}
 	}
+	// Cut down the text length on episode descriptions
+	// if episode elements are present
 	if($('.episode').length){
 		truncate();
 	}
-
-	// if(location.pathname == '/listen' || location.pathname == '/read'){
-	// 	truncateEpisodeText();
-	// }
 
 	setSectionHeightMobile();
 });
