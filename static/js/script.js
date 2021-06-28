@@ -281,7 +281,7 @@ function toggleMobileNav(){
 	});
 }
 function isMobile(){
-	if($(window).width() < 991){
+	if($(window).width() <= 1024){
 		return true;
 	}
 	else {
