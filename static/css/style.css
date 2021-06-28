@@ -2240,6 +2240,9 @@ section.not-found {
 	    border-top: 1px solid var(--dark-red);
 	    padding: 5px 10px;
 	}
+	.recent-episodes .episode {
+		margin-bottom: 30px;
+	}
 
 	/*READ PAGE*/
 	.episode.read {
@@ -2685,9 +2688,6 @@ section.not-found {
 	}
 	.article .recent-episodes {
 		display: flex !important;
-	}
-	.recent-episodes .episode {
-		margin-bottom: 30px;
 	}
 
 	/*FOOTER*/
